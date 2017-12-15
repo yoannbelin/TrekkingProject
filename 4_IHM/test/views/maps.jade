@@ -1,0 +1,71 @@
+extends layout
+
+
+block content
+  head
+      meta(charset='utf-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      title Hawthorne — Selected Work
+      meta(name='description', content='Page description goes here')
+      link(href='stylesheets/font-awesome.min.css', rel='stylesheet')
+      script(src='routes/modernizr.js')
+      .Bandeau
+      section.small-12.medium-12.large-12.columns
+          img(src='images/projects/View_from_connors_hill_panorama.jpg', style='margin-bottom: 5px')
+          section.section
+            .top-border
+            .row
+                .small-12.medium-12.large-12.small-centered.columns
+                nav
+                    div
+                        ul.inline-list-custom
+                            li
+                                a.current(href='/profil') Profil
+                            li
+                                a(href='/galerie') Galerie Photos
+                            li
+                                a(href='/PoI') Galerie Points d'intêret
+          #conteneur_carte
+            .block1_infos
+              table
+                tr
+                  td Distance     
+                  td Temps  
+                  td Difficulté
+                tr
+                  td 12km    
+                  td 3h   
+                  td normal
+                tr
+                  td 20km    
+                  td 4h   
+                  td Difficile
+
+              a(href="create")
+                button(type="button") Détails
+            .block2_maps
+              h1 ici
+              h2 va la carte
+            .block3_buttons
+              input(type='text', list='browsers')
+              datalist#browsers
+                  option
+                    | Général
+                  option
+                    | Utilisateur
+              #buttons
+                .save
+                  a(href="create")
+                    button(type="button") Sauvegarder
+                .raz
+                  a(href="create")
+                    button(type="button") Reset
+                    
+
+          body
+          .row
+            .small-12.medium-12.large-12.columns
+              p.back-to-top-holder
+                a.back-to-top
+                  a(href='#')
+                      i.fa.fa-chevron-circle-up.fa-3x
