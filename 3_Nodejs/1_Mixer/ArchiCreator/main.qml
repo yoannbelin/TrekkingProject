@@ -9,7 +9,7 @@ Window {
     visible: true
     width: 750
     height: 480
-    title: qsTr("ArchiCreator")
+    title: qsTr("Hello World")
 
     Rectangle {
         id: container
@@ -81,8 +81,7 @@ Window {
                     id: targetFolderUrl
                     height: 40
                     width: 500
-                    property string tmp : targetFolderExplorer.fileUrl
-                    text: tmp /*+ (tmp === "" ? "" : "/") + replacementString.text + (tmp === "" ? "" : "s")*/
+                    text: targetFolderExplorer.fileUrl + "/" + replacementString.text
                     verticalAlignment: Text.AlignVCenter
                 }
 
@@ -158,7 +157,6 @@ Window {
                     enabled: false
                     onClicked: {
                         MyContext.sendActionToCpp("Create Copy Folder", originalString.text, replacementString.text)
-                        finalButton.enabled = false
                     }
                 }
             }

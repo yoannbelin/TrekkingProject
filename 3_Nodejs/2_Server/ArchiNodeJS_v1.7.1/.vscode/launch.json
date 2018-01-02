@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "name": "server-node",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "nodemon",
+            "stopOnEntry": false,
+            "args": [
+                "--debug",
+                "--nolazy",
+                //"${workspaceRoot}/app.js"
+                "${workspaceRoot}/bin/www"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "all",
+            "configurations": [
+                "server-node",
+                "Launch Chrome"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+
+- Rappatrier la base de données avec le script mySQL (pour mysqlWorkbech)
+- faire un "npm install" dans le répertoire courant
+
+- Mettre à jourt le fichier config/ db.js avec les mots de passe de votre base de donnée
+- faire un npm start
+
+lancer http://localhost:3000/
+	
