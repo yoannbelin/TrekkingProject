@@ -22,6 +22,7 @@ app.use(logger('dev'));
 app.use('/src', express.static('src'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,

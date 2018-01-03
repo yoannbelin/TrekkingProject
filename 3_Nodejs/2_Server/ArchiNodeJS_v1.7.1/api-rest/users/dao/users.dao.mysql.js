@@ -12,32 +12,46 @@ class UsersDAO {
     static create(user, cb) {
         console.log(user.mail);
 
-        let script = 'INSERT INTO user ( firstname, lastname, username, password, mail, active, created_at ) '
+        let script = 'INSERT INTO user (firstname, lastname, username, password, mail, active, created_at ) '
         script += 'SELECT * FROM ( SELECT ?, ?, ?, ?, ?, ?, ?) AS tmp '
         script += 'WHERE NOT EXISTS ( '
-        script += 'SELECT * FROM user WHERE username = ' + user.username
-            // script += 'SELECT * FROM user WHERE mail = mysql_real_escape_string($' + user.mail + ')'
-        script += '); '
+        script += 'SELECT * FROM user WHERE username = ?)'
 
-        db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, user.active, new Date()], (err, result) => {
-            user.id = result.insertId;
-            console.log("adding script");
+        console.log(script);
+
+        db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date(), user.username], (err, result) => {
+
             if (result) {
-                // user.id = result.insertId;
-                console.log('mesage inséré : !!' + result.insertId);
-            } else { console.log("erreur à l insertion : " + err) }
+                user.id = result.insertId;                
+                console.log('user created : ' + result.insertId);
+            } 
+            
+            else { 
+                console.log("erreur à l insertion : " + err) }
             cb(err, user);
         });
     }
 
     static update(user, cb) {
-        db.query('UPDATE user SET name = ?, num = ?, WHERE id_user = ?', [user.name, user.num, user.id], (err) => {
+
+        let id = user.id;
+
+        let script = 'UPDATE user SET firstname = ?, lastname = ?, username = ?, password = ?, mail = ? '
+        script += 'WHERE id_user = ' + id + ' '
+        script += 'AND NOT EXISTS ( '
+            script += 'SELECT * FROM (SELECT * FROM user WHERE user.id_user != ' + id + ') AS tmp '
+            script += 'WHERE tmp.username = ?);'
+
+        db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, user.username], (err) => {
             cb(err, user);
         });
     }
 
     static delete(id, cb) {
-        db.query('DELETE FROM user WHERE id_user = ?', [id], (err) => {
+
+        let script = 'UPDATE user SET active = 0 WHERE id_user = ?'
+
+        db.query(script, [id], (err) => {
             cb(err);
         });
     }
@@ -52,8 +66,11 @@ class UsersDAO {
     }
 
     static find(id, cb) {
-        let script = 'SELECT user.id_user, user.name, user.num'
-        script += 'FROM user '
+
+        console.log(id);
+
+        let script = 'SELECT * FROM user '
+        script += 'WHERE id_user = ?'
 
         db.query(script, [id], (err, rows) => {
 

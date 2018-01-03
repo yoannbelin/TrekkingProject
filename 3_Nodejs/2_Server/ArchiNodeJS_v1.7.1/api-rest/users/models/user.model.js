@@ -76,8 +76,20 @@ class UserModel {
     }
 
     isValid() {
-        return !(this.lastname === '' ||
-            this.lastname === undefined);
+        return !(this.firstname === '' ||
+            this.firstname === undefined /*||
+            this.lastname === '' ||
+            this.lastname === undefined ||
+            this.username === '' ||
+            this.username === undefined ||
+            this.password === '' ||
+            this.password === undefined ||
+            this.mail === '' ||
+            this.mail === undefined ||
+            this.active === '' ||
+            this.active === undefined ||
+            this.created_at === '' ||
+    this.created_at === undefined*/);
     }
 }
 module.exports = UserModel
