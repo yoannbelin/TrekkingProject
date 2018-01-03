@@ -34,7 +34,7 @@ function infoTrek(i) {
     document.getElementById('idTableau').innerHTML = html;
 
     var datas = JSON.parse(_treks[i].pathway)
-    itineraire(datas);
+    drawTreck(datas);
 }
 
 /**
@@ -127,4 +127,5 @@ function afficher_btn(id) {
 function resetPage() {
     window.location.reload();
 }
+
 window.onload = loadTreks();

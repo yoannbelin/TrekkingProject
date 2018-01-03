@@ -2,30 +2,35 @@ var map = new L.map('map');
 var _polyline;
 var drawnItems;
 
-
+//recupération des points GPS d'un tracé dessiné
 var outputPoints = function (datas) {
     var points = datas;
     return datas;
 };
 
+//recupération de la longueur d'un tracé dessiné
 var outputLength = function (data) {
     var length_in_km = data / 1000;
     document.getElementById('distance').innerHTML = _round(length_in_km, 2);
 };
 
+// Arrondi
 var _round = function (num, len) {
     return Math.round(num * (Math.pow(10, len))) / (Math.pow(10, len));
 };
+
+// Limitation du nombre de caractère d'un point GPS
 var strLatLng = function (latlng) {
     return "(" + _round(latlng.lat, 6) + ", " + _round(latlng.lng, 6) + ")";
 };
 
 
+// Initialisation de la carte
 var init = function () {
 
     map.setView([43.58506, 3.86021], 10);
 
-
+    /* Chargement des tuiles */
     var tuile = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var attrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
@@ -35,28 +40,30 @@ var init = function () {
         minZoom: 5
     }).addTo(map);
 
+    /* Ajout du selectionneur de tuiles */
     drawnItems = L.featureGroup().addTo(map);
-    
-        L.control.layers({
-            'osm': _osm.addTo(map),
-            'google': L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
-                attribution: 'google',
-                maxZoom: 18,
-                minZoom: 5
-            })
+
+    L.control.layers({
+        'osm': _osm.addTo(map),
+        'google': L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
+            attribution: 'google',
+            maxZoom: 18,
+            minZoom: 5
+        })
+    }, {
+            'drawlayer': drawnItems
         }, {
-                'drawlayer': drawnItems
-            }, {
-                position: 'topleft',
-                collapsed: false
-            }).addTo(map);
+            position: 'topleft',
+            collapsed: false
+        }).addTo(map);
 
     addKmlLayers();
 };
 
+// Ajout des outils de dessin
 var addDrawTools = function () {
 
-    // ajout des boutons de controle
+    /* Ajout des boutons de controle */
     map.addControl(new L.Control.Draw({
         edit: {
             featureGroup: drawnItems,
@@ -79,30 +86,30 @@ var addDrawTools = function () {
     });
 
 
-    // Generate popup content based on layer type
+    // Ajout d'un binding entre les tracés et les informations GPS _ Generate popup content based on layer type
     // - Returns HTML string, or null if unknown object
 
     var getPopupContent = function (layer) {
 
-        // Marker - add lat/long
+        /* Marker - add lat/long */
         if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
             return strLatLng(layer.getLatLng());
 
-            // Circle - lat/long, radius
+            /* Circle - lat/long, radius */
         } else if (layer instanceof L.Circle) {
             var center = layer.getLatLng(),
                 radius = layer.getRadius();
             return "Center: " + strLatLng(center) + "<br />" +
                 "Radius: " + _round(radius, 2) + " m";
 
-            // Rectangle/Polygon - area
+            /* Rectangle/Polygon - area */
         } else if (layer instanceof L.Polygon) {
             var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
                 area = L.GeometryUtil.geodesicArea(latlngs);
             //return "Area: "+L.GeometryUtil.readableArea(area, true);
             return "latlngs : " + latlngs
 
-            // Polyline - distance
+            /* Polyline - distance */
         } else if (layer instanceof L.Polyline) {
             var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
                 distance = 0;
@@ -126,7 +133,7 @@ var addDrawTools = function () {
         return null;
     };
 
-    // Object created - bind popup to layer, add to feature group
+    /* Object created - bind popup to layer, add to feature group */
     map.on(L.Draw.Event.CREATED, function (event) {
         var layer = event.layer;
         var content = getPopupContent(layer);
@@ -136,7 +143,7 @@ var addDrawTools = function () {
         drawnItems.addLayer(layer);
     });
 
-    // Object(s) edited - update popups
+    /* Object(s) edited - update popups */
     map.on(L.Draw.Event.EDITED, function (event) {
         var layers = event.layers,
             content = null;
@@ -149,6 +156,7 @@ var addDrawTools = function () {
     });
 };
 
+// Ajout de fichiers KML
 var addKmlLayers = function () {
 
     /*surcouche kml sans popups
@@ -169,7 +177,7 @@ var addKmlLayers = function () {
         '/src/gr-kml/grp-larzac.kml'
     ]
 
-    //modification de la couleur des lignes kml
+    /* modification de la couleur des lignes kml*/
     var customLayer = L.geoJson(null, {
         // http://leafletjs.com/reference.html#geojson-style
         style: function (feature) {
@@ -196,8 +204,8 @@ var addKmlLayers = function () {
     }
 }
 
-function itineraire(datas) {
-    //console.log(datas.chemin[0]);
+// Dessin d'un tracé d'après la BDD
+function drawTreck(datas) {
 
     var points = datas.chemin;
 
@@ -207,19 +215,21 @@ function itineraire(datas) {
         polylinePoints.push(new L.LatLng(points[i].lat, points[i].lng));
     }
 
+    /* customisation du tracé */
     var polylineOptions = {
         color: 'blue',
         weight: 2,
         opacity: 0.9
     };
 
+
     if (_polyline == undefined) {
-        //var polyline = new L.Polyline(polylinePoints, polylineOptions);
         _polyline = new L.Polyline(polylinePoints, polylineOptions);
     }
     else {
         _polyline.setLatLngs(polylinePoints);
     }
+
 
     map.addLayer(_polyline);
     map.fitBounds(_polyline.getBounds());
