@@ -51,5 +51,4 @@ class GpsPointModel {
             isNaN(this.longitude));
     }
 }
-
 module.exports = GpsPointModel

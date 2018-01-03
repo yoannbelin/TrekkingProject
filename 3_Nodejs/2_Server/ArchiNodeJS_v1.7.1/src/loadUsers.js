@@ -1,9 +1,9 @@
 var _users = [];
 var selectedUser = null;
 
-/**
- * Build table
- */
+//
+// Build table
+//
 function buildTable() {
     var html = "";
     html += "<tr>";
@@ -28,16 +28,16 @@ function buildTable() {
     document.getElementById('idTableau').innerHTML = html;
 };
 
-/**
-Chengement de page
-*/
-function test(i) {
+//
+// Route to show page
+//
+function goToShow(i) {
     window.location.href = 'users/' + _users[i].id;
 }
 
-/**
- * Select user in table (hightlight the selected line & insert data in controls)
- */
+//
+// Select user in table (hightlight the selected line & insert data in controls)
+//
 function selectUser(index) {
     if (index < _users.length) {
         var elems = document.querySelectorAll("tr");
@@ -59,9 +59,9 @@ function selectUser(index) {
     }
 }
 
-/**
- * Load users list
- */
+//
+// Load user list
+//
 function loadUsers() {
     $http.get('/api-rest/users', function(res) {
         _users = res;
@@ -69,10 +69,9 @@ function loadUsers() {
     }, 'json');
 }
 
-
-/**
- * Add user
- */
+//
+// Add user
+//
 function addUser() {
     var input = {
         'firstname': document.getElementById('prenom').value,
@@ -94,10 +93,9 @@ function addUser() {
     }, 'json');
 }
 
-
-/**
- * Delete selected user
- */
+//
+// Delete selected user
+//
 function delUser() {
     $http.delete('/api-rest/users/' + selectedUser.id, function() {
         _users.splice(_users.indexOf(selectedUser), 1);
@@ -105,10 +103,9 @@ function delUser() {
     });
 }
 
-
-/**
- * Update selected user
- */
+//
+// Update selected user
+//
 function updateUser() {
 
     var input = {

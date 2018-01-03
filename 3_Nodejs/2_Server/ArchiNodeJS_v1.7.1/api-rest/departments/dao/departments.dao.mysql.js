@@ -8,7 +8,6 @@
 let db = require(__base + '/config/db')
 let DepartmentModel = require('../models/department.model');
 
-
 class DepartmentsDAO {
     static create(department, cb) {
 
@@ -17,7 +16,6 @@ class DepartmentsDAO {
         script += 'WHERE NOT EXISTS ( '
         script += 'SELECT * FROM department WHERE (name = ' + department.name + ') AND (num = ' + department.num + ') '
         script += '); '
-
 
         db.query(script, [department.name, department.num], (err, result) => {
             department.id = result.insertId;

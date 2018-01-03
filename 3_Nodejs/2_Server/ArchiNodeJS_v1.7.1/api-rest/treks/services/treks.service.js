@@ -6,7 +6,6 @@
 let TreksDAO  = require('../dao/treks.dao.mysql');
 let TrekDAO = require('./../dao/treks.dao.mysql') // pour info
 
-
 class TreksService
 {
     static create(trek, cb) {
@@ -33,5 +32,4 @@ class TreksService
         return TreksDAO.list(cb);
     }
 }
-
 module.exports = TreksService;

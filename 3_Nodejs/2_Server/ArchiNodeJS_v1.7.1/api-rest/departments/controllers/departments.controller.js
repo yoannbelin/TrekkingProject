@@ -7,7 +7,6 @@
 let DepartmentsService = require('../services/departments.service');
 let DepartmentModel = require('../models/department.model');
 
-
 /**
  * Create a department
  */
@@ -38,7 +37,6 @@ module.exports.read = function(req, res) {
         res.json(department); // department est du type DepartmentModel, pas besoin d'écrire toJSON  ##1
     });
 }
-
 
 /**
  * Update a department

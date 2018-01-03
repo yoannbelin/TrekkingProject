@@ -1,9 +1,9 @@
 var _gpsPoints = [];
 var selectedGpsPoint = null;
 
-/**
- * Build table
- */
+//
+// Build table
+//
 function buildTable() {
   var html = "";
   html += "<tr>";
@@ -19,21 +19,21 @@ function buildTable() {
     html += "<td>" + _gpsPoints[i].content + "</td>";
     html += "</tr>";
   }
-
   document.getElementById('idTableau').innerHTML = html;
 };
 
-/**
-Changement de page
-*/
-function test(i) {
+//
+// Route to show page
+//
+function goToShow(i) {
   window.location.href = 'gpsPoints/' + _gpsPoints[i].id;
 }
 
-/**
- * Select gpsPoint in table (hightlight the selected line & insert data in controls)
- */
+//
+// Select gpsPoint in table (hightlight the selected line & insert data in controls)
+//
  function selectGpsPoint(index) {
+   
    if (index < _gpsPoints.length) {
      var elems = document.querySelectorAll("tr");
 
@@ -50,9 +50,9 @@ function test(i) {
    }
  }
 
-/**
- * Load gpsPoints list
- */
+//
+// Load gpsPoints list
+//
 function loadGpsPoints() {
   $http.get('/api-rest/gpsPoints', function(res) {
     _gpsPoints = res;
@@ -60,10 +60,9 @@ function loadGpsPoints() {
   }, 'json');
 }
 
-
-/**
- * Add GpsPoint
- */
+//
+// Add GpsPoint
+//
 function addGpsPoint() {
   console.log(1)
   var input = {
@@ -76,9 +75,9 @@ function addGpsPoint() {
   }, 'json');
 }
 
-/**
- * Delete selected gpsPoint
- */
+//
+// Delete selected gpsPoint
+//
 function delGpsPoint() {
   $http.delete('/api-rest/gpsPoints/' + selectedGpsPoint.id, function() {
     _gpsPoints.splice(_gpsPoints.indexOf(selectedGpsPoint), 1);
@@ -86,9 +85,9 @@ function delGpsPoint() {
   });
 }
 
-/**
- * Update selected gpsPoint
- */
+//
+// Update selected gpsPoint
+//
 function updateGpsPoint() {
 
   var input = {
