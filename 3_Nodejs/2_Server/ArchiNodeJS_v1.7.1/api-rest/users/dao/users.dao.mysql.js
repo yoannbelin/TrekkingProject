@@ -10,14 +10,11 @@ let UserModel = require('../models/user.model');
 
 class UsersDAO {
     static create(user, cb) {
-        console.log(user.mail);
 
         let script = 'INSERT INTO user (firstname, lastname, username, password, mail, active, created_at ) '
         script += 'SELECT * FROM ( SELECT ?, ?, ?, ?, ?, ?, ?) AS tmp '
         script += 'WHERE NOT EXISTS ( '
         script += 'SELECT * FROM user WHERE username = ?)'
-
-        console.log(script);
 
         db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date(), user.username], (err, result) => {
 

@@ -77,7 +77,7 @@ class UserModel {
 
     isValid() {
         return !(this.firstname === '' ||
-            this.firstname === undefined /*||
+            this.firstname === undefined ||
             this.lastname === '' ||
             this.lastname === undefined ||
             this.username === '' ||
@@ -85,11 +85,7 @@ class UserModel {
             this.password === '' ||
             this.password === undefined ||
             this.mail === '' ||
-            this.mail === undefined ||
-            this.active === '' ||
-            this.active === undefined ||
-            this.created_at === '' ||
-    this.created_at === undefined*/);
+            this.mail === undefined);
     }
 }
 module.exports = UserModel

@@ -82,7 +82,6 @@ function addUser() {
     };
 
     $http.post('/api-rest/users', input, function(res) {
-        console.log("# " + res.err)
         if (res.user.id !== 0) {
         _users.push(res.user);
         buildTable();
