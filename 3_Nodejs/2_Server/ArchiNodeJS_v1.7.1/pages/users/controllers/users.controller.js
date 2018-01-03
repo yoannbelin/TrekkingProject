@@ -1,16 +1,16 @@
 let UsersService = require(__base + 'api-rest/users/services/users.service');
 let UserModel = require(__base + 'api-rest/users/models/user.model');
 
-/**
- * Users index page
- */
+//
+// Users index page
+//
 module.exports.index = function(req, res) {
     res.render('users/views/index');
 }
 
-/**
- * User show page
- */
+//
+// User show page
+//
 module.exports.show = function(req, res) {
 
     console.log( 'page d affichage des user demandée' )

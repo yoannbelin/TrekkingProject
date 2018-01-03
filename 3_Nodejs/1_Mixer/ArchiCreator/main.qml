@@ -81,7 +81,7 @@ Window {
                     id: targetFolderUrl
                     height: 40
                     width: 500
-                    text: targetFolderExplorer.fileUrl + "/" + replacementString.text
+                    text: targetFolderExplorer.fileUrl + "/" + replacementString.text + "s"
                     verticalAlignment: Text.AlignVCenter
                 }
 

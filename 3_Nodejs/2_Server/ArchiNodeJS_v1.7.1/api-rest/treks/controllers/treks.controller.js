@@ -7,9 +7,9 @@
 let TreksService = require('../services/treks.service');
 let TrekModel = require('../models/trek.model');
 
-/**
- * Create a trek
- */
+//
+// Create a trek
+//
 module.exports.create = function(req, res) {
 
     let trekModel = new TrekModel(req.body);
@@ -29,18 +29,18 @@ module.exports.create = function(req, res) {
     });
 }
 
-/**
- * Read a trek
- */
+//
+// Read a trek
+//
 module.exports.read = function(req, res) {
     TreksService.find(req.params.idTrek, (err, trek) => { // à voir pour utiliser le middleware trekByID
         res.json(trek); // trek est du type TrekModel, pas besoin d'écrire toJSON  ##1
     });
 }
 
-/**
- * Update a trek
- */
+//
+// Update a trek
+//
 module.exports.update = function(req, res) {
     let trekModel = new TrekModel(req.body);
     console.log(trekModel);
@@ -60,9 +60,9 @@ module.exports.update = function(req, res) {
     });
 }
 
-/**
- * Delete a trek
- */
+//
+// Delete a trek
+//
 module.exports.delete = function(req, res) {
     TreksService.delete(req.params.idTrek, (err, trek) => {
         if (err) {
@@ -73,9 +73,9 @@ module.exports.delete = function(req, res) {
     });
 }
 
-/**
- * List of treks
- */
+//
+// List of treks
+//
 module.exports.list = function(req, res) {
     TreksService.list((err, treks) => {
         res.json(treks); // cast with toJSON

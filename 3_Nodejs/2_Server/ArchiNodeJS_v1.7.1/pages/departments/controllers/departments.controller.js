@@ -2,16 +2,16 @@ let DepartmentsService = require(__base + 'api-rest/departments/services/departm
 let DepartmentModel = require(__base + 'api-rest/departments/models/department.model');
 let UsersService = require(__base + 'api-rest/users/services/users.service');
 
-/**
- * Departments index page
- */
+//
+// Departments index page
+//
 module.exports.index = function(req, res) {
     res.render('departments/views/index');
 }
 
-/**
- * Department show page
- */
+//
+// Department show page
+//
 module.exports.show = function(req, res) {
     DepartmentsService.find(req.params.id, (err, department) => {
         if (err) {

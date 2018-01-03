@@ -2,16 +2,16 @@ let GpsPointsService = require(__base + 'api-rest/gpsPoints/services/gpsPoints.s
 let GpsPointModel = require(__base + 'api-rest/gpsPoints/models/gpsPoint.model');
 let UsersService = require(__base + 'api-rest/users/services/users.service');
 
-/**
- * GpsPoints index page
- */
+//
+// GpsPoints index page
+//
 module.exports.index = function (req, res) {
     res.render('gpsPoints/views/index');
 }
 
-/**
- * GpsPoint show page
- */
+//
+// GpsPoint show page
+//
 module.exports.show = function (req, res) {
     GpsPointsService.find(req.params.idGpsPoint, (err, gpsPoint) => {
         if (err) {

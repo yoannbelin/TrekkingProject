@@ -10,7 +10,7 @@ let GpsPointModel = require('../models/gpsPoint.model');
 
 class GpsPointsDAO {
     static create(gpsPoint, cb) {
-        // let altitude = gpsPoint.altitude || 'null'      => WANTED TO GET A NULL FIELD INSTEAD OF AN EMPTY STRING
+        /* let altitude = gpsPoint.altitude || 'null'      => WANTED TO GET A NULL FIELD INSTEAD OF AN EMPTY STRING */
 
         let script = 'INSERT INTO gps_point (longitude, latitude, altitude) '
         script += 'SELECT * FROM ( SELECT ?,  ?) AS tmp '

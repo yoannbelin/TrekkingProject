@@ -7,9 +7,9 @@
 let DepartmentsService = require('../services/departments.service');
 let DepartmentModel = require('../models/department.model');
 
-/**
- * Create a department
- */
+//
+// Create a department
+//
 module.exports.create = function(req, res) {
 
     let departmentModel = new DepartmentModel(req.body);
@@ -29,18 +29,18 @@ module.exports.create = function(req, res) {
     });
 }
 
-/**
- * Read a department
- */
+//
+// Read a department
+//
 module.exports.read = function(req, res) {
     DepartmentsService.find(req.params.idDepartment, (err, department) => { // à voir pour utiliser le middleware departmentByID
         res.json(department); // department est du type DepartmentModel, pas besoin d'écrire toJSON  ##1
     });
 }
 
-/**
- * Update a department
- */
+//
+// Update a department
+//
 module.exports.update = function(req, res) {
     let departmentModel = new DepartmentModel(req.body);
     console.log(departmentModel);
@@ -60,9 +60,9 @@ module.exports.update = function(req, res) {
     });
 }
 
-/**
- * Delete a department
- */
+//
+// Delete a department
+//
 module.exports.delete = function(req, res) {
     DepartmentsService.delete(req.params.idDepartment, (err, department) => {
         if (err) {
@@ -73,9 +73,9 @@ module.exports.delete = function(req, res) {
     });
 }
 
-/**
- * List of departments
- */
+//
+// List of departments
+//
 module.exports.list = function(req, res) {
     DepartmentsService.list((err, departments) => {
 
