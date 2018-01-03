@@ -1,6 +1,5 @@
 let moment = require(__base + 'config/moment')
 
-
 class DepartmentModel {
     constructor(row) {
         this.row = row;

@@ -12,5 +12,4 @@ router.route('/:idTrek')
     .delete(treks.delete);
 
 //router.param(':idTrek', trekByID);
-
 module.exports = router;

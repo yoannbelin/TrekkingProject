@@ -5,5 +5,4 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('core/views/index', { title: 'tuto  CRUD lessive AJAX' });
 });
-
 module.exports = router;

@@ -1,9 +1,9 @@
 var _departments = [];
 var selectedDepartment = null;
 
-/**
- * Build table
- */
+//
+// Build table
+// 
 function buildTable() {
     console.log(_departments);
     var html = "";
@@ -24,17 +24,16 @@ function buildTable() {
     document.getElementById('idTableau').innerHTML = html;
 };
 
-/**
-Chengement de page
-*/
-function test(i) {
+//
+// Route to show page
+//
+function goToShow(i) {
     window.location.href = 'departments/' + _departments[i].idDepartment;
 }
 
-/**
- * Select department in table (hightlight the selected line & insert data in controls)
- */
+// Select department in table (hightlight the selected line & insert data in controls)
 function selectDepartment(index) {
+
     console.log("salut");
     if (index < _departments.length) {
         var elems = document.querySelectorAll("tr");
@@ -46,7 +45,7 @@ function selectDepartment(index) {
         var elem = document.querySelector("#row_" + index);
         elem.style.background = "red";
 
-        //document.getElementById('create at').value = _departments[index]['create_at'];
+        /*document.getElementById('create at').value = _departments[index]['create_at'];*/
         document.getElementById('name').value = _departments[index]['name'];
         document.getElementById('num').value = _departments[index]['num'];
 
@@ -54,9 +53,9 @@ function selectDepartment(index) {
     }
 }
 
-/**
- * Load departments list
- */
+//
+// Load departments list
+//
 function loadDepartments() {
     $http.get('/api-rest/departments', function(res) {
         _departments = res;
@@ -64,10 +63,9 @@ function loadDepartments() {
     }, 'json');
 }
 
-
-/**
- * Add Department
- */
+//
+// Add Department
+//
 function addDepartment() {
     console.log("trying to add dept")
     var input = {
@@ -83,10 +81,9 @@ function addDepartment() {
     }, 'json');
 }
 
-
-/**
- * Delete selected department
- */
+//
+// Delete selected department
+//
 function delDepartment() {
     $http.delete('/api-rest/departments/' + selectedDepartment.idDepartment, function() {
         _departments.splice(_departments.indexOf(selectedDepartment), 1);
@@ -94,23 +91,18 @@ function delDepartment() {
     });
 }
 
-
-/**
- * Update selected department
- */
+//
+// Update selected department
+//
 function updateDepartment() {
 
     var input = {
         'create_at': document.getElementById('create_at').value,
         'content': document.getElementById('content').value
     };
-
     $http.update('/api-rest/departments/' + selectedDepartment.idDepartment, input, function(res) {
         _departments[_departments.indexOf(selectedDepartment)] = res.department;
         buildTable();
     }, 'json');
 }
-
-
-
 window.onload = loadDepartments()

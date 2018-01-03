@@ -1,8 +1,8 @@
 var _treks = [];
 
-/**
- * Build Combobox
- */
+//
+// Build combobox
+//
 function buildCombo() {
     var html = "";
     html += "<option disabled selected>" + "Selectionner votre trek" + "</option>"
@@ -12,12 +12,12 @@ function buildCombo() {
     document.getElementById("idCombo").innerHTML = html;
 }
 
-/**
- Changement de page
- */
+//
+// Show trek's characteritics
+//
 function infoTrek(i) {
-    afficher_btn('.raz');
-    afficher_btn('.detail');
+    show_btn('.raz');
+    show_btn('.detail');
     var html = "";
     html += "<tr>";
     html += "<td> Nom du trek </td>";
@@ -34,12 +34,12 @@ function infoTrek(i) {
     document.getElementById('idTableau').innerHTML = html;
 
     var datas = JSON.parse(_treks[i].pathway)
-    drawTreck(datas);
+    drawTrek(datas);
 }
 
-/**
- * Créer un nouveau Trek
- */
+//
+// Add trek by drawing with Leaflet and input html
+//
 function createNewTrek() {
 
     addDrawTools();
@@ -61,30 +61,29 @@ function createNewTrek() {
 
     document.getElementById('idTableau').innerHTML = html;
 
-    afficher_btn('.save');
-    afficher_btn('.raz');
-    cacher_btn('.detail');
-    cacher_btn('.newtrek');
+    show_btn('.save');
+    show_btn('.raz');
+    hide_btn('.detail');
+    hide_btn('.newtrek');
 }
 
-
-/**
- * Load treks list
- */
+//
+// Load trek list in combobox
+//
 function loadTreks() {
     $http.get('/api-rest/treks', function(res) {
         _treks = res;
         buildCombo();
     }, 'json');
-    afficher_btn('.newtrek');
+    show_btn('.newtrek');
 }
 
-/**
- * Add trek
- */
+//
+// Add trek
+//
 function addTrek() {
-    cacher_btn('.save');
-    afficher_btn('.newtrek');
+    hide_btn('.save');
+    show_btn('.newtrek');
 
     let trek_path = document.chemin_trek;
 
@@ -106,26 +105,25 @@ function addTrek() {
     loadTreks();
 }
 
-/**
- * Afficher / Cacher les buttons
- */
-function cacher_btn(id) {
+//
+// Hide / Show drawing buttons
+//
+function hide_btn(id) {
     if (document.querySelector(id).style.visibility === "visible") {
         document.querySelector(id).style.visibility = "";
     }
-}
+};
 
-function afficher_btn(id) {
+function show_btn(id) {
     if (document.querySelector(id).style.visibility === "") {
         document.querySelector(id).style.visibility = "visible";
     }
-}
+};
 
-/**
- * Reset Page
- */
+//
+// Reset Page
+//
 function resetPage() {
     window.location.reload();
-}
-
+};
 window.onload = loadTreks();
