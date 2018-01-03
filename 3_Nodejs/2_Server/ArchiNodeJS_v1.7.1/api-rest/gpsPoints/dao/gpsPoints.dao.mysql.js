@@ -57,5 +57,4 @@ class GpsPointsDAO {
         });
     }
 }
-
 module.exports = GpsPointsDAO;

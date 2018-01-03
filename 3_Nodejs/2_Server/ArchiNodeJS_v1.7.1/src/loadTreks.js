@@ -1,9 +1,11 @@
-var _treks = [];
+var LoadTreksManager = new Object();
 
-/**
- * Build Combobox
- */
-function buildCombo() {
+LoadTreksManager._treks = [];
+
+//
+// Build combobox
+//
+LoadTreksManager.buildCombo = function() {
     var html = "";
     html += "<option disabled selected>" + "Selectionner votre trek" + "</option>"
     _treks.forEach((option) => {
@@ -12,12 +14,12 @@ function buildCombo() {
     document.getElementById("idCombo").innerHTML = html;
 }
 
-/**
- Changement de page
- */
-function infoTrek(i) {
-    afficher_btn('.raz');
-    afficher_btn('.detail');
+//
+//Show trek's characteritics
+//
+LoadTreksManager.infoTrek = function(i) {
+    LoadTreksManager.show_btn('.raz');
+    LoadTreksManager.show_btn('.detail');
     var html = "";
     html += "<tr>";
     html += "<td> Nom du trek </td>";
@@ -34,13 +36,13 @@ function infoTrek(i) {
     document.getElementById('idTableau').innerHTML = html;
 
     var datas = JSON.parse(_treks[i].pathway)
-    drawTreck(datas);
+    drawTrek(datas);
 }
 
-/**
- * Créer un nouveau Trek
- */
-function createNewTrek() {
+//
+// Add trek by drawing with Leaflet and input html
+//
+LoadTreksManager.createNewTrek = function() {
 
     addDrawTools();
 
@@ -61,30 +63,30 @@ function createNewTrek() {
 
     document.getElementById('idTableau').innerHTML = html;
 
-    afficher_btn('.save');
-    afficher_btn('.raz');
-    cacher_btn('.detail');
-    cacher_btn('.newtrek');
+    LoadTreksManager.show_btn('.save');
+    LoadTreksManager.show_btn('.raz');
+    LoadTreksManager.hide_btn('.detail');
+    LoadTreksManager.hide_btn('.newtrek');
 }
 
 
-/**
- * Load treks list
- */
-function loadTreks() {
+//
+// Load trek list in combobox
+//
+LoadTreksManager.loadTreks = function() {
     $http.get('/api-rest/treks', function(res) {
         _treks = res;
-        buildCombo();
+        LoadTreksManager.buildCombo();
     }, 'json');
-    afficher_btn('.newtrek');
+    LoadTreksManager.show_btn('.newtrek');
 }
 
-/**
- * Add trek
- */
-function addTrek() {
-    cacher_btn('.save');
-    afficher_btn('.newtrek');
+//
+// Add trek
+//
+LoadTreksManager.addTrek = function() {
+    LoadTreksManager.hide_btn('.save');
+    LoadTreksManager.show_btn('.newtrek');
 
     let trek_path = document.chemin_trek;
 
@@ -100,32 +102,32 @@ function addTrek() {
         if (res.trek.id !== 0) {
             _treks.push(res.trek);
         }
-        infoTrek(_treks.length - 1);
+        LoadTreksManager.infoTrek(_treks.length - 1);
     }, 'json');
     document.getElementById('messageToUser').innerHTML = 'success!';
-    loadTreks();
+    LoadTreksManager.loadTreks();
 }
 
-/**
- * Afficher / Cacher les buttons
- */
-function cacher_btn(id) {
+//
+// Hide / Show drawing buttons
+//
+LoadTreksManager.hide_btn = function(id) {
     if (document.querySelector(id).style.visibility === "visible") {
         document.querySelector(id).style.visibility = "";
     }
-}
+};
 
-function afficher_btn(id) {
+LoadTreksManager.show_btn = function(id) {
     if (document.querySelector(id).style.visibility === "") {
         document.querySelector(id).style.visibility = "visible";
     }
-}
+};
 
-/**
- * Reset Page
- */
-function resetPage() {
+//
+// Reset Page
+//
+LoadTreksManager.resetPage = function() {
     window.location.reload();
 }
 
-window.onload = loadTreks();
+window.onload = LoadTreksManager.loadTreks();

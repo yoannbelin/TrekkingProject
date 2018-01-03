@@ -2,35 +2,35 @@ var map = new L.map('map');
 var _polyline;
 var drawnItems;
 
-//recupération des points GPS d'un tracé dessiné
+//Get GPS points (json object of Leaflet) of a drawn trail 
 var outputPoints = function (datas) {
     var points = datas;
     return datas;
 };
 
-//recupération de la longueur d'un tracé dessiné
+//Get length of a drawn trail
 var outputLength = function (data) {
     var length_in_km = data / 1000;
     document.getElementById('distance').innerHTML = _round(length_in_km, 2);
 };
 
-// Arrondi
+// Rounded
 var _round = function (num, len) {
     return Math.round(num * (Math.pow(10, len))) / (Math.pow(10, len));
 };
 
-// Limitation du nombre de caractère d'un point GPS
+// Truncation of GPS point
 var strLatLng = function (latlng) {
     return "(" + _round(latlng.lat, 6) + ", " + _round(latlng.lng, 6) + ")";
 };
 
 
-// Initialisation de la carte
+// Initialization map
 var init = function () {
 
     map.setView([43.58506, 3.86021], 10);
 
-    /* Chargement des tuiles */
+    // Load Tiles of map
     var tuile = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var attrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
@@ -40,7 +40,7 @@ var init = function () {
         minZoom: 5
     }).addTo(map);
 
-    /* Ajout du selectionneur de tuiles */
+    // Add tile's selector
     drawnItems = L.featureGroup().addTo(map);
 
     L.control.layers({
@@ -60,10 +60,10 @@ var init = function () {
     addKmlLayers();
 };
 
-// Ajout des outils de dessin
+// Add drawing Tools
 var addDrawTools = function () {
 
-    /* Ajout des boutons de controle */
+    // Add control buttons
     map.addControl(new L.Control.Draw({
         edit: {
             featureGroup: drawnItems,
@@ -86,42 +86,44 @@ var addDrawTools = function () {
     });
 
 
-    // Ajout d'un binding entre les tracés et les informations GPS _ Generate popup content based on layer type
+    // Bind trail and information GPS _ Generate a popup content based on layer type
     // - Returns HTML string, or null if unknown object
 
     var getPopupContent = function (layer) {
 
-        /* Marker - add lat/long */
+        // Marker - add lat/long
         if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
             return strLatLng(layer.getLatLng());
 
-            /* Circle - lat/long, radius */
+            // Circle - lat/long, radius
         } else if (layer instanceof L.Circle) {
             var center = layer.getLatLng(),
                 radius = layer.getRadius();
             return "Center: " + strLatLng(center) + "<br />" +
                 "Radius: " + _round(radius, 2) + " m";
 
-            /* Rectangle/Polygon - area */
+            // Rectangle/Polygon - area
         } else if (layer instanceof L.Polygon) {
+
             var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
                 area = L.GeometryUtil.geodesicArea(latlngs);
-            //return "Area: "+L.GeometryUtil.readableArea(area, true);
+
+            /* return "Area: "+L.GeometryUtil.readableArea(area, true); */
             return "latlngs : " + latlngs
 
-            /* Polyline - distance */
+            // Polyline - distance
         } else if (layer instanceof L.Polyline) {
+
             var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
                 distance = 0;
+
             if (latlngs.length < 2) {
                 return "Distance: N/A";
             } else {
                 for (var i = 0; i < latlngs.length - 1; i++) {
                     distance += latlngs[i].distanceTo(latlngs[i + 1]);
-                    //var datas = latlngs;
-
+                    /* var datas = latlngs; */
                 }
-
                 outputPoints(latlngs);
                 outputLength(distance);
                 document.chemin_trek = latlngs;
@@ -143,7 +145,7 @@ var addDrawTools = function () {
         drawnItems.addLayer(layer);
     });
 
-    /* Object(s) edited - update popups */
+    // Object(s) edited - update popups
     map.on(L.Draw.Event.EDITED, function (event) {
         var layers = event.layers,
             content = null;
@@ -156,13 +158,13 @@ var addDrawTools = function () {
     });
 };
 
-// Ajout de fichiers KML
+// Add KML files
 var addKmlLayers = function () {
 
-    /*surcouche kml sans popups
-    omnivore.kml('gr-kml/gr60b.kml').addTo(map);*/
+    // KML without popups
+    /* omnivore.kml('gr-kml/gr60b.kml').addTo(map); */
 
-    /*surcouche kml avec activation des popups*/
+    // Layers KML with active popups
     var tabKml = [
         '/src/gr-kml/gr7i.kml',
         '/src/gr-kml/gr7j.kml',
@@ -173,13 +175,13 @@ var addKmlLayers = function () {
         '/src/gr-kml/gr77.kml',
         '/src/gr-kml/gr653a.kml',
         '/src/gr-kml/gr653c.kml',
-        //'gr-kml/gr653d.kmz',
+        /* 'gr-kml/gr653d.kmz', */
         '/src/gr-kml/grp-larzac.kml'
     ]
 
-    /* modification de la couleur des lignes kml*/
+    // Change color trails KML
     var customLayer = L.geoJson(null, {
-        // http://leafletjs.com/reference.html#geojson-style
+        /* http://leafletjs.com/reference.html#geojson-style */
         style: function (feature) {
             return {
                 color: 'purple',
@@ -188,40 +190,38 @@ var addKmlLayers = function () {
         }
     });
 
+    // Draw KML trails
     var i = 0;
     while (i < tabKml.length) {
 
         var runLayer = omnivore.kml(tabKml[i], null, customLayer)
             .on('ready', function () {
-                //map.fitBounds(runLayer.getBounds());
+                /* map.fitBounds(runLayer.getBounds()); */
 
                 runLayer.eachLayer(function (layer) {
                     layer.bindPopup(layer.feature.properties.name);
                 })
             }).addTo(map);
-
         i++
     }
 }
 
-// Dessin d'un tracé d'après la BDD
-function drawTreck(datas) {
+// Draw trail from Database
+function drawTrek(datas) {
 
     var points = datas.chemin;
-
     var polylinePoints = [];
 
     for (var i = 0; i < points.length; i++) {
         polylinePoints.push(new L.LatLng(points[i].lat, points[i].lng));
     }
 
-    /* customisation du tracé */
+    // Customisation trail
     var polylineOptions = {
         color: 'blue',
         weight: 2,
         opacity: 0.9
     };
-
 
     if (_polyline == undefined) {
         _polyline = new L.Polyline(polylinePoints, polylineOptions);
@@ -230,10 +230,7 @@ function drawTreck(datas) {
         _polyline.setLatLngs(polylinePoints);
     }
 
-
     map.addLayer(_polyline);
     map.fitBounds(_polyline.getBounds());
 };
-
-
 window.onload = init()

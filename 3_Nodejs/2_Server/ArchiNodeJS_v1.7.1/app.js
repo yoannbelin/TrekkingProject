@@ -6,29 +6,26 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-
 // set global variable for root directory
 global.__base = __dirname + '/';
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'pages'));
 app.set('view engine', 'jade');
 app.locals.basedir = path.join(__dirname, 'pages');
 
-
 // middlewares
 app.use(logger('dev'));
 app.use('/src', express.static('src'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
 }));
-
 
 app.use('/assets', express.static('public'));
 
@@ -38,15 +35,12 @@ app.use('/api-rest/departments', require('./api-rest/departments/routes/departme
 app.use('/api-rest/gpspoints', require('./api-rest/gpspoints/routes/gpspoints.route'));
 app.use('/api-rest/treks', require('./api-rest/treks/routes/treks.route'));
 
-
 // pages routes
 app.use('/', require('./pages/core/routes/index.route'));
 app.use('/users', require('./pages/users/routes/users.route'));
 app.use('/departments', require('./pages/departments/routes/departments.route'));
 app.use('/gpspoints', require('./pages/gpspoints/routes/gpspoints.route'));
 app.use('/treks', require('./pages/treks/routes/treks.route'));
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,7 +49,6 @@ app.use(function(req, res, next) {
     next()
 });
 
-
 // error handler
 app.use(function(err, req, res, next) {
     res.locals.cairn = err.cairn;
@@ -63,7 +56,4 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.redirect('/')
 });
-
-
-
 module.exports = app;

@@ -17,7 +17,6 @@ var $http = {
                 }
             }
         }
-
         xhr.send();
     },
 
@@ -34,7 +33,6 @@ var $http = {
         } else {
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         }
-
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (type == 'json') {
@@ -47,7 +45,7 @@ var $http = {
         }
         console.log(params);
         xhr.send(JSON.stringify(params));
-        // xhr.send(params);
+        /* xhr.send(params); */
     },
 
     //
@@ -72,7 +70,6 @@ var $http = {
                 }
             }
         }
-
         xhr.send(JSON.stringify(params));
     },
 
@@ -93,7 +90,6 @@ var $http = {
                 }
             }
         }
-
         xhr.send();
     }
 };
