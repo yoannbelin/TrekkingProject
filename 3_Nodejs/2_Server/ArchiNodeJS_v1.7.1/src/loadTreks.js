@@ -36,7 +36,7 @@ var LoadTreksManager = {
         document.getElementById('idTableau').innerHTML = html;
 
         var datas = JSON.parse(this._treks[i].pathway)
-        drawTrek(datas);
+        CartoManager.drawTrek(datas);
     },
 
     //
@@ -44,7 +44,7 @@ var LoadTreksManager = {
     //
     createNewTrek: function () {
 
-        addDrawTools();
+        CartoManager.addDrawTools();
 
         var html = "";
         html += "<tr>";
