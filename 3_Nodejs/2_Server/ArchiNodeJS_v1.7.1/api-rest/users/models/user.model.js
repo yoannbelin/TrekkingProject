@@ -61,6 +61,14 @@ class UserModel {
         this.row.created_at = val;
     }
 
+    get treks() {
+        return this.treks_;
+    }
+
+    set treks(val) {
+        this.treks_ = val;
+    }
+
     //== conversion "automatique" dans le controlleur, Cf. ##1
     toJSON() {
         return {

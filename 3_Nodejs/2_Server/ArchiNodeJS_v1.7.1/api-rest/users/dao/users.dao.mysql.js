@@ -7,6 +7,7 @@
 
 let db = require(__base + '/config/db')
 let UserModel = require('../models/user.model');
+let TrekModel = require('../../treks/models/trek.model');
 
 class UsersDAO {
     static create(user, cb) {
@@ -67,12 +68,29 @@ class UsersDAO {
         console.log(id);
 
         let script = 'SELECT * FROM user '
-        script += 'WHERE id_user = ?'
+        script += 'JOIN user_do_trek ON user.id_User = user_do_trek.id_User AND user.id_User = ? '
+        script += 'JOIN trek ON user_do_trek.id_Trek = trek.id_Trek '
+        script += 'ORDER BY user_do_trek.date_Trek '
 
         db.query(script, [id], (err, rows) => {
 
             if (rows && rows[0] !== undefined) {
+
+                var i = 0;
+                var treks = [];
+        
+                while (i < rows.length) {
+        
+                   var trek = new TrekModel(rows[i]);
+                   //}
+        
+                   treks.push(trek);
+                   i++;
+                 }
+
                 var currentUser = new UserModel(rows[0])
+
+                currentUser.treks = treks
 
                 cb(err, currentUser);
             } else {
