@@ -63,7 +63,7 @@ function selectUser(index) {
 // Load user list
 //
 function loadUsers() {
-    $http.get('/api-rest/users', function(res) {
+    $http.get('/api-rest/users', function (res) {
         _users = res;
         buildTable();
     }, 'json');
@@ -81,9 +81,14 @@ function addUser() {
         'password': document.getElementById('password').value
     };
 
-    $http.post('/api-rest/users', input, function(res) {
-        _users.push(res.user);
-        buildTable();
+    $http.post('/api-rest/users', input, function (res) {
+        if (res.user.id !== 0) {
+            _users.push(res.user);
+            buildTable();
+        }
+        else {
+            alert("impossible de créer un utilisateur ")
+        }
     }, 'json');
 }
 
@@ -91,7 +96,7 @@ function addUser() {
 // Delete selected user
 //
 function delUser() {
-    $http.delete('/api-rest/users/' + selectedUser.id, function() {
+    $http.delete('/api-rest/users/' + selectedUser.id, function () {
         _users.splice(_users.indexOf(selectedUser), 1);
         buildTable();
     });
@@ -110,9 +115,25 @@ function updateUser() {
         'password': document.getElementById('password').value
     };
 
-    $http.update('/api-rest/users/' + selectedUser.id, input, function(res) {
+    $http.update('/api-rest/users/' + selectedUser.id, input, function (res) {
         _users[_users.indexOf(selectedUser)] = res.user;
         buildTable();
     }, 'json');
 }
+
+// function buildListofTreck() {
+
+//     var html = ""
+//     html += "<li>"
+//     html += "<div class=\"thumbnail\">"
+//     html += "<div class=\"thumbnail-img\">"
+//     html += "<div class=\"thumbnail-hover\"></div><img src=\"../src/images/beach-2179624_1920.jpg\" alt=\"Project 01\"/>"
+//     html += "</div>"
+//     html += "<div class=\"thumbnail-caption\"><a href=\"Detail.html\" class=\"caption-link\">" + Nom du Trek + "</a></div>"
+//     html += "</div>"
+//     html += "</li>"
+
+// }
+
+
 window.onload = loadUsers()

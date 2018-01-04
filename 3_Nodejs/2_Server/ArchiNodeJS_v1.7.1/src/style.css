@@ -114,6 +114,10 @@ table {
     height: 100%;
 }
 
+.user {
+    width: 70%;
+}
+
 #chevron {
     width: 100px;
     height: 100px;
@@ -147,12 +151,15 @@ table {
 }
 
 .test:nth-child(1) {
-    flex: 2;
+    width: 20%;
+    border-color: black;
+    border-width: 1px;
+
 }
 
 #conteneur_profil {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 
