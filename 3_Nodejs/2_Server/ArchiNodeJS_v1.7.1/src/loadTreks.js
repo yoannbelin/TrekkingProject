@@ -5,10 +5,22 @@ var _treks = [];
 //
 function buildCombo() {
     var html = "";
-    html += "<option disabled selected>" + "Selectionner votre trek" + "</option>"
+    html += "<option disabled selected>" + "Selectionner votre trek" + "</option>";
+    html += "<optgroup label=\'Randonnées Officielles\'>"
     _treks.forEach((option) => {
-        html += "<option data-id= " + option.id + ">" + option.label + "</option>";
+        if (option.official === 1) {
+            html += "<option data-id= " + option.id + ">" + option.label + "</option>";
+        }
     })
+    html += "</optgroup>"
+    html += "<optgroup label=\'Randonnées Persos\'>"
+    _treks.forEach((option) => {
+        if (option.official === 0) {
+            html += "<option data-id= " + option.id + ">" + option.label + "</option>";
+        }
+    })
+    html += "</optgroup>"
+
     document.getElementById("idCombo").innerHTML = html;
 }
 
@@ -16,8 +28,9 @@ function buildCombo() {
 // Show trek's characteritics
 //
 function infoTrek(i) {
-    show_btn('.raz');
+    show_btn('.reset');
     show_btn('.detail');
+
     var html = "";
     html += "<tr>";
     html += "<td> Nom du trek </td>";
@@ -62,7 +75,7 @@ function createNewTrek() {
     document.getElementById('idTableau').innerHTML = html;
 
     show_btn('.save');
-    show_btn('.raz');
+    show_btn('.reset');
     hide_btn('.detail');
     hide_btn('.newtrek');
 }
