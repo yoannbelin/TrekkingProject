@@ -96,6 +96,34 @@ table {
     visibility: hidden;
 }
 
+.update {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.delete {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.saveupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.cancelupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
 .Bandeau {
     position: fixed;
 }
@@ -154,7 +182,6 @@ table {
     width: 20%;
     border-color: black;
     border-width: 1px;
-
 }
 
 #conteneur_profil {

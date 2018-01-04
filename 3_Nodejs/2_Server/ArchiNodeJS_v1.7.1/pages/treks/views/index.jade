@@ -27,23 +27,12 @@ block content
             #conteneur_carte
               .block1_infos
                 table#idTableau(style='width:100%')
-                  tr
-                    td Nom du trek
-                    td Distance du trek
-                    td Temps estimé
-                    td Difficulté    
-                  tr
-                    td#difficulte(name="difficulter")
-                    td#temps(name='temps')
-                    td#distance(name='distance')
-                    td#nom(name='nom')                  
-
-                a(href="")
                 #buttons
                   .newtrek  
                     button#newtrek(onclick='createNewTrek()') Créer nouveau trek
                   .detail
-                    button#detail(type="button") Détails trek                
+                    button#detail(type="button") 
+                      a(href="/showTreks") Détails trek               
                   .save
                     button#btnAdd(onclick='addTrek()') Sauvegarder
                 table#coordonnees(style='width:100%')

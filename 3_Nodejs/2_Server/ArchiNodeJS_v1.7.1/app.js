@@ -41,6 +41,7 @@ app.use('/users', require('./pages/users/routes/users.route'));
 app.use('/departments', require('./pages/departments/routes/departments.route'));
 app.use('/gpspoints', require('./pages/gpspoints/routes/gpspoints.route'));
 app.use('/treks', require('./pages/treks/routes/treks.route'));
+app.use('/showTreks', require('./pages/showTreks/routes/showTreks.route'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
