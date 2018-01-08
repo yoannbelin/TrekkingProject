@@ -46,7 +46,17 @@ class TreksDAO {
     }
 
     static list(cb) {
-        db.query('SELECT * FROM trek', (err, rows) => {
+
+        let script = '';
+        script += 'SELECT trek.id_trek, trek.label, trek.length, trek.time, trek.level, trek.pathway, trek.official FROM trek '
+        script += 'WHERE trek.official = 1 '
+        script += 'UNION '
+        script += 'SELECT trek.id_trek, trek.label, trek.length, trek.time, trek.level, trek.pathway, trek.official FROM trek '
+        script += 'JOIN user_do_trek ON trek.id_Trek = user_do_trek.id_Trek '
+        script += 'JOIN user ON user_do_trek.id_User = user.id_User '
+        script += 'WHERE user.id_User = 3 ' //a modifier en variable de session
+
+        db.query(script, (err, rows) => {
             rows = rows || [];
             cb(err, rows.map((row) => {
                 return new TrekModel(row)
@@ -55,7 +65,7 @@ class TreksDAO {
     }
 
     static find(id, cb) {
-        let script = 'SELECT *FROM trek'
+        let script = 'SELECT * FROM trek'
             // script += 'JOIN trek '
             // script += 'WHERE trek.id = ? AND trek.idauthor = trek.id LIMIT 1';
 

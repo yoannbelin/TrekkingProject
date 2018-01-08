@@ -61,6 +61,14 @@ class UserModel {
         this.row.created_at = val;
     }
 
+    get treks() {
+        return this.treks_;
+    }
+
+    set treks(val) {
+        this.treks_ = val;
+    }
+
     //== conversion "automatique" dans le controlleur, Cf. ##1
     toJSON() {
         return {
@@ -76,8 +84,16 @@ class UserModel {
     }
 
     isValid() {
-        return !(this.lastname === '' ||
-            this.lastname === undefined);
+        return !(this.firstname === '' ||
+            this.firstname === undefined ||
+            this.lastname === '' ||
+            this.lastname === undefined ||
+            this.username === '' ||
+            this.username === undefined ||
+            this.password === '' ||
+            this.password === undefined ||
+            this.mail === '' ||
+            this.mail === undefined);
     }
 }
 module.exports = UserModel
