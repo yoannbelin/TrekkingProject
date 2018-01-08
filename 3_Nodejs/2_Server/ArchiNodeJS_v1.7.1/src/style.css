@@ -89,7 +89,7 @@ table {
     visibility: hidden;
 }
 
-.raz {
+.reset {
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -154,7 +154,6 @@ table {
     width: 20%;
     border-color: black;
     border-width: 1px;
-
 }
 
 #conteneur_profil {

@@ -5,19 +5,37 @@ var LoadTreksManager = {
     //
     // Build combobox
     //
-    buildCombo: function () {
+    buildCombo: function() {
+        // var html = "";
+        // html += "<option disabled selected>" + "Selectionner votre trek" + "</option>"
+        // this._treks.forEach((option) => {
+        //     html += "<option data-id= " + option.id + ">" + option.label + "</option>";
+        // })
+        // document.getElementById("idCombo").innerHTML = html;
         var html = "";
-        html += "<option disabled selected>" + "Selectionner votre trek" + "</option>"
+        html += "<option disabled selected>" + "Selectionner votre trek" + "</option>";
+        html += "<optgroup label=\'Randonnées Officielles\'>"
         this._treks.forEach((option) => {
-            html += "<option data-id= " + option.id + ">" + option.label + "</option>";
+            if (option.official === 1) {
+                html += "<option data-id= " + option.id + ">" + option.label + "</option>";
+            }
         })
+        html += "</optgroup>"
+        html += "<optgroup label=\'Randonnées Persos\'>"
+        this._treks.forEach((option) => {
+            if (option.official === 0) {
+                html += "<option data-id= " + option.id + ">" + option.label + "</option>";
+            }
+        })
+        html += "</optgroup>"
+
         document.getElementById("idCombo").innerHTML = html;
     },
 
     //
     //Show trek's characteritics
     //
-    infoTrek: function (i) {
+    infoTrek: function(i) {
         this.show_btn('.raz');
         this.show_btn('.detail');
         var html = "";
@@ -42,7 +60,7 @@ var LoadTreksManager = {
     //
     // Add trek by drawing with Leaflet and input html
     //
-    createNewTrek: function () {
+    createNewTrek: function() {
 
         CartoManager.addDrawTools();
 
@@ -72,8 +90,8 @@ var LoadTreksManager = {
     //
     // Load trek list in combobox
     //
-    loadTreks: function () {
-        $http.get('/api-rest/treks', function (res) {
+    loadTreks: function() {
+        $http.get('/api-rest/treks', function(res) {
             LoadTreksManager._treks = res;
             LoadTreksManager.buildCombo();
         }, 'json');
@@ -83,7 +101,7 @@ var LoadTreksManager = {
     //
     // Add trek
     //
-    addTrek: function () {
+    addTrek: function() {
         this.hide_btn('.save');
         this.show_btn('.newtrek');
 
@@ -97,7 +115,7 @@ var LoadTreksManager = {
             'pathway': { 'chemin': trek_path }
         };
 
-        $http.post('/api-rest/treks', input, function (res) {
+        $http.post('/api-rest/treks', input, function(res) {
             if (res.trek.id !== 0) {
                 this._treks.push(res.trek);
             }
@@ -110,13 +128,13 @@ var LoadTreksManager = {
     //
     // Hide / Show drawing buttons
     //
-    hide_btn: function (id) {
+    hide_btn: function(id) {
         if (document.querySelector(id).style.visibility === "visible") {
             document.querySelector(id).style.visibility = "";
         }
     },
 
-    show_btn: function (id) {
+    show_btn: function(id) {
         if (document.querySelector(id).style.visibility === "") {
             document.querySelector(id).style.visibility = "visible";
         }
@@ -125,10 +143,9 @@ var LoadTreksManager = {
     //
     // Reset Page
     //
-    resetPage: function () {
+    resetPage: function() {
         window.location.reload();
     }
 };
 
 window.onload = LoadTreksManager.loadTreks();
-

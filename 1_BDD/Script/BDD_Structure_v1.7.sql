@@ -155,6 +155,8 @@ CREATE TABLE `trek` (
   `level` int(11) DEFAULT NULL,
   `done` tinyint(1) DEFAULT NULL,
   `pathway` text DEFAULT NULL,
+  `bounding_box` text DEFAULT NULL,
+  `official` tinyint(4) NOT NULL DEFAULT 0,
   `id_trek_1` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_trek`),
   KEY `FK_Trek_id_trek_1` (`id_trek_1`),
@@ -362,4 +364,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-03 11:00:47
+-- Dump completed on 2018-01-04 15:46:35
