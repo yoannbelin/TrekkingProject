@@ -1,34 +1,36 @@
-var map = new L.map('map');
-var _polyline;
-var drawnItems;
+var CartoManager = {
+
+map : new L.map('map'),
+_polyline: "",
+drawnItems: "",
 
 //Get GPS points (json object of Leaflet) of a drawn trail 
-var outputPoints = function (datas) {
+outputPoints: function (datas) {
     var points = datas;
     return datas;
-};
+},
 
 //Get length of a drawn trail
-var outputLength = function (data) {
+outputLength: function (data) {
     var length_in_km = data / 1000;
-    document.getElementById('distance').innerHTML = _round(length_in_km, 2);
-};
+    document.getElementById('distance').innerHTML = CartoManager._round(length_in_km, 2);
+},
 
 // Rounded
-var _round = function (num, len) {
+_round: function (num, len) {
     return Math.round(num * (Math.pow(10, len))) / (Math.pow(10, len));
-};
+},
 
 // Truncation of GPS point
-var strLatLng = function (latlng) {
-    return "(" + _round(latlng.lat, 6) + ", " + _round(latlng.lng, 6) + ")";
-};
+strLatLng: function (latlng) {
+    return "(" + this._round(latlng.lat, 6) + ", " + this._round(latlng.lng, 6) + ")";
+},
 
 
 // Initialization map
-var init = function () {
+init: function () {
 
-    map.setView([43.58506, 3.86021], 10);
+    this.map.setView([43.58506, 3.86021], 10);
 
     // Load Tiles of map
     var tuile = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
@@ -38,35 +40,35 @@ var init = function () {
         attribution: attrib,
         maxZoom: 18,
         minZoom: 5
-    }).addTo(map);
+    }).addTo(this.map);
 
     // Add tile's selector
-    drawnItems = L.featureGroup().addTo(map);
+    this.drawnItems = L.featureGroup().addTo(this.map);
 
     L.control.layers({
-        'osm': _osm.addTo(map),
+        'osm': _osm.addTo(this.map),
         'google': L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
             attribution: 'google',
             maxZoom: 18,
             minZoom: 5
         })
     }, {
-            'drawlayer': drawnItems
+            'drawlayer': this.drawnItems
         }, {
             position: 'topleft',
             collapsed: false
-        }).addTo(map);
+        }).addTo(this.map);
 
-    addKmlLayers();
-};
+    this.addKmlLayers();
+},
 
 // Add drawing Tools
-var addDrawTools = function () {
+addDrawTools: function () {
 
     // Add control buttons
-    map.addControl(new L.Control.Draw({
+    this.map.addControl(new L.Control.Draw({
         edit: {
-            featureGroup: drawnItems,
+            featureGroup: this.drawnItems,
             poly: {
                 allowIntersection: false
             }
@@ -79,10 +81,10 @@ var addDrawTools = function () {
         }
     }));
 
-    map.on(L.Draw.Event.CREATED, function (event) {
+    this.map.on(L.Draw.Event.CREATED, function (event) {
         var layer = event.layer;
 
-        drawnItems.addLayer(layer);
+        CartoManager.drawnItems.addLayer(layer);
     });
 
 
@@ -93,14 +95,14 @@ var addDrawTools = function () {
 
         // Marker - add lat/long
         if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
-            return strLatLng(layer.getLatLng());
+            return CartoManager.strLatLng(layer.getLatLng());
 
             // Circle - lat/long, radius
         } else if (layer instanceof L.Circle) {
             var center = layer.getLatLng(),
                 radius = layer.getRadius();
-            return "Center: " + strLatLng(center) + "<br />" +
-                "Radius: " + _round(radius, 2) + " m";
+            return "Center: " + this.strLatLng(center) + "<br />" +
+                "Radius: " + CartoManager._round(radius, 2) + " m";
 
             // Rectangle/Polygon - area
         } else if (layer instanceof L.Polygon) {
@@ -124,11 +126,11 @@ var addDrawTools = function () {
                     distance += latlngs[i].distanceTo(latlngs[i + 1]);
                     /* var datas = latlngs; */
                 }
-                outputPoints(latlngs);
-                outputLength(distance);
+                CartoManager.outputPoints(latlngs);
+                CartoManager.outputLength(distance);
                 document.chemin_trek = latlngs;
 
-                return "Distance: " + _round(distance, 2) + " m";
+                return "Distance: " + CartoManager._round(distance, 2) + " m";
             }
 
         }
@@ -136,17 +138,17 @@ var addDrawTools = function () {
     };
 
     /* Object created - bind popup to layer, add to feature group */
-    map.on(L.Draw.Event.CREATED, function (event) {
+    this.map.on(L.Draw.Event.CREATED, function (event) {
         var layer = event.layer;
         var content = getPopupContent(layer);
         if (content !== null) {
             layer.bindPopup(content);
         }
-        drawnItems.addLayer(layer);
+        CartoManager.drawnItems.addLayer(layer);
     });
 
     // Object(s) edited - update popups
-    map.on(L.Draw.Event.EDITED, function (event) {
+    this.map.on(L.Draw.Event.EDITED, function (event) {
         var layers = event.layers,
             content = null;
         layers.eachLayer(function (layer) {
@@ -156,10 +158,10 @@ var addDrawTools = function () {
             }
         });
     });
-};
+},
 
 // Add KML files
-var addKmlLayers = function () {
+addKmlLayers: function () {
 
     // KML without popups
     /* omnivore.kml('gr-kml/gr60b.kml').addTo(map); */
@@ -201,13 +203,13 @@ var addKmlLayers = function () {
                 runLayer.eachLayer(function (layer) {
                     layer.bindPopup(layer.feature.properties.name);
                 })
-            }).addTo(map);
+            }).addTo(this.map);
         i++
     }
-}
+},
 
 // Draw trail from Database
-function drawTrek(datas) {
+drawTrek: function(datas) {
 
     var points = datas.chemin;
     var polylinePoints = [];
@@ -223,14 +225,16 @@ function drawTrek(datas) {
         opacity: 0.9
     };
 
-    if (_polyline == undefined) {
-        _polyline = new L.Polyline(polylinePoints, polylineOptions);
+    if (this._polyline == "") {
+        this._polyline = new L.Polyline(polylinePoints, polylineOptions);
     }
     else {
-        _polyline.setLatLngs(polylinePoints);
+        console.log(this._polyline);
+        this._polyline.setLatLngs(polylinePoints);
     }
 
-    map.addLayer(_polyline);
-    map.fitBounds(_polyline.getBounds());
+    this.map.addLayer(this._polyline);
+    this.map.fitBounds(this._polyline.getBounds());
+}
 };
-window.onload = init()
+window.onload = CartoManager.init();

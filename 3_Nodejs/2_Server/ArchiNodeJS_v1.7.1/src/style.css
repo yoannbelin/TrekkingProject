@@ -89,7 +89,7 @@ table {
     visibility: hidden;
 }
 
-.raz {
+.reset {
     margin: auto;
     display: flex;
     flex-direction: row;

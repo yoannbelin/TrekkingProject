@@ -29,24 +29,24 @@ block content
                 table#idTableau(style='width:100%')
                 #buttons
                   .newtrek  
-                    button#newtrek(onclick='createNewTrek()') Créer nouveau trek
+                    button#newtrek(onclick='LoadTreksManager.createNewTrek()') Créer nouveau trek
                   .detail
                     button#detail(type="button") 
                       a(href="/showTreks") Détails trek               
                   .save
-                    button#btnAdd(onclick='addTrek()') Sauvegarder
+                    button#btnAdd(onclick='LoadTreksManager.addTrek()') Sauvegarder
                 table#coordonnees(style='width:100%')
                 table#length(style='width:100%')
                   
               .block2_maps
-                div.map(onload="init()")
+                div.map(onload="CartoManager.init()")
                    #map(style='height : 600px' )
                    
               .block3_buttons
-                select#idCombo(onchange="infoTrek(idCombo.selectedIndex - 1)")
+                select#idCombo(onchange="LoadTreksManager.infoTrek(idCombo.selectedIndex - 1)")
                 #buttons
                   .raz
-                      button#raz(onclick="resetPage()") Reset
+                      button#raz(onclick="LoadTreksManager.resetPage()") Reset
           .row
             .small-12.medium-12.large-12.columns
               p.back-to-top-holder

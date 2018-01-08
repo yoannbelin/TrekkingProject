@@ -57,8 +57,15 @@ class TrekModel {
     get pathway() {
         return this.row.pathway;
     }
-    set done(val) {
+    set pathway(val) {
         this.row.pathway = val;
+    }
+
+    get official() {
+        return this.row.official;
+    }
+    set official(val) {
+        this.row.official = val;
     }
 
     toJSON() {
@@ -70,13 +77,19 @@ class TrekModel {
             time: this.time,
             level: this.level,
             done: this.done,
-            pathway: this.pathway
+            pathway: this.pathway,
+            official: this.official
         };
     }
 
     isValid() {
         return !(this.label === '' ||
-            this.label === undefined);
+            this.label === undefined ||
+            this.length === '' ||
+            this.length === undefined
+            /*||
+                          this.length === isNaN */
+        );
     }
 }
 module.exports = TrekModel
