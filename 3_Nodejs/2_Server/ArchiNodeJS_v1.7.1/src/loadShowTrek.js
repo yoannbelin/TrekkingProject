@@ -19,52 +19,52 @@ function infoTrek(i) {
  * Mise à jour du Trek
  */
 function updateTrek() {
-    afficher_btn('.saveupdate');
-    afficher_btn('.delete');
-    afficher_btn('.cancelupdate');
-    cacher_btn('.update');
+    show_btn('.saveupdate');
+    show_btn('.delete');
+    show_btn('.cancelupdate');
+    hide_btn('.update');
 }
 
 /**
  * Suppression du Trek
  */
 function deleteTrek() {
-    cacher_btn('.saveupdate');
-    cacher_btn('.cancelupdate');
-    cacher_btn('.delete');
-    afficher_btn('.update');
+    hide_btn('.saveupdate');
+    hide_btn('.cancelupdate');
+    hide_btn('.delete');
+    show_btn('.update');
 }
 
 /**
  * Sauvegarder les modification du Trek
  */
 function saveupdate() {
-    cacher_btn('.saveupdate');
-    cacher_btn('.cancelupdate');
-    cacher_btn('.delete');
-    afficher_btn('.update');
+    hide_btn('.saveupdate');
+    hide_btn('.cancelupdate');
+    hide_btn('.delete');
+    show_btn('.update');
 }
 
 /**
  * Annuler les modification du Trek
  */
 function cancelupdate() {
-    cacher_btn('.saveupdate');
-    cacher_btn('.cancelupdate');
-    cacher_btn('.delete');
-    afficher_btn('.update');
+    hide_btn('.saveupdate');
+    hide_btn('.cancelupdate');
+    hide_btn('.delete');
+    show_btn('.update');
 }
 
 /**
  * Afficher / Cacher les buttons
  */
-function cacher_btn(id) {
+function hide_btn(id) {
     if (document.querySelector(id).style.visibility === "visible") {
         document.querySelector(id).style.visibility = "";
     }
 }
 
-function afficher_btn(id) {
+function show_btn(id) {
     if (document.querySelector(id).style.visibility === "") {
         document.querySelector(id).style.visibility = "visible";
     }
@@ -80,7 +80,7 @@ function loadTreks() {
     $http.get('/api-rest/treks', function(res) {
         _treks = res;
     }, 'json');
-    afficher_btn('.update');
+    show_btn('.update');
 }
 
 /**

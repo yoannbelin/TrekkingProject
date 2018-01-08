@@ -75,6 +75,10 @@ table {
     visibility: hidden;
 }
 
+.detail a {
+    color: white;
+}
+
 .newtrek {
     margin: auto;
     display: flex;

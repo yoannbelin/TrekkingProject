@@ -36,8 +36,10 @@ var LoadTreksManager = {
     //Show trek's characteritics
     //
     infoTrek: function(i) {
+        this.show_btn('.newtrek');
         this.show_btn('.raz');
         this.show_btn('.detail');
+        this.hide_btn('.save');
         var html = "";
         html += "<tr>";
         html += "<td> Nom du trek </td>";

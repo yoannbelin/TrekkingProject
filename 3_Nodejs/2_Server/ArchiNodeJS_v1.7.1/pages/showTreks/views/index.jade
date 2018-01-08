@@ -2,6 +2,27 @@ extends layout
 
 
 block content
+  h1#trek Detail Trek    
+  head
+      title 
+      .Bandeau
+      section.small-12.medium-12.large-12.columns
+          img(src='src/images/Bandeau.png', style='margin-bottom: 5px')
+          section.section
+            .top-border
+            .row
+                .small-12.medium-12.large-12.small-centered.columns
+                nav#nav
+                  div
+                    ul.inline-list-custom
+                      li
+                        a(href='/profil') Profil
+                      li
+                        a(href='/galerie') Galerie Photos
+                      li
+                        a(href='/PoI') Galerie Points d'intêret
+            div#containerMessageToUser
+              p#messageToUser
   body
     .top-border
     .row
@@ -10,14 +31,6 @@ block content
           h1 Infos Trek
           h2 "nom du trek"
       .small-12.medium-12.large-12.small-centered.columns
-        nav
-          ul.inline-list-custom
-            li
-              a(href='/Profil') Profil
-            li
-              a(href='/Galerie') Galerie Photos
-            li
-              a(href='/PoI') Galerie Points d'intêret
     .row
       .small-12.medium-7.large-7.columns
         h2 Titre

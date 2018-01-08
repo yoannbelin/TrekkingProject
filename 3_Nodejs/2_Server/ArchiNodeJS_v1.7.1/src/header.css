@@ -10,7 +10,8 @@
 .element1,
 .element2,
 .element3,
-.element4 {
+.element4,
+.element5 {
     z-index: 2;
     background-color: #333d41;
     text-align: center;
@@ -21,6 +22,10 @@
 }
 
 .element1 a {
+    color: white;
+}
+
+.element5 a {
     color: white;
 }
 
@@ -35,4 +40,8 @@
 .element3:hover,
 .element4:hover {
     background-color: rgb(163, 213, 228);
+}
+
+.element5:hover {
+    background-color: rgb(250, 3, 3);
 }
