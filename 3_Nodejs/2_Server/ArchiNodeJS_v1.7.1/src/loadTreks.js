@@ -1,6 +1,13 @@
 var LoadTreksManager = {
 
+    selfTreks: undefined,
+
     _treks: [],
+
+    init: function() {
+        selfTreks = this; // pour permettre d'accéder au "this" dans toutes les fonctions (les callBacks par exemple)
+        selfTreks.loadTreks();
+    },
 
     //
     // Build combobox
@@ -15,14 +22,14 @@ var LoadTreksManager = {
         var html = "";
         html += "<option disabled selected>" + "Selectionner votre trek" + "</option>";
         html += "<optgroup label=\'Randonnées Officielles\'>"
-        this._treks.forEach((option) => {
+        selfTreks._treks.forEach((option) => {
             if (option.official === 1) {
                 html += "<option data-id= " + option.id + ">" + option.label + "</option>";
             }
         })
         html += "</optgroup>"
         html += "<optgroup label=\'Randonnées Persos\'>"
-        this._treks.forEach((option) => {
+        selfTreks._treks.forEach((option) => {
             if (option.official === 0) {
                 html += "<option data-id= " + option.id + ">" + option.label + "</option>";
             }
@@ -48,14 +55,14 @@ var LoadTreksManager = {
         html += "<td> Niveau de difficulté </td>";
         html += "</tr>";
         html += "<tr>";
-        html += "<td>" + this._treks[i].label + "</td>";
-        html += "<td>" + this._treks[i].length + "</td>";
-        html += "<td>" + this._treks[i].time + "</td>";
-        html += "<td>" + this._treks[i].level + "</td>";
+        html += "<td>" + selfTreks._treks[i].label + "</td>";
+        html += "<td>" + selfTreks._treks[i].length + "</td>";
+        html += "<td>" + selfTreks._treks[i].time + "</td>";
+        html += "<td>" + selfTreks._treks[i].level + "</td>";
         html += "</tr>";
         document.getElementById('idTableau').innerHTML = html;
 
-        var datas = JSON.parse(this._treks[i].pathway)
+        var datas = JSON.parse(selfTreks._treks[i].pathway)
         CartoManager.drawTrek(datas);
     },
 
@@ -83,29 +90,30 @@ var LoadTreksManager = {
 
         document.getElementById('idTableau').innerHTML = html;
 
-        this.show_btn('.save');
-        this.show_btn('.raz');
-        this.hide_btn('.detail');
-        this.hide_btn('.newtrek');
+        selfTreks.show_btn('.save');
+        selfTreks.show_btn('.raz');
+        selfTreks.hide_btn('.detail');
+        selfTreks.hide_btn('.newtrek');
     },
 
     //
     // Load trek list in combobox
     //
     loadTreks: function() {
+
         $http.get('/api-rest/treks', function(res) {
-            LoadTreksManager._treks = res;
-            LoadTreksManager.buildCombo();
+            selfTreks._treks = res;
+            selfTreks.buildCombo();
         }, 'json');
-        this.show_btn('.newtrek');
+        selfTreks.show_btn('.newtrek');
     },
 
     //
     // Add trek
     //
     addTrek: function() {
-        this.hide_btn('.save');
-        this.show_btn('.newtrek');
+        selfTreks.hide_btn('.save');
+        selfTreks.show_btn('.newtrek');
 
         let trek_path = document.chemin_trek;
 
@@ -119,12 +127,12 @@ var LoadTreksManager = {
 
         $http.post('/api-rest/treks', input, function(res) {
             if (res.trek.id !== 0) {
-                this._treks.push(res.trek);
+                selfTreks.push(res.trek);
             }
-            this.infoTrek(this._treks.length - 1);
+            selfTreks.infoTrek(selfTreks._treks.length - 1);
         }, 'json');
         document.getElementById('messageToUser').innerHTML = 'success!';
-        this.loadTreks();
+        selfTreks.loadTreks();
     },
 
     //
@@ -150,4 +158,4 @@ var LoadTreksManager = {
     }
 };
 
-window.onload = LoadTreksManager.loadTreks();
+window.onload = LoadTreksManager.init();

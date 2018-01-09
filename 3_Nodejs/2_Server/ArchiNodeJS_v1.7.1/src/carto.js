@@ -1,8 +1,12 @@
 var CartoManager = {
 
-    map: new L.map('map'),
+    map: new L.map('map', {
+        zoominfoControl: true,
+        zoomControl: false
+    }),
     _polyline: "",
     drawnItems: "",
+
 
     //Get GPS points (json object of Leaflet) of a drawn trail 
     outputPoints: function(datas) {
@@ -13,7 +17,7 @@ var CartoManager = {
     //Get length of a drawn trail
     outputLength: function(data) {
         var length_in_km = data / 1000;
-        document.getElementById('distance').innerHTML = CartoManager._round(length_in_km, 2);
+        document.getElementById('distance').innerHTML = selfCarto._round(length_in_km, 2);
     },
 
     // Rounded
@@ -23,15 +27,14 @@ var CartoManager = {
 
     // Truncation of GPS point
     strLatLng: function(latlng) {
-        return "(" + this._round(latlng.lat, 6) + ", " + this._round(latlng.lng, 6) + ")";
+        return "(" + selfCarto._round(latlng.lat, 6) + ", " + selfCarto._round(latlng.lng, 6) + ")";
     },
 
 
     // Initialization map
     init: function() {
-
-        this.map.setView([43.58506, 3.86021], 10);
-
+        selfCarto = this; //Permet d'accéder à "this" dans toutes les fonction, même CallBacks.
+        selfCarto.map.setView([43.58506, 3.86021], 10);
         // Load Tiles of map
         var tuile = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
         var attrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -40,35 +43,159 @@ var CartoManager = {
             attribution: attrib,
             maxZoom: 18,
             minZoom: 5
-        }).addTo(this.map);
+        }).addTo(selfCarto.map);
 
         // Add tile's selector
-        this.drawnItems = L.featureGroup().addTo(this.map);
+        selfCarto.drawnItems = L.featureGroup().addTo(selfCarto.map);
 
         L.control.layers({
-            'osm': _osm.addTo(this.map),
+            'osm': _osm.addTo(selfCarto.map),
             'google': L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
                 attribution: 'google',
                 maxZoom: 18,
                 minZoom: 5
             })
         }, {
-            'drawlayer': this.drawnItems
+            'drawlayer': selfCarto.drawnItems
         }, {
             position: 'topleft',
             collapsed: false
-        }).addTo(this.map);
+        }).addTo(selfCarto.map);
 
-        this.addKmlLayers();
+        selfCarto.addKmlLayers();
+        selfCarto.activeOfflineMode();
+
+
+    },
+
+    //Offline mode
+    activeOfflineMode: function() {
+        var progress = 0;
+
+        var tilesDb = {
+            getItem: function(key) {
+                return localforage.getItem(key);
+            },
+
+            saveTiles: function(tileUrls) {
+                var self = this;
+                progress = 1;
+
+                var promises = [];
+
+                for (var i = 0; i < tileUrls.length; i++) {
+                    var tileUrl = tileUrls[i];
+
+                    (function(i, tileUrl) {
+                        promises[i] = new Promise(function(resolve, reject) {
+                            var request = new XMLHttpRequest();
+                            request.open('GET', tileUrl.url, true);
+                            request.responseType = 'blob';
+                            request.onreadystatechange = function() {
+                                if (request.readyState === XMLHttpRequest.DONE) {
+
+                                    if (request.status === 200) {
+                                        resolve(self._saveTile(tileUrl.key, request.response));
+                                        document.getElementById('progress').innerHTML = progress++
+
+                                    } else {
+                                        reject({
+                                            status: request.status,
+                                            statusText: request.statusText
+                                        });
+                                    }
+                                }
+                            };
+                            request.send();
+
+                        });
+                    })(i, tileUrl);
+
+                }
+                return Promise.all(promises);
+            },
+
+            clear: function() {
+                return localforage.clear();
+            },
+
+            _saveTile: function(key, value) {
+                return this._removeItem(key).then(function() {
+                    return localforage.setItem(key, value);
+                });
+            },
+
+            _removeItem: function(key) {
+                return localforage.removeItem(key);
+            }
+        };
+
+        var offlineLayer = L.tileLayer.offline('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', tilesDb, {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: 'abc',
+            minZoom: 13,
+            maxZoom: 19,
+            crossOrigin: true
+        });
+
+        var offlineControl = L.control.offline(offlineLayer, tilesDb, {
+            saveButtonHtml: '<i class="fa fa-download" aria-hidden="true"></i>',
+            removeButtonHtml: '<i class="fa fa-trash" aria-hidden="true"></i>',
+            confirmSavingCallback: function(nTilesToSave, continueSaveTiles) {
+                if (window.confirm('Save ' + nTilesToSave + '?')) {
+                    continueSaveTiles();
+                }
+            },
+            confirmRemovalCallback: function(continueRemoveTiles) {
+                if (window.confirm('Remove all the tiles?')) {
+                    continueRemoveTiles();
+                }
+            },
+            minZoom: 13,
+            maxZoom: 19
+        });
+
+        offlineLayer.addTo(this.map);
+        offlineControl.addTo(this.map);
+
+        offlineLayer.on('offline:below-min-zoom-error', function() {
+            alert('Can not save tiles below minimum zoom level.');
+        });
+
+        offlineLayer.on('offline:save-start', function(data) {
+            var total = data.nTilesToSave
+            console.log('Saving ' + data.nTilesToSave + ' tiles.');
+            document.getElementById('progress').innerHTML = total;
+        });
+
+        offlineLayer.on('offline:save-end', function() {
+            alert('All the tiles were saved.');
+        });
+
+        offlineLayer.on('offline:save-error', function(err) {
+            console.error('Error when saving tiles: ' + err);
+        });
+
+        offlineLayer.on('offline:remove-start', function() {
+            console.log('Removing tiles.');
+        });
+
+        offlineLayer.on('offline:remove-end', function() {
+            alert('All the tiles were removed.');
+        });
+
+        offlineLayer.on('offline:remove-error', function(err) {
+            console.error('Error when removing tiles: ' + err);
+        });
     },
 
     // Add drawing Tools
     addDrawTools: function() {
 
         // Add control buttons
-        this.map.addControl(new L.Control.Draw({
+        selfCarto.map.addControl(new L.Control.Draw({
             edit: {
-                featureGroup: this.drawnItems,
+                featureGroup: selfCarto.drawnItems,
                 poly: {
                     allowIntersection: false
                 }
@@ -81,12 +208,11 @@ var CartoManager = {
             }
         }));
 
-        this.map.on(L.Draw.Event.CREATED, function(event) {
+        selfCarto.map.on(L.Draw.Event.CREATED, function(event) {
             var layer = event.layer;
 
-            CartoManager.drawnItems.addLayer(layer);
+            selfCarto.drawnItems.addLayer(layer);
         });
-
 
         // Bind trail and information GPS _ Generate a popup content based on layer type
         // - Returns HTML string, or null if unknown object
@@ -95,14 +221,14 @@ var CartoManager = {
 
             // Marker - add lat/long
             if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
-                return CartoManager.strLatLng(layer.getLatLng());
+                return selfCarto.strLatLng(layer.getLatLng());
 
                 // Circle - lat/long, radius
             } else if (layer instanceof L.Circle) {
                 var center = layer.getLatLng(),
                     radius = layer.getRadius();
-                return "Center: " + this.strLatLng(center) + "<br />" +
-                    "Radius: " + CartoManager._round(radius, 2) + " m";
+                return "Center: " + selfCarto.strLatLng(center) + "<br />" +
+                    "Radius: " + selfCarto._round(radius, 2) + " m";
 
                 // Rectangle/Polygon - area
             } else if (layer instanceof L.Polygon) {
@@ -132,23 +258,28 @@ var CartoManager = {
 
                     return "Distance: " + CartoManager._round(distance, 2) + " m";
                 }
+                selfCarto.outputPoints(latlngs);
+                selfCarto.outputLength(distance);
+                document.chemin_trek = latlngs;
 
+                return "Distance: " + selfCarto._round(distance, 2) + " m";
             }
             return null;
         };
 
+
         /* Object created - bind popup to layer, add to feature group */
-        this.map.on(L.Draw.Event.CREATED, function(event) {
+        selfCarto.map.on(L.Draw.Event.CREATED, function(event) {
             var layer = event.layer;
             var content = getPopupContent(layer);
             if (content !== null) {
                 layer.bindPopup(content);
             }
-            CartoManager.drawnItems.addLayer(layer);
+            selfCarto.drawnItems.addLayer(layer);
         });
 
         // Object(s) edited - update popups
-        this.map.on(L.Draw.Event.EDITED, function(event) {
+        selfCarto.map.on(L.Draw.Event.EDITED, function(event) {
             var layers = event.layers,
                 content = null;
             layers.eachLayer(function(layer) {
@@ -203,7 +334,7 @@ var CartoManager = {
                     runLayer.eachLayer(function(layer) {
                         layer.bindPopup(layer.feature.properties.name);
                     })
-                }).addTo(this.map);
+                }).addTo(selfCarto.map);
             i++
         }
     },
@@ -225,15 +356,16 @@ var CartoManager = {
             opacity: 0.9
         };
 
-        if (this._polyline == "") {
-            this._polyline = new L.Polyline(polylinePoints, polylineOptions);
+        if (selfCarto._polyline == "") {
+            selfCarto._polyline = new L.Polyline(polylinePoints, polylineOptions);
         } else {
-            console.log(this._polyline);
-            this._polyline.setLatLngs(polylinePoints);
+            console.log(selfCarto._polyline);
+            selfCarto._polyline.setLatLngs(polylinePoints);
         }
 
-        this.map.addLayer(this._polyline);
-        this.map.fitBounds(this._polyline.getBounds());
+        selfCarto.map.addLayer(selfCarto._polyline);
+        selfCarto.map.fitBounds(selfCarto._polyline.getBounds());
     }
 };
+
 window.onload = CartoManager.init();
