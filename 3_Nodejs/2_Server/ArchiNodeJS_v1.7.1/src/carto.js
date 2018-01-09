@@ -1,8 +1,12 @@
 var CartoManager = {
 
-    map: new L.map('map'),
+    map: new L.map('map', {
+        zoominfoControl: true,
+        zoomControl: false
+    }),
     _polyline: "",
     drawnItems: "",
+    
 
     //Get GPS points (json object of Leaflet) of a drawn trail 
     outputPoints: function (datas) {
@@ -31,8 +35,6 @@ var CartoManager = {
     init: function () {
 
         this.map.setView([43.58506, 3.86021], 10);
-
-        //map.MaxDayInCache = 7;
 
         // Load Tiles of map
         var tuile = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
@@ -64,11 +66,12 @@ var CartoManager = {
             }).addTo(this.map);
 
         this.addKmlLayers();
+        this.activeOfflineMode();
+    },
 
-
-        //test offline
+    //Offline mode
+    activeOfflineMode: function () {
         var progress = 0;
-
 
         var tilesDb = {
             getItem: function (key) {
