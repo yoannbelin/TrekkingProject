@@ -1,0 +1,22 @@
+extends /core/views/layout
+
+block content
+  h1 Departments
+
+  .field
+    label Nom Departement :
+    textarea#name(name='department')
+
+  .field
+    label Numero Departement :
+    textarea#num(num='numero')
+
+
+  button#btnAdd(onclick='addDepartment()') SUBMIT
+
+  h3 Commentaires
+
+  table#idTableau(style='width:100%')
+
+  script(src="/src/ajax.js")
+  script(src="/src/loadDepartments.js")

@@ -1,0 +1,34 @@
+extends /core/views/layout
+
+block content
+  h1 Users
+
+  .field
+    label Nom :
+    input#nom(type='text', name='nom')
+
+  .field
+    label Prénom :
+    input#prenom(type='text', name='prenom')
+
+  .field
+    label Pseudo :
+    input#pseudo(type='text', name='pseudo')
+
+  .field
+    label Mail :
+    input#mail(type='text', name='mail')
+
+  .field
+    label Password :
+    input#password(type='text', name='password')
+
+  button#btnAdd(onclick='addUser()') AJOUTER
+  button#btnEdit(onclick='updateUser()') MODIFIER
+  button#btnDelete(onclick='delUser()') SUPPRIMER
+  button#btnClear VIDER TABLEAU
+
+  table#idTableau(style='width:100%')
+
+  script(src="/src/ajax.js")
+  script(src="/src/loadUsers.js")
