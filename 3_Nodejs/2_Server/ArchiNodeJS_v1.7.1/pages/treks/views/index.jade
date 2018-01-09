@@ -26,6 +26,7 @@ block content
           body
             #conteneur_carte
               .block1_infos
+
                 table#idTableau(style='width:100%')
                   tr
                     td Nom du trek
@@ -41,23 +42,24 @@ block content
                 a(href="")
                 #buttons
                   .newtrek  
-                    button#newtrek(onclick='createNewTrek()') Créer nouveau trek
+                    button#newtrek(onclick='LoadTreksManager.createNewTrek()') Créer nouveau trek
                   .detail
                     button#detail(type="button") Détails trek                
                   .save
-                    button#btnAdd(onclick='addTrek()') Sauvegarder
+                    button#btnAdd(onclick='LoadTreksManager.addTrek()') Sauvegarder
                 table#coordonnees(style='width:100%')
                 table#length(style='width:100%')
                   
               .block2_maps
-                div.map(onload="init()")
+                div.map(onload="CartoManager.init()")
                    #map(style='height : 600px' )
+                   #progress + ' / ' + #total
                    
               .block3_buttons
-                select#idCombo(onchange="infoTrek(idCombo.selectedIndex - 1)")
+                select#idCombo(onchange="LoadTreksManager.infoTrek(idCombo.selectedIndex - 1)")
                 #buttons
                   .raz
-                      button#raz(onclick="resetPage()") Reset
+                      button#raz(onclick="LoadTreksManager.resetPage()") Reset
           .row
             .small-12.medium-12.large-12.columns
               p.back-to-top-holder
@@ -72,4 +74,7 @@ block content
   script(src='/src/leaflet/leaflet.draw.js')
   script(src='/src/leaflet/leaflet-plugins-master/layer/vector/KML.js')
   script(src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js')
+  script(src='/src/leaflet/leaflet-offline.js')
+  script(src='/src/leaflet/L.Control.Zoominfo.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.js')
   script(src='/src/carto.js')
