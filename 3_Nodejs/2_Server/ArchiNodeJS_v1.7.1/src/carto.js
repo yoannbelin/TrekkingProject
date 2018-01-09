@@ -3,30 +3,30 @@ var _polyline;
 var drawnItems;
 
 //Get GPS points (json object of Leaflet) of a drawn trail 
-var outputPoints = function (datas) {
+var outputPoints = function(datas) {
     var points = datas;
     return datas;
 };
 
 //Get length of a drawn trail
-var outputLength = function (data) {
+var outputLength = function(data) {
     var length_in_km = data / 1000;
     document.getElementById('distance').innerHTML = _round(length_in_km, 2);
 };
 
 // Rounded
-var _round = function (num, len) {
+var _round = function(num, len) {
     return Math.round(num * (Math.pow(10, len))) / (Math.pow(10, len));
 };
 
 // Truncation of GPS point
-var strLatLng = function (latlng) {
+var strLatLng = function(latlng) {
     return "(" + _round(latlng.lat, 6) + ", " + _round(latlng.lng, 6) + ")";
 };
 
 
 // Initialization map
-var init = function () {
+var init = function() {
 
     map.setView([43.58506, 3.86021], 10);
 
@@ -51,17 +51,17 @@ var init = function () {
             minZoom: 5
         })
     }, {
-            'drawlayer': drawnItems
-        }, {
-            position: 'topleft',
-            collapsed: false
-        }).addTo(map);
+        'drawlayer': drawnItems
+    }, {
+        position: 'topleft',
+        collapsed: false
+    }).addTo(map);
 
     addKmlLayers();
 };
 
 // Add drawing Tools
-var addDrawTools = function () {
+var addDrawTools = function() {
 
     // Add control buttons
     map.addControl(new L.Control.Draw({
@@ -79,7 +79,7 @@ var addDrawTools = function () {
         }
     }));
 
-    map.on(L.Draw.Event.CREATED, function (event) {
+    map.on(L.Draw.Event.CREATED, function(event) {
         var layer = event.layer;
 
         drawnItems.addLayer(layer);
@@ -89,7 +89,7 @@ var addDrawTools = function () {
     // Bind trail and information GPS _ Generate a popup content based on layer type
     // - Returns HTML string, or null if unknown object
 
-    var getPopupContent = function (layer) {
+    var getPopupContent = function(layer) {
 
         // Marker - add lat/long
         if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
@@ -136,7 +136,7 @@ var addDrawTools = function () {
     };
 
     /* Object created - bind popup to layer, add to feature group */
-    map.on(L.Draw.Event.CREATED, function (event) {
+    map.on(L.Draw.Event.CREATED, function(event) {
         var layer = event.layer;
         var content = getPopupContent(layer);
         if (content !== null) {
@@ -146,10 +146,10 @@ var addDrawTools = function () {
     });
 
     // Object(s) edited - update popups
-    map.on(L.Draw.Event.EDITED, function (event) {
+    map.on(L.Draw.Event.EDITED, function(event) {
         var layers = event.layers,
             content = null;
-        layers.eachLayer(function (layer) {
+        layers.eachLayer(function(layer) {
             content = getPopupContent(layer);
             if (content !== null) {
                 layer.setPopupContent(content);
@@ -159,7 +159,7 @@ var addDrawTools = function () {
 };
 
 // Add KML files
-var addKmlLayers = function () {
+var addKmlLayers = function() {
 
     // KML without popups
     /* omnivore.kml('gr-kml/gr60b.kml').addTo(map); */
@@ -182,7 +182,7 @@ var addKmlLayers = function () {
     // Change color trails KML
     var customLayer = L.geoJson(null, {
         /* http://leafletjs.com/reference.html#geojson-style */
-        style: function (feature) {
+        style: function(feature) {
             return {
                 color: 'purple',
                 weight: 2
@@ -195,10 +195,10 @@ var addKmlLayers = function () {
     while (i < tabKml.length) {
 
         var runLayer = omnivore.kml(tabKml[i], null, customLayer)
-            .on('ready', function () {
+            .on('ready', function() {
                 /* map.fitBounds(runLayer.getBounds()); */
 
-                runLayer.eachLayer(function (layer) {
+                runLayer.eachLayer(function(layer) {
                     layer.bindPopup(layer.feature.properties.name);
                 })
             }).addTo(map);
@@ -225,8 +225,7 @@ function drawTrek(datas) {
 
     if (_polyline == undefined) {
         _polyline = new L.Polyline(polylinePoints, polylineOptions);
-    }
-    else {
+    } else {
         _polyline.setLatLngs(polylinePoints);
     }
 

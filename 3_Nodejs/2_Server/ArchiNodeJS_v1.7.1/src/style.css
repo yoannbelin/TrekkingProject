@@ -1,16 +1,124 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,300,700,800);
-.logo {
-    max-height: 100px;
-    max-width: 100px;
-    display: block;
-    margin: auto;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,300,700,800);
+
+/*==================================================================================================
+Header
+==================================================================================================*/
+
+.Bandeau {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 100%;
+    position: fixed;
 }
 
-#conteneur {
+.section {
+    margin-top: inherit;
+    margin-left: inherit;
+    position: relative;
+}
+
+.top-border {
+    border-top: 4px solid #f7fbfe;
+}
+
+nav-under div ul.inline-list-custom {
+    text-align: center;
+    padding-top: 0.8em;
+    margin-bottom: 0.9em;
+}
+
+
+/*==================================================================================================
+Body
+==================================================================================================*/
+
+#blocks_user {
     display: flex;
+}
+
+
+/*==================================================================================================
+User_profil
+==================================================================================================*/
+
+#container_user_profil {
     justify-content: space-between;
+    flex-direction: column;
+    height: auto;
+    /* background: blue; */
     flex-wrap: wrap;
 }
+
+#container_user_profil:nth-child(1) {
+    flex: 1;
+}
+
+.user_img {
+    position: absolute;
+    max-height: 80px;
+    max-width: 100px;
+    margin-top: auto;
+    margin-left: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* background: green; */
+}
+
+.user_datas {
+    margin-top: auto;
+    margin-left: 120px;
+    /* background: yellow; */
+}
+
+.field {
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 1.5rem;
+    line-height: 2;
+    color: #5b8aa0;
+}
+
+.user_btn {
+    margin-left: 0;
+    padding-bottom: 0;
+}
+
+.user_img:nth-child(1) {
+    flex: 1;
+}
+
+.user_datas:nth-child(2) {
+    flex: 1;
+}
+
+.user_btn:nth-child(3) {
+    flex: 1;
+}
+
+
+/*==================================================================================================
+user_trek
+==================================================================================================*/
+
+#container_user_trek {
+    justify-content: space-between;
+    min-width: 1200px;
+    flex-direction: column;
+    height: auto;
+    /* background: red; */
+    flex-wrap: wrap;
+}
+
+#container_user_trek::nth-child(2) {
+    flex: 3;
+}
+
+
+/*==================================================================================================
+Page Treck
+==================================================================================================*/
 
 #container {
     display: flex;
@@ -96,10 +204,6 @@ table {
     visibility: hidden;
 }
 
-.Bandeau {
-    position: fixed;
-}
-
 .lined-list:nth-child(1) {
     flex: 1;
 }
@@ -116,11 +220,6 @@ table {
 
 .user {
     width: 70%;
-}
-
-#chevron {
-    width: 100px;
-    height: 100px;
 }
 
 .image img {
@@ -154,12 +253,6 @@ table {
     width: 20%;
     border-color: black;
     border-width: 1px;
-
-}
-
-#conteneur_profil {
-    display: flex;
-    justify-content: flex-start;
 }
 
 
@@ -199,12 +292,6 @@ Spacing Adjustments
 
 
 /* line 113, ../scss/themes/_type_01.scss */
-
-nav div ul.inline-list-custom {
-    text-align: center;
-    padding-top: 0.8em;
-    margin-bottom: 0.9em;
-}
 
 #trek {
     text-align: center;
@@ -867,167 +954,6 @@ article .caption,
 
 
 /*==================================================================================================
-Header & Nav
-==================================================================================================*/
-
-
-/* line 232, ../scss/_custom.scss */
-
-
-/*
-.top-border {
-border-top: 4px solid #f7fbfe;
-}
-*/
-
-
-/* line 236, ../scss/_custom.scss */
-
-header {
-    padding-top: 3em;
-    padding-bottom: 2em;
-}
-
-
-/* line 241, ../scss/_custom.scss */
-
-header div.logo {
-    text-align: center;
-}
-
-
-/* line 245, ../scss/_custom.scss */
-
-div div header h1 {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 1.625rem;
-    line-height: 1.3;
-    letter-spacing: 0;
-    text-transform: none;
-    line-height: 1.1;
-    text-align: center;
-    color: #333d41;
-}
-
-.section {
-    margin-top: inherit;
-    margin-left: inherit;
-    position: relative;
-}
-
-
-/* line 258, ../scss/_custom.scss */
-
-div div header h1 a {
-    text-decoration: none;
-    color: #333d41;
-}
-
-
-/* line 263, ../scss/_custom.scss */
-
-div div header h2 {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 0.75rem;
-    line-height: 1.3;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    line-height: 1.4;
-    text-align: center;
-    color: #3b464b;
-    margin-top: 0.75em;
-}
-
-
-/* line 278, ../scss/_custom.scss */
-
-div div header h2 a {
-    text-decoration: none;
-    color: #3b464b;
-}
-
-
-/* line 283, ../scss/_custom.scss */
-
-div div header h1 a:hover,
-header h1 a:focus {
-    color: #333d41;
-}
-
-
-/* line 287, ../scss/_custom.scss */
-
-div div header h2 a:hover,
-header h2 a:focus {
-    color: #3b464b;
-}
-
-
-/* line 291, ../scss/_custom.scss */
-
-nav {
-    border-top: 1px solid #91b7c7;
-    border-bottom: 1px solid #91b7c7;
-    margin-bottom: 3em;
-    /*    background-color: #fbfdfe;*/
-}
-
-
-/* line 298, ../scss/_custom.scss */
-
-nav ul.inline-list-custom {
-    text-align: center;
-    padding-top: 0.8em;
-    margin-bottom: 0.8em;
-    margin-left: 0;
-}
-
-
-/* line 305, ../scss/_custom.scss */
-
-nav ul.inline-list-custom li {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 1rem;
-    line-height: 2;
-    letter-spacing: 0;
-    text-transform: none;
-    display: inline-block;
-    padding-left: 1em;
-    margin-right: 1em;
-    padding-bottom: 0;
-}
-
-
-/* line 320, ../scss/_custom.scss */
-
-nav ul li a,
-nav ul li a:hover {
-    border: none !important;
-}
-
-
-/* line 324, ../scss/_custom.scss */
-
-a.current {
-    color: #adb3b6;
-    pointer-events: none;
-}
-
-
-/* line 329, ../scss/_custom.scss */
-
-a.current:hover {
-    color: #adb3b6;
-}
-
-
-/*==================================================================================================
 Project
 ==================================================================================================*/
 
@@ -1190,92 +1116,6 @@ a.back-to-top:hover {
     display: none;
     margin-top: 3em;
     margin-bottom: 3em;
-}
-
-
-/*==================================================================================================
-Footer
-==================================================================================================*/
-
-
-/* line 449, ../scss/_custom.scss */
-
-footer {
-    border-top: 1px solid #91b7c7;
-    margin-top: 3em;
-    padding-top: 4em;
-    padding-bottom: 5em;
-}
-
-
-/* line 456, ../scss/_custom.scss */
-
-footer ul {
-    text-align: center;
-    margin-top: 2em;
-    margin-left: 0;
-}
-
-
-/* line 462, ../scss/_custom.scss */
-
-footer li {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    letter-spacing: 0;
-    text-transform: none;
-    display: inline-block;
-    padding-left: 1em;
-    margin-right: 1em;
-    color: #4a585e;
-}
-
-
-/* line 476, ../scss/_custom.scss */
-
-footer li a {
-    color: #4a585e;
-    -webkit-transition: color 0.2s ease-out;
-    -moz-transition: color 0.2s ease-out;
-    transition: color 0.2s ease-out;
-}
-
-
-/* line 481, ../scss/_custom.scss */
-
-footer div.social-icons {
-    text-align: center;
-}
-
-
-/* line 485, ../scss/_custom.scss */
-
-footer div.social-icons i {
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-    color: #4a585e;
-}
-
-
-/* line 491, ../scss/_custom.scss */
-
-footer div.social-icons a:hover i {
-    color: #5b8aa0;
-    -webkit-transition: color 0.2s ease-out;
-    -moz-transition: color 0.2s ease-out;
-    transition: color 0.2s ease-out;
-}
-
-
-/* line 496, ../scss/_custom.scss */
-
-footer div.social-icons a i {
-    -webkit-transition: color 0.2s ease-out;
-    -moz-transition: color 0.2s ease-out;
-    transition: color 0.2s ease-out;
 }
 
 
@@ -2706,14 +2546,6 @@ select:hover {
     select:hover {
         background: #f2f2f2;
     }
-}
-
-.Bandeau {
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0;
-    min-width: 100%;
-    position: fixed;
 }
 
 
