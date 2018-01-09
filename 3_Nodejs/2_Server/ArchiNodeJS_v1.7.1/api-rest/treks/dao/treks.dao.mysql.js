@@ -8,8 +8,6 @@
 let db = require(__base + '/config/db')
 let TrekModel = require('../models/trek.model');
 
-let GpsPointsDao = require('../../gpsPoints/dao/gpsPoints.dao.mysql')
-
 
 class TreksDAO {
     static create(trek, cb) {

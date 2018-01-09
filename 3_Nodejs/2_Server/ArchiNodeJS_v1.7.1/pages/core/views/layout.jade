@@ -2,15 +2,18 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/src/map.css')
     link(rel='stylesheet', href='/src/style.css')
-    link(rel='stylesheet', href='/src/header.css')
+    link(rel='stylesheet', href='/src/layout.css')
+    //- link(rel='stylesheet', href='/src/CSS/users/user_web.css')
     link(rel='stylesheet', href='/src/font-awesome-4.7.0/css/font-awesome.min.css')
 
   body
    
-    include header
+    include /core/views/header
     
-    block content    
+    block content
 
-    include footer
+      
+
+
+    include /core/views/footer
