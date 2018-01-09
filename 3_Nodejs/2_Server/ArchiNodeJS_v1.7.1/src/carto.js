@@ -1,5 +1,6 @@
 var CartoManager = {
 
+selfCarto : undefined,
 map : new L.map('map'),
 _polyline: "",
 drawnItems: "",
@@ -13,7 +14,7 @@ outputPoints: function (datas) {
 //Get length of a drawn trail
 outputLength: function (data) {
     var length_in_km = data / 1000;
-    document.getElementById('distance').innerHTML = CartoManager._round(length_in_km, 2);
+    document.getElementById('distance').innerHTML = selfCarto._round(length_in_km, 2);
 },
 
 // Rounded
@@ -23,15 +24,14 @@ _round: function (num, len) {
 
 // Truncation of GPS point
 strLatLng: function (latlng) {
-    return "(" + this._round(latlng.lat, 6) + ", " + this._round(latlng.lng, 6) + ")";
+    return "(" + selfCarto._round(latlng.lat, 6) + ", " + selfCarto._round(latlng.lng, 6) + ")";
 },
 
 
 // Initialization map
 init: function () {
-
-    this.map.setView([43.58506, 3.86021], 10);
-
+    selfCarto = this; //Permet d'accéder à "this" dans toutes les fonction, même CallBacks.
+    selfCarto.map.setView([43.58506, 3.86021], 10);
     // Load Tiles of map
     var tuile = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png';
     var attrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
@@ -40,35 +40,35 @@ init: function () {
         attribution: attrib,
         maxZoom: 18,
         minZoom: 5
-    }).addTo(this.map);
+    }).addTo(selfCarto.map);
 
     // Add tile's selector
-    this.drawnItems = L.featureGroup().addTo(this.map);
+    selfCarto.drawnItems = L.featureGroup().addTo(selfCarto.map);
 
     L.control.layers({
-        'osm': _osm.addTo(this.map),
+        'osm': _osm.addTo(selfCarto.map),
         'google': L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
             attribution: 'google',
             maxZoom: 18,
             minZoom: 5
         })
     }, {
-            'drawlayer': this.drawnItems
+            'drawlayer': selfCarto.drawnItems
         }, {
             position: 'topleft',
             collapsed: false
-        }).addTo(this.map);
+        }).addTo(selfCarto.map);
 
-    this.addKmlLayers();
+        selfCarto.addKmlLayers();
 },
 
 // Add drawing Tools
 addDrawTools: function () {
 
     // Add control buttons
-    this.map.addControl(new L.Control.Draw({
+    selfCarto.map.addControl(new L.Control.Draw({
         edit: {
-            featureGroup: this.drawnItems,
+            featureGroup: selfCarto.drawnItems,
             poly: {
                 allowIntersection: false
             }
@@ -81,10 +81,10 @@ addDrawTools: function () {
         }
     }));
 
-    this.map.on(L.Draw.Event.CREATED, function (event) {
+    selfCarto.map.on(L.Draw.Event.CREATED, function (event) {
         var layer = event.layer;
 
-        CartoManager.drawnItems.addLayer(layer);
+        selfCarto.drawnItems.addLayer(layer);
     });
 
 
@@ -95,14 +95,14 @@ addDrawTools: function () {
 
         // Marker - add lat/long
         if (layer instanceof L.Marker || layer instanceof L.CircleMarker) {
-            return CartoManager.strLatLng(layer.getLatLng());
+            return selfCarto.strLatLng(layer.getLatLng());
 
             // Circle - lat/long, radius
         } else if (layer instanceof L.Circle) {
             var center = layer.getLatLng(),
                 radius = layer.getRadius();
-            return "Center: " + this.strLatLng(center) + "<br />" +
-                "Radius: " + CartoManager._round(radius, 2) + " m";
+            return "Center: " + selfCarto.strLatLng(center) + "<br />" +
+                "Radius: " + selfCarto._round(radius, 2) + " m";
 
             // Rectangle/Polygon - area
         } else if (layer instanceof L.Polygon) {
@@ -126,11 +126,11 @@ addDrawTools: function () {
                     distance += latlngs[i].distanceTo(latlngs[i + 1]);
                     /* var datas = latlngs; */
                 }
-                CartoManager.outputPoints(latlngs);
-                CartoManager.outputLength(distance);
+                selfCarto.outputPoints(latlngs);
+                selfCarto.outputLength(distance);
                 document.chemin_trek = latlngs;
 
-                return "Distance: " + CartoManager._round(distance, 2) + " m";
+                return "Distance: " + selfCarto._round(distance, 2) + " m";
             }
 
         }
@@ -138,17 +138,17 @@ addDrawTools: function () {
     };
 
     /* Object created - bind popup to layer, add to feature group */
-    this.map.on(L.Draw.Event.CREATED, function (event) {
+    selfCarto.map.on(L.Draw.Event.CREATED, function (event) {
         var layer = event.layer;
         var content = getPopupContent(layer);
         if (content !== null) {
             layer.bindPopup(content);
         }
-        CartoManager.drawnItems.addLayer(layer);
+        selfCarto.drawnItems.addLayer(layer);
     });
 
     // Object(s) edited - update popups
-    this.map.on(L.Draw.Event.EDITED, function (event) {
+    selfCarto.map.on(L.Draw.Event.EDITED, function (event) {
         var layers = event.layers,
             content = null;
         layers.eachLayer(function (layer) {
@@ -203,7 +203,7 @@ addKmlLayers: function () {
                 runLayer.eachLayer(function (layer) {
                     layer.bindPopup(layer.feature.properties.name);
                 })
-            }).addTo(this.map);
+            }).addTo(selfCarto.map);
         i++
     }
 },
@@ -225,16 +225,17 @@ drawTrek: function(datas) {
         opacity: 0.9
     };
 
-    if (this._polyline == "") {
-        this._polyline = new L.Polyline(polylinePoints, polylineOptions);
+    if (selfCarto._polyline == "") {
+        selfCarto._polyline = new L.Polyline(polylinePoints, polylineOptions);
     }
     else {
-        console.log(this._polyline);
-        this._polyline.setLatLngs(polylinePoints);
+        console.log(selfCarto._polyline);
+        selfCarto._polyline.setLatLngs(polylinePoints);
     }
 
-    this.map.addLayer(this._polyline);
-    this.map.fitBounds(this._polyline.getBounds());
+    selfCarto.map.addLayer(selfCarto._polyline);
+    selfCarto.map.fitBounds(selfCarto._polyline.getBounds());
 }
 };
+
 window.onload = CartoManager.init();
