@@ -10,7 +10,7 @@ void MyContext::initMyContext(QQmlApplicationEngine &engine, QQmlContext *myCont
 {
     m_myContext = myContext;
 
-    QString initialUrl = QStringLiteral("www.google.com");
+    QString initialUrl = QStringLiteral("localhost:3000");
 
     m_myContext->setContextProperty(QStringLiteral("utils"), new Utils(&engine));
     m_myContext->setContextProperty(QStringLiteral("initialUrl"),

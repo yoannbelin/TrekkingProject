@@ -46,6 +46,8 @@ import QtQuick.Controls.Styles 1.2
 
 import QtPositioning 5.8
 
+
+
 ApplicationWindow {
     property bool showProgress: webView.loading
                                 && Qt.platform.os !== "ios"
@@ -53,8 +55,8 @@ ApplicationWindow {
     visible: true
     x: 20
     y: 20
-    width: 150
-    height: 150
+    width: 1280
+    height: 1024
     title: webView.title
 
     toolBar: ToolBar {
@@ -148,14 +150,51 @@ ApplicationWindow {
         }
     }
 
+    Item {
+        id: gpsPosition
+        property variant coordinate: QtPositioning.coordinate(-27.5, 153.1)
+    }
+
+
+
+    Rectangle{
+        id: menuContainer
+        width: 100
+        height: parent.height
+        border.color: 'black'
+
+
+
+        Column{
+
+            Text{
+                text: "lat: " + gpsPosition.coordinate.latitude + " ; lng: " + gpsPosition.coordinate.longitude
+            }
+
+            Button{
+                text: "Get coordinates"
+                onClicked: {
+                    gpsPosition.coordinate
+                }
+            }
+        }
+
+    }
+
+
+
     WebView {
         id: webView
-        anchors.fill: parent
+        //        anchors.fill: parent
+        width: parent.width - menuContainer.width
+        height: parent.height
+        x: 100
         url: initialUrl
         onLoadingChanged: {
             if (loadRequest.errorString)
                 console.error(loadRequest.errorString);
         }
     }
-}
 
+
+}
