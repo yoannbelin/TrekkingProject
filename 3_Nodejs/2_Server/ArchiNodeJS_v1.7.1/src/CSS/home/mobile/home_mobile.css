@@ -1,0 +1,27 @@
+@media (max-width: 1024px) {
+
+#background{
+    z-index: -1;
+    top: 0%;
+    height: 100%;
+    left: 0%;
+    width: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+    background-image: url('/src/images/home_page_mobile.jpeg');
+}
+
+.intro{
+    position: relative;
+    margin-right: 5%;
+    z-index: 0;
+    float: right;
+}
+
+.intro h1,
+.intro p
+{
+    font-family: 'Comic Sans MS', cursive;
+}
+
+} /* Fin de "l'objet" css pour mobile */
