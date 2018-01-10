@@ -74,9 +74,7 @@ function show_btn(id) {
  * Load treks list
  */
 function loadTreks() {
-    console.log("loadtrek");
     infoTrek();
-
     $http.get('/api-rest/treks', function(res) {
         _treks = res;
     }, 'json');

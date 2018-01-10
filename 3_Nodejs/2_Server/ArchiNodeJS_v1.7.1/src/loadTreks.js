@@ -44,7 +44,7 @@ var LoadTreksManager = {
     //
     infoTrek: function(i) {
         this.show_btn('.newtrek');
-        this.show_btn('.raz');
+        this.show_btn('.reset');
         this.show_btn('.detail');
         this.hide_btn('.save');
         var html = "";
@@ -91,7 +91,7 @@ var LoadTreksManager = {
         document.getElementById('idTableau').innerHTML = html;
 
         selfTreks.show_btn('.save');
-        selfTreks.show_btn('.raz');
+        selfTreks.show_btn('.reset');
         selfTreks.hide_btn('.detail');
         selfTreks.hide_btn('.newtrek');
     },
@@ -133,6 +133,54 @@ var LoadTreksManager = {
         }, 'json');
         document.getElementById('messageToUser').innerHTML = 'success!';
         selfTreks.loadTreks();
+    },
+
+    /**
+     * Affiche details trek
+     */
+    showTrek: function(i) {
+        console.log(selfTreks._treks[i].id);
+        window.location.href = 'treks/' + selfTreks._treks[i].id;
+    },
+
+    /**
+     * Mise à jour du Trek
+     */
+    updateTrek: function() {
+        show_btn('.saveupdate');
+        show_btn('.delete');
+        show_btn('.cancelupdate');
+        hide_btn('.update');
+    },
+
+    /**
+     * Suppression du Trek
+     */
+    deleteTrek: function() {
+        hide_btn('.saveupdate');
+        hide_btn('.cancelupdate');
+        hide_btn('.delete');
+        show_btn('.update');
+    },
+
+    /**
+     * Sauvegarder les modification du Trek
+     */
+    saveupdate: function() {
+        hide_btn('.saveupdate');
+        hide_btn('.cancelupdate');
+        hide_btn('.delete');
+        show_btn('.update');
+    },
+
+    /**
+     * Annuler les modification du Trek
+     */
+    cancelupdate: function() {
+        hide_btn('.saveupdate');
+        hide_btn('.cancelupdate');
+        hide_btn('.delete');
+        show_btn('.update');
     },
 
     //
