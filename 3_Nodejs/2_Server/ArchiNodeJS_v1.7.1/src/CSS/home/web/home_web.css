@@ -1,0 +1,15 @@
+#background{
+    z-index: -1;
+    top: 0%;
+    height: 100%;
+    left: 0%;
+    width: 100%;
+    position: fixed;
+    background-repeat: no-repeat;
+}
+
+.intro{
+    position: absolute;
+    z-index: 0;
+    margin-left: 3%;
+}
