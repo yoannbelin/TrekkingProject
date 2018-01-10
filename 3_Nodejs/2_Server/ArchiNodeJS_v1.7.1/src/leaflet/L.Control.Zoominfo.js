@@ -1,3 +1,7 @@
+/*
+Primary source : https://github.com/flaviocarmo/Leaflet.zoominfo/
+*/
+
 (function (factory) {
   // Packaging/modules magic dance
   var L;

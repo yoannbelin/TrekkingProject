@@ -1,3 +1,7 @@
+/*
+    Primary source : https://github.com/robertomlsoares/leaflet-offline
+*/
+
 'use strict';
 
 (function (factory, window) {
@@ -218,7 +222,7 @@
             saveButtonTitle: 'Save tiles',
             removeButtonHtml: 'R',
             removeButtonTitle: 'Remove tiles',
-            minZoom: 0,
+            minZoom: 10,
             maxZoom: 19,
             confirmSavingCallback: null,
             confirmRemovalCallback: null
@@ -296,7 +300,7 @@
             var currentZoom = this._map.getZoom();
             var latlngBounds = this._map.getBounds();
 
-            if (currentZoom < this.options.minZoom) {
+            if (currentZoom <= this.options.minZoom) {
                 self._baseLayer.fire('offline:below-min-zoom-error');
 
                 return;
@@ -312,10 +316,11 @@
                 tileUrls = tileUrls.concat(this._baseLayer.getTileUrls(bounds, zoomLevels[i]));
             }
 
+
             var continueSaveTiles = function () {
                 self._baseLayer.fire('offline:save-start', {
                     nTilesToSave: tileUrls.length
-                    
+
                 });
 
                 self._tilesDb.saveTiles(tileUrls).then(function () {
