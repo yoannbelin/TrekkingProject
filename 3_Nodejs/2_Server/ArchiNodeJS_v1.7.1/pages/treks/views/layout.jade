@@ -2,16 +2,14 @@ doctype html
 html
   head
     title= title
-    //- link(rel='stylesheet', href='/src/map.css')
     link(rel='stylesheet', href='/src/style.css')
     link(rel='stylesheet', href='/src/layout.css')
-    //- link(rel='stylesheet', href='/src/CSS/users/user_web.css')
     link(rel='stylesheet', href='/src/font-awesome-4.7.0/css/font-awesome.min.css')
 
     link(rel='stylesheet', href='/src/leaflet/leaflet.css')
-    link(rel='stylesheet', href='/src/leaflet/leaflet-routing-machine.css')
     link(rel='stylesheet', href='/src/leaflet/leaflet.draw.css')
     link(rel='stylesheet', href='/src/leaflet/L.Control.Zoominfo.css')
+    link(rel='stylesheet', href='/src/CSS/treks/loader.css')
 
 
 
@@ -21,8 +19,5 @@ html
     include /core/views/header
     
     block content
-
-      
-
 
     include /core/views/footer

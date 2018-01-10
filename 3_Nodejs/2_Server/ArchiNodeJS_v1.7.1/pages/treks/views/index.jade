@@ -39,9 +39,14 @@ block content
                   
               .block2_maps
                 div.map(onload="CartoManager.init()")
-                   #map(style='height : 600px' )
-                   #progress + ' / ' + #total
-                   
+                   #map(style='height : 625px' )
+                   div
+                    #progressBar
+                      #progress 
+                      p / 
+                      #total
+                   div#loader_section
+                                       
               .block3_buttons
                 select#idCombo(onchange="LoadTreksManager.infoTrek(idCombo.selectedIndex - 1)")
                 #buttons
