@@ -104,8 +104,10 @@ var LoadTreksManager = {
         $http.get('/api-rest/treks', function(res) {
             selfTreks._treks = res;
             selfTreks.buildCombo();
+
+            selfTreks.show_btn('.newtrek');
         }, 'json');
-        selfTreks.show_btn('.newtrek');
+        selfTreks.show_btn('.update');
     },
 
     //
@@ -147,40 +149,44 @@ var LoadTreksManager = {
      * Mise à jour du Trek
      */
     updateTrek: function() {
-        show_btn('.saveupdate');
-        show_btn('.delete');
-        show_btn('.cancelupdate');
-        hide_btn('.update');
+        document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
+        selfTreks.hide_btn('.update');
+        selfTreks.show_btn('.delete');
+        selfTreks.show_btn('.saveUpdate');
+        selfTreks.show_btn('.cancelupdate');
+
     },
 
     /**
      * Suppression du Trek
      */
     deleteTrek: function() {
-        hide_btn('.saveupdate');
-        hide_btn('.cancelupdate');
-        hide_btn('.delete');
-        show_btn('.update');
+        window.location.href = '/treks';
     },
 
     /**
      * Sauvegarder les modification du Trek
      */
-    saveupdate: function() {
-        hide_btn('.saveupdate');
-        hide_btn('.cancelupdate');
-        hide_btn('.delete');
-        show_btn('.update');
+    saveUpdate: function() {
+        document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
+        selfTreks.show_btn('.update');
+        selfTreks.hide_btn('.delete');
+        selfTreks.hide_btn('.saveUpdate');
+        selfTreks.hide_btn('.cancelupdate');
     },
 
     /**
      * Annuler les modification du Trek
      */
     cancelupdate: function() {
-        hide_btn('.saveupdate');
-        hide_btn('.cancelupdate');
-        hide_btn('.delete');
-        show_btn('.update');
+        document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
+        selfTreks.show_btn('.update');
+        selfTreks.hide_btn('.delete');
+        selfTreks.hide_btn('.saveUpdate');
+        selfTreks.hide_btn('.cancelupdate');
     },
 
     //

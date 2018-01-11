@@ -32,17 +32,13 @@ block content
             .trek_datas
               .field
                 label Nom du trek : #{trek.label}
-                input#label(type='text', name='label')
-                
-              .field
+                  #labelDiv
+                    input#level(type='text', name='label')
                 label Distance du trek : #{trek.length}
-
-              .field
                 label Temps estimés du trek : #{trek.time}
-
-              .field
                 label Niveau de difficulté du trek : #{trek.level}
-                input#level(type='text', name='difficulte')
+                  #difficulteDiv
+                    input#level(type='text', name='difficulte')
             .row
               #buttons
                 .update  
@@ -58,8 +54,8 @@ block content
             .image
               p
                 img(src='../../../src/images/about-photo.png')
-       .small-12.medium-12.large-12.columns
       .small-12.medium-12.large-12.columns
+      .small-12.medium-12.large-12.columns            
        #container_user_trek
           .row
             .small-12.medium-12.large-12.columns
@@ -71,9 +67,8 @@ block content
                         .thumbnail-hover
                         img(src='#{photo.url}' , alt='Project 01')
                         .thumbnail-caption
-                          a.caption-link(href='Detail.html') #{photo.title}
+                          a.caption-link(href='Detail.html') #{trek.label} 
         .row
-          .small-12.medium-12.large-12.columns
             p.back-to-top-holder
               a.back-to-top
                 a(href='#')

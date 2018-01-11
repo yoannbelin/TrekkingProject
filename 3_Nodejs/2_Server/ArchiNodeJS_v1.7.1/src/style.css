@@ -212,6 +212,7 @@ table {
     margin: auto;
     display: flex;
     flex-direction: row;
+    visibility: hidden;
     /* visibility: hidden; */
 }
 
@@ -1459,8 +1460,8 @@ select {
 
 [class*="block-grid-"]>li {
     display: inline;
-    /* height: auto;
-    float: left; */
+    height: auto;
+    float: left;
     padding: 0 1.5em 3em;
 }
 
