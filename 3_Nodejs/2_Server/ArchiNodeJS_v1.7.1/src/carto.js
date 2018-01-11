@@ -70,8 +70,8 @@ var CartoManager = {
 
     //Offline mode
     activeOfflineMode: function () {
+        
         var progress = 0;
-        var badLoad = 0;
 
         var tilesDb = {
             getItem: function (key) {
@@ -86,8 +86,9 @@ var CartoManager = {
 
                 for (var i = 0; i < tileUrls.length; i++) {
                     var tileUrl = tileUrls[i];
+                    console.log(tileUrl);
 
-                    //(function(i, tileUrl) {
+
                     promises[i] = new Promise(function (resolve, reject) {
                         var request = new XMLHttpRequest();
                         request.open('GET', tileUrl.url, true);
@@ -97,6 +98,7 @@ var CartoManager = {
 
                                 if (request.status === 200) {
                                     resolve(self._saveTile(tileUrl.key, request.response));
+                                    
 
                                     document.getElementById('progress').innerHTML = progress++
 
@@ -113,7 +115,6 @@ var CartoManager = {
                         request.send();
 
                     });
-                    //})(i, tileUrl);
 
                 }
                 return Promise.all(promises);
@@ -155,7 +156,7 @@ var CartoManager = {
                     continueRemoveTiles();
                 }
             },
-            minZoom: 11,
+            minZoom: 12,
             maxZoom: 15
         });
 
@@ -165,6 +166,11 @@ var CartoManager = {
         offlineLayer.on('offline:below-min-zoom-error', function () {
             alert('Can not save tiles below minimum zoom level 12.');
         });
+
+        offlineLayer.on('offline:higher-max-zoom-error', function () {
+            alert('Can not save tiles after max zoom level 15.');
+        });
+
 
         offlineLayer.on('offline:save-start', function (data) {
             console.log('Saving ' + data.nTilesToSave + ' tiles.');
@@ -184,14 +190,7 @@ var CartoManager = {
             document.getElementById('progress').innerHTML = "";
             document.getElementById('total').innerHTML = "";
 
-            if (badLoad === 0) {
-                alert('All the tiles were saved.');
-            }
-
-            else {
-                alert('Some tiles were not saved : ' + badLoad);
-            }
-
+            alert('All the tiles were saved.');
         });
 
         offlineLayer.on('offline:save-error', function (err) {

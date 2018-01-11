@@ -1,7 +1,79 @@
 extends /core/views/layout
 
 block content
+  head
+      title
+      .Bandeau
+      section
+        img(src='../src/images/Bandeau.png', style='margin-bottom: 5px')
+        section.section
+          .top-border
+            .row
+            .large-12
+              nav#nav-under
+                div
+                  ul.inline-list-custom
+                    li
+                      a(href='/profil') Profil
+                    li
+                      a(href='/galerie') Galerie Photos
+                    li
+                      a(href='/PoI') Galerie Points d'intêret
+                      .top-border
+    .row
+      .small-12.medium-12.large-12.small-centered.columns
+        header
+          h1 Infos Trek
+      .small-12.medium-12.large-12.small-centered.columns
+    .row
+      .small-12.medium-7.large-7.columns
+        h2 #{trek.label}
+          #container_details
+            .trek_datas
+              .field
+                label Nom du trek : #{trek.label}
+                  #labelDiv
+                    input#level(type='text', name='label')
+                label Distance du trek : #{trek.length}
+                label Temps estimés du trek : #{trek.time}
+                label Niveau de difficulté du trek : #{trek.level}
+                  #difficulteDiv
+                    input#level(type='text', name='difficulte')
+            .row
+              #buttons
+                .update  
+                    button#updateTrek(onclick='LoadTreksManager.updateTrek()') Modifier Trek
+                  .delete
+                    button#deletTrek(onclick='LoadTreksManager.deleteTrek()') Supprimer Trek               
+                  .saveupdate
+                    button#saveUpdate(onclick='LoadTreksManager.saveupdate()') Sauvegarder modificattion
+                  .cancelupdate
+                    button#cancel(onclick='LoadTreksManager.cancelupdate()') annuler modificattion
+      .small-12.medium-5.large-5.columns
+          .zoom
+            .image
+              p
+                img(src='../../../src/images/about-photo.png')
+      .small-12.medium-12.large-12.columns
+      .small-12.medium-12.large-12.columns            
+       #container_user_trek
+          .row
+            .small-12.medium-12.large-12.columns
+              ul.small-block-grid-1.medium-block-grid-3.large-block-grid-3.inline-list-custom
+                - for photo in trek.photos
+                  li
+                    .thumbnail
+                      .thumbnail-img
+                        .thumbnail-hover
+                        img(src='#{photo.url}' , alt='Project 01')
+                        .thumbnail-caption
+                          a.caption-link(href='Detail.html') #{trek.label} 
+        .row
+            p.back-to-top-holder
+              a.back-to-top
+                a(href='#')
+                  i.fa.fa-chevron-circle-up.fa-3x
 
 
-  h3 laissé #{trek.create_at}, par #{trek.author.firstname} :
-  p #{trek.content}
+  script(src="/src/ajax.js")
+  script(src="/src/loadTreks.js")

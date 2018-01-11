@@ -17,6 +17,7 @@ app.locals.basedir = path.join(__dirname, 'pages');
 // middlewares
 app.use(logger('dev'));
 app.use('/src', express.static('src'));
+app.use('/pictures', express.static('pictures'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -39,6 +40,7 @@ app.use('/', require('./pages/core/routes/index.route'));
 app.use('/users', require('./pages/users/routes/users.route'));
 app.use('/departments', require('./pages/departments/routes/departments.route'));
 app.use('/treks', require('./pages/treks/routes/treks.route'));
+app.use('/showTreks', require('./pages/showTreks/routes/showTreks.route'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

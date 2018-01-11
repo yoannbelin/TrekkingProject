@@ -6,6 +6,6 @@ router.route('/')
     .get(treks.index);
 
 router.route('/:idTrek')
-    .get(treks.index);
+    .get(treks.show);
 
 module.exports = router;

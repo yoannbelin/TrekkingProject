@@ -7,6 +7,7 @@
 
 let db = require(__base + '/config/db')
 let TrekModel = require('../models/trek.model');
+let PhotoModel = require('../../photos/models/photo.model');
 
 
 class TreksDAO {
@@ -63,15 +64,29 @@ class TreksDAO {
     }
 
     static find(id, cb) {
-        let script = 'SELECT * FROM trek'
-            // script += 'JOIN trek '
-            // script += 'WHERE trek.id = ? AND trek.idauthor = trek.id LIMIT 1';
+        let script = 'SELECT * FROM trek '
+        script += 'JOIN photo ON trek.id_trek = photo.id_Trek AND trek.id_Trek = ? '
+        script += 'ORDER BY photo.date_photo '
 
         db.query(script, [id], (err, rows) => {
 
             if (rows && rows[0] !== undefined) {
 
+                var i = 0;
+                var photos = [];
+
+                while (i < rows.length) {
+
+                    var photo = new PhotoModel(rows[i]);
+
+
+                    photos.push(photo);
+                    i++;
+                }
+
                 var currentTrek = new TrekModel(rows[0])
+
+                currentTrek.photos = photos
 
                 cb(err, currentTrek);
             } else {

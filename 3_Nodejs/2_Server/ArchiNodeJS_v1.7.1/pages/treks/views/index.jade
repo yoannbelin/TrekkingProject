@@ -2,11 +2,10 @@ extends layout
 
 block content
   h1#trek map
-    
-  title 
+
   .Bandeau
   section.small-12.medium-12.large-12.columns
-      img(src='src/View_from_connors_hill_panorama.jpg', style='margin-bottom: 5px')
+      img(src='src//images/View_from_connors_hill_panorama.jpg', style='margin-bottom: 5px')
       section.section
         .top-border
         .row
@@ -15,7 +14,7 @@ block content
               div
                 ul.inline-list-custom
                   li
-                    a(href='/profil') Profil
+                    a(href='/users') Profil
                   li
                     a(href='/galerie') Galerie Photos
                   li
@@ -24,25 +23,12 @@ block content
           p#messageToUser
         #conteneur_carte
           .block1_infos
-
             table#idTableau(style='width:100%')
-              tr
-                td Nom du trek
-                td Distance du trek
-                td Temps estimé
-                td Difficulté    
-              tr
-                td#difficulte(name="difficulter")
-                td#temps(name='temps')
-                td#distance(name='distance')
-                td#nom(name='nom')                  
-
-            a(href="")
             #buttons
               .newtrek  
                 button#newtrek(onclick='LoadTreksManager.createNewTrek()') Créer nouveau trek
               .detail
-                button#detail(type="button") Détails trek                
+                button#detail(onclick="LoadTreksManager.showTrek(idCombo.selectedIndex - 1)") Détails trek               
               .save
                 button#btnAdd(onclick='LoadTreksManager.addTrek()') Sauvegarder
             table#coordonnees(style='width:100%')
@@ -61,9 +47,8 @@ block content
           .block3_buttons
             select#idCombo(onchange="LoadTreksManager.infoTrek(idCombo.selectedIndex - 1)")
             #buttons
-              .raz
-                  button#raz(onclick="LoadTreksManager.resetPage()") Reset
-
+              .reset
+                button#reset(onclick="LoadTreksManager.resetPage()") Reset
       .row
         .small-12.medium-12.large-12.columns
           p.back-to-top-holder
@@ -77,8 +62,10 @@ block content
   script(src='/src/leaflet/leaflet.js')
   script(src='/src/leaflet/leaflet.draw.js')
   script(src='/src/leaflet/leaflet-plugins-master/layer/vector/KML.js')
-  script(src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js')
+  script(src="/src/leaflet/leaflet-omnivore.min.js")
   script(src='/src/leaflet/leaflet-offline.js')
   script(src='/src/leaflet/L.Control.Zoominfo.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.js')
+
+  script(src='/src/localforage.min.js')
+  
   script(src='/src/carto.js')

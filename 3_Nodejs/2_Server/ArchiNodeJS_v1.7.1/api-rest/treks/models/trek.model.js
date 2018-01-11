@@ -68,6 +68,13 @@ class TrekModel {
         this.row.official = val;
     }
 
+    get photos() {
+        return this.photos_;
+    }
+    set photos(val) {
+        this.photos_ = val;
+    }
+
     toJSON() {
         return {
             id: this.id,

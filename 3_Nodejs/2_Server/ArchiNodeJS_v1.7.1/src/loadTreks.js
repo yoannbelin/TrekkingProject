@@ -4,7 +4,7 @@ var LoadTreksManager = {
 
     _treks: [],
 
-    init: function () {
+    init: function() {
         selfTreks = this; // pour permettre d'accéder au "this" dans toutes les fonctions (les callBacks par exemple)
         selfTreks.loadTreks();
     },
@@ -12,7 +12,7 @@ var LoadTreksManager = {
     //
     // Build combobox
     //
-    buildCombo: function () {
+    buildCombo: function() {
         // var html = "";
         // html += "<option disabled selected>" + "Selectionner votre trek" + "</option>"
         // this._treks.forEach((option) => {
@@ -42,9 +42,11 @@ var LoadTreksManager = {
     //
     //Show trek's characteritics
     //
-    infoTrek: function (i) {
-        selfTreks.show_btn('.raz');
-        selfTreks.show_btn('.detail');
+    infoTrek: function(i) {
+        this.show_btn('.newtrek');
+        this.show_btn('.reset');
+        this.show_btn('.detail');
+        this.hide_btn('.save');
         var html = "";
         html += "<tr>";
         html += "<td> Nom du trek </td>";
@@ -67,7 +69,7 @@ var LoadTreksManager = {
     //
     // Add trek by drawing with Leaflet and input html
     //
-    createNewTrek: function () {
+    createNewTrek: function() {
 
         CartoManager.addDrawTools();
 
@@ -89,7 +91,7 @@ var LoadTreksManager = {
         document.getElementById('idTableau').innerHTML = html;
 
         selfTreks.show_btn('.save');
-        selfTreks.show_btn('.raz');
+        selfTreks.show_btn('.reset');
         selfTreks.hide_btn('.detail');
         selfTreks.hide_btn('.newtrek');
     },
@@ -97,19 +99,21 @@ var LoadTreksManager = {
     //
     // Load trek list in combobox
     //
-    loadTreks: function () {
+    loadTreks: function() {
 
-        $http.get('/api-rest/treks', function (res) {
+        $http.get('/api-rest/treks', function(res) {
             selfTreks._treks = res;
             selfTreks.buildCombo();
+
+            selfTreks.show_btn('.newtrek');
         }, 'json');
-        selfTreks.show_btn('.newtrek');
+        selfTreks.show_btn('.update');
     },
 
     //
     // Add trek
     //
-    addTrek: function () {
+    addTrek: function() {
         selfTreks.hide_btn('.save');
         selfTreks.show_btn('.newtrek');
 
@@ -123,7 +127,7 @@ var LoadTreksManager = {
             'pathway': { 'chemin': trek_path }
         };
 
-        $http.post('/api-rest/treks', input, function (res) {
+        $http.post('/api-rest/treks', input, function(res) {
             if (res.trek.id !== 0) {
                 selfTreks.push(res.trek);
             }
@@ -133,16 +137,68 @@ var LoadTreksManager = {
         selfTreks.loadTreks();
     },
 
+    /**
+     * Affiche details trek
+     */
+    showTrek: function(i) {
+        console.log(selfTreks._treks[i].id);
+        window.location.href = 'treks/' + selfTreks._treks[i].id;
+    },
+
+    /**
+     * Mise à jour du Trek
+     */
+    updateTrek: function() {
+        document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
+        selfTreks.hide_btn('.update');
+        selfTreks.show_btn('.delete');
+        selfTreks.show_btn('.saveUpdate');
+        selfTreks.show_btn('.cancelupdate');
+
+    },
+
+    /**
+     * Suppression du Trek
+     */
+    deleteTrek: function() {
+        window.location.href = '/treks';
+    },
+
+    /**
+     * Sauvegarder les modification du Trek
+     */
+    saveUpdate: function() {
+        document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
+        selfTreks.show_btn('.update');
+        selfTreks.hide_btn('.delete');
+        selfTreks.hide_btn('.saveUpdate');
+        selfTreks.hide_btn('.cancelupdate');
+    },
+
+    /**
+     * Annuler les modification du Trek
+     */
+    cancelupdate: function() {
+        document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
+        selfTreks.show_btn('.update');
+        selfTreks.hide_btn('.delete');
+        selfTreks.hide_btn('.saveUpdate');
+        selfTreks.hide_btn('.cancelupdate');
+    },
+
     //
     // Hide / Show drawing buttons
     //
-    hide_btn: function (id) {
+    hide_btn: function(id) {
         if (document.querySelector(id).style.visibility === "visible") {
             document.querySelector(id).style.visibility = "";
         }
     },
 
-    show_btn: function (id) {
+    show_btn: function(id) {
         if (document.querySelector(id).style.visibility === "") {
             document.querySelector(id).style.visibility = "visible";
         }
@@ -151,7 +207,7 @@ var LoadTreksManager = {
     //
     // Reset Page
     //
-    resetPage: function () {
+    resetPage: function() {
         window.location.reload();
     }
 };

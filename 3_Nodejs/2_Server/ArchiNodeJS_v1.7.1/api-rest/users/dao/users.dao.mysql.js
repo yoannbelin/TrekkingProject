@@ -20,12 +20,11 @@ class UsersDAO {
         db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date(), user.username], (err, result) => {
 
             if (result) {
-                user.id = result.insertId;                
+                user.id = result.insertId;
                 console.log('user created : ' + result.insertId);
-            } 
-            
-            else { 
-                console.log("erreur à l insertion : " + err) }
+            } else {
+                console.log("erreur à l insertion : " + err)
+            }
             cb(err, user);
         });
     }
@@ -37,8 +36,8 @@ class UsersDAO {
         let script = 'UPDATE user SET firstname = ?, lastname = ?, username = ?, password = ?, mail = ? '
         script += 'WHERE id_user = ' + id + ' '
         script += 'AND NOT EXISTS ( '
-            script += 'SELECT * FROM (SELECT * FROM user WHERE user.id_user != ' + id + ') AS tmp '
-            script += 'WHERE tmp.username = ?);'
+        script += 'SELECT * FROM (SELECT * FROM user WHERE user.id_user != ' + id + ') AS tmp '
+        script += 'WHERE tmp.username = ?);'
 
         db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, user.username], (err) => {
             cb(err, user);
@@ -78,15 +77,15 @@ class UsersDAO {
 
                 var i = 0;
                 var treks = [];
-        
+
                 while (i < rows.length) {
-        
-                   var trek = new TrekModel(rows[i]);
-                   //}
-        
-                   treks.push(trek);
-                   i++;
-                 }
+
+                    var trek = new TrekModel(rows[i]);
+
+
+                    treks.push(trek);
+                    i++;
+                }
 
                 var currentUser = new UserModel(rows[0])
 
