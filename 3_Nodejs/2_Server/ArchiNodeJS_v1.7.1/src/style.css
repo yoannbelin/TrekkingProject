@@ -75,6 +75,11 @@ User_profil
     /* background: yellow; */
 }
 
+.trek_datas {
+    margin-top: auto;
+    margin-left: 120px;
+}
+
 .field {
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-size: 1.5rem;
@@ -3083,7 +3088,6 @@ label.error {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
-    max-width: 70.5625rem;
     *zoom: 1;
 }
 

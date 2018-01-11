@@ -24,77 +24,60 @@ block content
       .small-12.medium-12.large-12.small-centered.columns
         header
           h1 Infos Trek
-          h2 #{trek.label}
       .small-12.medium-12.large-12.small-centered.columns
     .row
       .small-12.medium-7.large-7.columns
-        h2 Titre
-        p Descriptif
+        h2 #{trek.label}
           #container_details
-          .user_datas
-            .field
-              label Nom du trek : #{trek.label}
-              input#label(type='text', name='label')
-              
-            .field
-              label Distance du trek : #{trek.length}
-              input#length(type='text', name='distance')
+            .trek_datas
+              .field
+                label Nom du trek : #{trek.label}
+                input#label(type='text', name='label')
+                
+              .field
+                label Distance du trek : #{trek.length}
 
-            .field
-              label Temps estimés du trek : #{trek.time}
-              input#time(type='text', name='temps')
+              .field
+                label Temps estimés du trek : #{trek.time}
 
-            .field
-              label Niveau de difficulté du trek : #{trek.level}
-              input#level(type='text', name='difficulte')
+              .field
+                label Niveau de difficulté du trek : #{trek.level}
+                input#level(type='text', name='difficulte')
+            .row
+              #buttons
+                .update  
+                    button#updateTrek(onclick='LoadTreksManager.updateTrek()') Modifier Trek
+                  .delete
+                    button#deletTrek(onclick='LoadTreksManager.deleteTrek()') Supprimer Trek               
+                  .saveupdate
+                    button#saveUpdate(onclick='LoadTreksManager.saveupdate()') Sauvegarder modificattion
+                  .cancelupdate
+                    button#cancel(onclick='LoadTreksManager.cancelupdate()') annuler modificattion
       .small-12.medium-5.large-5.columns
           .zoom
             .image
               p
                 img(src='../../../src/images/about-photo.png')
-    .row
-      #buttons
-          .update  
-               button#updateTrek(onclick='LoadTreksManager.updateTrek()') Modifier Trek
-             .delete
-               button#deletTrek(onclick='LoadTreksManager.deleteTrek()') Supprimer Trek               
-             .saveupdate
-               button#saveUpdate(onclick='LoadTreksManager.saveupdate()') Sauvegarder modificattion
-             .cancelupdate
-               button#cancel(onclick='LoadTreksManager.cancelupdate()') annuler modificattion
        .small-12.medium-12.large-12.columns
       .small-12.medium-12.large-12.columns
-        hr.project-detail-hr
-        #container
-          .project-img
-            img(src='../../../src/images/project-01a.png', alt='Project 01a')
-            h6 Trek 01
-
-          .project-img
-            img(src='../../../src/images/project-01b.png', alt='Project 01b')
-            h6 Trek 02
-
-          .project-img
-            img(src='../../../src/images/project-01c.png', alt='Project 01c')
-            h6 Trek 03
-
-          .project-img
-            img(src='../../../src/images/project-01a.png', alt='Project 01a')
-            h6 Trek 04
-
-          .project-img
-            img(src='../../../src/images/project-01b.png', alt='Project 01b')
-            h6 Trek 05
-
-          .project-img
-            img(src='../../../src/images/project-01c.png', alt='Project 01c')
-            h6 Trek 06
-    .row
-        .small-12.medium-12.large-12.columns
-          p.back-to-top-holder
-            a.back-to-top
-              a(href='#')
-                i.fa.fa-chevron-circle-up.fa-3x
+       #container_user_trek
+          .row
+            .small-12.medium-12.large-12.columns
+              ul.small-block-grid-1.medium-block-grid-3.large-block-grid-3.inline-list-custom
+                - for photo in trek.photos
+                  li
+                    .thumbnail
+                      .thumbnail-img
+                        .thumbnail-hover
+                        img(src='#{photo.url}' , alt='Project 01')
+                        .thumbnail-caption
+                          a.caption-link(href='Detail.html') #{photo.title}
+        .row
+          .small-12.medium-12.large-12.columns
+            p.back-to-top-holder
+              a.back-to-top
+                a(href='#')
+                  i.fa.fa-chevron-circle-up.fa-3x
 
 
   script(src="/src/ajax.js")

@@ -17,6 +17,7 @@ app.locals.basedir = path.join(__dirname, 'pages');
 // middlewares
 app.use(logger('dev'));
 app.use('/src', express.static('src'));
+app.use('/pictures', express.static('pictures'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
