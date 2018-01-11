@@ -1,11 +1,10 @@
 @media (min-width: 1025px) {
 #background{
-    z-index: -1;
     top: 0%;
     height: 100%;
     left: 0%;
     width: 100%;
-    position: fixed;
+    position: absolute;
     background-repeat: no-repeat;
     background-image: url('/src/images/home_page.jpeg');
 }

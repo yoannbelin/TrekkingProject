@@ -166,4 +166,8 @@ footer {
     margin-top: 3em;
     padding-top: 4em;
     padding-bottom: 5em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

@@ -1229,6 +1229,7 @@ body {
 /* line 325, ../bower_components/foundation/scss/foundation/components/_global.scss */
 
 body {
+    min-height: 100vh;
     background: #fbfdfe;
     color: #333d41;
     padding: 0;
