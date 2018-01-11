@@ -12,33 +12,50 @@ class PhotoModel {
         this.row.id_photo = val;
     }
 
-    get name() {
-        return this.row.name;
+    get private() {
+        return this.row.private;
     }
-    set name(val) {
-        this.row.name = val;
+    set private(val) {
+        this.row.private = val;
     }
 
-    get num() {
-        return this.row.num;
+    get url() {
+        return this.row.url;
     }
-    set num(val) {
-        this.row.num = val;
+    set url(val) {
+        this.row.url = val;
+    }
+
+    get title() {
+        return this.row.title;
+    }
+    set title(val) {
+        this.row.title = val;
+    }
+
+    get date_photo() {
+        return this.row.date_photo;
+    }
+    set date_photo(val) {
+        this.row.date_photo = val;
     }
 
     //== conversion "automatique" dans le controlleur, Cf. ##1
     toJSON() {
         return {
             id: this.id,
-            name: this.name,
-            num: this.num
+            url: this.url,
+            title: this.title,
+            date_photo: this.date_photo,
+            private: this.private
         };
     }
 
     isValid() {
-        return !(isNaN(this.num) ||
-            this.name === '' ||
-            this.name === undefined);
+        return !(this.url === '' ||
+            this.url === undefined ||
+            this.title === '' ||
+            this.title === undefined);
     }
 }
 module.exports = PhotoModel

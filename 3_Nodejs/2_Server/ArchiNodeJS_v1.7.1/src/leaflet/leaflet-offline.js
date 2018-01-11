@@ -300,11 +300,18 @@
             var currentZoom = this._map.getZoom();
             var latlngBounds = this._map.getBounds();
 
-            if (currentZoom <= this.options.minZoom) {
+            if (currentZoom < this.options.minZoom) {
                 self._baseLayer.fire('offline:below-min-zoom-error');
 
                 return;
             }
+
+            if (currentZoom > this.options.maxZoom) {
+                self._baseLayer.fire('offline:higher-max-zoom-error');
+
+                return;
+            }
+
 
             for (var zoom = currentZoom; zoom <= this.options.maxZoom; zoom++) {
                 zoomLevels.push(zoom);

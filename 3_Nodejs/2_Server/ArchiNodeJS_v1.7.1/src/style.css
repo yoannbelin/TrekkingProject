@@ -75,6 +75,11 @@ User_profil
     /* background: yellow; */
 }
 
+.trek_datas {
+    margin-top: auto;
+    margin-left: 120px;
+}
+
 .field {
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-size: 1.5rem;
@@ -185,6 +190,10 @@ table {
     visibility: hidden;
 }
 
+.detail a {
+    color: white;
+}
+
 .newtrek {
     margin: auto;
     display: flex;
@@ -204,6 +213,39 @@ table {
     display: flex;
     flex-direction: row;
     visibility: hidden;
+    /* visibility: hidden; */
+}
+
+.update {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    /* visibility: hidden; */
+}
+
+.delete {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    /* visibility: hidden; */
+}
+
+.saveupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    /* visibility: hidden; */
+}
+
+.cancelupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    /* visibility: hidden; */
+}
+
+.Bandeau {
+    position: fixed;
 }
 
 .lined-list:nth-child(1) {
@@ -302,7 +344,7 @@ Spacing Adjustments
 
 #trek {
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 
@@ -942,7 +984,7 @@ article .caption,
     float: left;
     margin-left: 0;
     margin-right: 1.5em;
-    vertical-align: top !important;
+    /* vertical-align: top !important; */
 }
 
 
@@ -1229,6 +1271,7 @@ body {
 /* line 325, ../bower_components/foundation/scss/foundation/components/_global.scss */
 
 body {
+    height: 100%;
     background: #fbfdfe;
     color: #333d41;
     padding: 0;
@@ -3047,7 +3090,6 @@ label.error {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
-    max-width: 70.5625rem;
     *zoom: 1;
 }
 
