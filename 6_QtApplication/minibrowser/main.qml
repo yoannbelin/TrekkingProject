@@ -150,51 +150,43 @@ ApplicationWindow {
         }
     }
 
-    Item {
+    PositionSource{
         id: gpsPosition
-        property variant coordinate: QtPositioning.coordinate(-27.5, 153.1)
-    }
+        updateInterval: 3000
+        active: true
 
+        onPositionChanged: {
+            var coord = gpsPosition.position.coordinate
+        }
+    }
 
 
     Rectangle{
         id: menuContainer
-        width: 100
+        width: 200
         height: parent.height
         border.color: 'black'
-
 
 
         Column{
 
             Text{
-                text: "lat: " + gpsPosition.coordinate.latitude + " ; lng: " + gpsPosition.coordinate.longitude
+                text: "lat: " + gpsPosition.position.coordinate.latitude + " ; lng: " + gpsPosition.position.coordinate.longitude
             }
 
-            Button{
-                text: "Get coordinates"
-                onClicked: {
-                    gpsPosition.coordinate
-                }
-            }
         }
-
     }
-
-
 
     WebView {
         id: webView
-        //        anchors.fill: parent
         width: parent.width - menuContainer.width
-        height: parent.height
-        x: 100
+        height: parent.height - 200
+        x: 200
+        y: 200
         url: initialUrl
         onLoadingChanged: {
             if (loadRequest.errorString)
                 console.error(loadRequest.errorString);
         }
     }
-
-
 }

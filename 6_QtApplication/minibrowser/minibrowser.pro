@@ -1,7 +1,8 @@
 TEMPLATE = app
 TARGET = minibrowser
 
-QT += qml quick webview
+QT += qml quick webview \
+    positioning core widgets
 
 SOURCES += main.cpp \
     mycontext.cpp \

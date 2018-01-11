@@ -4,8 +4,8 @@
 #include <QObject>
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
-//#include "Trekking.h"
 #include "utils.h"
+
 
 // Faut peut-etre appeler la classe Utils une fois
 
@@ -19,8 +19,8 @@ class MyContext : public QObject
     Q_PROPERTY(QList<QObject*> listOfElem READ getListOfElem WRITE setListOfElem NOTIFY listOfElemChanged)
 */
 
-    QQmlContext* m_myContext;
 
+    QQmlContext* m_myContext;
 
 public:
 
@@ -48,6 +48,8 @@ public:
     }
     */
 
+
+
 signals:
 
     /*
@@ -55,6 +57,7 @@ signals:
 
     void listOfElemChanged(QList<QObject*> listOfElem);
     */
+
 
 public slots:
 
