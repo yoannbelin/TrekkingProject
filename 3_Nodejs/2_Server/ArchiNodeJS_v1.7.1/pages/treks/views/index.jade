@@ -3,75 +3,73 @@ extends layout
 block content
   h1#trek map
     
-  head
-      title 
-      .Bandeau
-      section.small-12.medium-12.large-12.columns
-          img(src='src/View_from_connors_hill_panorama.jpg', style='margin-bottom: 5px')
-          section.section
-            .top-border
-            .row
-                .small-12.medium-12.large-12.small-centered.columns
-                nav#nav
-                  div
-                    ul.inline-list-custom
-                      li
-                        a(href='/profil') Profil
-                      li
-                        a(href='/galerie') Galerie Photos
-                      li
-                        a(href='/PoI') Galerie Points d'intêret
-            div#containerMessageToUser
-              p#messageToUser
-          body
-            #conteneur_carte
-              .block1_infos
+ 
+  .Bandeau
+  section.small-12.medium-12.large-12.columns
+      img(src='src/View_from_connors_hill_panorama.jpg', style='margin-bottom: 5px')
+      section.section
+        .top-border
+        .row
+            .small-12.medium-12.large-12.small-centered.columns
+            nav#nav
+              div
+                ul.inline-list-custom
+                  li
+                    a(href='/profil') Profil
+                  li
+                    a(href='/galerie') Galerie Photos
+                  li
+                    a(href='/PoI') Galerie Points d'intêret
+        div#containerMessageToUser
+          p#messageToUser
+        #conteneur_carte
+          .block1_infos
 
-                table#idTableau(style='width:100%')
-                  tr
-                    td Nom du trek
-                    td Distance du trek
-                    td Temps estimé
-                    td Difficulté    
-                  tr
-                    td#difficulte(name="difficulter")
-                    td#temps(name='temps')
-                    td#distance(name='distance')
-                    td#nom(name='nom')                  
+            table#idTableau(style='width:100%')
+              tr
+                td Nom du trek
+                td Distance du trek
+                td Temps estimé
+                td Difficulté    
+              tr
+                td#difficulte(name="difficulter")
+                td#temps(name='temps')
+                td#distance(name='distance')
+                td#nom(name='nom')                  
 
-                a(href="")
-                #buttons
-                  .newtrek  
-                    button#newtrek(onclick='LoadTreksManager.createNewTrek()') Créer nouveau trek
-                  .detail
-                    button#detail(type="button") Détails trek                
-                  .save
-                    button#btnAdd(onclick='LoadTreksManager.addTrek()') Sauvegarder
-                table#coordonnees(style='width:100%')
-                table#length(style='width:100%')
-                  
-              .block2_maps
-                div.map(onload="CartoManager.init()")
-                   #map(style='height : 625px' )
-                   div
-                    #progressBar
-                      #progress 
-                      p / 
-                      #total
-                   div#loader_section
-                                       
-              .block3_buttons
-                select#idCombo(onchange="LoadTreksManager.infoTrek(idCombo.selectedIndex - 1)")
-                #buttons
-                  .raz
-                      button#raz(onclick="LoadTreksManager.resetPage()") Reset
+            a(href="")
+            #buttons
+              .newtrek  
+                button#newtrek(onclick='LoadTreksManager.createNewTrek()') Créer nouveau trek
+              .detail
+                button#detail(type="button") Détails trek                
+              .save
+                button#btnAdd(onclick='LoadTreksManager.addTrek()') Sauvegarder
+            table#coordonnees(style='width:100%')
+            table#length(style='width:100%')
+              
+          .block2_maps
+            div.map(onload="CartoManager.init()")
+                #map(style='height : 625px' )
+                div
+                #progressBar
+                  #progress 
+                  p / 
+                  #total
+                div#loader_section
+                                    
+          .block3_buttons
+            select#idCombo(onchange="LoadTreksManager.infoTrek(idCombo.selectedIndex - 1)")
+            #buttons
+              .raz
+                  button#raz(onclick="LoadTreksManager.resetPage()") Reset
 
-          .row
-            .small-12.medium-12.large-12.columns
-              p.back-to-top-holder
-                a.back-to-top
-                  a(href='#')
-                      i.fa.fa-chevron-circle-up.fa-3x
+      .row
+        .small-12.medium-12.large-12.columns
+          p.back-to-top-holder
+            a.back-to-top
+              a(href='#')
+                  i.fa.fa-chevron-circle-up.fa-3x
 
   script(src="/src/ajax.js")
   script(src="/src/loadTreks.js")
@@ -79,8 +77,10 @@ block content
   script(src='/src/leaflet/leaflet.js')
   script(src='/src/leaflet/leaflet.draw.js')
   script(src='/src/leaflet/leaflet-plugins-master/layer/vector/KML.js')
-  script(src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js')
+  script(src="/src/leaflet/leaflet-omnivore.min.js")
   script(src='/src/leaflet/leaflet-offline.js')
   script(src='/src/leaflet/L.Control.Zoominfo.js')
-  script(src='https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.js')
+
+  script(src='/src/localforage.min.js')
+  
   script(src='/src/carto.js')
