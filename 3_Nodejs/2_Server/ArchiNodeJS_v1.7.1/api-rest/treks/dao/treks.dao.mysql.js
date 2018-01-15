@@ -65,7 +65,8 @@ class TreksDAO {
 
     static find(id, cb) {
         let script = 'SELECT * FROM trek '
-        script += 'JOIN photo ON trek.id_trek = photo.id_Trek AND trek.id_Trek = ? '
+        script += 'LEFT JOIN photo ON trek.id_trek = photo.id_Trek '
+        script += 'WHERE trek.id_trek = ? '
         script += 'ORDER BY photo.date_photo '
 
         db.query(script, [id], (err, rows) => {
@@ -76,10 +77,9 @@ class TreksDAO {
                 var photos = [];
 
                 while (i < rows.length) {
+                    console.log(rows[i]);
 
                     var photo = new PhotoModel(rows[i]);
-
-
                     photos.push(photo);
                     i++;
                 }
