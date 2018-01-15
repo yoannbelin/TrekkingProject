@@ -59,7 +59,8 @@ ApplicationWindow {
     height: 1024
     title: webView.title
 
-    toolBar: ToolBar {
+    toolBar: MyToolBar{}
+    /*ToolBar {
         id: navigationBar
         RowLayout {
             anchors.fill: parent
@@ -140,15 +141,16 @@ ApplicationWindow {
             Item { Layout.preferredWidth: 10 }
         }
     }
+    */
 
-    statusBar: StatusBar {
-        id: statusBar
-        visible: showProgress
-        RowLayout {
-            anchors.fill: parent
-            Label { text: webView.loadProgress == 100 ? qsTr("Done") : qsTr("Loading: ") + webView.loadProgress + "%" }
-        }
-    }
+    //    statusBar: StatusBar {
+    //        id: statusBar
+    //        visible: showProgress
+    //        RowLayout {
+    //            anchors.fill: parent
+    //            Label { text: webView.loadProgress == 100 ? qsTr("Done") : qsTr("Loading: ") + webView.loadProgress + "%" }
+    //        }
+    //    }
 
     PositionSource{
         id: gpsPosition
@@ -177,16 +179,20 @@ ApplicationWindow {
         }
     }
 
-    WebView {
-        id: webView
-        width: parent.width - menuContainer.width
-        height: parent.height - 200
-        x: 200
-        y: 200
-        url: initialUrl
-        onLoadingChanged: {
-            if (loadRequest.errorString)
-                console.error(loadRequest.errorString);
-        }
+    WebPage{
+        id: webPage
+        visible: true
     }
+
+    TrekTracker{
+        id: trekPage
+        visible: false
+    }
+
+    CurrentTrekPage{
+        id: currentTrekPage
+    }
+
+
+
 }
