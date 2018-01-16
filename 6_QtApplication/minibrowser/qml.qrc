@@ -17,5 +17,8 @@
         <file>TrekTracker.qml</file>
         <file>CurrentTrekPage.qml</file>
         <file>UploadPage.qml</file>
+        <file>PhotoPage.qml</file>
+        <file>images/camera_icon.png</file>
+        <file>MyButton.qml</file>
     </qresource>
 </RCC>

@@ -20,8 +20,6 @@ ToolBar {
             onClicked: {
                 JSC.call_window(webPage)
             }
-
-            enabled: webView.canGoBack
             Layout.preferredWidth: parent.height
             style: ButtonStyle {
                 background: Rectangle { color: "transparent" }
@@ -36,7 +34,6 @@ ToolBar {
                 JSC.call_window(trekPage)
             }
 
-            enabled: webView.canGoForward
             Layout.preferredWidth: parent.height
             style: ButtonStyle {
                 background: Rectangle { color: "transparent" }
@@ -51,7 +48,20 @@ ToolBar {
                 JSC.call_window(currentTrekPage)
             }
 
-            enabled: webView.canGoForward
+            Layout.preferredWidth: parent.height
+            style: ButtonStyle {
+                background: Rectangle { color: "transparent" }
+            }
+        }
+
+        ToolButton {
+            id: photoPageButton
+            tooltip: qsTr("Photo Page")
+            iconSource: "images/camera_icon.png"
+            onClicked:{
+                JSC.call_window(photoPage)
+            }
+
             Layout.preferredWidth: parent.height
             style: ButtonStyle {
                 background: Rectangle { color: "transparent" }
@@ -66,7 +76,6 @@ ToolBar {
                 JSC.call_window(uploadPage)
             }
 
-            enabled: webView.canGoForward
             Layout.preferredWidth: parent.height
             style: ButtonStyle {
                 background: Rectangle { color: "transparent" }

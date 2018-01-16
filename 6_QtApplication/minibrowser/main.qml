@@ -49,9 +49,9 @@ import QtPositioning 5.8
 
 
 ApplicationWindow {
-    property bool showProgress: webView.loading
-                                && Qt.platform.os !== "ios"
-                                && Qt.platform.os !== "winrt"
+//    property bool showProgress: webView.loading
+//                                && Qt.platform.os !== "ios"
+//                                && Qt.platform.os !== "winrt"
     visible: true
     x: 20
     y: 20
@@ -143,14 +143,12 @@ ApplicationWindow {
     }
     */
 
-    //    statusBar: StatusBar {
-    //        id: statusBar
-    //        visible: showProgress
-    //        RowLayout {
-    //            anchors.fill: parent
-    //            Label { text: webView.loadProgress == 100 ? qsTr("Done") : qsTr("Loading: ") + webView.loadProgress + "%" }
-    //        }
-    //    }
+
+    /// This Status Bar is temporary
+        statusBar: StatusBar {
+            id: statusBar
+            Label {text: "lat: " + gpsPosition.position.coordinate.latitude + " ; lng: " + gpsPosition.position.coordinate.longitude}
+        }
 
     PositionSource{
         id: gpsPosition
@@ -164,26 +162,10 @@ ApplicationWindow {
 
 
     Rectangle{
-        id: menuContainer
-        width: 200
-        height: parent.height
-        border.color: 'black'
 
-
-        Column{
-
-            Text{
-                text: "lat: " + gpsPosition.position.coordinate.latitude + " ; lng: " + gpsPosition.position.coordinate.longitude
-            }
-
-        }
-    }
-    Rectangle{
-
-        width: parent.width - menuContainer.width
+        width: parent.width
         height: parent.height
 
-        x: menuContainer.width
 
         WebPage{
             id: webPage
@@ -197,6 +179,11 @@ ApplicationWindow {
 
         CurrentTrekPage{
             id: currentTrekPage
+            visible: false
+        }
+
+        PhotoPage{
+            id: photoPage
             visible: false
         }
 

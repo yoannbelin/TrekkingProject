@@ -50,6 +50,14 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
 
 }
 
+void MyContext::updateTrek(QString actionType, const float &latitude, const float &longitude, const float &altitude)
+{
+    if ( actionType == "new Gps Point sent" )
+    {
+        m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude, altitude));
+    }
+}
+
 
 QString MyContext::truncateUrl(const QString &url)
 {
