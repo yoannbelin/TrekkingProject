@@ -44,7 +44,7 @@ float GpsPoint::roundFloat(const float &number)
     roundedNumber = round(roundedNumber * 10000) /10000;
     if( number - roundedNumber > 0)
     {
-        roundedNumber += 0.00005;
+        roundedNumber = roundedNumber + 0.00005;
     }
 
     return roundedNumber;
