@@ -4,7 +4,6 @@ import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
-import QtPositioning 5.8
 
 WebView {
     anchors.fill: parent

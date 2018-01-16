@@ -16,5 +16,6 @@
         <file>WebPage.qml</file>
         <file>TrekTracker.qml</file>
         <file>CurrentTrekPage.qml</file>
+        <file>UploadPage.qml</file>
     </qresource>
 </RCC>

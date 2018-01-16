@@ -57,7 +57,7 @@ ApplicationWindow {
     y: 20
     width: 1280
     height: 1024
-    title: webView.title
+    title: "yepyep"
 
     toolBar: MyToolBar{}
     /*ToolBar {
@@ -178,21 +178,33 @@ ApplicationWindow {
 
         }
     }
+    Rectangle{
 
-    WebPage{
-        id: webPage
-        visible: true
+        width: parent.width - menuContainer.width
+        height: parent.height
+
+        x: menuContainer.width
+
+        WebPage{
+            id: webPage
+            visible: true
+        }
+
+        TrekTracker{
+            id: trekPage
+            visible: false
+        }
+
+        CurrentTrekPage{
+            id: currentTrekPage
+            visible: false
+        }
+
+        UploadPage{
+            id: uploadPage
+            visible: false
+        }
+
     }
-
-    TrekTracker{
-        id: trekPage
-        visible: false
-    }
-
-    CurrentTrekPage{
-        id: currentTrekPage
-    }
-
-
 
 }

@@ -6,6 +6,8 @@ import QtQuick.Controls.Styles 1.2
 
 import QtPositioning 5.8
 
+import "JSControl.js" as JSC
+
 ToolBar {
     RowLayout {
         anchors.fill: parent
@@ -16,7 +18,7 @@ ToolBar {
             tooltip: qsTr("Website")
             iconSource: "images/browser_icon.png"
             onClicked: {
-
+                JSC.call_window(webPage)
             }
 
             enabled: webView.canGoBack
@@ -31,7 +33,7 @@ ToolBar {
             tooltip: qsTr("Trek Page")
             iconSource: "images/trekking_icon.png"
             onClicked: {
-
+                JSC.call_window(trekPage)
             }
 
             enabled: webView.canGoForward
@@ -46,7 +48,7 @@ ToolBar {
             tooltip: qsTr("Path Page")
             iconSource: "images/current_trek_icon.png"
             onClicked: {
-
+                JSC.call_window(currentTrekPage)
             }
 
             enabled: webView.canGoForward
@@ -57,11 +59,11 @@ ToolBar {
         }
 
         ToolButton {
-            id: photoPageButton
-            tooltip: qsTr("Photo Page")
+            id: uploadPageButton
+            tooltip: qsTr("UpLoad Page")
             iconSource: "images/upload_icon.png"
             onClicked:{
-
+                JSC.call_window(uploadPage)
             }
 
             enabled: webView.canGoForward

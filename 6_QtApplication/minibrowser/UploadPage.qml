@@ -6,6 +6,6 @@ import QtQuick.Controls.Styles 1.2
 
 Item {
     Text{
-        text: "Current Trek Page"
+        text: "Upload Page"
     }
 }
