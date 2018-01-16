@@ -1,0 +1,20 @@
+.block_photos{
+    background-color: brown;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 5px 5px 0;
+}
+
+/* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+	padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+	top: 0;
+	bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+	padding: 0;
+}

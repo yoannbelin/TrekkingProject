@@ -33,6 +33,7 @@ module.exports.create = function(req, res) {
 // Read a photo
 //
 module.exports.read = function(req, res) {
+    console.log( "############################# 1 ")
     PhotosService.find(req.params.idPhoto, (err, photo) => { // à voir pour utiliser le middleware photoByID
         res.json(photo); // photo est du type PhotoModel, pas besoin d'écrire toJSON  ##1
     });
@@ -77,6 +78,7 @@ module.exports.delete = function(req, res) {
 // List of photos
 //
 module.exports.list = function(req, res) {
+    
     PhotosService.list((err, photos) => {
 
         res.json(photos); // cast with toJSON

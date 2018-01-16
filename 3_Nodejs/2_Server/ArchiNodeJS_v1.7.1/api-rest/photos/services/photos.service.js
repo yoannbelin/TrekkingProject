@@ -4,7 +4,7 @@
 //=========================================================================
 
 let PhotosDAO = require('../dao/photos.dao.mysql');
-let TrekDAO = require('./../dao/photos.dao.mysql') // pour info
+let PhotoDAO = require('./../dao/photos.dao.mysql') // pour info
 
 class PhotosService {
     static create(photo, cb) {
@@ -29,7 +29,6 @@ class PhotosService {
 
     static list(cb) {
         console.log("service called");
-
         return PhotosDAO.list(cb);
     }
 }

@@ -1,3 +1,5 @@
+console.log(2);
+
 var LoadTreksManager = {
 
     selfTreks: undefined,
@@ -19,6 +21,9 @@ var LoadTreksManager = {
         //     html += "<option data-id= " + option.id + ">" + option.label + "</option>";
         // })
         // document.getElementById("idCombo").innerHTML = html;
+
+console.log(selfTreks._treks.length);
+
         var html = "";
         html += "<option disabled selected>" + "Selectionner votre trek" + "</option>";
         html += "<optgroup label=\'Randonnées Officielles\'>"

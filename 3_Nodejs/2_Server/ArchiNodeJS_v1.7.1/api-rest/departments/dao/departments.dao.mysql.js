@@ -39,7 +39,6 @@ class DepartmentsDAO {
     }
 
     static list(cb) {
-        console.log("yo");
         db.query('SELECT * FROM department', (err, rows) => {
             rows = rows || [];
             cb(err, rows.map((row) => {

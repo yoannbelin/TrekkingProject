@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 test
+    h2 #{photo.title}
+    h2 #{photo.id}
+    h2 #{photo.date_photo}
+    img(src=photo.url)
+
+    script(src="/src/ajax.js")
+    script(src="/src/loadPhotos.js")

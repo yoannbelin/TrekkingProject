@@ -3,13 +3,9 @@ var router = express.Router();
 var photos = require('../controllers/photos.controller');
 
 router.route('/')
-    .get(photos.list)
-    .post(photos.create);
+    .get(photos.index);
 
 router.route('/:idPhoto')
-    .get(photos.read)
-    .put(photos.update)
-    .delete(photos.delete);
+    .get(photos.show);
 
-//router.param(':idPhoto', photoByID);    
 module.exports = router;

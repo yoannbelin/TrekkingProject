@@ -6,6 +6,7 @@
 //=========================================================================
 
 let db = require(__base + '/config/db')
+let UserModel = require('../../users/models/user.model');
 let PhotoModel = require('../models/photo.model');
 
 class PhotosDAO {
@@ -20,7 +21,7 @@ class PhotosDAO {
         db.query(script, [photo.name, photo.num], (err, result) => {
             photo.id = result.insertId;
             if (result) {
-                console.log('mesage inséré : !!' + result.insertId);
+                console.log('message inséré : !!' + result.insertId);
             } else { console.log("erreur à l insertion : " + err) }
             cb(err, photo);
         });
@@ -39,18 +40,29 @@ class PhotosDAO {
     }
 
     static list(cb) {
-        console.log("yo");
-        db.query('SELECT * FROM photo', (err, rows) => {
+
+        let script = 'SELECT * FROM photo '
+        script += 'JOIN user ON photo.id_user = user.id_user '
+        script += 'WHERE user.id_user = ? '
+        script += 'ORDER BY photo.date_photo '
+
+        console.log('script = ' + script);
+
+        db.query(script, [3], (err, rows) => {
             rows = rows || [];
             cb(err, rows.map((row) => {
+                console.log('#' + row);
                 return new PhotoModel(row)
             }));
         });
     }
 
     static find(id, cb) {
-        let script = 'SELECT photo.id_photo, photo.name, photo.num'
-        script += 'FROM photo '
+
+        console.log(id);
+
+        let script = 'SELECT * FROM photo '
+        script += 'WHERE id_photo = ?'
 
         db.query(script, [id], (err, rows) => {
 
@@ -60,7 +72,7 @@ class PhotosDAO {
 
                 cb(err, currentPhoto);
             } else {
-                cb('Aucun photo ne correspond à votre requète !')
+                cb('Aucune photo ne correspond à votre requète !')
             }
         });
     }

@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    div#galerie
+        h1 Galerie
+        h2 Photos
+    section.small-12.medium-12.large-12.columns
+        section.section
+            .top-border
+            .row
+                .small-12.medium-12.large-12.small-centered.columns
+                nav#nav
+                    div
+                        ul.inline-list-custom
+                            li
+                                a(href='/users') Profil
+                            li
+                                a.current(href='/photos') Galerie Photos
+                            li
+                                a(href='/PoI') Galerie Points d'intêret
+    
+
+        .block_photos
+            #photos
+    
+    
+    script.
+        console.log("Aya")  
+    script(src="/src/ajax.js")
+    script(src="/src/loadPhotos.js")
+    
+    script(src='/src/jquery.min.js')
+    script(src='/src/foundation.min.js')
+    script(src='/src/hawthorne.js')
+
