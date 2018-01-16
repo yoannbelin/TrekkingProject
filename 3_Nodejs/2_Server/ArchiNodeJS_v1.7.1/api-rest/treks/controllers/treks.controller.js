@@ -44,11 +44,11 @@ module.exports.read = function(req, res) {
 module.exports.update = function(req, res) {
     let trekModel = new TrekModel(req.body);
     console.log(trekModel);
-    
+
     if (!trekModel.isValid()) {
         return res.status(500).json({ 'error': 'Failed to update trek, missing fields !' });
     }
-
+    console.log("Trek Updated");
     trekModel.id = req.params.idTrek;
 
     TreksService.update(trekModel, (err, trek) => {
@@ -70,6 +70,7 @@ module.exports.delete = function(req, res) {
         } else {
             res.json({ 'success': 'Trek deleted !', 'trek': trek });
         }
+        console.log("Trek Deleted");
     });
 }
 

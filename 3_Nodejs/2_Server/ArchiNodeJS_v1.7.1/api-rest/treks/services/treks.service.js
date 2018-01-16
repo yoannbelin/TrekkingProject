@@ -3,11 +3,10 @@
 // et les rendre au controller.
 //=========================================================================
 
-let TreksDAO  = require('../dao/treks.dao.mysql');
+let TreksDAO = require('../dao/treks.dao.mysql');
 let TrekDAO = require('./../dao/treks.dao.mysql') // pour info
 
-class TreksService
-{
+class TreksService {
     static create(trek, cb) {
         TreksDAO.create(trek, cb);
     }
@@ -18,16 +17,16 @@ class TreksService
 
     static delete(id, cb) {
         return TreksDAO.delete(id, (err, trek) => {
-          cb(err, trek);
+            cb(err, id);
         });
     }
 
     static find(id, cb) {
         return TreksDAO.find(id, (err, trek) => {
-          cb(err, trek);
+            cb(err, trek);
         });
     }
-    
+
     static list(cb) {
         return TreksDAO.list(cb);
     }

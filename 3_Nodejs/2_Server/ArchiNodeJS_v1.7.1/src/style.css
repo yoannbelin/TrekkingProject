@@ -215,35 +215,35 @@ table {
     display: flex;
     flex-direction: row;
     visibility: hidden;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .update {
     margin: auto;
     display: flex;
     flex-direction: row;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .delete {
     margin: auto;
     display: flex;
     flex-direction: row;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .saveupdate {
     margin: auto;
     display: flex;
     flex-direction: row;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .cancelupdate {
     margin: auto;
     display: flex;
     flex-direction: row;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 .Bandeau {

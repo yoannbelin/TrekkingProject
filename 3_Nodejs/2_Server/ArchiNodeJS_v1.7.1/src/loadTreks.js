@@ -11,19 +11,10 @@ var LoadTreksManager = {
         selfTreks.loadTreks();
     },
 
-    //
-    // Build combobox
-    //
+    /**
+     * Build combobox
+     */
     buildCombo: function() {
-        // var html = "";
-        // html += "<option disabled selected>" + "Selectionner votre trek" + "</option>"
-        // this._treks.forEach((option) => {
-        //     html += "<option data-id= " + option.id + ">" + option.label + "</option>";
-        // })
-        // document.getElementById("idCombo").innerHTML = html;
-
-console.log(selfTreks._treks.length);
-
         var html = "";
         html += "<option disabled selected>" + "Selectionner votre trek" + "</option>";
         html += "<optgroup label=\'Randonnées Officielles\'>"
@@ -44,9 +35,9 @@ console.log(selfTreks._treks.length);
         document.getElementById("idCombo").innerHTML = html;
     },
 
-    //
-    //Show trek's characteritics
-    //
+    /**
+     * Show trek's characteristics
+     */
     infoTrek: function(i) {
         this.show_btn('.newtrek');
         this.show_btn('.reset');
@@ -71,9 +62,9 @@ console.log(selfTreks._treks.length);
         CartoManager.drawTrek(datas);
     },
 
-    //
-    // Add trek by drawing with Leaflet and input html
-    //
+    /**
+     * Add trek by drawing with Leaflet and input html
+     */
     createNewTrek: function() {
 
         CartoManager.addDrawTools();
@@ -101,9 +92,9 @@ console.log(selfTreks._treks.length);
         selfTreks.hide_btn('.newtrek');
     },
 
-    //
-    // Load trek list in combobox
-    //
+    /**
+     * Load trek list in combobox
+     */
     loadTreks: function() {
 
         $http.get('/api-rest/treks', function(res) {
@@ -113,11 +104,15 @@ console.log(selfTreks._treks.length);
             selfTreks.show_btn('.newtrek');
         }, 'json');
         selfTreks.show_btn('.update');
+        document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#lengthDiv").style.display = (window.getComputedStyle(document.querySelector('#lengthDiv')).display == 'none') ? "block" : "none";
+        document.querySelector("#timeDiv").style.display = (window.getComputedStyle(document.querySelector('#timeDiv')).display == 'none') ? "block" : "none";
     },
 
-    //
-    // Add trek
-    //
+    /**
+     * Add trek
+     */
     addTrek: function() {
         selfTreks.hide_btn('.save');
         selfTreks.show_btn('.newtrek');
@@ -143,60 +138,73 @@ console.log(selfTreks._treks.length);
     },
 
     /**
-     * Affiche details trek
+     * Show Trek's Information
      */
     showTrek: function(i) {
-        console.log(selfTreks._treks[i].id);
         window.location.href = 'treks/' + selfTreks._treks[i].id;
     },
 
     /**
-     * Mise à jour du Trek
+     * Open the update input for the trek
      */
     updateTrek: function() {
         document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
         document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
         selfTreks.hide_btn('.update');
         selfTreks.show_btn('.delete');
-        selfTreks.show_btn('.saveUpdate');
+        selfTreks.show_btn('.saveupdate');
         selfTreks.show_btn('.cancelupdate');
-
     },
 
     /**
-     * Suppression du Trek
+     * Delete the trek
      */
-    deleteTrek: function() {
+    deleteTrek: function(i) {
+        alert("trek supprimé \nredirection vers page 'Map'");
+        $http.delete('/api-rest/treks/' + i, function() {});
         window.location.href = '/treks';
     },
 
     /**
-     * Sauvegarder les modification du Trek
+     * Save the changes for the trek
      */
-    saveUpdate: function() {
+    saveUpdate: function(i) {
         document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
         document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
         selfTreks.show_btn('.update');
         selfTreks.hide_btn('.delete');
-        selfTreks.hide_btn('.saveUpdate');
+        selfTreks.hide_btn('.saveupdate');
         selfTreks.hide_btn('.cancelupdate');
+
+        var input = {
+            'label': document.getElementById('label').value,
+            'length': document.getElementById('length').value,
+            'time': document.getElementById('time').value,
+            'level': document.getElementById('level').value
+        };
+
+        $http.update('/api-rest/treks/' + i, input, function(res) {
+            _treks[i] = res.trek;
+        }, 'json');
+        window.location.href = i;
     },
 
     /**
-     * Annuler les modification du Trek
+     * Discard the changes for the trek
      */
-    cancelupdate: function() {
+    cancelupdate: function(i) {
         document.querySelector("#labelDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
         document.querySelector("#difficulteDiv").style.display = (window.getComputedStyle(document.querySelector('#difficulteDiv')).display == 'none') ? "block" : "none";
         selfTreks.show_btn('.update');
         selfTreks.hide_btn('.delete');
-        selfTreks.hide_btn('.saveUpdate');
+        selfTreks.hide_btn('.saveupdate');
         selfTreks.hide_btn('.cancelupdate');
+        window.location.href = i;
     },
 
-    //
-    // Hide / Show drawing buttons
-    //
+    /**
+     * Hide / Show drawing buttons
+     */
     hide_btn: function(id) {
         if (document.querySelector(id).style.visibility === "visible") {
             document.querySelector(id).style.visibility = "";
@@ -209,9 +217,9 @@ console.log(selfTreks._treks.length);
         }
     },
 
-    //
-    // Reset Page
-    //
+    /**
+     * Reset Page
+     */
     resetPage: function() {
         window.location.reload();
     }

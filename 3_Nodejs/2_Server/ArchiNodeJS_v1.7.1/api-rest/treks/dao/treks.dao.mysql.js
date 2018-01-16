@@ -33,13 +33,17 @@ class TreksDAO {
     }
 
     static update(trek, cb) {
-        db.query('UPDATE trek SET name = ?, num = ?, WHERE id_trek = ?', [trek.name, trek.num, trek.id], (err) => {
+        let id = trek.id;
+        let script = 'UPDATE trek SET label = ?, length = ?, time = ?, level = ? '
+        script += 'WHERE id_trek = ' + id + ';'
+
+        db.query(script, [trek.label, trek.length, trek.time, trek.level], (err) => {
             cb(err, trek);
         });
     }
 
     static delete(id, cb) {
-        db.query('DELETE FROM trek WHERE id_trek = ?', [id], (err) => {
+        db.query('CALL del_trek(?, ?)', [3, id], (err) => { // Modifier 3 par params de session user
             cb(err);
         });
     }
@@ -53,7 +57,7 @@ class TreksDAO {
         script += 'SELECT trek.id_trek, trek.label, trek.length, trek.time, trek.level, trek.pathway, trek.official FROM trek '
         script += 'JOIN user_do_trek ON trek.id_Trek = user_do_trek.id_Trek '
         script += 'JOIN user ON user_do_trek.id_User = user.id_User '
-        script += 'WHERE user.id_User = 3 ' //a modifier en variable de session
+        script += 'WHERE user.id_User = 3 ' //a modifier en variable de session user
 
         db.query(script, (err, rows) => {
             rows = rows || [];
@@ -64,7 +68,7 @@ class TreksDAO {
     }
 
     static find(id, cb) {
-        let script = 'SELECT * FROM trek '
+        let script = 'SELECT trek.id_trek AS id_trek, trek.label, trek.length, trek.time, trek.`level`, photo.id_photo, photo.title, photo.url FROM trek '
         script += 'LEFT JOIN photo ON trek.id_trek = photo.id_Trek '
         script += 'WHERE trek.id_trek = ? '
         script += 'ORDER BY photo.date_photo '
@@ -77,7 +81,6 @@ class TreksDAO {
                 var photos = [];
 
                 while (i < rows.length) {
-                    console.log(rows[i]);
 
                     var photo = new PhotoModel(rows[i]);
                     photos.push(photo);
