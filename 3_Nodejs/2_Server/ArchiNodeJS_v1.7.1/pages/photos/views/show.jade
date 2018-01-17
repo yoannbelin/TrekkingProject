@@ -1,36 +1,48 @@
 extends layout
 
 block content
-
+  section.section
+      .top-border
+        .row
+        .large-12
+          nav#nav-under
+            div
+              ul.inline-list-custom
+                li
+                  a(href='/users') Profil
+                li
+                  a(href='/photos') Galerie Photos
+                li
+                  a(href='/PoI') Galerie Points d'intêret
+                  .top-border
+  h1 #{photo.title}
     .row
-      .small-12.medium-7.large-7.columns
-        h2 #{photo.title}
+      .small-12.medium-12.large-12.columns
           #container_details
             .photo_datas
               .field
-                label#nom Nom de la photo : #{trek.label}
-                  #labelDiv
+                  #urlDiv
+                    input#url(type="text", value=photo.url)
+                  #titleDiv
                     input#title(type='text', value=photo.title)
-                
-            .row
-              #buttons
-                .update  
-                    button#updatePhoto(onclick='LoadTreksManager.updatePhoto(#{photo.id})') Modifier Photo
-                  .delete
-                    button#deletPhoto(onclick='LoadTreksManager.deletePhoto(#{photo.id})') Supprimer Photo               
-                  .saveupdate
-                    button#saveUpdate(onclick='LoadTreksManager.saveUpdate(#{photo.id})') Sauvegarder modification
-                  .cancelupdate
-                    button#cancel(onclick='LoadTreksManager.cancelupdate(#{photo.id})') annuler modificattion
-
-    h1 test
-    h2 #{photo.title}
-    h2 #{photo.id}
-    h2 #{photo.date_photo}
-    img(src=photo.url)
-    #button
-        .update
-            button#updatePhoto(onclick='updatePhoto()') Modifier Photo
+                  #statusDiv
+                    input(type='radio', name="radio", value=0) 
+                    label Photo publique
+                    input(type='radio', name="radio", value=1) 
+                    label Photo privée
+                p#date #{photo.date_photo}
+                  #photoDiv
+                    img(src="#{photo.url}")
+          .row
+            #buttons
+              .update  
+                button#updatePhoto(onclick='updatePhoto()') Modifier Photo
+              .delete
+                button#deletPhoto(onclick='deletePhoto(#{photo.id})') Supprimer Photo               
+              .saveupdate
+                button#saveUpdate(onclick='saveUpdatePhoto(#{photo.id})') Sauvegarder modification
+              .cancelupdate
+                button#cancel(onclick='cancelupdate(#{photo.id})') annuler modificattion
 
     script(src="/src/ajax.js")
     script(src="/src/loadPhotos.js")

@@ -51,8 +51,12 @@ function loadPhotos() {
         console.log('## fonction load')
         _photos = res;
         buildTable();
-
+        
     }, 'json');
+    document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#titleDiv')).display == 'none') ? "block" : "none";
+    document.querySelector("#urlDiv").style.display = (window.getComputedStyle(document.querySelector('#url')).display == 'none') ? "block" : "none";
+    document.querySelector("#statusDiv").style.display = (window.getComputedStyle(document.querySelector('#statusDiv')).display == 'none') ? "block" : "none";
+    show_btn('.update');
     
 }
 
@@ -87,29 +91,56 @@ function delPhoto() {
 //
 // Update selected Photo
 //
-function saveUpdatePhoto() {
+function saveUpdatePhoto(i) {
+    //console.log(document.getElementById('status').value);
+    
+    var status;
+
+    var element = document.getElementsByName('radio');
+    for (var j=0 ; j < element.length ; j++) {
+        if (element[j].checked) {
+            status = parseInt(element[j].value) ;
+        }
+    }
+    console.log('##' + status);
 
     var input = {
-        'create_at': document.getElementById('create_at').value,
-        'content': document.getElementById('content').value
+        'url': document.getElementById('url').value,
+        'title': document.getElementById('title').value,
+        'private': status
     };
-    $http.update('/api-rest/photos/' + selectedPhoto.idPhoto, input, function(res) {
-        _photos[_photos.indexOf(selectedPhoto)] = res.photo;
-        buildTable();
+
+    $http.update('/api-rest/photos/' + i, input, function(res) {
+        console.log(input)
+        _photos[i] = res.photo;
     }, 'json');
+    window.location.href = i;
 }
 
 function updatePhoto() {
-    document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
-    hide_btn('.update');
+    document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#titleDiv')).display == 'none') ? "block" : "none";
+    document.querySelector("#statusDiv").style.display = (window.getComputedStyle(document.querySelector('#statusDiv')).display == 'none') ? "block" : "none";
     show_btn('.delete');
     show_btn('.saveupdate');
     show_btn('.cancelupdate');
+    hide_btn('.update');
 }
+
+/**
+     * Discard the changes for the photo
+     */
+function cancelupdate(i) {
+    document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#titleDiv')).display == 'none') ? "block" : "none";
+    show_btn('.update');
+    hide_btn('.delete');
+    hide_btn('.saveupdate');
+    hide_btn('.cancelupdate');
+    window.location.href = i;
+    }
 
 function hide_btn(id) {
     if (document.querySelector(id).style.visibility === "visible") {
-        document.querySelector(id).style.visibility = "";
+        document.querySelector(id).style.visibility = "hidden";
     }
 }
 

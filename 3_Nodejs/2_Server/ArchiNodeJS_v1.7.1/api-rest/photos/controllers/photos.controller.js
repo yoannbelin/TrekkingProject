@@ -44,16 +44,16 @@ module.exports.read = function(req, res) {
 //
 module.exports.update = function(req, res) {
     let photoModel = new PhotoModel(req.body);
-    console.log(photoModel);
-
+    
     if (!photoModel.isValid()) {
         return res.status(500).json({ 'error': 'Failed to update photo, missing fields !' });
     }
-
+    
     photoModel.id = req.params.idPhoto;
-
+    
     PhotosService.update(photoModel, (err, photo) => {
         if (err) {
+            console.log(photoModel);
             res.status(500).json({ 'error': 'Failed to update photo !' });
         } else {
             res.json({ 'success': 'Photo updated !', 'photo': photo });

@@ -28,7 +28,15 @@ class PhotosDAO {
     }
 
     static update(photo, cb) {
-        db.query('UPDATE photo SET name = ?, num = ?, WHERE id_photo = ?', [photo.name, photo.num, photo.id], (err) => {
+        console.log("!!!" + photo.id);
+        console.log("???" + JSON.stringify(photo));
+
+        let id = photo.id;
+
+        let script = 'UPDATE photo SET title = ?, url = ?, private = ? '
+        script += 'WHERE id_photo = ' + id + ';'
+
+        db.query(script, [photo.title, photo.url, photo.private], (err) => {
             cb(err, photo);
         });
     }
