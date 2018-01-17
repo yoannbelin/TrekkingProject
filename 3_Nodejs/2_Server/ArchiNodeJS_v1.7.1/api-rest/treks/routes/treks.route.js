@@ -11,5 +11,4 @@ router.route('/:idTrek')
     .put(treks.update)
     .delete(treks.delete);
 
-//router.param(':idTrek', trekByID);
 module.exports = router;

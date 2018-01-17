@@ -94,8 +94,6 @@ class TrekModel {
             this.label === undefined ||
             this.length === '' ||
             this.length === undefined
-            /*||
-                          this.length === isNaN */
         );
     }
 }
