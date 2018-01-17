@@ -5,8 +5,8 @@ Trek::Trek(QObject *parent) : QObject(parent)
     m_label = "trek_name";
     m_length = "1";
     m_time = "00:00:00";
-    //    m_path = [];
-    //    m_trace = [];
+    m_path = {new GpsPoint(4.26132146, 33.25421216)};
+    //  m_trace = [];
     m_level = "1";
     m_done = 1;
 
@@ -44,7 +44,8 @@ void Trek::addNewGpsPoint(GpsPoint newGpsPoint)
     if (moving || m_path.length() == 0)
     {
         m_path.push_back(new GpsPoint(newGpsPoint));
-        qDebug() << "Added Gps Point lat:" << m_path.back()->getLatitude() << ", lng:" << m_path.back()->getLongitude();
+        qDebug() << "Added Gps Point lat:" << qobject_cast<GpsPoint*>(m_path.back())->getLatitude() << ", lng:" << qobject_cast<GpsPoint*>(m_path.back())->getLongitude();
+
     }
 
     else
@@ -55,6 +56,6 @@ void Trek::addNewGpsPoint(GpsPoint newGpsPoint)
 
 bool Trek::didUserMove(GpsPoint &newGpsPoint)
 {
-    return newGpsPoint.userMoved(*m_path.back());
+    return newGpsPoint.userMoved(*qobject_cast<GpsPoint*>(m_path.back()));
 }
 

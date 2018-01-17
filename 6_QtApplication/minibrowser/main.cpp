@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     MyContext myContext;
 
     // Set le ctx
-    myContext.initMyContext( engine, ctx );
+    myContext.initMyContext( /*engine,*/ ctx );
 
     // Update le ctx
     myContext.loadMyContext();
