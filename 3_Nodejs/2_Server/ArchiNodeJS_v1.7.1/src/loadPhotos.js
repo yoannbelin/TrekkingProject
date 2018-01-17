@@ -87,7 +87,7 @@ function delPhoto() {
 //
 // Update selected Photo
 //
-function updatePhoto() {
+function saveUpdatePhoto() {
 
     var input = {
         'create_at': document.getElementById('create_at').value,
@@ -97,6 +97,26 @@ function updatePhoto() {
         _photos[_photos.indexOf(selectedPhoto)] = res.photo;
         buildTable();
     }, 'json');
+}
+
+function updatePhoto() {
+    document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#labelDiv')).display == 'none') ? "block" : "none";
+    hide_btn('.update');
+    show_btn('.delete');
+    show_btn('.saveupdate');
+    show_btn('.cancelupdate');
+}
+
+function hide_btn(id) {
+    if (document.querySelector(id).style.visibility === "visible") {
+        document.querySelector(id).style.visibility = "";
+    }
+}
+
+function show_btn(id) {
+    if (document.querySelector(id).style.visibility === "") {
+        document.querySelector(id).style.visibility = "visible";
+    }
 }
 
 

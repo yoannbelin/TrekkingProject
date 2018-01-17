@@ -1,3 +1,21 @@
+@media (min-width: 1025px) {
+
+header{
+    position: absolute;
+}
+
+body{
+    position: relative;
+}
+
+#button{
+    float: right;
+}
+
+.update{
+    visibility: visible;
+}
+
 .block_photos{
     background-color: brown;
     display: flex;
@@ -17,4 +35,6 @@
 /* padding for main container */
 .mfp-no-margins .mfp-container {
 	padding: 0;
+}
+
 }
