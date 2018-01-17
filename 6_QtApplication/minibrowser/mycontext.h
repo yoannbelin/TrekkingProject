@@ -4,7 +4,10 @@
 #include <QObject>
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
+#include <QDebug>
+
 #include "utils.h"
+#include "trek.h"
 
 
 // Faut peut-etre appeler la classe Utils une fois
@@ -14,16 +17,18 @@ class Utils;
 class MyContext : public QObject
 {
     Q_OBJECT
-/*
-    Q_PROPERTY(Trekking* myElem READ getMyElem WRITE setMyElem NOTIFY myElemChanged)
-    Q_PROPERTY(QList<QObject*> listOfElem READ getListOfElem WRITE setListOfElem NOTIFY listOfElemChanged)
-*/
-
+    /*
+        Q_PROPERTY(Trekking* myElem READ getMyElem WRITE setMyElem NOTIFY myElemChanged)
+        Q_PROPERTY(QList<QObject*> listOfElem READ getListOfElem WRITE setListOfElem NOTIFY listOfElemChanged)
+    */
+    Q_PROPERTY(Trek* myTrek READ getMyTrek WRITE setMyTrek NOTIFY myTrekChanged)
+//    Q_PROPERTY(GpsPoint nextGpsPoint READ getNextGpsPoint WRITE setNextGpsPoint NOTIFY nextGpsPointChanged)
 
     QQmlContext* m_myContext;
 
-public:
+    Trek * m_myTrek;
 
+public:
 
     explicit MyContext(QObject *parent = nullptr);
 
@@ -34,53 +39,32 @@ public:
     QString truncateUrl(const QString &url);
 
     Q_INVOKABLE void sendActionToCpp (QString nomAction, QString parameter = QString (""), QString parameter2 = QString ("") );
+    Q_INVOKABLE void updateTrek (QString actionType, float const &latitude, float const &longitude, float const &altitude = 0.0);
 
-    /*
-    Trekking* getMyElem() const
+
+    Trek * getMyTrek() const
     {
-        return m_myElem;
+        return m_myTrek;
     }
-
-
-    QList<QObject*> getListOfElem() const
-    {
-        return m_listOfElem;
-    }
-    */
-
-
 
 signals:
 
-    /*
-    void myElemChanged(Trekking* myElem);
 
-    void listOfElemChanged(QList<QObject*> listOfElem);
-    */
 
+    void myTrekChanged(Trek * myTrek);
 
 public slots:
 
-    /*
-    void setMyElem(Trekking* myElem)
-    {
-        if (m_myElem == myElem)
-            return;
 
-        m_myElem = myElem;
-        emit myElemChanged(m_myElem);
-    }
 
-    void setListOfElem(QList<QObject*> listOfElem)
-    {
-        if (m_listOfElem == listOfElem)
-            return;
+void setMyTrek(Trek * myTrek)
+{
+    if (m_myTrek == myTrek)
+        return;
 
-        m_listOfElem = listOfElem;
-        emit listOfElemChanged(m_listOfElem);
-    }
-    */
-
+    m_myTrek = myTrek;
+    emit myTrekChanged(m_myTrek);
+}
 };
 
 #endif // MYCONTEXT_H

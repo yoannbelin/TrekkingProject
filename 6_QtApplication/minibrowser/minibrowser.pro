@@ -6,7 +6,9 @@ QT += qml quick webview \
 
 SOURCES += main.cpp \
     mycontext.cpp \
-    utils.cpp
+    utils.cpp \
+    trek.cpp \
+    gpspoint.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,4 +22,6 @@ INSTALLS += target
 
 HEADERS += \
     mycontext.h \
-    utils.h
+    utils.h \
+    trek.h \
+    gpspoint.h
