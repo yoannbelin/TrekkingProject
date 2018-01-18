@@ -4,7 +4,9 @@
 #include <QObject>
 //#include <QString>
 #include <QDebug>
-#include <gpspoint.h>
+
+#include "filemanager.h"
+#include "gpspoint.h"
 
 class Trek : public QObject
 {
@@ -24,6 +26,7 @@ class Trek : public QObject
     QList<QObject*> m_trace;
     QString m_level;
     bool m_done;
+    FileManager m_fileManager;
 
 public:
     explicit Trek(QObject *parent = nullptr);

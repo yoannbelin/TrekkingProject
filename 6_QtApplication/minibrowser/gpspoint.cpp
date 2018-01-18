@@ -30,21 +30,13 @@ bool GpsPoint::userMoved(const GpsPoint &previousGpsPoint)
 
 void GpsPoint::roundCoordinates()
 {
-    m_latitude = roundFloat(m_latitude);
-    m_longitude = roundFloat(m_longitude);
+    setLatitude(roundFloat(m_latitude));
+    setLongitude(roundFloat(m_longitude));
 }
 
 float GpsPoint::roundFloat(float &number)
 {
-//    float roundedNumber = number;
-
-//    roundedNumber = round(roundedNumber * 10000) /10000;
-//    if( number - roundedNumber > 0)
-//    {
-//        roundedNumber = roundedNumber + 0.00005;
-//    }
-
-//    return roundedNumber;
-
-    return (round(number * 20000) / 20000);
+    float tmp = (round(number * 20000) / 20000);
+    qDebug() <<  tmp;
+    return ( round(number * 20000) / 20000);
 }

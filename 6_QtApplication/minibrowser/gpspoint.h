@@ -41,7 +41,6 @@ signals:
 public slots:
     void setLatitude(float latitude)
     {
-        qWarning("Floating point comparison needs context sanity check");
         if (qFuzzyCompare(m_latitude, latitude))
             return;
 
@@ -50,7 +49,6 @@ public slots:
     }
     void setLongitude(float longitude)
     {
-        qWarning("Floating point comparison needs context sanity check");
         if (qFuzzyCompare(m_longitude, longitude))
             return;
 

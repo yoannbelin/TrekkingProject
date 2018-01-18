@@ -10,6 +10,8 @@ Trek::Trek(QObject *parent) : QObject(parent)
     m_level = "1";
     m_done = 1;
 
+//    FileManager m_fileManager;
+
 }
 
 Trek::Trek(const QString &label, QObject *parent): m_label(label), QObject(parent)
@@ -27,24 +29,30 @@ Trek::Trek(const Trek &old_trek, QObject *parent): QObject(parent)
     m_length = old_trek.m_length;
     m_time = old_trek.m_time;
     //    m_path = [];
-    m_trace = old_trek.m_trace;
+    m_trace = old_trek.m_path;
     m_level = old_trek.m_level;
     m_done = 1;
 }
 
 void Trek::addNewGpsPoint(GpsPoint newGpsPoint)
 {
-    bool moving = false;
+    bool moving = (m_path.length() != 0) && didUserMove(newGpsPoint);
 
-    if( m_path.length() != 0 )
-    {
-        moving = didUserMove(newGpsPoint);
-    }
+//    if( m_path.length() != 0 )
+//    {
+//        moving = didUserMove(newGpsPoint);
+//    }
 
-    if (moving || m_path.length() == 0)
+    if ( m_path.length() == 0 || moving )
     {
-        m_path.push_back(new GpsPoint(newGpsPoint));
-        qDebug() << "Added Gps Point lat:" << qobject_cast<GpsPoint*>(m_path.back())->getLatitude() << ", lng:" << qobject_cast<GpsPoint*>(m_path.back())->getLongitude();
+
+        QList<QObject*> tmp = getPath();
+        tmp.push_back(new GpsPoint(newGpsPoint));
+        qDebug() << "Added Gps Point lat:" << qobject_cast<GpsPoint*>(m_path.back())->getLatitude()
+                 << ", lng:" << qobject_cast<GpsPoint*>(m_path.back())->getLongitude();
+        setPath(tmp);
+
+        m_fileManager.saveIntoTxtFile(newGpsPoint.getLatitude(),newGpsPoint.getLongitude());
 
     }
 

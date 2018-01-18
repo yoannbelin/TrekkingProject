@@ -84,7 +84,7 @@ ToolBar {
         MyButton{
             onClicked:
             {
-                MyContext.updateTrek("new Gps Point sent", 32.465466, 45.1645644);
+                MyContext.updateTrek("new Gps Point sent", 32.465996, 45.1645644);
 //                statusBarLabel.text =   "lat: " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].latitude +
 //                                        "long " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].longitude;
             }

@@ -55,8 +55,10 @@ void MyContext::updateTrek(QString actionType, const float &latitude, const floa
     if ( actionType == "new Gps Point sent" )
     {
         m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
-        setMyTrek(m_myTrek);
+//        setMyTrek(m_myTrek);
     }
+
+//    m_myContext->setContextProperty("MyContext", this);
 }
 
 

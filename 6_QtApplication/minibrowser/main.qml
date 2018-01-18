@@ -24,7 +24,7 @@ ApplicationWindow {
     PositionSource{
         id: gpsPosition
         updateInterval: 3000
-        active: true
+        active: false
 
         onPositionChanged: {
             var coord = gpsPosition.position.coordinate;

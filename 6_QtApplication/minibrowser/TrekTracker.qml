@@ -5,7 +5,16 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
 Item {
+    Column{
+
+    MyButton{
+        text: "Start Trek"
+        onClicked: gpsPosition.active = true
+    }
+
     Text{
-        text: "TrekTracker Page"
+        text: "lat: " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].latitude +
+              "long " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].longitude
+    }
     }
 }

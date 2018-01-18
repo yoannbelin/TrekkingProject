@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include "utils.h"
+#include "filemanager.h"
 #include "trek.h"
 
 
