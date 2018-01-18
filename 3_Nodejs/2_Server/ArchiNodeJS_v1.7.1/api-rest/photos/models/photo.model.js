@@ -40,6 +40,21 @@ class PhotoModel {
         this.row.date_photo = val;
     }
 
+    get idTrek() {
+        return this.row.id_trek;
+    }
+    set idTrek(val) {
+        this.row.id_trek = val;
+    }
+
+    get labelTrek() {
+        return this.row.label;
+    }
+    set labelTrek(val) {
+        this.row.label = val;
+    }
+
+
     //== conversion "automatique" dans le controlleur, Cf. ##1
     toJSON() {
         return {
@@ -47,7 +62,9 @@ class PhotoModel {
             url: this.url,
             title: this.title,
             date_photo: this.date_photo,
-            private: this.private
+            private: this.private,
+            idTrek: this.idTrek,
+            labelTrek: this.labelTrek
         };
     }
 

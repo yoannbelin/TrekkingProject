@@ -1,122 +1,99 @@
 var _photos = [];
 var selectedPhoto = null;
 
-//
-// Build table
-// 
-function buildTable() {
+/**
+ * Build table
+ */
+function buildTable(i) {
 
     var html = "";
 
-    for (var i = 0; i < _photos.length; i++) {  
-    html += '<div class=\"lien_show\"></div><a href=\"photos/' + _photos[i].id + '\"> <img src=\"' + _photos[i].url + '\" alt=\"photo\"/> </a>'
-    }   
+    for (var j = 0; j < i.length; j++) {
+        html += i[j].title
+        html += '<div class=\"lien_show\"> <img src=\"' + i[j].url + '\" class=\"pic\" alt=\"photo\"/ onclick="goToShow(' + i[j].id + ')"> </div>'
+
+    }
     document.getElementById('photos').innerHTML = html;
 };
 
-//
-// Route to show page
-//
+/**
+ * Route to show page
+ */
 function goToShow(i) {
-    window.location.href = 'photos/' + _photos[i].idPhoto;
+    window.location.href = 'photos/' + i;
 }
 
-// Select Photo in table (hightlight the selected line & insert data in controls)
-function selectPhoto(index) {
-
-    console.log("salut");
-    // if (index < _photos.length) {
-    //     var elems = document.querySelectorAll("tr");
-
-    //     for (var i = 0; i < elems.length; i++) {
-    //         elems[i].style.background = "transparent";
-    //     }
-
-    //     var elem = document.querySelector("#row_" + index);
-    //     elem.style.background = "red";
-
-    //     /*document.getElementById('create at').value = _photos[index]['create_at'];*/
-    //     document.getElementById('name').value = _photos[index]['name'];
-    //     document.getElementById('num').value = _photos[index]['num'];
-
-    //     selectedPhoto = _photos[index];
-    //}
-}
-
-//
-// Load photos list
-//
+/**
+ * Load photos list
+ */
 function loadPhotos() {
-    $http.get('/api-rest/photos', function(res) {
+    $http.get('/api-rest/photos', function (res) {
         console.log('## fonction load')
         _photos = res;
-        buildTable();
-        
+        buildTable(_photos);
+
     }, 'json');
     document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#titleDiv')).display == 'none') ? "block" : "none";
     document.querySelector("#urlDiv").style.display = (window.getComputedStyle(document.querySelector('#url')).display == 'none') ? "block" : "none";
     document.querySelector("#statusDiv").style.display = (window.getComputedStyle(document.querySelector('#statusDiv')).display == 'none') ? "block" : "none";
     show_btn('.update');
-    
+
 }
 
-//
-// Add Photo
-//
-function addPhoto() {
-    console.log("trying to add dept")
-    var input = {
-        'name': document.getElementById('name').value,
-        'num': document.getElementById('num').value
-    };
+// /**
+//  * Add Photo
+//  */
+// function addPhoto() {
+//     console.log("trying to add dept")
+//     var input = {
+//         'name': document.getElementById('name').value,
+//         'num': document.getElementById('num').value
+//     };
 
-    console.log(input);
+//     console.log(input);
 
-    $http.post('/api-rest/photos', input, function(res) {
-        _photos.push(res.photo);
-        buildTable();
-    }, 'json');
+//     $http.post('/api-rest/photos', input, function (res) {
+//         _photos.push(res.photo);
+//         buildTable();
+//     }, 'json');
+// }
+
+/**
+ * Delete selected photo
+ */
+function deletePhoto(i) {
+    $http.delete('/api-rest/photos/' + i, function () {});
+    window.location.href = '/photos';
 }
 
-//
-// Delete selected photo
-//
-function delPhoto() {
-    $http.delete('/api-rest/photos/' + selectedPhoto.idPhoto, function() {
-        _photos.splice(_photos.indexOf(selectedPhoto), 1);
-        buildTable();
-    });
-}
-
-//
-// Update selected Photo
-//
+/**
+ * Update selected Photo
+ */
 function saveUpdatePhoto(i) {
-    //console.log(document.getElementById('status').value);
-    
     var status;
 
     var element = document.getElementsByName('radio');
-    for (var j=0 ; j < element.length ; j++) {
+    for (var j = 0; j < element.length; j++) {
         if (element[j].checked) {
-            status = parseInt(element[j].value) ;
+            status = parseInt(element[j].value);
         }
     }
-    console.log('##' + status);
-
     var input = {
         'url': document.getElementById('url').value,
         'title': document.getElementById('title').value,
         'private': status
     };
 
-    $http.update('/api-rest/photos/' + i, input, function(res) {
+    $http.update('/api-rest/photos/' + i, input, function (res) {
         console.log(input)
         _photos[i] = res.photo;
     }, 'json');
     window.location.href = i;
 }
 
+/**
+ * Open the update input for the trek
+ */
 function updatePhoto() {
     document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#titleDiv')).display == 'none') ? "block" : "none";
     document.querySelector("#statusDiv").style.display = (window.getComputedStyle(document.querySelector('#statusDiv')).display == 'none') ? "block" : "none";
@@ -127,8 +104,8 @@ function updatePhoto() {
 }
 
 /**
-     * Discard the changes for the photo
-     */
+ * Discard the changes for the photo
+ */
 function cancelupdate(i) {
     document.querySelector("#titleDiv").style.display = (window.getComputedStyle(document.querySelector('#titleDiv')).display == 'none') ? "block" : "none";
     show_btn('.update');
@@ -136,8 +113,114 @@ function cancelupdate(i) {
     hide_btn('.saveupdate');
     hide_btn('.cancelupdate');
     window.location.href = i;
+}
+
+/**
+ * Show Private Photos 
+ */
+function sortPrivate() {
+    var _privatePhoto = [];
+    var html = "";
+
+    for (var i = 0; i < _photos.length; i++) {
+        if (_photos[i].private === 1) {
+            _privatePhoto.push(_photos[i]);
+        }
+    }
+    buildTable(_privatePhoto);
+}
+
+/**
+ * Show Public Photos
+ */
+function sortPublic() {
+    var _publicPhoto = [];
+    var html = "";
+
+    for (var i = 0; i < _photos.length; i++) {
+        if (_photos[i].private === 0) {
+            _publicPhoto.push(_photos[i]);
+        }
+
+    }
+    buildTable(_publicPhoto)
+}
+
+/**
+ * Sort Photos by date (recent first)
+ */
+function sortDateRecent() {
+    var _recentPhoto = [];
+    var html = "";
+
+    for (var i = 0; i < _photos.length; i++) {
+        _recentPhoto.push(_photos[i]);
     }
 
+    buildTable(_recentPhoto)
+}
+
+
+/**
+ * Sort Photos by date (oldest first)
+ */
+function sortDateOlder() {
+    var _olderPhoto = [];
+    var html = "";
+
+    for (var i = _photos.length - 1; i >= 0; i--) {
+        _olderPhoto.push(_photos[i]);
+    }
+    buildTable(_olderPhoto);
+}
+
+function sortTrek() {
+    var _photosTrek = [];
+    var html = "";
+    var tabTrek = [];
+    var tabLabel = [];
+
+    // liste les id des treks
+    for (var t = 0; t < _photos.length; t++) {
+        if (!tabTrek.includes(_photos[t].idTrek)) {
+            tabTrek.push(_photos[t].idTrek)
+            tabLabel.push(_photos[t].labelTrek)
+        }
+    }
+
+    // liste les photos pour chaque id du tableau créé précédement
+    for (var i = 0; i < tabTrek.length; i++) {
+        html += "<h3>" + tabLabel[i] + "</h3>";
+        for (var j = 0; j < _photos.length; j++) {
+            if (_photos[j].idTrek == tabTrek[i]) {
+                html += _photos[j].title
+                html += '<div class=\"lien_show\"> <img src=\"' + _photos[j].url + '\" class=\"pic\" alt=\"photo\"/ onclick="goToShow(' + _photos[j].id + ')"> </div>'
+            }
+        }
+    }
+
+    document.getElementById('photos').innerHTML = html;
+
+
+
+    // (_photos.idTrek).forEach(function (current) {
+    //     //html += current.idTrek
+    //     console.log(current);
+    //     for (var i = 0; i < _photos.length; i++) {
+    //         if (_photos[i].idTrek == current.idTrek) {
+    //             _photosTrek.push(_photos[i])
+    //            //html += '<div class=\"lien_show\"> <img src=\"' + i[j].url + '\" class=\"pic\" alt=\"photo\"/ onclick="goToShow(' + i[j].id + ')"> </div>'
+
+
+    //         }
+    //     }
+    // })
+    //buildTable(_photosTrek)
+}
+
+/**
+ * Hide / Show drawing buttons
+ */
 function hide_btn(id) {
     if (document.querySelector(id).style.visibility === "visible") {
         document.querySelector(id).style.visibility = "hidden";
@@ -149,6 +232,5 @@ function show_btn(id) {
         document.querySelector(id).style.visibility = "visible";
     }
 }
-
 
 window.onload = loadPhotos()

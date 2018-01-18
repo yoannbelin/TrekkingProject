@@ -42,6 +42,7 @@ class PhotosDAO {
     }
 
     static delete(id, cb) {
+        /* Quand ajout commentaires faire une procédure stockée pour supprimer de la table 'user_comment_photos' avant de supprimer la photo*/
         db.query('DELETE FROM photo WHERE id_photo = ?', [id], (err) => {
             cb(err);
         });
@@ -51,12 +52,13 @@ class PhotosDAO {
 
         let script = 'SELECT * FROM photo '
         script += 'JOIN user ON photo.id_user = user.id_user '
+        script += 'JOIN trek ON trek.id_trek = photo.id_trek '
         script += 'WHERE user.id_user = ? '
         script += 'ORDER BY photo.date_photo '
 
         console.log('script = ' + script);
 
-        db.query(script, [3], (err, rows) => {
+        db.query(script, [5], (err, rows) => {
             rows = rows || [];
             cb(err, rows.map((row) => {
                 console.log('#' + row);

@@ -8,6 +8,7 @@ function buildTable() {
     var html = "";
     html += "<tr>";
     html += "<td> Id </td>";
+    html += "<td> active </td>";
     html += "<td>Prenom</td>";
     html += "<td>Nom</td>";
     html += "<td>Pseudo</td>";
@@ -18,6 +19,7 @@ function buildTable() {
     for (var i = 0; i < _users.length; i++) {
         html += "<tr id=row_" + i + " onClick=\"selectUser(" + i + ")\">";
         html += "<td onClick=\"test(" + i + ")\">" + _users[i].id + "</td>";
+        html += "<td>" + _users[i].active + "</td>";
         html += "<td>" + _users[i].firstname + "</td>";
         html += "<td>" + _users[i].lastname + "</td>";
         html += "<td>" + _users[i].username + "</td>";

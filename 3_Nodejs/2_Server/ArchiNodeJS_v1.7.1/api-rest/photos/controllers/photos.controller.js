@@ -70,7 +70,8 @@ module.exports.delete = function(req, res) {
             res.status(500).json({ 'error': 'Failed to delete photo !' });
         } else {
             res.json({ 'success': 'Photo deleted !', 'photo': photo });
-        }
+        }        
+        console.log("Photo Deleted");
     });
 }
 

@@ -1,7 +1,11 @@
 extends layout
 
 block content
-  section.section
+  title
+  .Bandeau
+  section
+    img(src='../src/images/Bandeau.png', style='margin-bottom: 5px')
+    section.section
       .top-border
         .row
         .large-12
@@ -26,10 +30,16 @@ block content
                   #titleDiv
                     input#title(type='text', value=photo.title)
                   #statusDiv
-                    input(type='radio', name="radio", value=0) 
-                    label Photo publique
-                    input(type='radio', name="radio", value=1) 
-                    label Photo privée
+                    - if (photo.private === 0)
+                      input(type='radio', name="radio", value=0, checked='checked') 
+                      label Photo publique
+                      input(type='radio', name="radio", value=1) 
+                      label Photo privée
+                    - else
+                      input(type='radio', name="radio", value=0) 
+                      label Photo publique
+                      input(type='radio', name="radio", value=1, checked='checked') 
+                      label Photo privée
                 p#date #{photo.date_photo}
                   #photoDiv
                     img(src="#{photo.url}")

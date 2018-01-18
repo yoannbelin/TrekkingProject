@@ -16,11 +16,20 @@ body{
     visibility: visible;
 }
 
+.delete:hover{
+    background-color: red;
+}
+
+.pic{
+    max-width: 200px;
+    max-height: 200px;
+}
+
 .block_photos{
-    background-color: brown;
+    /* background-color: brown; */
     display: flex;
     flex-wrap: wrap;
-    margin: 0 5px 5px 0;
+    
 }
 
 /* padding-bottom and top for image */

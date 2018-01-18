@@ -30,16 +30,16 @@ block content
           #container_details
             .trek_datas
               .field
-                label#nom Nom du trek : #{trek.label}
+                p#nom Nom du trek : #{trek.label}
                   #labelDiv
                     input#label(type='text', value=trek.label)
-                label Distance du trek : #{trek.length}
+                p Distance du trek : #{trek.length}
                   #lengthDiv
                     input#length(type='text', value=trek.length)
-                label Temps estimés du trek : #{trek.time}
+                p Temps estimés du trek : #{trek.time}
                   #timeDiv
                     input#time(type='text', value=trek.time)
-                label Niveau de difficulté du trek : #{trek.level}
+                p Niveau de difficulté du trek : #{trek.level}
                   #difficulteDiv
                     input#level(type='text', value=trek.level)
             .row

@@ -17,7 +17,7 @@ class PhotosService {
 
     static delete(id, cb) {
         return PhotosDAO.delete(id, (err, photo) => {
-            cb(err, photo);
+            cb(err, id);
         });
     }
 
