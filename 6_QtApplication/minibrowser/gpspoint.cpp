@@ -6,7 +6,7 @@ GpsPoint::GpsPoint(QObject *parent) : QObject(parent)
     m_longitude = 0.0;
 }
 
-GpsPoint::GpsPoint(const float &latitude, const float &longtitude, QObject *parent):
+GpsPoint::GpsPoint(const double &latitude, const double &longtitude, QObject *parent):
     m_latitude(latitude), m_longitude(longtitude), QObject(parent)
 {
     roundCoordinates();
@@ -34,9 +34,23 @@ void GpsPoint::roundCoordinates()
     setLongitude(roundFloat(m_longitude));
 }
 
-float GpsPoint::roundFloat(float &number)
+double GpsPoint::roundFloat(double &number)
 {
-    float tmp = (round(number * 20000) / 20000);
+    double tmp = (round(number * 20000) / 20000);
     qDebug() <<  tmp;
-    return ( round(number * 20000) / 20000);
+    return tmp;
+
+//    qDebug() << number;
+
+//    double tmp = round(number * 10000) / 10000;
+
+//    if (number - tmp > 0) {
+//        number = tmp + 0.00005;
+//    }
+
+//    else {
+//        number = tmp;
+//    }
+
+//    return number;
 }

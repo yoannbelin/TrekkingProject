@@ -7,33 +7,38 @@ import QtQuick.Controls.Styles 1.2
 Item {
     Column{
 
-    MyButton{
-        id: startTrekButton
-        text: "Start Trek"
-        visible: true
-        onClicked:
-        {
-            gpsPosition.active = true
-            startTrekButton.visible = true
-            pauseTrekButton.visible = true
+        MyButton{
+            id: startTrekButton
+            text: "Start Trek"
+            visible: true
+            onClicked:
+            {
+                gpsPosition.active = true
+                startTrekButton.visible = false
+                pauseTrekButton.visible = true
+            }
         }
-    }
 
-    MyButton{
-        id: pauseTrekButton
-        text: "Pause Trek"
-        visible: false
-        onClicked: {
-            gpsPosition.active = false
-            pauseTrekButton.visible = false
-            startTrekButton.visible = true
+        MyButton{
+            id: pauseTrekButton
+            text: "Pause Trek"
+            visible: false
+            onClicked: {
+                gpsPosition.active = false
+                pauseTrekButton.visible = false
+                startTrekButton.visible = true
+            }
         }
-    }
 
-    Text {
-        id: test
-        text : "enregistrement : " + MyContext.myTrek.test
-    }
+        TextArea {
+            id : test
+            text : "enregistrement : " + MyContext.myTrek.test
+            font.family: "Calibri"
+            font.pointSize: 11
+            verticalAlignment : TextEdit.AlignVCenter
+            selectByMouse: true
+            wrapMode: TextEdit.Wrap
+        }
 
     }
 }
