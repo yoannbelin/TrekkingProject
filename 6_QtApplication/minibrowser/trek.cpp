@@ -10,6 +10,9 @@ Trek::Trek(QObject *parent) : QObject(parent)
     m_level = "1";
     m_done = 1;
 
+    m_fileManager.init(); // pour test QML
+    m_test = m_fileManager.getPathway(); // pour test QML
+
 //    FileManager m_fileManager;
 
 }
@@ -53,6 +56,8 @@ void Trek::addNewGpsPoint(GpsPoint newGpsPoint)
         setPath(tmp);
 
         m_fileManager.saveIntoTxtFile(newGpsPoint.getLatitude(),newGpsPoint.getLongitude());
+
+        setTest(m_fileManager.getPathway()); // pour test QML
 
     }
 

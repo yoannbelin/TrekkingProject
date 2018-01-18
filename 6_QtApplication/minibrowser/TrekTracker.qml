@@ -8,13 +8,32 @@ Item {
     Column{
 
     MyButton{
+        id: startTrekButton
         text: "Start Trek"
-        onClicked: gpsPosition.active = true
+        visible: true
+        onClicked:
+        {
+            gpsPosition.active = true
+            startTrekButton.visible = true
+            pauseTrekButton.visible = true
+        }
     }
 
-    Text{
-        text: "lat: " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].latitude +
-              "long " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].longitude
+    MyButton{
+        id: pauseTrekButton
+        text: "Pause Trek"
+        visible: false
+        onClicked: {
+            gpsPosition.active = false
+            pauseTrekButton.visible = false
+            startTrekButton.visible = true
+        }
     }
+
+    Text {
+        id: test
+        text : "enregistrement : " + MyContext.myTrek.test
+    }
+
     }
 }
