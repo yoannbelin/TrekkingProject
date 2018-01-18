@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include "utils.h"
+#include "filemanager.h"
 #include "trek.h"
 
 
@@ -22,27 +23,27 @@ class MyContext : public QObject
         Q_PROPERTY(QList<QObject*> listOfElem READ getListOfElem WRITE setListOfElem NOTIFY listOfElemChanged)
     */
     Q_PROPERTY(Trek* myTrek READ getMyTrek WRITE setMyTrek NOTIFY myTrekChanged)
-//    Q_PROPERTY(GpsPoint nextGpsPoint READ getNextGpsPoint WRITE setNextGpsPoint NOTIFY nextGpsPointChanged)
+    //    Q_PROPERTY(GpsPoint nextGpsPoint READ getNextGpsPoint WRITE setNextGpsPoint NOTIFY nextGpsPointChanged)
 
     QQmlContext* m_myContext;
 
-    Trek * m_myTrek;
+    Trek* m_myTrek;
 
 public:
 
     explicit MyContext(QObject *parent = nullptr);
 
-    void initMyContext(QQmlApplicationEngine &engine, QQmlContext *myContext);
+    void initMyContext(/*QQmlApplicationEngine &engine, */QQmlContext *myContext);
     void loadMyContext();
     void updateMyContext(QString modelName);
 
     QString truncateUrl(const QString &url);
 
     Q_INVOKABLE void sendActionToCpp (QString nomAction, QString parameter = QString (""), QString parameter2 = QString ("") );
-    Q_INVOKABLE void updateTrek (QString actionType, float const &latitude, float const &longitude, float const &altitude = 0.0);
+    Q_INVOKABLE void updateTrek (QString actionType, double const &latitude, double const &longitude);
 
 
-    Trek * getMyTrek() const
+    Trek* getMyTrek() const
     {
         return m_myTrek;
     }
@@ -51,20 +52,20 @@ signals:
 
 
 
-    void myTrekChanged(Trek * myTrek);
+    void myTrekChanged(Trek* myTrek);
 
 public slots:
 
 
 
-void setMyTrek(Trek * myTrek)
-{
-    if (m_myTrek == myTrek)
-        return;
+    void setMyTrek(Trek* myTrek)
+    {
+        if (m_myTrek == myTrek)
+            return;
 
-    m_myTrek = myTrek;
-    emit myTrekChanged(m_myTrek);
-}
+        m_myTrek = myTrek;
+        emit myTrekChanged(m_myTrek);
+    }
 };
 
 #endif // MYCONTEXT_H

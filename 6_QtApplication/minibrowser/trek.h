@@ -4,7 +4,9 @@
 #include <QObject>
 //#include <QString>
 #include <QDebug>
-#include <gpspoint.h>
+
+#include "filemanager.h"
+#include "gpspoint.h"
 
 class Trek : public QObject
 {
@@ -12,18 +14,23 @@ class Trek : public QObject
     Q_PROPERTY(QString label READ getLabel WRITE setLabel NOTIFY labelChanged)
     Q_PROPERTY(QString length READ getLength WRITE setLength NOTIFY lengthChanged)
     Q_PROPERTY(QString time READ getTime WRITE setTime NOTIFY timeChanged)
-    Q_PROPERTY(QList<GpsPoint*> path READ getPath WRITE setPath NOTIFY pathChanged)
-    Q_PROPERTY(QList<GpsPoint*> trace READ getTrace WRITE setTrace NOTIFY traceChanged)
+    Q_PROPERTY(QList<QObject*> path READ getPath WRITE setPath NOTIFY pathChanged)
+    Q_PROPERTY(QList<QObject*> trace READ getTrace WRITE setTrace NOTIFY traceChanged)
     Q_PROPERTY(QString level READ getLevel WRITE setLevel NOTIFY levelChanged)
     Q_PROPERTY(bool done READ getDone WRITE setDone NOTIFY doneChanged)
+
+    Q_PROPERTY(QString test READ test WRITE setTest NOTIFY testChanged)
 
     QString m_label;
     QString m_length;
     QString m_time;
-    QList<GpsPoint*> m_path;
-    QList<GpsPoint*> m_trace;
+    QList<QObject*> m_path;
+    QList<QObject*> m_trace;
     QString m_level;
     bool m_done;
+    FileManager m_fileManager;
+
+    QString m_test; // pour test QML
 
 public:
     explicit Trek(QObject *parent = nullptr);
@@ -49,12 +56,12 @@ public:
         return m_time;
     }
 
-    QList<GpsPoint*> getPath() const
+    QList<QObject*> getPath() const
     {
         return m_path;
     }
 
-    QList<GpsPoint*> getTrace() const
+    QList<QObject*> getTrace() const
     {
         return m_trace;
     }
@@ -69,15 +76,22 @@ public:
         return m_done;
     }
 
+    QString test() const // pour test QML
+    {
+        return m_test;
+    }
+
 signals:
 
     void labelChanged(QString label);
     void lengthChanged(QString length);
     void timeChanged(QString time);
-    void pathChanged(QList<GpsPoint*> path);
-    void traceChanged(QList<GpsPoint*> trace);
+    void pathChanged(QList<QObject*> path);
+    void traceChanged(QList<QObject*> trace);
     void levelChanged(QString level);
     void doneChanged(bool done);
+
+    void testChanged(QString test); // pour test QML
 
 public slots:
     void setLabel(QString label)
@@ -104,7 +118,7 @@ public slots:
         m_time = time;
         emit timeChanged(m_time);
     }
-    void setPath(QList<GpsPoint*> path)
+    void setPath(QList<QObject*> path)
     {
         if (m_path == path)
             return;
@@ -112,7 +126,7 @@ public slots:
         m_path = path;
         emit pathChanged(m_path);
     }
-    void setTrace(QList<GpsPoint*> trace)
+    void setTrace(QList<QObject*> trace)
     {
         if (m_trace == trace)
             return;
@@ -135,6 +149,14 @@ public slots:
 
         m_done = done;
         emit doneChanged(m_done);
+    }
+    void setTest(QString test) // pour test QML
+    {
+        if (m_test == test)
+            return;
+
+        m_test = test;
+        emit testChanged(m_test);
     }
 };
 

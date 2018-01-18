@@ -3,18 +3,18 @@
 
 MyContext::MyContext(QObject *parent) : QObject(parent), m_myContext(nullptr)
 {
-
+    m_myTrek = new Trek;
 }
 
-void MyContext::initMyContext(QQmlApplicationEngine &engine, QQmlContext *myContext)
+void MyContext::initMyContext(/*QQmlApplicationEngine &engine,*/ QQmlContext *myContext)
 {
     m_myContext = myContext;
 
     QString initialUrl = QStringLiteral("localhost:3000");
 
-    m_myContext->setContextProperty(QStringLiteral("utils"), new Utils(&engine));
+//    m_myContext->setContextProperty(QStringLiteral("utils"), new Utils(&engine));
     m_myContext->setContextProperty(QStringLiteral("initialUrl"),
-                                Utils::fromUserInput(initialUrl));
+                                    Utils::fromUserInput(initialUrl));
     m_myContext->setContextProperty("MyContext", this);
 }
 
@@ -25,7 +25,7 @@ void MyContext::loadMyContext()
     // Send the data to Qml
     if( m_myContext != nullptr )
     {
-//        m_myContext->setContextProperty("modeleProfiles", QVariant::fromValue( m_listOfElem ));
+        //        m_myContext->setContextProperty("modeleProfiles", QVariant::fromValue( m_listOfElem ));
     }
     else
     {
@@ -50,12 +50,15 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
 
 }
 
-void MyContext::updateTrek(QString actionType, const float &latitude, const float &longitude, const float &altitude)
+void MyContext::updateTrek(QString actionType, const double &latitude, const double &longitude)
 {
     if ( actionType == "new Gps Point sent" )
     {
-        m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude, altitude));
+        m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
+//        setMyTrek(m_myTrek);
     }
+
+//    m_myContext->setContextProperty("MyContext", this);
 }
 
 

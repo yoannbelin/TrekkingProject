@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     mycontext.cpp \
     utils.cpp \
     trek.cpp \
-    gpspoint.cpp
+    gpspoint.cpp \
+    filemanager.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,4 +25,5 @@ HEADERS += \
     mycontext.h \
     utils.h \
     trek.h \
-    gpspoint.h
+    gpspoint.h \
+    filemanager.h

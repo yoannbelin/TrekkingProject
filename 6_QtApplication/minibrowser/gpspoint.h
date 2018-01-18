@@ -8,74 +8,53 @@ class GpsPoint : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(float latitude READ getLatitude WRITE setLatitude NOTIFY latitudeChanged)
-    Q_PROPERTY(float longitude READ getLongitude WRITE setLongitude NOTIFY longitudeChanged)
-    Q_PROPERTY(float altitude READ getAltitude WRITE setAltitude NOTIFY altitudeChanged)
+    Q_PROPERTY(double latitude READ getLatitude WRITE setLatitude NOTIFY latitudeChanged)
+    Q_PROPERTY(double longitude READ getLongitude WRITE setLongitude NOTIFY longitudeChanged)
 
-    float m_latitude;
-    float m_longitude;
-    float m_altitude;
+    double m_latitude;
+    double m_longitude;
 
 public:
     explicit GpsPoint(QObject *parent = nullptr);
-    GpsPoint (const float &latitude, const float &longtitude, const float &altitude, QObject *parent = nullptr);
+    GpsPoint (const double &latitude, const double &longtitude, QObject *parent = nullptr);
     GpsPoint (const GpsPoint &aGpsPoint);
 
     bool userMoved(const GpsPoint &previousGpsPoint);
     void roundCoordinates();
-    float roundFloat (const float &number);
+    double roundFloat (double &number);
 
-    float getLatitude() const
+    double getLatitude() const
     {
         return m_latitude;
     }
 
-    float getLongitude() const
+    double getLongitude() const
     {
         return m_longitude;
     }
 
-    float getAltitude() const
-    {
-        return m_altitude;
-    }
-
 signals:
 
-    void latitudeChanged(float latitude);
-
-    void longitudeChanged(float longitude);
-
-    void altitudeChanged(float altitude);
+    void latitudeChanged(double latitude);
+    void longitudeChanged(double longitude);
 
 public slots:
-void setLatitude(float latitude)
-{
-    qWarning("Floating point comparison needs context sanity check");
-    if (qFuzzyCompare(m_latitude, latitude))
-        return;
+    void setLatitude(double latitude)
+    {
+        if (qFuzzyCompare(m_latitude, latitude))
+            return;
 
-    m_latitude = latitude;
-    emit latitudeChanged(m_latitude);
-}
-void setLongitude(float longitude)
-{
-    qWarning("Floating point comparison needs context sanity check");
-    if (qFuzzyCompare(m_longitude, longitude))
-        return;
+        m_latitude = latitude;
+        emit latitudeChanged(m_latitude);
+    }
+    void setLongitude(double longitude)
+    {
+        if (qFuzzyCompare(m_longitude, longitude))
+            return;
 
-    m_longitude = longitude;
-    emit longitudeChanged(m_longitude);
-}
-void setAltitude(float altitude)
-{
-    qWarning("Floating point comparison needs context sanity check");
-    if (qFuzzyCompare(m_altitude, altitude))
-        return;
-
-    m_altitude = altitude;
-    emit altitudeChanged(m_altitude);
-}
+        m_longitude = longitude;
+        emit longitudeChanged(m_longitude);
+    }
 };
 
 #endif // GPSPOINT_H
