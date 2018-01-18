@@ -198,24 +198,7 @@ function sortTrek() {
             }
         }
     }
-
     document.getElementById('photos').innerHTML = html;
-
-
-
-    // (_photos.idTrek).forEach(function (current) {
-    //     //html += current.idTrek
-    //     console.log(current);
-    //     for (var i = 0; i < _photos.length; i++) {
-    //         if (_photos[i].idTrek == current.idTrek) {
-    //             _photosTrek.push(_photos[i])
-    //            //html += '<div class=\"lien_show\"> <img src=\"' + i[j].url + '\" class=\"pic\" alt=\"photo\"/ onclick="goToShow(' + i[j].id + ')"> </div>'
-
-
-    //         }
-    //     }
-    // })
-    //buildTable(_photosTrek)
 }
 
 /**
