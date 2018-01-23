@@ -6,38 +6,38 @@ import QtQuick.Controls.Styles 1.2
 
 import QtPositioning 5.8
 
-import "JSControl.js" as JSC
+//import "JSControl.js" as JSC
 
 TabBar {
     currentIndex: swipeView.currentIndex
 
     TabButton {
         Image {
-            source: "images/browser_icon.png"
+            source: "../../../images/icon/browser_icon.png"
         }
     }
 
     TabButton {
         Image {
-            source: "images/trekking_icon.png"
+            source: "../../../images/icon/trekking_icon.png"
         }
     }
 
     TabButton {
         Image {
-            source: "images/current_trek_icon.png"
+            source: "../../../images/icon/current_trek_icon.png"
         }
     }
 
     TabButton {
         Image {
-            source: "images/camera_icon.png"
+            source: "../../../images/icon/camera_icon.png"
         }
     }
 
     TabButton {
         Image {
-            source: "images/upload_icon.png"
+            source: "../../../images/icon/upload_icon.png"
         }
     }
 

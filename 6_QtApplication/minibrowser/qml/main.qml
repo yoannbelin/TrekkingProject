@@ -6,6 +6,9 @@ import QtQuick.Controls.Styles 1.2
 
 import QtPositioning 5.8
 
+import "../qml/modules"
+import "../qml/pages"
+
 
 
 ApplicationWindow {
