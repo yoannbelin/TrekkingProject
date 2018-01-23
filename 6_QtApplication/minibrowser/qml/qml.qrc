@@ -8,16 +8,11 @@
         <file>images/right-32.png</file>
         <file>JSControl.js</file>
         <file>MyToolBar.qml</file>
-        <file>images/browser_icon.png</file>
-        <file>images/current_trek_icon.png</file>
-        <file>images/trekking_icon.png</file>
-        <file>images/upload_icon.png</file>
         <file>WebPage.qml</file>
         <file>TrekTracker.qml</file>
         <file>CurrentTrekPage.qml</file>
         <file>UploadPage.qml</file>
         <file>PhotoPage.qml</file>
-        <file>images/camera_icon.png</file>
         <file>MyButton.qml</file>
         <file>images/icon/browser_icon.png</file>
         <file>images/icon/camera_icon.png</file>

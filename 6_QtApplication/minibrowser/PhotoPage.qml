@@ -1,11 +1,14 @@
-import QtQuick 2.2
-import QtQuick.Controls 1.1
+import QtQuick 2.9
+import QtQuick.Controls 2.2
 import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
-Item {
-    Text{
-        text: "Photo Page"
+
+Page {
+    header: Label {
+        text: qsTr("Photo")
+        font.pixelSize: Qt.application.font.pixelSize * 2
+        padding: 10
     }
 }

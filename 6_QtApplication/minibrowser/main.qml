@@ -1,5 +1,5 @@
-import QtQuick 2.2
-import QtQuick.Controls 1.1
+import QtQuick 2.9
+import QtQuick.Controls 2.2
 import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
@@ -19,7 +19,9 @@ ApplicationWindow {
     height: 1024
     title: "yepyep"
 
-    toolBar: MyToolBar{}
+    header: MyToolBar{
+        id: tabBar
+    }
 
     PositionSource{
         id: gpsPosition
@@ -37,46 +39,39 @@ ApplicationWindow {
     }
 
     /// This Status Bar is temporary
-    statusBar: StatusBar {
-        id: statusBar
-        Label {
-            id: statusBarLabel
-            //              text: "lat: " + gpsPosition.position.coordinate.latitude + " ; lng: " + gpsPosition.position.coordinate.longitude
-            text:   "lat: " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].latitude +
-                    "long " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].longitude
-        }
-    }
+//    footer: StatusBar {
+//        id: statusBar
+//        Label {
+//            id: statusBarLabel
+//            //              text: "lat: " + gpsPosition.position.coordinate.latitude + " ; lng: " + gpsPosition.position.coordinate.longitude
+//            text:   "lat: " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].latitude +
+//                    "long " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].longitude
+//        }
+//    }
 
-    Rectangle{
-
-        width: parent.width
-        height: parent.height
-
+    SwipeView{
+        id: swipeView
+        anchors.fill: parent
+        currentIndex: tabBar.currentIndex
 
         WebPage{
             id: webPage
-            visible: true
         }
 
         TrekTracker{
             id: trekPage
-            visible: false
-
         }
 
         CurrentTrekPage{
             id: currentTrekPage
-            visible: false
         }
 
         PhotoPage{
             id: photoPage
-            visible: false
         }
 
         UploadPage{
             id: uploadPage
-            visible: false
         }
 
     }

@@ -6,7 +6,7 @@ Button {
     font.pixelSize: 14
 
     background: Rectangle {
-        implicitWidth: 300
+        implicitWidth: 225
         implicitHeight: 75
         border.color: "#26282a"
         border.width: 1
