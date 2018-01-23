@@ -7,8 +7,8 @@ import QtQuick.Controls.Styles 1.2
 
 Page {
     header: Label {
-        text: qsTr("Page 3")
-        font.pixelSize: Qt.application.font.pixelSize * 2
+        text: "Pixel Ratio: " + pixelRatio + " and Pixel Density: " + pixelDensity
+        font.pixelSize: Qt.application.font.pixelSize * 1
         padding: 10
     }
 

@@ -49,7 +49,8 @@ Page {
                 text : "enregistrement : " + MyContext.myTrek.test
                 font.family: "Calibri"
                 font.pointSize: 11
-                width: 300
+                width: 250
+                height: 200
                 verticalAlignment : TextEdit.AlignVCenter
                 selectByMouse: true
                 wrapMode: TextEdit.Wrap

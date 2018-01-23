@@ -3,6 +3,7 @@ import QtQuick.Controls 2.2
 import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
+import QtQuick.Window 2.2
 
 import QtPositioning 5.8
 
@@ -15,11 +16,14 @@ ApplicationWindow {
     //    property bool showProgress: webView.loading
     //                                && Qt.platform.os !== "ios"
     //                                && Qt.platform.os !== "winrt"
+    property var pixelRatio: Screen.devicePixelRatio
+    property var pixelDensity: Screen.pixelDensity
+
     visible: true
     x: 20
     y: 20
-    width: 1280
-    height: 1024
+    width: 384
+    height: 640
     title: "yepyep"
 
     header: MyToolBar{
