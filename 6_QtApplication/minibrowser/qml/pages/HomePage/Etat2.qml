@@ -17,7 +17,7 @@ ColumnLayout {
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: 0.25*parent.height
+        Layout.preferredHeight: (1/3)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
@@ -30,74 +30,33 @@ ColumnLayout {
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: (1/8)*parent.height
+        Layout.preferredHeight: (2/9)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            //color: "grey"
-
-            InputBox {
-                id : pseudo
-                placeholderText: "Entrer votre pseudo"
-            }
+            color: "grey"
         }
     } //fin rowlayout
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: (1/8)*parent.height
+        Layout.preferredHeight: (1/9)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            //color: "red"
-
-            InputBox {
-                id : mdp
-                placeholderText: "Entrer votre mot de passe"
-            }
+            color: "red"
         }
     } //fin rowlayout
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: 0.25*parent.height
-        Layout.fillHeight: true
-        Layout.fillWidth: true
-
-        Rectangle {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            //color: "red"
-
-            MyButton {
-                text : "Log In"
-                height: etat.height / 15
-                width: etat.width /3
-            }
-        }
-
-        Rectangle {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            //color: "red"
-
-            MyButton {
-                text : "Sign Up"
-                height: etat.height / 15
-                width: etat.width /3
-            }
-        }
-    } //fin rowlayout
-
-    RowLayout {
-        spacing: 0
-        Layout.preferredHeight: 0.25*parent.height
+        Layout.preferredHeight: (1/3)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 

@@ -8,5 +8,8 @@ TextField {
     font.family: "Calibri"
     font.pixelSize: Qt.application.font.pixelSize * 1.5
 
+    horizontalAlignment: TextInput.AlignHCenter
+    verticalAlignment: TextInput.AlignVCenter
+
     anchors.centerIn : parent
 }

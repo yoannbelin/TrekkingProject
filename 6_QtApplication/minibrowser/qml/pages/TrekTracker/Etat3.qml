@@ -47,6 +47,10 @@ ColumnLayout {
             spacing: 0
 
             RowLayout { //rowlayout 2.1
+                id : tps_estime
+                //visible: true
+                visible: false
+
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
                 Layout.fillHeight: false
@@ -57,14 +61,16 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        id : tps_estime
                         text : "temps estimé : "
-                        visible: true
                     }
                 }
             }
 
             RowLayout { //rowlayout 2.2
+                id : dist_estimee
+                //visible: true
+                visible: false
+
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
                 Layout.fillHeight: false
@@ -75,14 +81,15 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        id : dist_estimee
                         text : "distance estimé : "
-                        visible: true
                     }
                 }
             }
 
             RowLayout { //rowlayout 2.3
+                id : tps_reel
+                visible: true
+
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
                 Layout.fillHeight: false
@@ -93,14 +100,15 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        id : tps_reel
                         text : "temps réel : "
-                        visible: true
                     }
                 }
             }
 
             RowLayout { //rowlayout 2.4
+                id : dist_reelle
+                visible: true
+
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
                 Layout.fillHeight: false
@@ -111,14 +119,15 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        id : dist_reelle
                         text : "distance parcourue : "
-                        visible: true
                     }
                 }
             }
 
             RowLayout { //rowlayout 2.5
+                id : nb_photo
+                visible: true
+
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
                 Layout.fillHeight: false
@@ -129,9 +138,7 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        id : nb_photo
                         text : "nombre de photo prises : "
-                        visible: true
                     }
                 }
             }
@@ -194,7 +201,10 @@ ColumnLayout {
                         text : "Stop"
                         height: etat.height / 15
                         width: etat.width / 3
-                        onClicked: console.log("stop Treck _ fin de la prise de pts GPS")
+                        onClicked: {
+                            start.visible = false ;
+                            pause.visible = false ;
+                            console.log("stop Treck _ fin de la prise de pts GPS")}
                     }
                 }
             }

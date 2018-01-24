@@ -32,5 +32,6 @@
         <file>qml/pages/HomePage/Etat1.qml</file>
         <file>images/icon/home_logo.png</file>
         <file>images/logoAfpa.jpg</file>
+        <file>qml/pages/HomePage/Etat2.qml</file>
     </qresource>
 </RCC>

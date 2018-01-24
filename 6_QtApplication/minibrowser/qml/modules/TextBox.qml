@@ -8,7 +8,7 @@ Text {
     text : titre
 
     font.family: "Calibri"
-    font.pixelSize: Qt.application.font.pixelSize * 1.25
+    font.pixelSize: Qt.application.font.pixelSize * 1.5
 
     leftPadding: 10
     horizontalAlignment: Text.AlignLeft
