@@ -23,9 +23,9 @@ ColumnLayout {
         Layout.fillWidth: true
 
         Rectangle {
-            Layout.fillHeight: false
+            Layout.fillHeight: true
             Layout.fillWidth: true
-            color: "red"
+            //color: "red"
         }
     }
 

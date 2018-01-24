@@ -1,9 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
-import QtQuick.Window 2.2
 
 import "../../modules"
 import "../../../images"
@@ -22,7 +20,7 @@ ColumnLayout {
         Layout.fillWidth: true
 
         Rectangle {
-            Layout.fillHeight: false
+            Layout.fillHeight: true
             Layout.fillWidth: true
             //color: "red"
         }
@@ -35,7 +33,7 @@ ColumnLayout {
         Layout.fillWidth: true
 
         Rectangle {
-            Layout.fillHeight: false
+            Layout.fillHeight: true
             Layout.fillWidth: true
             //color: "grey"
             MyButton {
@@ -54,7 +52,7 @@ ColumnLayout {
         Layout.fillWidth: true
 
         Rectangle {
-            Layout.fillHeight: false
+            Layout.fillHeight: true
             Layout.fillWidth: true
             //color: "grey"
             MyButton {

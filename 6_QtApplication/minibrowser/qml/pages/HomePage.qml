@@ -9,7 +9,7 @@ import "HomePage"
 
 Page {
     header: Label {
-        text: qsTr("Trek Tracker")
+        text: qsTr("Home")
         font.pixelSize: Qt.application.font.pixelSize * 2
         padding: 10
     }

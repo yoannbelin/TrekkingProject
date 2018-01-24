@@ -3,7 +3,11 @@ import QtQuick.Controls 2.2
 
 Button {
     id: control
-    font.pixelSize: 14
+    font.pixelSize: Qt.application.font.pixelSize * 1.25
+
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.verticalCenter
+
 
     background: Rectangle {
 
