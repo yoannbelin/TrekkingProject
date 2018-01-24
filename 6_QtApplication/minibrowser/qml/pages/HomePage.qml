@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
 import "../modules"
-import "Home"
+import "HomePage"
 
 Page {
     header: Label {

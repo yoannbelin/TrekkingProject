@@ -12,7 +12,6 @@ ColumnLayout {
     id : etat
 
     anchors.fill: parent
-    anchors.top : header.bottom
     spacing: 0
 
 
@@ -25,7 +24,7 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: false
             Layout.fillWidth: true
-            color: "red"
+            //color: "red"
         }
     }
 
@@ -38,7 +37,7 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: false
             Layout.fillWidth: true
-            color: "grey"
+            //color: "grey"
             MyButton {
                 text : "Nouveau Treck"
                 height: etat.height / 15
@@ -57,7 +56,7 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: false
             Layout.fillWidth: true
-            color: "grey"
+            //color: "grey"
             MyButton {
                 text : "Charger un Treck"
                 height: etat.height / 15

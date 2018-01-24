@@ -20,8 +20,6 @@ ApplicationWindow {
     property var pixelDensity: Screen.pixelDensity
 
     visible: true
-    x: 20
-    y: 20
     width: 384
     height: 640
     title: "yepyep"
@@ -61,8 +59,8 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        WebPage{
-            id: webPage
+        HomePage{
+            id: homePage
         }
 
         TrekTracker{
