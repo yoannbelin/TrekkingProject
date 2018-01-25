@@ -18,10 +18,11 @@ Trek::Trek(QObject *parent) : QObject(parent)
 
 }
 
-Trek::Trek(const QString &label, QObject *parent): m_label(label), QObject(parent)
+Trek::Trek(const QString &label,  const double &latitude, const double &longitude, QObject *parent): m_label(label), QObject(parent)
 {
     m_length = "1";
     m_time = "00:00:00";
+    m_path = {new GpsPoint( latitude, longitude )};
     m_level = "1";
     m_done = 1;
 }
@@ -38,6 +39,7 @@ Trek::Trek(const Trek &old_trek, QObject *parent): QObject(parent)
 
 void Trek::addNewGpsPoint(GpsPoint newGpsPoint)
 {
+
     bool moving = (m_path.length() != 0) && didUserMove(newGpsPoint);
 
     if( m_path.length() != 0 )

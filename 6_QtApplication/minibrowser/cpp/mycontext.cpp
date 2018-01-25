@@ -61,10 +61,10 @@ void MyContext::updateTrek(QString actionType, const double &latitude, const dou
     //    m_myContext->setContextProperty("MyContext", this);
 }
 
-void MyContext::startTrek(const QString &trekName)
+void MyContext::startTrek(const QString &trekName,const double &latitude, const double &longitude)
 {
     m_myTrek = nullptr;
-    m_myTrek = new Trek (trekName);
+    m_myTrek = new Trek (trekName, latitude, longitude);
 }
 
 

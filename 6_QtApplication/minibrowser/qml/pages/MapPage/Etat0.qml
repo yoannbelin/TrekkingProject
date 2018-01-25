@@ -89,6 +89,8 @@ ColumnLayout {
 
                     ToolTip.visible: hovered
                     ToolTip.text: "arret de l'animation"
+                    font.pixelSize: Qt.application.font.pixelSize * 1
+
                 }
             }
 

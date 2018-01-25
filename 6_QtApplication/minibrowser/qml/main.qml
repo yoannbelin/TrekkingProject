@@ -20,11 +20,11 @@ ApplicationWindow {
 
     visible: true
 
-//    width: 384
-//    height: 640
+    width: 384
+    height: 640
 
-    width: Screen.width
-    height: Screen.height
+//    width: Screen.width
+//    height: Screen.height
 
     title: "Trecker _ Le tracker de trek"
 

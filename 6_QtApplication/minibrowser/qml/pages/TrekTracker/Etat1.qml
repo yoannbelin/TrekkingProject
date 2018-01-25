@@ -27,6 +27,9 @@ ColumnLayout {
     }
 
     RowLayout {
+        id : btn1
+        visible: true
+
         spacing: 0
         Layout.preferredHeight: (1/8)*parent.height
         Layout.fillHeight: true
@@ -38,15 +41,24 @@ ColumnLayout {
             //color: "grey"
 
             MyButton {
-                text : "Nouveau Treck"
+                text : "Nouveau Trek"
                 height: etat.height / 15
                 width: etat.width / 2
-                onClicked: form.visible = true
+                onClicked: {
+                    btn1.visible = false
+                    btn2.visible = false
+                    error.visible = false
+                    check.visible = true
+                    //console.log("cancel")
+                }
             }
         }
     } // fin RowLayout
 
     RowLayout {
+        id : btn2
+        visible: true
+
         spacing: 0
         Layout.preferredHeight: (1/8)*parent.height
         Layout.fillHeight: true
@@ -58,7 +70,7 @@ ColumnLayout {
             //color: "grey"
 
             MyButton {
-                text : "Charger un Treck"
+                text : "Charger un Trek"
                 height: etat.height / 15
                 width: etat.width / 2
                 onClicked: {
@@ -70,6 +82,9 @@ ColumnLayout {
     } // fin RowLayout
 
     RowLayout {
+        id : error
+        visible: true
+
         spacing: 0
 
         Layout.preferredHeight: 0.25*parent.height
@@ -91,6 +106,95 @@ ColumnLayout {
         }
 
     } //fin RowLayout
+
+
+    RowLayout {
+        id : check
+        visible: false
+
+        spacing: 0
+
+        Layout.preferredHeight: 0.25*parent.height
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+
+
+        ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            RowLayout {
+                spacing: 0
+                Layout.preferredHeight: (1/3)*parent.height
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    //color: "grey"
+
+                    InputBox {
+                        id : label
+                        placeholderText: "titre du trek"
+
+                        width: parent.width * 0.90
+                    }
+                }
+            } //fin rowlayout
+
+
+            RowLayout {
+                spacing: 0
+                Layout.preferredHeight: (1/3)*parent.height
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    //color: "red"
+
+                    MyButton {
+                        id : valid
+                        visible: true
+
+                        text : "OK"
+                        height: etat.height / 15
+                        width: etat.width /3
+                        onClicked: {
+                            console.log("valid " + label.text)
+//                            MyContext.startTrek(label.text)
+                            mapPage.trekName = label.text
+                            mapPage.gpsActive = true
+                        }
+                    }
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    //color: "red"
+
+                    MyButton {
+                        id: cancel
+                        visible : true
+
+                        text : "cancel"
+                        height: etat.height / 15
+                        width: etat.width /3
+                        onClicked: {
+                            btn1.visible = true
+                            btn2.visible = true
+                            check.visible = false
+                            console.log("cancel")
+                        }
+                    }
+                }
+            }
+        } //fin rowlayout
+
+    }
 
     RowLayout {
         spacing: 0
@@ -114,13 +218,6 @@ ColumnLayout {
 
         }
     } // fin RowLayout
-
-    MyForm {
-        id : form
-        titre: "Nouveau treck"
-        instruction: "Enter le nom de votre treck"
-    }
-
 }
 
 

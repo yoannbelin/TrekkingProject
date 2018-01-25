@@ -36,21 +36,22 @@ FocusScope {
                 onClicked: {
                     camera.imageCapture.capture()
 
-//                visible: camera.imageCapture.ready
-            }
-            Button {
-                text: "View"
-                onClicked: captureControls.previewSelected()
-//                visible: captureControls.previewAvailable
+                    //                visible: camera.imageCapture.ready
+                }
+                Button {
+                    text: "View"
+                    onClicked: captureControls.previewSelected()
+                    //                visible: captureControls.previewAvailable
+                }
             }
         }
-    }
-    ZoomControl {
-        width : 100
-        height: parent.height
+        ZoomControl {
+            width : 100
+            height: parent.height
 
-        currentZoom: camera.digitalZoom
-        maximumZoom: Math.min(4.0, camera.maximumDigitalZoom)
-        onZoomTo: camera.setDigitalZoom(value)
+            currentZoom: camera.digitalZoom
+            maximumZoom: Math.min(4.0, camera.maximumDigitalZoom)
+            onZoomTo: camera.setDigitalZoom(value)
+        }
     }
 }

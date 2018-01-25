@@ -17,14 +17,14 @@ Page {
 
     Etat1 {
         id : etat1
-        visible: true
-//        visible: false
+//        visible: true
+        visible: false
     }
 
     Etat2 {
         id : etat2
-        visible: false
-//        visible: true
+//        visible: false
+        visible: true
     }
 
 }
