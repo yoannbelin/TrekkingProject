@@ -8,8 +8,8 @@ import "TrekTracker"
 
 Page {
     id : page
-    width: 384
-    height: 640
+//    width: 384
+//    height: 640
 
     header: Label {
         text: qsTr("Trek Tracker")

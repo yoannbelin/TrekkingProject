@@ -5,7 +5,8 @@ Trek::Trek(QObject *parent) : QObject(parent)
     m_label = "trek_name";
     m_length = "1";
     m_time = "00:00:00";
-    m_path = {new GpsPoint(43.462, 3.2527), new GpsPoint(43.462, 3.2527), new GpsPoint(43.463, 3.2528), new GpsPoint(43.464, 3.2529), new GpsPoint(43.466, 3.2530), new GpsPoint(43.462, 3.2527)};
+    m_path = {};
+//    m_path = {new GpsPoint(43.462, 3.2527), new GpsPoint(43.462, 3.2527), new GpsPoint(43.463, 3.2528), new GpsPoint(43.464, 3.2529), new GpsPoint(43.466, 3.2530), new GpsPoint(43.462, 3.2527)};
     //  m_trace = [];
     m_level = "1";
     m_done = 1;

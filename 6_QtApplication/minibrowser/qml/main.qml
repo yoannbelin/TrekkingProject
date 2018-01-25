@@ -16,6 +16,7 @@ ApplicationWindow {
     property var pixelRatio: Screen.devicePixelRatio
     property var pixelDensity: Screen.pixelDensity
 
+    id: myApp
 
     visible: true
 

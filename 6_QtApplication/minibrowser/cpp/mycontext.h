@@ -41,6 +41,7 @@ public:
 
     Q_INVOKABLE void sendActionToCpp (QString nomAction, QString parameter = QString (""), QString parameter2 = QString ("") );
     Q_INVOKABLE void updateTrek (QString actionType, double const &latitude, double const &longitude);
+    Q_INVOKABLE void startTrek (const QString &trekName);
 
 
     Trek* getMyTrek() const

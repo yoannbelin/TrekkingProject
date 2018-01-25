@@ -7,8 +7,8 @@ Dialog {
     property string titre: "titre de la boite Dialog"
     property string instruction: "instruction"
 
-    width: 300
-    height: 200
+    width: myApp.width/3
+    height: myApp.height/3
 
     //visible: true
 
