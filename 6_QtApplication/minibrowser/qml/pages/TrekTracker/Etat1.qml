@@ -114,9 +114,10 @@ ColumnLayout {
         }
     } // fin RowLayout
 
-    MyDialog {
+    MyForm {
         id : form
-        titre: "Enter le nom de votre treck"
+        titre: "Nouveau treck"
+        instruction: "Enter le nom de votre treck"
     }
 
 }

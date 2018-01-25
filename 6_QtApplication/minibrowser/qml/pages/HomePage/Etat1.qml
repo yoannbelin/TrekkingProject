@@ -1,12 +1,11 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
-import QtQuick.Window 2.2
 
 import "../../modules"
 import "../../../images"
+//import "../HomePage.qml"
 
 ColumnLayout {
     id : etat
@@ -79,6 +78,11 @@ ColumnLayout {
                 text : "Log In"
                 height: etat.height / 15
                 width: etat.width /3
+                onClicked: {
+                    console.log("check datas and save profil in localFile");
+                   homePage.etat1.visible = false; // ?
+                   homePage.etat2.visible = true; // ?
+                }
             }
         }
 

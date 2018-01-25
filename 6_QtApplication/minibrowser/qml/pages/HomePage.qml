@@ -1,6 +1,5 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
@@ -8,6 +7,8 @@ import "../modules"
 import "HomePage"
 
 Page {
+    id : homePage
+
     header: Label {
         text: qsTr("Home")
         font.pixelSize: Qt.application.font.pixelSize * 2
@@ -16,15 +17,15 @@ Page {
 
     Etat1 {
         id : etat1
-        visible: true
-        //visible: false
+        //visible: true
+        visible: false
     }
 
-//    Etat2 {
-//        id : etat2
-//        visible: false
-//        //visible: true
-//    }
+    Etat2 {
+        id : etat2
+        //visible: false
+        visible: true
+    }
 
 //    Etat3 {
 //        id : etat3

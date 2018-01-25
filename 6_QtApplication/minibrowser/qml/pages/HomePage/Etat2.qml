@@ -1,9 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
-import QtQuick.Window 2.2
 
 import "../../modules"
 import "../../../images"
@@ -17,18 +15,35 @@ ColumnLayout {
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: (1/3)*parent.height
+        Layout.preferredHeight: (15/36)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            //color: "red"
+            //color: "lightBlue"
+
+            Text {
+                id : label
+                text : "Bonjour" + "\n" + "utilisateur"
+
+                font.family: "Calibri"
+                font.pixelSize: Qt.application.font.pixelSize * 3
+                font.bold: true
+                font.capitalization: Font.SmallCaps
+
+                anchors.centerIn : parent
+                horizontalAlignment: Text.AlignHCenter
+
+            }
         }
     }
 
     RowLayout {
+        id : erreur
+        visible: true
+
         spacing: 0
         Layout.preferredHeight: (2/9)*parent.height
         Layout.fillHeight: true
@@ -37,11 +52,21 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            color: "grey"
+            //color: "grey"
+
+            ErrorBox {
+                height : parent.height
+                width : parent.width
+
+                anchors.centerIn : parent
+            }
         }
     } //fin rowlayout
 
     RowLayout {
+        id : boutons
+        visible: true
+
         spacing: 0
         Layout.preferredHeight: (1/9)*parent.height
         Layout.fillHeight: true
@@ -50,13 +75,49 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            color: "red"
+            //color: "red"
+
+            MyButton {
+                id : saveButton
+                visible: true
+
+                text : "Sauver"
+                height: etat.height / 15
+                width: etat.width /3
+                onClicked: console.log("switch to UploadPage")
+            }
+
+            MyButton {
+                id: continueButton
+                visible : false
+
+                text : "Continuer"
+                height: etat.height / 15
+                width: etat.width /3
+                onClicked: console.log("switch to TrekTracker")
+            }
+        }
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            //color: "red"
+
+            MyButton {
+                id: deleteButton
+                visible : true
+
+                text : "Effacer"
+                height: etat.height / 15
+                width: etat.width /3
+                onClicked: dialog.visible = true
+            }
         }
     } //fin rowlayout
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: (1/3)*parent.height
+        Layout.preferredHeight: (1/4)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
@@ -73,6 +134,12 @@ ColumnLayout {
             }
         }
     } // fin RowLayout
+
+    MyDialog {
+        id : dialog
+        titre: ""
+        instruction: "Are you sure ?"
+    }
 
 } //fin columnlayout
 

@@ -14,7 +14,7 @@ Dialog {
 
     title: titre
 
-    standardButtons: Dialog.Yes | Dialog.No
+    standardButtons: Dialog.Ok | Dialog.Cancel
     onAccepted: console.log(label.text)
     onRejected: console.log("abandon")
 
@@ -39,6 +39,26 @@ Dialog {
 
                     anchors.centerIn : parent
 
+                }
+            }
+        }
+
+        Row {
+            height: (1/2)*parent.height
+            width : parent.width
+
+            Rectangle {
+                anchors.fill: parent
+                //color: "blue"
+
+                TextField {
+                    id : label
+                    text : ""
+
+                    font.family: "Calibri"
+                    font.pixelSize: Qt.application.font.pixelSize * 1.5
+
+                    anchors.centerIn : parent
                 }
             }
         }
