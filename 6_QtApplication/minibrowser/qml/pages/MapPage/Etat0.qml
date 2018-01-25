@@ -12,7 +12,6 @@ ColumnLayout {
     id : etat
 
     anchors.fill: parent
-    anchors.top : header.bottom
     spacing: 0
 
     RowLayout {
@@ -50,7 +49,7 @@ ColumnLayout {
             Layout.fillWidth: true
             //color: "lightBlue"
 
-            AnimatedImage { //taille à modifier !
+            AnimatedImage {
                 id: animation
                 source: "../../../images/nordic.gif"
 
@@ -59,13 +58,6 @@ ColumnLayout {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 playing: anime
-            }
-            Rectangle {
-                property int frames: animation.frameCount
-
-                width: 4; height: 8
-                x: (animation.width - width) * animation.currentFrame / frames
-                y: animation.height
             }
         }
     }

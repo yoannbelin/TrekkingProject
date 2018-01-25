@@ -3,26 +3,61 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
+import QtWebView 1.1
+
 import "../../modules"
-import "../../../images"
 
 ColumnLayout {
+
     id : etat
 
     anchors.fill: parent
-    spacing: 0
+    Layout.fillHeight: true
+    Layout.fillWidth: true
 
+    spacing: 0
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: 0.25*parent.height
+        Layout.preferredHeight: (1/12)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            //color: "red"
+            //color: "blue"
+
+            TextBox {
+                text : "Etat actuel de la sauvegarde : "
+
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+        }
+    }
+
+    RowLayout {
+        spacing: 0
+        Layout.preferredHeight: (5/12)*parent.height
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            //color: "yellow"
+
+            TextBox {
+                id : localStorageStatus
+                text : "aucune sauvegarde"
+
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+
+            }
+
+
         }
     }
 
@@ -38,13 +73,28 @@ ColumnLayout {
             //color: "grey"
 
             MyButton {
-                text : "Nouveau Treck"
+                text : "Sauvegarder"
                 height: etat.height / 15
-                width: etat.width / 2
-                onClicked: form.visible = true
+                width: etat.width / 3
+
+                onClicked: console.log("sauvegarde de la photo & edition du LocalFile")
             }
         }
-    } // fin RowLayout
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            //color: "grey"
+
+            MyButton {
+                text : "Supprimer"
+                height: etat.height / 15
+                width: etat.width / 3
+
+                onClicked: { dialog.visible = true }
+            }
+        }
+    }
 
     RowLayout {
         spacing: 0
@@ -55,49 +105,24 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            //color: "grey"
-
-            MyButton {
-                text : "Charger un Treck"
-                height: etat.height / 15
-                width: etat.width / 2
-                onClicked: {
-                    console.log("changement de page > TrekTracker.etat2")
-                }
-
-            }
-        }
-    } // fin RowLayout
-
-    RowLayout {
-        spacing: 0
-
-        Layout.preferredHeight: 0.25*parent.height
-        Layout.fillHeight: true
-        Layout.fillWidth: true
-
-
-        Rectangle {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            //color: "darkGreen"
+            //color: "red"
 
             ErrorBox {
                 height : parent.height
                 width : parent.width
 
                 anchors.centerIn : parent
+
             }
         }
+    }
 
-    } //fin RowLayout
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: 0.25*parent.height
+        Layout.preferredHeight: (1/4)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
-
 
         Rectangle {
             Layout.fillHeight: true
@@ -110,18 +135,12 @@ ColumnLayout {
                 anchors.bottom: parent.bottom
                 source: "../../../images/logoAfpa.jpg"
             }
-
-
         }
     } // fin RowLayout
 
-    MyForm {
-        id : form
-        titre: "Nouveau treck"
-        instruction: "Enter le nom de votre treck"
+    MyDialog {
+        id : dialog
+        titre: ""
+        instruction: "Are you sure ?"
     }
-
 }
-
-
-

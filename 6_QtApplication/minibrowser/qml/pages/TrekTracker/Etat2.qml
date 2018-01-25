@@ -44,6 +44,7 @@ ColumnLayout {
                 text : "Voir"
                 height: etat.height / 15
                 width: etat.width /3
+                onClicked: console.log("visualisation du tracé sur MapPage.Etat2")
             }
         }
 
@@ -57,8 +58,7 @@ ColumnLayout {
                 height: etat.height / 15
                 width: etat.width /3
                 onClicked: {
-                    etat3.visible = true ;
-                    etat2.visible = false
+                    console.log("sauvegarde des données du treck dans LocalFile + changement de pahe > TrekTracker.Etat3")
                 }
             }
         }
