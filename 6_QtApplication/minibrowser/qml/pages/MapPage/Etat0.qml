@@ -53,9 +53,13 @@ ColumnLayout {
             AnimatedImage { //taille à modifier !
                 id: animation
                 source: "../../../images/nordic.gif"
+
+                height: parent.height
+                fillMode: Image.PreserveAspectFit
+                anchors.horizontalCenter: parent.horizontalCenter
+
                 playing: anime
             }
-
             Rectangle {
                 property int frames: animation.frameCount
 
@@ -72,10 +76,42 @@ ColumnLayout {
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Rectangle {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            //color: "red"
+        ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                //color: "lightBlue"
+
+                MyButton {
+                    id : pause
+                    visible: true
+
+                    text : "||"
+                    onClicked: anime === true ? anime = false : anime = true
+
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.top
+
+                    ToolTip.visible: hovered
+                    ToolTip.text: "arret de l'animation"
+                }
+            }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                //color: "red"
+
+                Image {
+                    id: logoAfpa
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    source: "../../../images/logoAfpa.jpg"
+                }
+            }
         }
     }
 

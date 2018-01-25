@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = minibrowser
 
-QT += qml quick \
+QT += qml quick webview\
     positioning core widgets
 
 SOURCES += cpp/main.cpp \
