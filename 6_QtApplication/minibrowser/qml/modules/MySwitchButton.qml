@@ -50,6 +50,7 @@ RowLayout {
                     radius: 9
                     border.color: control.activeFocus ? "darkblue" : "gray"
                     border.width: 1
+                    color : checkedValue === true ? "green" : "red"
                 }
             }
         }

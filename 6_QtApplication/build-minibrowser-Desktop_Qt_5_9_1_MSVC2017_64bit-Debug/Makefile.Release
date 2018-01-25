@@ -204,7 +204,9 @@ release\qrc_qml.cpp: ..\minibrowser\qml.qrc \
 		..\minibrowser\qml\modules\MyForm.qml \
 		..\minibrowser\qml\modules\MyToolBar.qml \
 		..\minibrowser\qml\modules\ErrorBox.qml \
+		..\minibrowser\qml\modules\ValidBox.qml \
 		..\minibrowser\qml\javascript\JSControl.js \
+		..\minibrowser\qml\javascript\ButtonControl.js \
 		..\minibrowser\qml\pages\MapPage.qml \
 		..\minibrowser\qml\pages\HomePage.qml \
 		..\minibrowser\qml\pages\UploadPage.qml \
@@ -231,10 +233,12 @@ release\qrc_qml.cpp: ..\minibrowser\qml.qrc \
 		..\minibrowser\images\stop-32.png \
 		..\minibrowser\images\icon\browser_icon.png \
 		..\minibrowser\images\icon\upload_icon.png \
+		..\minibrowser\images\icon\home.png \
 		..\minibrowser\images\icon\camera_icon.png \
 		..\minibrowser\images\icon\home_logo.png \
 		..\minibrowser\images\icon\current_trek_icon.png \
 		..\minibrowser\images\icon\trekking_icon.png \
+		..\minibrowser\images\icon\pause.png \
 		..\minibrowser\+android\LoadProgressStyle.qml
 	C:\Qt\5.9.1\msvc2017_64\bin\rcc.exe -name qml ..\minibrowser\qml.qrc -o release\qrc_qml.cpp
 

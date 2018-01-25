@@ -5,7 +5,8 @@ import QtQuick.Controls.Styles 1.2
 
 import "../../modules"
 import "../../../images"
-//import "../HomePage.qml"
+
+import "../../javascript/ButtonControl.js" as MyScript
 
 ColumnLayout {
     id : etat
@@ -82,6 +83,7 @@ ColumnLayout {
                     console.log("check datas and save profil in localFile : " + pseudo.text + " " + mdp.text);
 //                   homePage.etat1.visible = false; // ?
 //                   homePage.etat2.visible = true; // ?
+                    MyScript.signIn();
                 }
             }
         }

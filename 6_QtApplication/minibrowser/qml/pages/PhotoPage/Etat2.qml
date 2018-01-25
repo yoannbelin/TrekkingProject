@@ -38,6 +38,9 @@ ColumnLayout {
     } // fin rowlayout 1
 
     RowLayout {
+        id : form1
+        visible: true
+
         spacing: 0
         Layout.preferredHeight: (13/48)*parent.height
         Layout.fillHeight: true
@@ -107,6 +110,9 @@ ColumnLayout {
         } // fin rowlayout 2
 
             RowLayout {
+                id : form2
+                visible: true
+
                 spacing: 0
                 Layout.preferredHeight: (13/48)*parent.height
                 Layout.fillHeight: true
@@ -126,6 +132,9 @@ ColumnLayout {
             } // fin RowLayout 3
 
     RowLayout {
+        id : boutons
+        visible: true
+
         spacing: 0
         Layout.preferredHeight: (1/8)*parent.height
         Layout.fillHeight: true
@@ -158,18 +167,106 @@ ColumnLayout {
                 height: etat.height / 15
                 width: etat.width / 3
 
-                onClicked: { dialog.visible = true }
+                onClicked: {
+                    form1.visible = false
+                    form2.visible =  false
+                    boutons.visible = false
+                    check.visible = true
+                }
             }
         }
     } // fin RowLayout 4
 
 
+    RowLayout {
+        id : check
+        visible: false
 
-    MyDialog {
-        id : dialog
-        titre: ""
-        instruction: "Confirmer ?"
+        spacing: 0
+        Layout.preferredHeight: (1/2)*parent.height
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+
+        ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            RowLayout {
+                spacing: 0
+                Layout.preferredHeight: (1/3)*parent.height
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    //color: "grey"
+
+                    Text {
+                        text : "Etes vous sûr ?"
+
+                        font.family: "Calibri"
+                        font.pixelSize: Qt.application.font.pixelSize * 1.5
+                        font.bold: true
+
+                        anchors.centerIn : parent
+                    }
+                }
+            } //fin rowlayout
+
+
+            RowLayout {
+                spacing: 0
+                Layout.preferredHeight: (1/3)*parent.height
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    //color: "red"
+
+                    MyButton {
+                        id : valid
+                        visible: true
+
+                        text : "OK"
+                        height: etat.height / 15
+                        width: etat.width /3
+                        onClicked: console.log("valid")
+                    }
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    //color: "red"
+
+                    MyButton {
+                        id: cancel
+                        visible : true
+
+                        text : "cancel"
+                        height: etat.height / 15
+                        width: etat.width /3
+                        onClicked: {
+                            form1.visible = true
+                            form2.visible =  true
+                            boutons.visible = true
+                            check.visible = false
+                            console.log("cancel")
+                        }
+                    }
+                }
+            }
+        } //fin columnlayout
     }
+
+//    MyDialog {
+//        id : dialog
+//        titre: ""
+//        instruction: "Confirmer ?"
+//    }
 
 }
 
