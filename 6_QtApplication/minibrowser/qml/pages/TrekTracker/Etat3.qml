@@ -48,8 +48,7 @@ ColumnLayout {
 
             RowLayout { //rowlayout 2.1
                 id : tps_estime
-                //visible: true
-                visible: false
+                visible: true
 
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
@@ -68,8 +67,7 @@ ColumnLayout {
 
             RowLayout { //rowlayout 2.2
                 id : dist_estimee
-                //visible: true
-                visible: false
+                visible: true
 
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height

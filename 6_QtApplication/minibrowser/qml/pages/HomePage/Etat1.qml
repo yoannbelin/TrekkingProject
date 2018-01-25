@@ -75,13 +75,13 @@ ColumnLayout {
             //color: "red"
 
             MyButton {
-                text : "Log In"
+                text : "Sign In"
                 height: etat.height / 15
                 width: etat.width /3
                 onClicked: {
-                    console.log("check datas and save profil in localFile");
-                   homePage.etat1.visible = false; // ?
-                   homePage.etat2.visible = true; // ?
+                    console.log("check datas and save profil in localFile : " + pseudo.text + " " + mdp.text);
+//                   homePage.etat1.visible = false; // ?
+//                   homePage.etat2.visible = true; // ?
                 }
             }
         }

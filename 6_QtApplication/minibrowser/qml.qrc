@@ -41,5 +41,9 @@
         <file>qml/pages/PhotoPage/Etat2.qml</file>
         <file>images/defaultPhoto.png</file>
         <file>qml/modules/ComboType.qml</file>
+        <file>qml/modules/MySwitchButton.qml</file>
+        <file>qml/modules/TextEditBox.qml</file>
+        <file>qml/pages/UploadPage/Etat1.qml</file>
+        <file>qml/pages/HomePage/Etat3.qml</file>
     </qresource>
 </RCC>

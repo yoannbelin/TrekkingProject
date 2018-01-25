@@ -35,11 +35,11 @@ ColumnLayout {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }
-    }
+    } // fin rowlayout 1
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: (13/24)*parent.height
+        Layout.preferredHeight: (13/48)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
@@ -47,61 +47,83 @@ ColumnLayout {
             anchors.fill: parent
             spacing: 0
 
-            Rectangle {
+            RowLayout {
+                spacing: 0
+                Layout.preferredHeight: 0.5*parent.height
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "lightBlue"
 
-                InputBox {
-                    id : label
-                    placeholderText: "titre de la photo"
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    //color: "lightBlue"
+
+                    InputBox {
+                        id : label
+                        placeholderText: "titre de la photo"
+
+                        width: parent.width * 0.90
+                    }
                 }
-            }
+            } // fin Row du textInput
+
+                RowLayout {
+                    spacing: 0
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: (13/48)*parent.height
+
+
+                    Rectangle {
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        //color: "blue"
+
+                        ComboType {
+                            id : poi_type
+
+                            height: etat.height / 15
+                            width: parent.width * 0.90
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+
+                            onCurrentTextChanged: currentText != "" ? description.visible =  true : description.visible = false
+                        }
+                    }
+
+                    Rectangle {
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        //color: "red"
+
+                        MySwitchButton {
+                            id : privateStatus
+                            switchWidth: parent.width / 3
+                            switchHeight : etat.height / 20
+                        }
+                    }
+                } //fin row de la comboBox et Switch
+            } // fin columnLayout
+        } // fin rowlayout 2
 
             RowLayout {
                 spacing: 0
+                Layout.preferredHeight: (13/48)*parent.height
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                Layout.rightMargin: 5
-                Layout.leftMargin: 5
 
                 Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    color: "blue"
+                    //color: "lightBlue"
 
-                    ComboType {
-                        id : poi_type
-
-                        height: etat.height / 15
-                        width: parent.width * 0.90
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-
+                    TextEditBox {
+                        id : description
+                        visible: false
                     }
+
                 }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "red"
-                }
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "lightBlue"
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "blue"
-            }
-
-        }
-    } // fin RowLayout
+            } // fin RowLayout 3
 
     RowLayout {
         spacing: 0
@@ -119,7 +141,10 @@ ColumnLayout {
                 height: etat.height / 15
                 width: etat.width / 3
 
-                onClicked: console.log("sauvegarde de la photo & edition du LocalFile")
+                onClicked: {
+                    console.log("sauvegarde de la photo & edition du LocalFile")
+                    console.log("datas : " + label.text + " ; " + poi_type.currentText + " ; " + privateStatus.checkedValue + " ; " + description.text)
+                }
             }
         }
 
@@ -136,14 +161,14 @@ ColumnLayout {
                 onClicked: { dialog.visible = true }
             }
         }
-    } // fin RowLayout
+    } // fin RowLayout 4
 
 
 
     MyDialog {
         id : dialog
         titre: ""
-        instruction: "Are you sure ?"
+        instruction: "Confirmer ?"
     }
 
 }

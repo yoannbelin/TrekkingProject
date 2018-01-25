@@ -13,50 +13,22 @@ import "../qml/pages"
 
 
 ApplicationWindow {
-    //    property bool showProgress: webView.loading
-    //                                && Qt.platform.os !== "ios"
-    //                                && Qt.platform.os !== "winrt"
     property var pixelRatio: Screen.devicePixelRatio
     property var pixelDensity: Screen.pixelDensity
 
     visible: true
-    width: 384
-    height: 640
 
-//    width: Screen.width
-//    height: Screen.height
+//    width: 384
+//    height: 640
 
-    title: "yepyep"
+    width: Screen.width
+    height: Screen.height
+
+    title: "Trecker _ Le tracker de trek"
 
     header: MyToolBar{
         id: tabBar
     }
-
-//    PositionSource{
-//        id: gpsPosition
-//        updateInterval: 3000
-//        active: false
-
-//        onPositionChanged: {
-//            var coord = gpsPosition.position.coordinate;
-//            //            if ( !isNaN(coord.latitude) && !isNaN(coord.longitude) ){
-//            MyContext.updateTrek("new Gps Point sent", coord.latitude, coord.longitude);
-
-
-//            //            }
-//        }
-//    }
-
-    /// This Status Bar is temporary
-//    footer: StatusBar {
-//        id: statusBar
-//        Label {
-//            id: statusBarLabel
-//            //              text: "lat: " + gpsPosition.position.coordinate.latitude + " ; lng: " + gpsPosition.position.coordinate.longitude
-//            text:   "lat: " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].latitude +
-//                    "long " + MyContext.myTrek.path[MyContext.myTrek.path.length-1].longitude
-//        }
-//    }
 
     SwipeView{
         id: swipeView

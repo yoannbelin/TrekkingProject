@@ -193,10 +193,13 @@ debug\qrc_qml.cpp: ..\minibrowser\qml.qrc \
 		C:\Qt\5.9.1\msvc2017_64\bin\rcc.exe \
 		..\minibrowser\qml\main.qml \
 		..\minibrowser\qml\modules\InputBox.qml \
+		..\minibrowser\qml\modules\MySwitchButton.qml \
 		..\minibrowser\qml\modules\TextBox.qml \
 		..\minibrowser\qml\modules\MyModel.qml \
 		..\minibrowser\qml\modules\MyList.qml \
 		..\minibrowser\qml\modules\MyButton.qml \
+		..\minibrowser\qml\modules\TextEditBox.qml \
+		..\minibrowser\qml\modules\ComboType.qml \
 		..\minibrowser\qml\modules\MyDialog.qml \
 		..\minibrowser\qml\modules\MyForm.qml \
 		..\minibrowser\qml\modules\MyToolBar.qml \
@@ -213,8 +216,10 @@ debug\qrc_qml.cpp: ..\minibrowser\qml.qrc \
 		..\minibrowser\qml\pages\TrekTracker\Etat1.qml \
 		..\minibrowser\qml\pages\PhotoPage\Etat2.qml \
 		..\minibrowser\qml\pages\PhotoPage\Etat1.qml \
+		..\minibrowser\qml\pages\UploadPage\Etat1.qml \
 		..\minibrowser\qml\pages\MapPage\Etat0.qml \
 		..\minibrowser\qml\pages\MapPage\Etat1.qml \
+		..\minibrowser\qml\pages\HomePage\Etat3.qml \
 		..\minibrowser\qml\pages\HomePage\Etat2.qml \
 		..\minibrowser\qml\pages\HomePage\Etat1.qml \
 		..\minibrowser\images\refresh-32.png \
