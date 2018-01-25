@@ -45,5 +45,9 @@
         <file>qml/modules/TextEditBox.qml</file>
         <file>qml/pages/UploadPage/Etat1.qml</file>
         <file>qml/pages/HomePage/Etat3.qml</file>
+        <file>images/icon/home.png</file>
+        <file>images/icon/pause.png</file>
+        <file>qml/modules/ValidBox.qml</file>
+        <file>qml/javascript/ButtonControl.js</file>
     </qresource>
 </RCC>

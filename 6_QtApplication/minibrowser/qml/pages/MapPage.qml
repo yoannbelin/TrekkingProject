@@ -25,7 +25,7 @@ Page {
 
     footer: Label {
         text: "lat ; lng"
-        font.pixelSize: Qt.application.font.pixelSize * 1
+        font.pixelSize: Qt.application.font.pixelSize * 1.25
 
     }
 
