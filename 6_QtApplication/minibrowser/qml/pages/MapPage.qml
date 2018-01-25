@@ -9,17 +9,19 @@ import QtPositioning 5.8
 import "MapPage"
 
 Page {
-//    header: Label {
-//        text: "Pixel Ratio: " + pixelRatio + " and Pixel Density: " + pixelDensity
-//        font.pixelSize: Qt.application.font.pixelSize * 1
-//        padding: 10
-//    }
 
     Etat0 {
         id : etat0
         visible: true
         //visible: false
     }
+
+    Etat1 {
+        id : etat1
+        //visible: true
+        visible: false
+    }
+
 
     footer: Label {
         text: "lat ; lng"

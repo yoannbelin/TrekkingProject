@@ -6,12 +6,12 @@
         <file>images/refresh-32.png</file>
         <file>+android/LoadProgressStyle.qml</file>
         <file>images/right-32.png</file>
-		<file>images/nordic.gif</file>
+        <file>images/nordic.gif</file>
         <file>qml/javascript/JSControl.js</file>
         <file>qml/modules/MyToolBar.qml</file>
         <file>qml/pages/WebPage.qml</file>
         <file>qml/pages/TrekTracker.qml</file>
-        <file>qml/pages/CurrentTrekPage.qml</file>
+        <file>qml/pages/MapPage.qml</file>
         <file>qml/pages/UploadPage.qml</file>
         <file>qml/pages/PhotoPage.qml</file>
         <file>qml/modules/MyButton.qml</file>
@@ -34,7 +34,12 @@
         <file>images/icon/home_logo.png</file>
         <file>images/logoAfpa.jpg</file>
         <file>qml/pages/HomePage/Etat2.qml</file>
-		<file>qml/pages/MapPage/Etat0.qml</file>
+        <file>qml/pages/MapPage/Etat0.qml</file>
         <file>qml/modules/MyForm.qml</file>
+        <file>qml/pages/MapPage/Etat1.qml</file>
+        <file>qml/pages/PhotoPage/Etat1.qml</file>
+        <file>qml/pages/PhotoPage/Etat2.qml</file>
+        <file>images/defaultPhoto.png</file>
+        <file>qml/modules/ComboType.qml</file>
     </qresource>
 </RCC>

@@ -20,11 +20,11 @@ ApplicationWindow {
     property var pixelDensity: Screen.pixelDensity
 
     visible: true
-//    width: 384
-//    height: 640
+    width: 384
+    height: 640
 
-    width: Screen.width
-    height: Screen.height
+//    width: Screen.width
+//    height: Screen.height
 
     title: "yepyep"
 
@@ -71,8 +71,8 @@ ApplicationWindow {
             id: trekPage
         }
 
-        CurrentTrekPage{
-            id: currentTrekPage
+        MapPage{
+            id: mapPage
         }
 
         PhotoPage{

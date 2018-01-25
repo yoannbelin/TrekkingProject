@@ -8,7 +8,6 @@ Button {
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.verticalCenter: parent.verticalCenter
 
-
     background: Rectangle {
 
         border.color: "#26282a"
