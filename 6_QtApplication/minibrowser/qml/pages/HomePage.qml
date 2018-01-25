@@ -1,40 +1,39 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-//import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
 import "../modules"
-import "TrekTracker"
+import "HomePage"
 
 Page {
-    id : page
-    width: 384
-    height: 640
+    id : homePage
 
     header: Label {
-        text: qsTr("Trek Tracker")
+        text: qsTr("Home")
         font.pixelSize: Qt.application.font.pixelSize * 2
         padding: 10
     }
 
     Etat1 {
         id : etat1
-        visible: true
-        //visible: false
+        //visible: true
+        visible: false
     }
 
     Etat2 {
         id : etat2
-        visible: false
-        //visible: true
+        //visible: false
+        visible: true
     }
 
-    Etat3 {
-        id : etat3
-        visible: false
-        //visible: true
-    }
+//    Etat3 {
+//        id : etat3
+//        visible: false
+//        //visible: true
+//    }
 
 
 }
+
+

@@ -1,6 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import QtWebView 1.1
+//import QtWebView 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
@@ -13,31 +13,46 @@ TabBar {
 
     TabButton {
         Image {
-            source: "../../../images/icon/browser_icon.png"
+            source: "../../../images/icon/home_logo.png"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+
         }
     }
 
     TabButton {
         Image {
             source: "../../../images/icon/trekking_icon.png"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+
         }
     }
 
     TabButton {
         Image {
             source: "../../../images/icon/current_trek_icon.png"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+
         }
     }
 
     TabButton {
         Image {
             source: "../../../images/icon/camera_icon.png"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+
         }
     }
 
     TabButton {
         Image {
             source: "../../../images/icon/upload_icon.png"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+
         }
     }
 
