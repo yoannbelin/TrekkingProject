@@ -41,5 +41,6 @@
         <file>qml/pages/PhotoPage/Etat2.qml</file>
         <file>images/defaultPhoto.png</file>
         <file>qml/modules/ComboType.qml</file>
+        <file>qml/modules/MyMap.qml</file>
     </qresource>
 </RCC>

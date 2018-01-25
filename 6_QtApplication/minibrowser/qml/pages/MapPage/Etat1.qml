@@ -15,21 +15,18 @@ ColumnLayout {
     anchors.fill: parent
     Layout.fillHeight: true
     Layout.fillWidth: true
-
     spacing: 0
 
+
     Rectangle {
+
         Layout.fillHeight: true
         Layout.fillWidth: true
         //color: "red"
 
-        WebView { // a changer ??
-            url: "http://www.google.com"
-            onLoadingChanged: {
-                if (loadRequest.errorString)
-                    console.error(loadRequest.errorString);
-            }
-        }
+        MyMap{
+            id: myMap
 
+        }
     }
 }

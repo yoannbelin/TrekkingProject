@@ -115,11 +115,6 @@ ColumnLayout {
         }
     }
 
-
-
-
-
-
 } //fin columnlayout
 
 

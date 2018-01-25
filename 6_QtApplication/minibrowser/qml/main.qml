@@ -19,6 +19,7 @@ ApplicationWindow {
     property var pixelRatio: Screen.devicePixelRatio
     property var pixelDensity: Screen.pixelDensity
 
+
     visible: true
     width: 384
     height: 640

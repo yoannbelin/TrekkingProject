@@ -10,6 +10,15 @@ Page {
         text: qsTr("Upload Page")
         font.pixelSize: Qt.application.font.pixelSize * 2
         padding: 10
+
+        Button{
+            text: "Et ben alors"
+            onClicked: {
+
+                MyContext.updateTrek("new Gps Point sent", 43.465, 3.265)
+                MyContext.updateTrek("new Gps Point sent", 43.45, 3.25)
+            }
+        }
     }
 
     //    Column{

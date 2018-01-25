@@ -5,26 +5,26 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 import QtPositioning 5.8
 
-
 import "MapPage"
+import "../javascript/JSControl.js" as JSC
 
 Page {
 
     Etat0 {
         id : etat0
-        visible: true
-        //visible: false
+//        visible: true
+        visible: false
     }
 
     Etat1 {
         id : etat1
-        //visible: true
-        visible: false
+        visible: true
+//        visible: false
     }
 
 
     footer: Label {
-        text: "lat ; lng"
+        text: "lat: " + JSC.lastLat() + ", lng: " + JSC.lastLng() // Oslo
         font.pixelSize: Qt.application.font.pixelSize * 1
 
     }
@@ -36,7 +36,7 @@ Page {
 
         onPositionChanged: {
             var coord = gpsPosition.position.coordinate;
-            MyContext.updateTrek("new Gps Point sent", coord.latitude, coord.longitude);
+//            MyContext.updateTrek("new Gps Point sent", coord.latitude, coord.longitude);
         }
     }
 
