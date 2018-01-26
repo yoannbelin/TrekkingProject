@@ -15,7 +15,7 @@ ColumnLayout {
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: 0.3*parent.height
+        Layout.preferredHeight: (1/2)*parent.height
         Layout.fillHeight: false
         Layout.fillWidth: true
 
@@ -31,7 +31,7 @@ ColumnLayout {
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: 0.2*parent.height
+        Layout.preferredHeight: (2/6)*parent.height
         Layout.fillHeight: false
 
         Rectangle {
@@ -41,10 +41,13 @@ ColumnLayout {
             //color: "darkGreen"
 
             MyButton {
-                text : "Voir"
+                text : "Retour"
                 height: etat.height / 15
                 width: etat.width /3
-                onClicked: console.log("visualisation du tracé sur MapPage.Etat2")
+                onClicked: {
+                    trek2_visibilite = false ;
+                    trek1_visibilite = true ;
+                }
             }
         }
 
@@ -58,7 +61,9 @@ ColumnLayout {
                 height: etat.height / 15
                 width: etat.width /3
                 onClicked: {
-                    console.log("sauvegarde des données du treck dans LocalFile + changement de pahe > TrekTracker.Etat3")
+                    console.log("sauvegarde des données du treck dans LocalFile + changement de pahe > TrekTracker.Etat3");
+                    trek2_visibilite = false;
+                    trek3_visibilite = true;
                 }
             }
         }
@@ -67,7 +72,7 @@ ColumnLayout {
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: 0.4*parent.height
+        Layout.preferredHeight: (1/6)*parent.height
         Layout.fillHeight: false
         Rectangle {
             Layout.fillHeight: true

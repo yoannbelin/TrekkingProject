@@ -54,6 +54,8 @@ ColumnLayout {
                 width: etat.width /3
                 onClicked: {
                     console.log("retour");
+                    home3_visibilite = false;
+                    home1_visibilite = true
                 }
             }
         }

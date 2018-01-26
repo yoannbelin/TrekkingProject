@@ -17,11 +17,22 @@ ColumnLayout {
 
     spacing: 0
 
+    //insert camera module
+
     Rectangle {
         Layout.fillHeight: true
         Layout.fillWidth: true
-        color: "lightblue"
 
-        //insert camera module
+        MyButton {
+            text : "Prendre photo"
+            height: etat.height / 15
+            width: etat.width /3
+            onClicked: {
+                console.log("Cheeeeese !");
+                photo1_visibilite = false ;
+                photo2_visibilite = true ;
+            }
+        }
     }
 }
+

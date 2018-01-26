@@ -26,10 +26,25 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            //color: "blue"
+            color: "white"
+        }
+    }
+
+
+    RowLayout {
+        spacing: 0
+        Layout.preferredHeight: (1/12)*parent.height
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            color: "lightGrey"
 
             TextBox {
                 text : "Etat actuel de la sauvegarde : "
+                font.family: "acumin-pro"
 
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -42,7 +57,7 @@ ColumnLayout {
         visible : true
 
         spacing: 0
-        Layout.preferredHeight: (5/12)*parent.height
+        Layout.preferredHeight: (1/3)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
@@ -158,7 +173,7 @@ ColumnLayout {
                     Text {
                         text : "Etes vous sûr ?"
 
-                        font.family: "Calibri"
+                        font.family: "acumin-pro"
                         font.pixelSize: Qt.application.font.pixelSize * 1.5
                         font.bold: true
 
@@ -235,9 +250,4 @@ ColumnLayout {
         }
     } // fin RowLayout
 
-    //    MyDialog {
-    //        id : dialog
-    //        titre: ""
-    //        instruction: "Are you sure ?"
-    //    }
 }

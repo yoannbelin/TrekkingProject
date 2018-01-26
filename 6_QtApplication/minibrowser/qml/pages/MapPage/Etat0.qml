@@ -28,7 +28,7 @@ ColumnLayout {
             Text {
                 text : "mode hors connexion"
 
-                font.family: "Calibri"
+                font.family: "Californian FB"
                 font.pixelSize: Qt.application.font.pixelSize * 1
                 font.bold: true
 

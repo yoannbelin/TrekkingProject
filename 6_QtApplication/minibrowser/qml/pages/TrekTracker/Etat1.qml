@@ -49,7 +49,6 @@ ColumnLayout {
                     btn2.visible = false
                     error.visible = false
                     check.visible = true
-                    //console.log("cancel")
                 }
             }
         }
@@ -74,7 +73,9 @@ ColumnLayout {
                 height: etat.height / 15
                 width: etat.width / 2
                 onClicked: {
-                    console.log("changement de page > TrekTracker.etat2")
+                    console.log("changement de page > TrekTracker.etat2");
+                    trek1_visibilite = false;
+                    trek2_visibilite = true;
                 }
 
             }

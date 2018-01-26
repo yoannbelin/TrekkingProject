@@ -33,6 +33,14 @@ ColumnLayout {
                 height: parent.height
                 fillMode: Image.PreserveAspectFit
                 anchors.horizontalCenter: parent.horizontalCenter
+
+                MouseArea {
+                    anchors.fill : parent
+                    onClicked: {
+                        photo2_visibilite = false ;
+                        photo3_visibilite = true ;
+                    }
+                }
             }
         }
     } // fin rowlayout 1
@@ -205,7 +213,7 @@ ColumnLayout {
                     Text {
                         text : "Etes vous sûr ?"
 
-                        font.family: "Calibri"
+                        font.family: "acumin-pro"
                         font.pixelSize: Qt.application.font.pixelSize * 1.5
                         font.bold: true
 
@@ -261,12 +269,6 @@ ColumnLayout {
             }
         } //fin columnlayout
     }
-
-//    MyDialog {
-//        id : dialog
-//        titre: ""
-//        instruction: "Confirmer ?"
-//    }
 
 }
 

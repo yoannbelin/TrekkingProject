@@ -30,10 +30,10 @@ ColumnLayout {
                 id : label
                 text : "Bonjour" + "\n" + "utilisateur"
 
-                font.family: "Calibri"
-                font.pixelSize: Qt.application.font.pixelSize * 3
+                font.family: "tablet-gothic-condensed"
+                font.pixelSize: Qt.application.font.pixelSize * 4
                 font.bold: true
-                font.capitalization: Font.SmallCaps
+                //font.capitalization: Font.SmallCaps
 
                 anchors.centerIn : parent
                 horizontalAlignment: Text.AlignHCenter
@@ -149,7 +149,7 @@ ColumnLayout {
                     Text {
                         text : "Etes vous sûr ?"
 
-                        font.family: "Calibri"
+                        font.family: "acumin-pro"
                         font.pixelSize: Qt.application.font.pixelSize * 1.5
                         font.bold: true
 
@@ -224,12 +224,6 @@ ColumnLayout {
             }
         }
     } // fin RowLayout
-
-    //    MyDialog {
-    //        id : dialog
-    //        titre: ""
-    //        instruction: "Are you sure ?"
-    //    }
 
 } //fin columnlayout
 

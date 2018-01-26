@@ -9,23 +9,26 @@ import QtPositioning 5.8
 import "MapPage"
 
 Page {
+    id : mapPage
+
+    property bool map0_visibilite: true
+    property bool map1_visibilite: false
 
     Etat0 {
         id : etat0
-        visible: true
-        //visible: false
+        visible: map0_visibilite
     }
 
     Etat1 {
         id : etat1
-        //visible: true
-        visible: false
+        visible: map1_visibilite
     }
 
 
     footer: Label {
         text: "lat ; lng"
         font.pixelSize: Qt.application.font.pixelSize * 1.25
+        font.family: "Calibri"
 
     }
 

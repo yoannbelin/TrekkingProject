@@ -5,7 +5,7 @@ TextField {
     id : label
     text : ""
 
-    font.family: "Calibri"
+    font.family: "Californian FB"
     font.pixelSize: Qt.application.font.pixelSize * 1.5
 
     horizontalAlignment: TextInput.AlignHCenter

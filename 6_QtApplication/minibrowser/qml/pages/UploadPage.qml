@@ -7,16 +7,20 @@ import "../modules"
 import "UploadPage"
 
 Page {
+    id : uploadPage
+
+    property bool upload1_visibilite: true
+
     header: Label {
         text: qsTr("Upload Page")
         font.pixelSize: Qt.application.font.pixelSize * 2
+        font.family: "acumin-pro"
         padding: 10
     }
 
     Etat1 {
         id : etat1
-        visible: true
-        //visible: false
+        visible: upload1_visibilite
     }
 
 }
