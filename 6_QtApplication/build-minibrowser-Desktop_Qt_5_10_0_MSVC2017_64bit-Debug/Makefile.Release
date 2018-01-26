@@ -11,13 +11,13 @@ MAKEFILE      = Makefile.Release
 
 CC            = cl
 CXX           = cl
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_POSITIONING_LIB -DQT_CORE_LIB -DQT_WEBVIEW_LIB -DNDEBUG
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_POSITIONING_LIB -DQT_CORE_LIB -DQT_WEBVIEW_LIB -DNDEBUG
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
-INCPATH       = -I..\minibrowser -I. -IC:\Qt_new\5.10.0\msvc2017_64\include -IC:\Qt_new\5.10.0\msvc2017_64\include\QtQuick -IC:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets -IC:\Qt_new\5.10.0\msvc2017_64\include\QtGui -IC:\Qt_new\5.10.0\msvc2017_64\include\QtANGLE -IC:\Qt_new\5.10.0\msvc2017_64\include\QtQml -IC:\Qt_new\5.10.0\msvc2017_64\include\QtNetwork -IC:\Qt_new\5.10.0\msvc2017_64\include\QtPositioning -IC:\Qt_new\5.10.0\msvc2017_64\include\QtCore -IC:\Qt_new\5.10.0\msvc2017_64\include\QtWebView -Irelease -I\include -IC:\Qt_new\5.10.0\msvc2017_64\mkspecs\win32-msvc 
+INCPATH       = -I..\minibrowser -I. -IC:\Qt_new\5.10.0\msvc2017_64\include -IC:\Qt_new\5.10.0\msvc2017_64\include\QtQuick -IC:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets -IC:\Qt_new\5.10.0\msvc2017_64\include\QtGui -IC:\Qt_new\5.10.0\msvc2017_64\include\QtANGLE -IC:\Qt_new\5.10.0\msvc2017_64\include\QtQml -IC:\Qt_new\5.10.0\msvc2017_64\include\QtNetwork -IC:\Qt_new\5.10.0\msvc2017_64\include\QtSql -IC:\Qt_new\5.10.0\msvc2017_64\include\QtPositioning -IC:\Qt_new\5.10.0\msvc2017_64\include\QtCore -IC:\Qt_new\5.10.0\msvc2017_64\include\QtWebView -Irelease -I\include -IC:\Qt_new\5.10.0\msvc2017_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\Qt_new\5.10.0\msvc2017_64\lib C:\Qt_new\5.10.0\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Quick.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Widgets.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Gui.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Qml.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Network.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Positioning.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Core.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5WebView.lib 
+LIBS          = /LIBPATH:C:\Qt_new\5.10.0\msvc2017_64\lib C:\Qt_new\5.10.0\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib shell32.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Quick.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Widgets.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Gui.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Qml.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Network.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Sql.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Positioning.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Core.lib C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5WebView.lib 
 QMAKE         = C:\Qt_new\5.10.0\msvc2017_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
@@ -50,7 +50,8 @@ SOURCES       = ..\minibrowser\cpp\main.cpp \
 		..\minibrowser\cpp\utils.cpp \
 		..\minibrowser\cpp\trek.cpp \
 		..\minibrowser\cpp\gpspoint.cpp \
-		..\minibrowser\cpp\filemanager.cpp release\qrc_qml.cpp \
+		..\minibrowser\cpp\filemanager.cpp \
+		..\minibrowser\cpp\sqluser.cpp release\qrc_qml.cpp \
 		release\moc_mycontext.cpp \
 		release\moc_utils.cpp \
 		release\moc_trek.cpp \
@@ -62,6 +63,7 @@ OBJECTS       = release\main.obj \
 		release\trek.obj \
 		release\gpspoint.obj \
 		release\filemanager.obj \
+		release\sqluser.obj \
 		release\qrc_qml.obj \
 		release\moc_mycontext.obj \
 		release\moc_utils.obj \
@@ -73,12 +75,14 @@ DIST          =  ..\minibrowser\cpp\mycontext.h \
 		..\minibrowser\cpp\utils.h \
 		..\minibrowser\cpp\trek.h \
 		..\minibrowser\cpp\gpspoint.h \
-		..\minibrowser\cpp\filemanager.h ..\minibrowser\cpp\main.cpp \
+		..\minibrowser\cpp\filemanager.h \
+		..\minibrowser\cpp\sqluser.h ..\minibrowser\cpp\main.cpp \
 		..\minibrowser\cpp\mycontext.cpp \
 		..\minibrowser\cpp\utils.cpp \
 		..\minibrowser\cpp\trek.cpp \
 		..\minibrowser\cpp\gpspoint.cpp \
-		..\minibrowser\cpp\filemanager.cpp
+		..\minibrowser\cpp\filemanager.cpp \
+		..\minibrowser\cpp\sqluser.cpp
 QMAKE_TARGET  = minibrowser
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = minibrowser.exe
@@ -155,7 +159,7 @@ all: Makefile.Release  $(DESTDIR_TARGET)
 
 $(DESTDIR_TARGET):  $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\main.obj release\mycontext.obj release\utils.obj release\trek.obj release\gpspoint.obj release\filemanager.obj release\qrc_qml.obj release\moc_mycontext.obj release\moc_utils.obj release\moc_trek.obj release\moc_gpspoint.obj release\moc_filemanager.obj
+release\main.obj release\mycontext.obj release\utils.obj release\trek.obj release\gpspoint.obj release\filemanager.obj release\sqluser.obj release\qrc_qml.obj release\moc_mycontext.obj release\moc_utils.obj release\moc_trek.obj release\moc_gpspoint.obj release\moc_filemanager.obj
 $(LIBS)
 <<
 
@@ -165,10 +169,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) minibrowser.zip $(SOURCES) $(DIST) ..\minibrowser\minibrowser.pro C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\angle.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\qconfig.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\default_post.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qt.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\resources.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\moc.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\uic.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\yacc.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\lex.prf ..\minibrowser\minibrowser.pro ..\minibrowser\qml.qrc C:\Qt_new\5.10.0\msvc2017_64\lib\qtmain.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Quick.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Widgets.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Gui.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Qml.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Network.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Positioning.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Core.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5WebView.prl   ..\minibrowser\qml.qrc C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\data\dummy.cpp ..\minibrowser\cpp\mycontext.h ..\minibrowser\cpp\utils.h ..\minibrowser\cpp\trek.h ..\minibrowser\cpp\gpspoint.h ..\minibrowser\cpp\filemanager.h  ..\minibrowser\cpp\main.cpp ..\minibrowser\cpp\mycontext.cpp ..\minibrowser\cpp\utils.cpp ..\minibrowser\cpp\trek.cpp ..\minibrowser\cpp\gpspoint.cpp ..\minibrowser\cpp\filemanager.cpp     
+	$(ZIP) minibrowser.zip $(SOURCES) $(DIST) ..\minibrowser\minibrowser.pro C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\angle.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\qconfig.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\default_post.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qt.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\resources.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\moc.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\uic.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\yacc.prf C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\lex.prf ..\minibrowser\minibrowser.pro ..\minibrowser\qml.qrc C:\Qt_new\5.10.0\msvc2017_64\lib\qtmain.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Quick.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Widgets.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Gui.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Qml.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Network.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Sql.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Positioning.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Core.prl C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5WebView.prl   ..\minibrowser\qml.qrc C:\Qt_new\5.10.0\msvc2017_64\mkspecs\features\data\dummy.cpp ..\minibrowser\cpp\mycontext.h ..\minibrowser\cpp\utils.h ..\minibrowser\cpp\trek.h ..\minibrowser\cpp\gpspoint.h ..\minibrowser\cpp\filemanager.h ..\minibrowser\cpp\sqluser.h  ..\minibrowser\cpp\main.cpp ..\minibrowser\cpp\mycontext.cpp ..\minibrowser\cpp\utils.cpp ..\minibrowser\cpp\trek.cpp ..\minibrowser\cpp\gpspoint.cpp ..\minibrowser\cpp\filemanager.cpp ..\minibrowser\cpp\sqluser.cpp     
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.obj release\mycontext.obj release\utils.obj release\trek.obj release\gpspoint.obj release\filemanager.obj release\qrc_qml.obj release\moc_mycontext.obj release\moc_utils.obj release\moc_trek.obj release\moc_gpspoint.obj release\moc_filemanager.obj
+	-$(DEL_FILE) release\main.obj release\mycontext.obj release\utils.obj release\trek.obj release\gpspoint.obj release\filemanager.obj release\sqluser.obj release\qrc_qml.obj release\moc_mycontext.obj release\moc_utils.obj release\moc_trek.obj release\moc_gpspoint.obj release\moc_filemanager.obj
 	-$(DEL_FILE) release\minibrowser.exp
 
 distclean: clean 
@@ -351,10 +355,191 @@ release\moc_mycontext.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstandardpaths.h \
 		..\minibrowser\cpp\trek.h \
 		..\minibrowser\cpp\gpspoint.h \
+		..\minibrowser\cpp\sqluser.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSql \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSqlDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCore \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCoreDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracttransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydataops.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydatapointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbitarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbuffer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbytearraymatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcache.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcollator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcommandlineoption.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcryptographichash.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdeadlinetimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qelapsedtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdiriterator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qendian.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeventtransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qexception.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfactoryinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfileselector.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfilesystemwatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfinalstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuture.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfutureinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrunnable.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresultstore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturesynchronizer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturewatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qhistorystate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qidentityproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qisenum.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonvalue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsondocument.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonobject.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibrary.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibraryinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qversionnumber.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qline.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlinkedlist.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlockfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qloggingcategory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmath.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmessageauthenticationcode.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedata.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimetype.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobjectcleanuphandler.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qoperatingsystemversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qparallelanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpauseanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpluginloader.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qqueue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrandom.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qreadwritelock.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qregularexpression.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresource.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsavefile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qscopedvaluerollback.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsequentialanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsettings.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsharedmemory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignalmapper.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignaltransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsocketnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsortfilterproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstack.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstatemachine.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstorageinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringlistmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsystemsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporarydir.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QScopedPointer \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporaryfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextboundaryfinder.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextcodec.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthread.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadpool.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadstorage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimeline.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimezone.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtranslator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtypetraits.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\quuid.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwaitcondition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwineventnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qxmlstream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtcoreversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriver.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriverplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlfield.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlindex.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquerymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpaintdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpalette.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qbrush.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qmatrix.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpolygon.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtransform.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpainterpath.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qimage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixelformat.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixmap.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontmetrics.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcursor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvalidator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qicon.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyle.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabbar.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qrubberband.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qlistview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qcombobox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlQuery \
 		..\minibrowser\cpp\mycontext.h \
 		release\moc_predefs.h \
 		C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe
-	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\mycontext.h -o release\moc_mycontext.cpp
+	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtSql -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\mycontext.h -o release\moc_mycontext.cpp
 
 release\moc_utils.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobject.h \
@@ -414,7 +599,7 @@ release\moc_utils.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
 		..\minibrowser\cpp\utils.h \
 		release\moc_predefs.h \
 		C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe
-	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\utils.h -o release\moc_utils.cpp
+	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtSql -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\utils.h -o release\moc_utils.cpp
 
 release\moc_trek.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobject.h \
@@ -497,7 +682,7 @@ release\moc_trek.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
 		..\minibrowser\cpp\trek.h \
 		release\moc_predefs.h \
 		C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe
-	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\trek.h -o release\moc_trek.cpp
+	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtSql -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\trek.h -o release\moc_trek.cpp
 
 release\moc_gpspoint.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobject.h \
@@ -567,7 +752,7 @@ release\moc_gpspoint.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
 		..\minibrowser\cpp\gpspoint.h \
 		release\moc_predefs.h \
 		C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe
-	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\gpspoint.h -o release\moc_gpspoint.cpp
+	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtSql -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\gpspoint.h -o release\moc_gpspoint.cpp
 
 release\moc_filemanager.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QStringList \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringlist.h \
@@ -648,7 +833,7 @@ release\moc_filemanager.cpp: C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QString
 		..\minibrowser\cpp\filemanager.h \
 		release\moc_predefs.h \
 		C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe
-	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\filemanager.h -o release\moc_filemanager.cpp
+	C:\Qt_new\5.10.0\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt_new/5.10.0/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-03/Documents/Appli_rando/projetCommun/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt_new/5.10.0/msvc2017_64/include -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQuick -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWidgets -IC:/Qt_new/5.10.0/msvc2017_64/include/QtGui -IC:/Qt_new/5.10.0/msvc2017_64/include/QtANGLE -IC:/Qt_new/5.10.0/msvc2017_64/include/QtQml -IC:/Qt_new/5.10.0/msvc2017_64/include/QtNetwork -IC:/Qt_new/5.10.0/msvc2017_64/include/QtSql -IC:/Qt_new/5.10.0/msvc2017_64/include/QtPositioning -IC:/Qt_new/5.10.0/msvc2017_64/include/QtCore -IC:/Qt_new/5.10.0/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\filemanager.h -o release\moc_filemanager.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -807,7 +992,170 @@ release\main.obj: ..\minibrowser\cpp\main.cpp C:\Qt_new\5.10.0\msvc2017_64\inclu
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstandardpaths.h \
 		../minibrowser/cpp/trek.h \
-		../minibrowser/cpp/gpspoint.h
+		../minibrowser/cpp/gpspoint.h \
+		../minibrowser/cpp/sqluser.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSql \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSqlDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCore \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCoreDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracttransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydataops.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydatapointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbitarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbuffer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbytearraymatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcache.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcollator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcryptographichash.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdeadlinetimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qelapsedtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdiriterator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qendian.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeventtransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qexception.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfactoryinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfileselector.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfilesystemwatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfinalstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuture.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfutureinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrunnable.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresultstore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturesynchronizer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturewatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qhistorystate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qidentityproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qisenum.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonvalue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsondocument.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonobject.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibrary.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibraryinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qversionnumber.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlinkedlist.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlockfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qloggingcategory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmath.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmessageauthenticationcode.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedata.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimetype.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobjectcleanuphandler.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qoperatingsystemversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qparallelanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpauseanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpluginloader.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qqueue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrandom.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qreadwritelock.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qregularexpression.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresource.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsavefile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qscopedvaluerollback.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsequentialanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsettings.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsharedmemory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignalmapper.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignaltransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsocketnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsortfilterproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstack.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstatemachine.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstorageinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringlistmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsystemsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporarydir.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QScopedPointer \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporaryfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextboundaryfinder.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextcodec.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthread.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadpool.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadstorage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimeline.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimezone.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtranslator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtypetraits.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\quuid.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwaitcondition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwineventnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qxmlstream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtcoreversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriver.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriverplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlfield.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlindex.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquerymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpaintdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpalette.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qbrush.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qimage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixelformat.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixmap.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontmetrics.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcursor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvalidator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qicon.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyle.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabbar.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qrubberband.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qlistview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qcombobox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlQuery
 
 release\mycontext.obj: ..\minibrowser\cpp\mycontext.cpp ../minibrowser/cpp/mycontext.h \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
@@ -911,7 +1259,188 @@ release\mycontext.obj: ..\minibrowser\cpp\mycontext.cpp ../minibrowser/cpp/mycon
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstandardpaths.h \
 		../minibrowser/cpp/trek.h \
-		../minibrowser/cpp/gpspoint.h
+		../minibrowser/cpp/gpspoint.h \
+		../minibrowser/cpp/sqluser.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSql \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSqlDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCore \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCoreDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracttransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydataops.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydatapointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbitarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbuffer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbytearraymatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcache.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcollator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcommandlineoption.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcryptographichash.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdeadlinetimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qelapsedtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdiriterator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qendian.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeventtransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qexception.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfactoryinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfileselector.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfilesystemwatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfinalstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuture.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfutureinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrunnable.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresultstore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturesynchronizer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturewatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qhistorystate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qidentityproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qisenum.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonvalue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsondocument.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonobject.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibrary.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibraryinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qversionnumber.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qline.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlinkedlist.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlockfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qloggingcategory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmath.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmessageauthenticationcode.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedata.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimetype.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobjectcleanuphandler.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qoperatingsystemversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qparallelanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpauseanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpluginloader.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qqueue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrandom.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qreadwritelock.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qregularexpression.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresource.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsavefile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qscopedvaluerollback.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsequentialanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsettings.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsharedmemory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignalmapper.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignaltransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsocketnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsortfilterproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstack.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstatemachine.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstorageinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringlistmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsystemsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporarydir.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QScopedPointer \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporaryfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextboundaryfinder.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextcodec.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthread.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadpool.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadstorage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimeline.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimezone.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtranslator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtypetraits.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\quuid.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwaitcondition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwineventnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qxmlstream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtcoreversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriver.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriverplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlfield.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlindex.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquerymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpaintdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpalette.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qbrush.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qmatrix.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpolygon.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtransform.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpainterpath.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qimage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixelformat.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixmap.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontmetrics.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcursor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvalidator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qicon.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyle.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabbar.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qrubberband.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qlistview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qcombobox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlQuery
 
 release\utils.obj: ..\minibrowser\cpp\utils.cpp ../minibrowser/cpp/utils.h \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
@@ -1194,6 +1723,263 @@ release\filemanager.obj: ..\minibrowser\cpp\filemanager.cpp ../minibrowser/cpp/f
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstandardpaths.h \
 		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject
+
+release\sqluser.obj: ..\minibrowser\cpp\sqluser.cpp ../minibrowser/cpp/sqluser.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSql \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QtSqlDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCore \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QtCoreDepends \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstractstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qabstracttransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydataops.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qarraydatapointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbitarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbuffer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qbytearraymatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcache.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcollator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcommandlineoption.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcommandlineparser.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qcryptographichash.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdeadlinetimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qelapsedtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdir.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfileinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qdiriterator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeasingcurve.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qendian.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qeventtransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qexception.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfactoryinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfileselector.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QObject \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QStringList \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfilesystemwatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfinalstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuture.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfutureinterface.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrunnable.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresultstore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturesynchronizer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qfuturewatcher.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qhistorystate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qidentityproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qisenum.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonarray.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonvalue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsondocument.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qjsonobject.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibrary.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlibraryinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qversionnumber.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qline.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlinkedlist.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qlockfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qloggingcategory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmath.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmessageauthenticationcode.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedata.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimedatabase.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qmimetype.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qobjectcleanuphandler.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qoperatingsystemversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qparallelanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpauseanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpointer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpluginloader.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qpropertyanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qvariantanimation.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qqueue.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrandom.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qreadwritelock.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qregularexpression.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qresource.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsavefile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qscopedvaluerollback.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsequentialanimationgroup.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsettings.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsharedmemory.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignalmapper.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsignaltransition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsocketnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsortfilterproxymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstack.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstandardpaths.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstatemachine.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstorageinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qstringlistmodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qsystemsemaphore.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporarydir.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QScopedPointer \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtemporaryfile.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextboundaryfinder.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtextcodec.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthread.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadpool.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qthreadstorage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimeline.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtimezone.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtranslator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtypetraits.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\quuid.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwaitcondition.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qwineventnotifier.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qxmlstream.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\qtcoreversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriver.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqldriverplugin.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlfield.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlindex.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlquerymodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaldelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpaintdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpalette.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qbrush.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qmatrix.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpolygon.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtransform.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpainterpath.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qimage.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixelformat.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qpixmap.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontmetrics.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qfontinfo.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qcursor.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qvalidator.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtGui\qicon.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qstyle.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabbar.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qrubberband.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qframe.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qlistview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtWidgets\qcombobox.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlrelationaltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqltablemodel.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\qtsqlversion.h \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QString \
+		C:\Qt_new\5.10.0\msvc2017_64\include\QtCore\QDebug
 
 release\qrc_qml.obj: release\qrc_qml.cpp 
 

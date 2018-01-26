@@ -74,8 +74,9 @@ ColumnLayout {
                 width: etat.width / 2
                 onClicked: {
                     console.log("changement de page > TrekTracker.etat2");
-                    trek1_visibilite = false;
-                    trek2_visibilite = true;
+                    MyContext.connectToMysql();
+//                    trek1_visibilite = false;
+//                    trek2_visibilite = true;
                 }
 
             }
@@ -103,6 +104,8 @@ ColumnLayout {
                 width : parent.width
 
                 anchors.centerIn : parent
+
+                content : MyContext.errorMessage
             }
         }
 

@@ -260,6 +260,7 @@ Makefile: ..\minibrowser\minibrowser.pro C:\Qt_new\5.10.0\msvc2017_64\mkspecs\wi
 		C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Gui.prl \
 		C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Qml.prl \
 		C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Network.prl \
+		C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Sql.prl \
 		C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Positioning.prl \
 		C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Core.prl \
 		C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5WebView.prl
@@ -449,6 +450,7 @@ C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Widgets.prl:
 C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Gui.prl:
 C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Qml.prl:
 C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Network.prl:
+C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Sql.prl:
 C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Positioning.prl:
 C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5Core.prl:
 C:\Qt_new\5.10.0\msvc2017_64\lib\Qt5WebView.prl:

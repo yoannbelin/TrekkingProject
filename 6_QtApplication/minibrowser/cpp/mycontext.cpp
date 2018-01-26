@@ -4,6 +4,8 @@
 MyContext::MyContext(QObject *parent) : QObject(parent), m_myContext(nullptr)
 {
     m_myTrek = new Trek;
+
+    setErrorMessage("");
 }
 
 void MyContext::initMyContext(/*QQmlApplicationEngine &engine,*/ QQmlContext *myContext)
@@ -58,7 +60,12 @@ void MyContext::updateTrek(QString actionType, const double &latitude, const dou
 //        setMyTrek(m_myTrek);
     }
 
-//    m_myContext->setContextProperty("MyContext", this);
+    //    m_myContext->setContextProperty("MyContext", this);
+}
+
+void MyContext::connectToMysql()
+{
+    setErrorMessage(sqluser.connectToDatabase("trek_test"));
 }
 
 
@@ -67,3 +74,9 @@ QString MyContext::truncateUrl(const QString &url)
     QString truncated = url;
     return truncated.remove(0, 8);
 }
+
+
+/*  ********************************************************** */
+/*  ****************Q_PROPERTY members************************ */
+/*  ********************************************************** */
+
