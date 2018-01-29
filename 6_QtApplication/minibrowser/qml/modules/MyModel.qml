@@ -1,5 +1,7 @@
 import QtQuick 2.0
 
+/* module temporaire avant liaison avec BDD */
+
 ListModel {
     id: libraryModel
     ListElement {

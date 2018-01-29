@@ -9,21 +9,24 @@ import "MapPage"
 import "../javascript/JSControl.js" as JSC
 
 Page {
-    id: root
+
+    id : mapPage
+
     property bool gpsActive : false
     property bool startNewTrek : false
     property var trekName : ""
+    property bool map0_visibilite: false
+    property bool map1_visibilite: true
 
     Etat0 {
         id : etat0
-        //        visible: true
-        visible: false
+        visible: map0_visibilite
     }
 
     Etat1 {
         id : etat1
-        visible: true
-        //        visible: false
+        visible: map1_visibilite
+
     }
 
 
@@ -31,6 +34,7 @@ Page {
 
         text: "lat: " + JSC.lastLat() + ", lng: " + JSC.lastLng()
         font.pixelSize: Qt.application.font.pixelSize * 1.25
+        font.family: "Calibri"
 
 
     }
@@ -38,33 +42,33 @@ Page {
     PositionSource{
         id: gpsPosition
         updateInterval: 3000
-        active: root.gpsActive
+        active: mapPage.gpsActive
 
         onActiveChanged: {
             var coord = gpsPosition.position.coordinate;
-            if (root.gpsActive && startNewTrek)
+            if (mapPage.gpsActive && startNewTrek)
             {
-//                MyContext.startTrek(trekName, 43.48, 3.26);
-//                MyContext.updateTrek(43.465, 3.25);
-//                MyContext.updateTrek(43.475, 3.255);
-                MyContext.startTrek(trekName, coord.latitude, coord.longitude);
+                MyContext.startTrek(trekName, 43.48, 3.26);
+                MyContext.updateTrek(43.465, 3.25);
+                MyContext.updateTrek(43.475, 3.255);
+                //                MyContext.startTrek(trekName, coord.latitude, coord.longitude);
                 startNewTrek = false;
             }
         }
 
         onPositionChanged: {
             var coord = gpsPosition.position.coordinate;
-            if (root.gpsActive)
-//            {
-//            if (MyContext.myTrek.path.length == 0)
-//            {
-//                MyContext.startTrek(trekName, coord.latitude, coord.longitude);
-//            }
-//            else
+            if (mapPage.gpsActive)
+                //            {
+                //            if (MyContext.myTrek.path.length == 0)
+                //            {
+                //                MyContext.startTrek(trekName, coord.latitude, coord.longitude);
+                //            }
+                //            else
             {
                 MyContext.updateTrek(coord.latitude, coord.longitude);
             }
-//            }
+            //            }
         }
     }
 

@@ -9,4 +9,5 @@ ComboBox {
         ListElement {text : "Cairn"}
         ListElement {text : "Faune & Flore"}
         ListElement {text : "Paysage"}
-    }}
+    }
+}

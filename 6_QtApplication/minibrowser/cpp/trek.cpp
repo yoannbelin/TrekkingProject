@@ -1,15 +1,5 @@
 #include "trek.h"
 
-Trek::~Trek()
-{
-    while(m_path.length() !=0)
-    {
-        m_path.back() = nullptr;
-        delete m_path.back();
-        m_path.pop_back(); ;
-        qDebug() << m_path.length();
-    }
-}
 
 Trek::Trek(QObject *parent) : QObject(parent)
 {
@@ -26,7 +16,6 @@ Trek::Trek(QObject *parent) : QObject(parent)
     m_test = m_fileManager.getPathway(); // pour test QML
 
     //    FileManager m_fileManager;
-
 }
 
 Trek::Trek(const QString &label,  const double &latitude, const double &longitude, QObject *parent): m_label(label), QObject(parent)
@@ -46,6 +35,17 @@ Trek::Trek(const Trek &old_trek, QObject *parent): QObject(parent)
     m_trace = old_trek.m_path;
     m_level = old_trek.m_level;
     m_done = 1;
+}
+
+Trek::~Trek()
+{
+    while(m_path.length() !=0)
+    {
+        m_path.back() = nullptr;
+        delete m_path.back();
+        m_path.pop_back(); ;
+        qDebug() << m_path.length();
+    }
 }
 
 void Trek::addNewGpsPoint(GpsPoint newGpsPoint)

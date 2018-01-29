@@ -19,6 +19,8 @@ ColumnLayout {
 
     spacing: 0
 
+    //insert camera module
+
     Rectangle {
         id : cameraUI
         Layout.fillHeight: true
@@ -74,4 +76,4 @@ ColumnLayout {
         }
     }
 }
-//}
+

@@ -25,9 +25,13 @@ Rectangle {
                     anchors { fill: parent; margins: 2 }
 
                     Text { id : label ; text: labelTreck
-                        font.pixelSize: Qt.application.font.pixelSize * 1.5}
+                        font.pixelSize: Qt.application.font.pixelSize * 1.5
+                        font.family: "acumin-pro"
+                    }
                     Text { id : parametre ; text: distance + "\t" + duree
                         font.pixelSize: Qt.application.font.pixelSize * 1
+                        font.family: "acumin-pro"
+
                     }
 
                 }

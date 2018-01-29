@@ -27,7 +27,7 @@ ColumnLayout {
                 id : label
                 text : "Titre du treck"
 
-                font.family: "Calibri"
+                font.family: "acumin-pro"
                 font.pixelSize: Qt.application.font.pixelSize * 3
                 font.bold: true
                 font.capitalization: Font.SmallCaps
@@ -171,6 +171,9 @@ ColumnLayout {
                         height: etat.height / 15
                         width: etat.width / 3
                         onClicked: {
+                            returnButton.visible = false ;
+                            stopButton.visible = true ;
+
                             pause.visible = true ;
                             start.visible = false ;
                             console.log("start Treck _ debut de la prise de pts GPS") }
@@ -196,6 +199,22 @@ ColumnLayout {
                     //color: "darkBlue"
 
                     MyButton {
+                        id : returnButton
+                        visible: true
+
+                        text : "Retour"
+                        height: etat.height / 15
+                        width: etat.width / 3
+                        onClicked: {
+                            trek3_visibilite = false ;
+                            trek2_visibilite = true ;
+                        }
+                    }
+
+                    MyButton {
+                        id : stopButton
+                        visible: false
+
                         text : "Stop"
                         height: etat.height / 15
                         width: etat.width / 3

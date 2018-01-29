@@ -7,7 +7,7 @@ Text {
 
     text : titre
 
-    font.family: "Calibri"
+    font.family: "Californian FB"
     font.pixelSize: Qt.application.font.pixelSize * 1.5
 
     leftPadding: 10

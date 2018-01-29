@@ -11,7 +11,7 @@ Rectangle {
         text : content
 
         color : "red"
-        font.family: "Calibri"
+        font.family: "acumin-pro"
         font.pixelSize: Qt.application.font.pixelSize * 1.5
         font.bold: true
 

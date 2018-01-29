@@ -52,8 +52,7 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
 
 void MyContext::updateTrek(const double &latitude, const double &longitude)
 {
-
-    setMyTrek(m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude)));
+    m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
 
     //    m_myContext->setContextProperty("MyContext", this);
 }

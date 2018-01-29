@@ -15,7 +15,7 @@ import QtQuick.Controls 2.2
 
         padding: 5
 
-        font.family: "Calibri"
+        font.family: "Californian FB"
         font.pixelSize: Qt.application.font.pixelSize * 1.5
 
         wrapMode: TextEdit.WrapAnywhere

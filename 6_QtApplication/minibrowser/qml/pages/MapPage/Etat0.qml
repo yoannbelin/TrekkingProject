@@ -28,7 +28,7 @@ ColumnLayout {
             Text {
                 text : "mode hors connexion"
 
-                font.family: "Calibri"
+                font.family: "Californian FB"
                 font.pixelSize: Qt.application.font.pixelSize * 1
                 font.bold: true
 
@@ -59,6 +59,15 @@ ColumnLayout {
 
                 playing: anime
             }
+
+            MouseArea {
+                anchors.fill : parent
+
+                onClicked: anime === true ? anime = false : anime = true
+
+//                ToolTip.visible: hovered
+//                ToolTip.text: "arret de l'animation"
+            }
         }
     }
 
@@ -71,28 +80,6 @@ ColumnLayout {
         ColumnLayout {
             anchors.fill: parent
             spacing: 0
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                //color: "lightBlue"
-
-                MyButton {
-                    id : pause
-                    visible: true
-
-                    text : "||"
-                    onClicked: anime === true ? anime = false : anime = true
-
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.top
-
-                    ToolTip.visible: hovered
-                    ToolTip.text: "arret de l'animation"
-                    font.pixelSize: Qt.application.font.pixelSize * 1
-
-                }
-            }
 
             Rectangle {
                 Layout.fillHeight: true

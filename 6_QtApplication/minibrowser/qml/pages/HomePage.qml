@@ -9,28 +9,31 @@ import "HomePage"
 Page {
     id : homePage
 
+    property bool home1_visibilite: true
+    property bool home2_visibilite: false
+    property bool home3_visibilite: false
+
+
     header: Label {
         text: qsTr("Home")
         font.pixelSize: Qt.application.font.pixelSize * 2
+        font.family: "acumin-pro"
         padding: 10
     }
 
     Etat1 {
         id : etat1
-        //visible: true
-        visible: false
+        visible: home1_visibilite
     }
 
     Etat2 {
         id : etat2
-        //visible: false
-        visible: true
+        visible: home2_visibilite
     }
 
     Etat3 {
         id : etat3
-        visible: false
-        //visible: true
+        visible: home3_visibilite
     }
 
 }
