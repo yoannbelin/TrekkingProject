@@ -164,9 +164,9 @@ ColumnLayout {
                         width: etat.width /3
                         onClicked: {
                             console.log("valid " + label.text)
-//                            MyContext.startTrek(label.text)
-                            mapPage.trekName = label.text
-                            mapPage.gpsActive = true
+                            mapPage.trekName = label.text;
+                            mapPage.startNewTrek = true;
+                            mapPage.gpsActive = true;
                         }
                     }
                 }

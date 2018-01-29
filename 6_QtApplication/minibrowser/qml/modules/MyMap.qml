@@ -14,6 +14,7 @@ Item{
     }
 
     Map {
+        id: currentMap
         anchors.fill: parent
         plugin: mapPlugin
         center: QtPositioning.coordinate(JSC.lastLat(), JSC.lastLng()) // Oslo
@@ -24,14 +25,6 @@ Item{
             line.width: 3
             line.color: 'green'
             path: JSC.pathwayToJSon()
-//                  [
-//                  { latitude: 43.462, longitude: 3.2527},
-//                  { latitude: 43.462, longitude: 3.2527},
-//                  { latitude: 43.463, longitude: 3.2528},
-//                  { latitude: 43.464, longitude: 3.252}
-//              ]
         }
-
     }
-//    Component.onCompleted: lineOfPathway.path =
 }

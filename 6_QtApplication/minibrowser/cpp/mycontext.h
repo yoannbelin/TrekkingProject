@@ -40,7 +40,7 @@ public:
     QString truncateUrl(const QString &url);
 
     Q_INVOKABLE void sendActionToCpp (QString nomAction, QString parameter = QString (""), QString parameter2 = QString ("") );
-    Q_INVOKABLE void updateTrek (QString actionType, double const &latitude, double const &longitude);
+    Q_INVOKABLE void updateTrek (double const &latitude, double const &longitude);
     Q_INVOKABLE void startTrek (const QString &trekName, const double &latitude, const double &longitude);
 
 

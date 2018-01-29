@@ -23,8 +23,8 @@ function pathwayToJSon(){
 
     while(index < MyContext.myTrek.path.length)
     {
-        pathway.push( {latitude : MyContext.myTrek.path[index].latitude ,
-                         longitude :MyContext.myTrek.path[index].longitude});
+        pathway.push( {  latitude : MyContext.myTrek.path[index].latitude ,
+                         longitude :MyContext.myTrek.path[index].longitude });
         index++
     }
 

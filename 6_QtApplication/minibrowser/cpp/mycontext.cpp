@@ -50,13 +50,10 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
 
 }
 
-void MyContext::updateTrek(QString actionType, const double &latitude, const double &longitude)
+void MyContext::updateTrek(const double &latitude, const double &longitude)
 {
-    if ( actionType == "new Gps Point sent" )
-    {
+
         m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
-//        setMyTrek(m_myTrek);
-    }
 
     //    m_myContext->setContextProperty("MyContext", this);
 }
@@ -64,7 +61,8 @@ void MyContext::updateTrek(QString actionType, const double &latitude, const dou
 void MyContext::startTrek(const QString &trekName,const double &latitude, const double &longitude)
 {
     m_myTrek = nullptr;
-    m_myTrek = new Trek (trekName, latitude, longitude);
+    setMyTrek(new Trek (trekName, latitude, longitude));
+    qDebug() << "New Trek Created";
 }
 
 
