@@ -18,6 +18,7 @@ public:
     explicit GpsPoint(QObject *parent = nullptr);
     GpsPoint (const double &latitude, const double &longtitude, QObject *parent = nullptr);
     GpsPoint (const GpsPoint &aGpsPoint);
+//    ~GpsPoint();
 
     bool userMoved(const GpsPoint &previousGpsPoint);
     void roundCoordinates();

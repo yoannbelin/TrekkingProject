@@ -27,6 +27,7 @@ class MyContext : public QObject
 
     QQmlContext* m_myContext;
 
+
     Trek* m_myTrek;
 
 public:
@@ -50,8 +51,6 @@ public:
     }
 
 signals:
-
-
 
     void myTrekChanged(Trek* myTrek);
 

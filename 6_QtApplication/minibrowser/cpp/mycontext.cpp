@@ -12,7 +12,7 @@ void MyContext::initMyContext(/*QQmlApplicationEngine &engine,*/ QQmlContext *my
 
     QString initialUrl = QStringLiteral("localhost:3000");
 
-//    m_myContext->setContextProperty(QStringLiteral("utils"), new Utils(&engine));
+    //    m_myContext->setContextProperty(QStringLiteral("utils"), new Utils(&engine));
     m_myContext->setContextProperty(QStringLiteral("initialUrl"),
                                     Utils::fromUserInput(initialUrl));
     m_myContext->setContextProperty("MyContext", this);
@@ -53,13 +53,14 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
 void MyContext::updateTrek(const double &latitude, const double &longitude)
 {
 
-        m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
+    setMyTrek(m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude)));
 
     //    m_myContext->setContextProperty("MyContext", this);
 }
 
 void MyContext::startTrek(const QString &trekName,const double &latitude, const double &longitude)
 {
+    delete m_myTrek;
     m_myTrek = nullptr;
     setMyTrek(new Trek (trekName, latitude, longitude));
     qDebug() << "New Trek Created";

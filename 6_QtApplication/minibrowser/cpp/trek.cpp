@@ -1,5 +1,16 @@
 #include "trek.h"
 
+Trek::~Trek()
+{
+    while(m_path.length() !=0)
+    {
+        m_path.back() = nullptr;
+        delete m_path.back();
+        m_path.pop_back(); ;
+        qDebug() << m_path.length();
+    }
+}
+
 Trek::Trek(QObject *parent) : QObject(parent)
 {
     m_label = "trek_name";
