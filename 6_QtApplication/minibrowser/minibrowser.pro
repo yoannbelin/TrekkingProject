@@ -1,15 +1,15 @@
 TEMPLATE = app
 TARGET = minibrowser
 
-QT += qml quick webview \
+QT += qml quick webview\
     positioning core widgets
 
-SOURCES += main.cpp \
-    mycontext.cpp \
-    utils.cpp \
-    trek.cpp \
-    gpspoint.cpp \
-    filemanager.cpp
+SOURCES += cpp/main.cpp \
+    cpp/mycontext.cpp \
+    cpp/utils.cpp \
+    cpp/trek.cpp \
+    cpp/gpspoint.cpp \
+    cpp/filemanager.cpp
 
 RESOURCES += qml.qrc
 
@@ -22,8 +22,8 @@ target.path = $$[QT_INSTALL_EXAMPLES]/webview/minibrowser
 INSTALLS += target
 
 HEADERS += \
-    mycontext.h \
-    utils.h \
-    trek.h \
-    gpspoint.h \
-    filemanager.h
+    cpp/mycontext.h \
+    cpp/utils.h \
+    cpp/trek.h \
+    cpp/gpspoint.h \
+    cpp/filemanager.h
