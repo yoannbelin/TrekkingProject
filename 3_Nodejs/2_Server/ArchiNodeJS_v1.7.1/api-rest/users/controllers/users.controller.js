@@ -5,29 +5,69 @@
 //=========================================================================
 
 let UsersService = require('../services/users.service');
+let UsersAuthService = require('../services/users.auth.service');
+let UsersRegisterService = require('../services/users.register.service');
 let UserModel = require('../models/user.model');
 
 /**
  * Create a user
  */
-module.exports.create = function(req, res) {
 
-    let userModel = new UserModel(req.body);
-    console.log(userModel);
+module.exports.create = function(req, res) {
+    req.checkBody('lastname', 'Nom vide').notEmpty();
+    req.checkBody('firstname', 'Prenom vide').notEmpty();
+    req.checkBody('username', 'Pseudo vide').notEmpty();
+    req.checkBody('mail', 'Adresse email invalide').isEmail();
+    req.checkBody('password', 'Mot de passe vide').notEmpty();
+    req.checkBody('passwordConfirmation', 'Le mot de passe de confirmation doit etre identique au mot de passe')
+        .notEmpty()
+        .matches(req.body.password);
+
+    let errorsFields = req.validationErrors();
+
+    if (errorsFields) {
+        return res.status(500).json({ 'errors': errorsFields });
+    }
+
+    let userModel = new UserModel({
+        lastname: req.body.lastname,
+        firstname: req.body.firstname,
+        username: req.body.username,
+        mail: req.body.mail,
+        password: req.body.password
+    });
 
     if (!userModel.isValid()) {
-        console.log("invalid");
         return res.status(500).json({ 'error': 'Failed to create user, missing fields !' });
     }
 
-    UsersService.create(userModel, (err, user) => {
+    UsersRegisterService.register(userModel, (err, user) => {
         if (err) {
-            res.status(500).json({ 'error': 'Failed to create user !' });
+            res.status(500).json({ 'errors': [{ msg: 'Registration failed !' }] });
         } else {
-            res.json({ 'success': 'User created !', 'user': user });
+            res.json({ 'success': [{ msg: 'User created !' }], 'user': user });
         }
     });
 }
+
+// module.exports.create = function(req, res) {
+
+//     let userModel = new UserModel(req.body);
+//     console.log(userModel);
+
+//     if (!userModel.isValid()) {
+//         console.log("invalid");
+//         return res.status(500).json({ 'error': 'Failed to create user, missing fields !' });
+//     }
+
+//     UsersService.create(userModel, (err, user) => {
+//         if (err) {
+//             res.status(500).json({ 'error': 'Failed to create user !' });
+//         } else {
+//             res.json({ 'success': 'User created !', 'user': user });
+//         }
+//     });
+// }
 
 /**
  * Read a user

@@ -5,29 +5,37 @@
 // au reste du code de l'application.
 //=========================================================================
 
-let db = require(__base + '/config/db')
+let db = require(__base + 'config/db')
 let UserModel = require('../models/user.model');
 let TrekModel = require('../../treks/models/trek.model');
 
 class UsersDAO {
+
     static create(user, cb) {
-
-        let script = 'INSERT INTO user (firstname, lastname, username, password, mail, active, created_at ) '
-        script += 'SELECT * FROM ( SELECT ?, ?, ?, ?, ?, ?, ?) AS tmp '
-        script += 'WHERE NOT EXISTS ( '
-        script += 'SELECT * FROM user WHERE username = ?)'
-
-        db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date(), user.username], (err, result) => {
-
-            if (result) {
-                user.id = result.insertId;
-                console.log('user created : ' + result.insertId);
-            } else {
-                console.log("erreur à l insertion : " + err)
-            }
-            cb(err, user);
+        db.query('INSERT INTO user SET firstname = ?, lastname = ?, username = ?, password = ?, mail = ?, created_at = ?', [user.firstname, user.lastname, user.username, user.password, user.mail, new Date()], (err, result) => {
+            console.log('## userDAO create()');
+            UsersDAO.findById(result.insertId, cb);
         });
     }
+
+    // static create(user, cb) {
+
+    //     let script = 'INSERT INTO user (firstname, lastname, username, password, mail, active, created_at ) '
+    //     script += 'SELECT * FROM ( SELECT ?, ?, ?, ?, ?, ?, ?) AS tmp '
+    //     script += 'WHERE NOT EXISTS ( '
+    //     script += 'SELECT * FROM user WHERE username = ?)'
+
+    //     db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date(), user.username], (err, result) => {
+
+    //         if (result) {
+    //             user.id = result.insertId;
+    //             console.log('user created : ' + result.insertId);
+    //         } else {
+    //             console.log("erreur à l insertion : " + err)
+    //         }
+    //         cb(err, user);
+    //     });
+    // }
 
     static update(user, cb) {
 
@@ -95,6 +103,18 @@ class UsersDAO {
             } else {
                 cb('Aucun user ne correspond à votre requète !')
             }
+        });
+    }
+
+    static findById(id, cb) {
+        db.query('SELECT * FROM user WHERE id_user = ? LIMIT 1', [id], (err, rows) => {
+            return (rows[0]) ? cb(err, new UserModel(rows[0])) : cb(err, null);
+        });
+    }
+
+    static findByEmail(email, cb) {
+        db.query('SELECT * FROM user WHERE mail = ? LIMIT 1', [email], (err, rows) => {
+            return (rows[0]) ? cb(err, new UserModel(rows[0])) : cb(err, null);
         });
     }
 }
