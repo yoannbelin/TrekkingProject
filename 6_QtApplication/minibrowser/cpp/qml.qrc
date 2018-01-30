@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/left-32.png</file>
+        <file>images/stop-32.png</file>
+        <file>images/refresh-32.png</file>
+        <file>+android/LoadProgressStyle.qml</file>
+        <file>images/right-32.png</file>
+        <file>JSControl.js</file>
+        <file>MyToolBar.qml</file>
+        <file>WebPage.qml</file>
+        <file>TrekTracker.qml</file>
+        <file>CurrentTrekPage.qml</file>
+        <file>UploadPage.qml</file>
+        <file>PhotoPage.qml</file>
+        <file>MyButton.qml</file>
+        <file>images/icon/browser_icon.png</file>
+        <file>images/icon/camera_icon.png</file>
+        <file>images/icon/current_trek_icon.png</file>
+        <file>images/icon/trekking_icon.png</file>
+        <file>images/icon/upload_icon.png</file>
+    </qresource>
+</RCC>
