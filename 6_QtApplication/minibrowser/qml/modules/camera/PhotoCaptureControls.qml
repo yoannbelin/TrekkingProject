@@ -25,6 +25,7 @@ FocusScope {
                 horizontalCenter: parent.horizontalCenter
                 margins: 8
             }
+            spacing: 8
             
             FocusButton {
                 camera: captureControls.camera

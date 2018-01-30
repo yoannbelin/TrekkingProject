@@ -37,7 +37,7 @@ public:
     explicit Trek(QObject *parent = nullptr);
 
     Trek(const QString &label, const double &latitude, const double &longitude, QObject *parent = 0);
-    Trek(const Trek &old_trek, QObject *parent = 0);
+    Trek(const Trek &otherTrek, QObject *parent = 0);
     ~Trek();
 
     void addNewGpsPoint (GpsPoint newGpsPoint);

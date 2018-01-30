@@ -20,6 +20,13 @@ public:
     GpsPoint (const GpsPoint &aGpsPoint);
 //    ~GpsPoint();
 
+    GpsPoint& operator =(GpsPoint const &a)
+    {
+        this->setLatitude (a.m_latitude);
+        this->setLongitude(a.m_longitude);
+        return *this;
+    }
+
     bool userMoved(const GpsPoint &previousGpsPoint);
     void roundCoordinates();
     double roundFloat (double &number);
