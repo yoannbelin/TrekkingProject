@@ -2,10 +2,12 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
+import QtMultimedia 5.8
 
 import QtWebView 1.1
 
 import "../../modules"
+import "../../modules/camera"
 
 ColumnLayout {
 
@@ -20,18 +22,68 @@ ColumnLayout {
     //insert camera module
 
     Rectangle {
+        id : cameraUI
         Layout.fillHeight: true
         Layout.fillWidth: true
+        //        color: "lightblue"
 
-        MyButton {
-            text : "Prendre photo"
-            height: etat.height / 15
-            width: etat.width /3
-            onClicked: {
-                console.log("Cheeeeese !");
-                photo1_visibilite = false ;
-                photo2_visibilite = true ;
+        //        Rectangle {
+        //            width: parent.width
+        //            height: parent.height
+
+        color: "black"
+        state: "PhotoCapture"
+
+        states: [
+            State {
+                name: "PhotoCapture"
+                StateChangeScript {
+                    script: {
+                        camera.captureMode = Camera.CaptureStillImage
+                        camera.start()
+                    }
+                }
+            },
+            State {
+                name: "PhotoPreview"
             }
+        ]
+        Camera {
+            id: camera
+            captureMode: Camera.CaptureStillImage // added
+
+            imageCapture {
+                onImageCaptured: {
+                    photoPreview.source = preview
+                    stillControls.previewAvailable = true
+                    cameraUI.state = "PhotoPreview"
+                }
+            }
+        }
+// added segment from here =>
+        PhotoPreview {
+            id : photoPreview
+            anchors.fill : parent
+            onClosed: cameraUI.state = "PhotoCapture"
+            visible: cameraUI.state == "PhotoPreview"
+            focus: visible
+        }
+// => til here;
+
+        VideoOutput {
+            id: viewfinder
+            visible: cameraUI.state == "PhotoCapture"
+            width: parent.width
+            height: parent.height
+            source: camera
+            autoOrientation: true
+        }
+        PhotoCaptureControls {
+            id: stillControls
+            anchors.fill: parent
+            camera: camera
+            visible: cameraUI.state == "PhotoCapture"
+            onPreviewSelected: cameraUI.state = "PhotoPreview"
         }
     }
 }

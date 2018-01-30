@@ -7,6 +7,7 @@ import "../modules"
 import "TrekTracker"
 
 Page {
+
     id : trekPage
 
     property bool trek1_visibilite: true

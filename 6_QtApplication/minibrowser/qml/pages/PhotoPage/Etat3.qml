@@ -10,6 +10,8 @@ ColumnLayout {
 
     property string currenturl: "../../../images/defaultPhoto.png"
 
+    property bool portraitView : false
+
     id : etat
 
     anchors.fill: parent
@@ -30,7 +32,7 @@ ColumnLayout {
                 id: currentPhoto
                 source: currenturl
 
-                width: parent.width
+                width:  portraitView? parent.width:parent.width*1/2
                 fillMode: Image.PreserveAspectFit
                 anchors.horizontalCenter: parent.horizontalCenter
             }

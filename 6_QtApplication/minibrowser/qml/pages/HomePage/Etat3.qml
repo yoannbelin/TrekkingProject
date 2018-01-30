@@ -31,7 +31,12 @@ ColumnLayout {
                 url: "http://localhost:3000/"
                 onLoadingChanged: {
                     if (loadRequest.errorString)
-                        console.error(loadRequest.errorString);
+                    {
+                        console.error(loadRequest.errorString)
+                        // Comment lines below until server is online
+//                        mapPage.map0_visibilite = true
+//                        mapPage.map1_visibilite = false
+                    };
                 }
             }
         }

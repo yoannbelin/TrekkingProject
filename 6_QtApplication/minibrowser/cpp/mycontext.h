@@ -19,12 +19,9 @@ class Utils;
 class MyContext : public QObject
 {
     Q_OBJECT
-    /*
-        Q_PROPERTY(Trekking* myElem READ getMyElem WRITE setMyElem NOTIFY myElemChanged)
-        Q_PROPERTY(QList<QObject*> listOfElem READ getListOfElem WRITE setListOfElem NOTIFY listOfElemChanged)
-    */
+
     Q_PROPERTY(Trek* myTrek READ getMyTrek WRITE setMyTrek NOTIFY myTrekChanged)
-    //    Q_PROPERTY(GpsPoint nextGpsPoint READ getNextGpsPoint WRITE setNextGpsPoint NOTIFY nextGpsPointChanged)
+    Q_PROPERTY(QList<QObject*> trekList READ getTrekList WRITE setTrekList NOTIFY trekListChanged)
 
     Q_PROPERTY(QString errorMessage READ errorMessage WRITE setErrorMessage NOTIFY errorMessageChanged)
 
@@ -32,8 +29,10 @@ class MyContext : public QObject
 
 
     /* variables */
+    QList<QObject*> m_trekList;
     Trek* m_myTrek;
     QString m_errorMessage;
+
 
 
 public:
@@ -47,8 +46,9 @@ public:
     QString truncateUrl(const QString &url);
 
     Q_INVOKABLE void sendActionToCpp (QString nomAction, QString parameter = QString (""), QString parameter2 = QString ("") );
-    Q_INVOKABLE void updateTrek (QString actionType, double const &latitude, double const &longitude);
-    Q_INVOKABLE void connectToMysql();
+
+    Q_INVOKABLE void updateTrek (double const &latitude, double const &longitude);
+    Q_INVOKABLE void startTrek (const QString &trekName, const double &latitude, const double &longitude);
 
 
     Trek* getMyTrek() const
@@ -62,11 +62,16 @@ public:
     }
 
 
-    SqlUser sqluser;
+    QList<QObject*> getTrekList() const
+    {
+        return m_trekList;
+    }
+
 
 signals:
     void myTrekChanged(Trek* myTrek);
     void errorMessageChanged(QString errorMessage);
+    void trekListChanged(QList<QObject*> trekList);
 
 
 public slots:
@@ -89,6 +94,14 @@ public slots:
         emit errorMessageChanged(m_errorMessage);
     }
 
+    void setTrekList(QList<QObject*> trekList)
+    {
+        if (m_trekList == trekList)
+            return;
+
+        m_trekList = trekList;
+        emit trekListChanged(m_trekList);
+    }
 };
 
 #endif // MYCONTEXT_H

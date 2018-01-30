@@ -10,7 +10,6 @@ GpsPoint::GpsPoint(const double &latitude, const double &longtitude, QObject *pa
     m_latitude(latitude), m_longitude(longtitude), QObject(parent)
 {
     roundCoordinates();
-    qDebug() << "GpsPoint constructor with arguments invoked";
 }
 
 GpsPoint::GpsPoint(const GpsPoint &aGpsPoint)
@@ -19,6 +18,7 @@ GpsPoint::GpsPoint(const GpsPoint &aGpsPoint)
     m_longitude = aGpsPoint.m_longitude;
     roundCoordinates();
 }
+
 
 bool GpsPoint::userMoved(const GpsPoint &previousGpsPoint)
 {
@@ -37,20 +37,6 @@ void GpsPoint::roundCoordinates()
 double GpsPoint::roundFloat(double &number)
 {
     double tmp = (round(number * 20000) / 20000);
-    qDebug() <<  tmp;
+    qDebug() <<  "tmp value:" << tmp;
     return tmp;
-
-//    qDebug() << number;
-
-//    double tmp = round(number * 10000) / 10000;
-
-//    if (number - tmp > 0) {
-//        number = tmp + 0.00005;
-//    }
-
-//    else {
-//        number = tmp;
-//    }
-
-//    return number;
 }

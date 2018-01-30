@@ -9,8 +9,8 @@ import "PhotoPage"
 Page {
     id : photoPage
 
-    property bool photo1_visibilite: true
-    property bool photo2_visibilite: false
+    property bool photo1_visibilite: false
+    property bool photo2_visibilite: true
     property bool photo3_visibilite: false
 
     header: Label {

@@ -5,14 +5,18 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 import QtPositioning 5.8
 
-
 import "MapPage"
+import "../javascript/JSControl.js" as JSC
 
 Page {
+
     id : mapPage
 
-    property bool map0_visibilite: true
-    property bool map1_visibilite: false
+    property bool gpsActive : false
+    property bool startNewTrek : false
+    property var trekName : ""
+    property bool map0_visibilite: false
+    property bool map1_visibilite: true
 
     Etat0 {
         id : etat0
@@ -22,25 +26,39 @@ Page {
     Etat1 {
         id : etat1
         visible: map1_visibilite
+
     }
 
-
     footer: Label {
-        text: "lat ; lng"
+
+        text: "lat: " + JSC.lastLat() + ", lng: " + JSC.lastLng()
         font.pixelSize: Qt.application.font.pixelSize * 1.25
         font.family: "Calibri"
-
     }
 
     PositionSource{
         id: gpsPosition
         updateInterval: 3000
-        active: false
+        active: mapPage.gpsActive
+
+        onActiveChanged: {
+            var coord = gpsPosition.position.coordinate;
+            if (mapPage.gpsActive && startNewTrek)
+            {
+                //                MyContext.startTrek(trekName, 43.48, 3.26);
+                //                MyContext.updateTrek(43.465, 3.25);
+                //                MyContext.updateTrek(43.475, 3.255);
+                MyContext.startTrek(trekName, coord.latitude, coord.longitude);
+                startNewTrek = false;
+            }
+        }
 
         onPositionChanged: {
             var coord = gpsPosition.position.coordinate;
-            MyContext.updateTrek("new Gps Point sent", coord.latitude, coord.longitude);
+            if (mapPage.gpsActive)
+            {
+                MyContext.updateTrek(coord.latitude, coord.longitude);
+            }
         }
     }
-
 }

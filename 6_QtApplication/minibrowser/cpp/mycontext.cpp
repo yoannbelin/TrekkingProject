@@ -14,7 +14,7 @@ void MyContext::initMyContext(/*QQmlApplicationEngine &engine,*/ QQmlContext *my
 
     QString initialUrl = QStringLiteral("localhost:3000");
 
-//    m_myContext->setContextProperty(QStringLiteral("utils"), new Utils(&engine));
+    //    m_myContext->setContextProperty(QStringLiteral("utils"), new Utils(&engine));
     m_myContext->setContextProperty(QStringLiteral("initialUrl"),
                                     Utils::fromUserInput(initialUrl));
     m_myContext->setContextProperty("MyContext", this);
@@ -27,7 +27,7 @@ void MyContext::loadMyContext()
     // Send the data to Qml
     if( m_myContext != nullptr )
     {
-        //        m_myContext->setContextProperty("modeleProfiles", QVariant::fromValue( m_listOfElem ));
+        m_myContext->setContextProperty("trekList", QVariant::fromValue( m_trekList ));
     }
     else
     {
@@ -52,20 +52,19 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
 
 }
 
-void MyContext::updateTrek(QString actionType, const double &latitude, const double &longitude)
+void MyContext::updateTrek(const double &latitude, const double &longitude)
 {
-    if ( actionType == "new Gps Point sent" )
-    {
-        m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
-//        setMyTrek(m_myTrek);
-    }
+    m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
 
     //    m_myContext->setContextProperty("MyContext", this);
 }
 
-void MyContext::connectToMysql()
+void MyContext::startTrek(const QString &trekName,const double &latitude, const double &longitude)
 {
-    setErrorMessage(sqluser.connectToDatabase("trek_test"));
+    delete m_myTrek;
+    m_myTrek = nullptr;
+    setMyTrek(new Trek (trekName, latitude, longitude));
+    qDebug() << "New Trek Created";
 }
 
 
@@ -74,9 +73,3 @@ QString MyContext::truncateUrl(const QString &url)
     QString truncated = url;
     return truncated.remove(0, 8);
 }
-
-
-/*  ********************************************************** */
-/*  ****************Q_PROPERTY members************************ */
-/*  ********************************************************** */
-

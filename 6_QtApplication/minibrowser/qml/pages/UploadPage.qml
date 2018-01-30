@@ -16,6 +16,15 @@ Page {
         font.pixelSize: Qt.application.font.pixelSize * 2
         font.family: "acumin-pro"
         padding: 10
+
+        Button{
+            text: "Et ben alors"
+            onClicked: {
+
+                MyContext.updateTrek(43.465, 3.265)
+                MyContext.updateTrek(43.45, 3.25)
+            }
+        }
     }
 
     Etat1 {

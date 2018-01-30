@@ -7,14 +7,5 @@ function uploadCancel(page) {
         console.log("cancel")
 
     }
-
-
-
 }
 
-function signIn() {
-
-    homePage.etat1.visible = false
-    homePage.etat2.visible = true;
-
-}

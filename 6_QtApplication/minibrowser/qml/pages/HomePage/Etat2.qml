@@ -223,6 +223,16 @@ ColumnLayout {
                 source: "../../../images/logoAfpa.jpg"
             }
         }
+        MyButton {
+            text : "Return"
+            height: etat.height / 15
+            width: etat.width /3
+            onClicked: {
+                console.log("retour");
+                home2_visibilite = false;
+                home1_visibilite = true
+            }
+        }
     } // fin RowLayout
 
 } //fin columnlayout
