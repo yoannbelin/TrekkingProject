@@ -165,9 +165,11 @@ ColumnLayout {
                         width: etat.width /3
                         onClicked: {
                             console.log("valid " + label.text)
+                            trek1_visibilite = false;
+                            trek3_visibilite = true;
+
                             mapPage.trekName = label.text;
                             mapPage.startNewTrek = true;
-                            mapPage.gpsActive = true;
                         }
                     }
                 }

@@ -8,7 +8,7 @@ Trek::Trek(QObject *parent) : QObject(parent)
     m_time = "00:00:00";
 //    m_path = {};
     m_path = {new GpsPoint(43.462, 3.2527), new GpsPoint(43.462, 3.2527), new GpsPoint(43.463, 3.2528), new GpsPoint(43.464, 3.2529), new GpsPoint(43.466, 3.2530), new GpsPoint(43.462, 3.2527)};
-    //  m_trace = [];
+    //  m_trace = {};
     m_level = "1";
     m_done = 1;
 
@@ -27,14 +27,15 @@ Trek::Trek(const QString &label,  const double &latitude, const double &longitud
     m_done = 1;
 }
 
-Trek::Trek(const Trek &old_trek, QObject *parent): QObject(parent)
+Trek::Trek(const Trek &otherTrek, QObject *parent): QObject(parent)
 {
-    m_label = old_trek.m_label;
-    m_length = old_trek.m_length;
-    m_time = old_trek.m_time;
-    m_trace = old_trek.m_path;
-    m_level = old_trek.m_level;
-    m_done = 1;
+    m_label = otherTrek.getLabel();
+    m_length = otherTrek.getLength();
+    m_time = otherTrek.getTime();
+    m_path = otherTrek.getPath();
+    m_trace = otherTrek.getTrace();
+    m_level = otherTrek.getLevel();
+    m_done = otherTrek.getDone();
 }
 
 Trek::~Trek()
@@ -45,6 +46,14 @@ Trek::~Trek()
         delete m_path.back();
         m_path.pop_back(); ;
         qDebug() << m_path.length();
+    }
+
+    while(m_trace.length() !=0)
+    {
+        m_trace.back() = nullptr;
+        delete m_trace.back();
+        m_trace.pop_back(); ;
+        qDebug() << m_trace.length();
     }
 }
 

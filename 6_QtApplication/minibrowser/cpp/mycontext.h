@@ -18,17 +18,15 @@ class Utils;
 class MyContext : public QObject
 {
     Q_OBJECT
-    /*
-        Q_PROPERTY(Trekking* myElem READ getMyElem WRITE setMyElem NOTIFY myElemChanged)
-        Q_PROPERTY(QList<QObject*> listOfElem READ getListOfElem WRITE setListOfElem NOTIFY listOfElemChanged)
-    */
+
     Q_PROPERTY(Trek* myTrek READ getMyTrek WRITE setMyTrek NOTIFY myTrekChanged)
-    //    Q_PROPERTY(GpsPoint nextGpsPoint READ getNextGpsPoint WRITE setNextGpsPoint NOTIFY nextGpsPointChanged)
+    Q_PROPERTY(QList<QObject*> trekList READ getTrekList WRITE setTrekList NOTIFY trekListChanged)
 
     QQmlContext* m_myContext;
 
-
+    QList<QObject*> m_trekList;
     Trek* m_myTrek;
+
 
 public:
 
@@ -50,9 +48,16 @@ public:
         return m_myTrek;
     }
 
+    QList<QObject*> getTrekList() const
+    {
+        return m_trekList;
+    }
+
 signals:
 
     void myTrekChanged(Trek* myTrek);
+
+    void trekListChanged(QList<QObject*> trekList);
 
 public slots:
 
@@ -65,6 +70,14 @@ public slots:
 
         m_myTrek = myTrek;
         emit myTrekChanged(m_myTrek);
+    }
+    void setTrekList(QList<QObject*> trekList)
+    {
+        if (m_trekList == trekList)
+            return;
+
+        m_trekList = trekList;
+        emit trekListChanged(m_trekList);
     }
 };
 

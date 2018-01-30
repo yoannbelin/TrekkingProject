@@ -57,13 +57,14 @@ ColumnLayout {
             //color: "lightGreen"
 
             MyButton {
-                text : "Selectionnez"
+                text : "Selectionner"
                 height: etat.height / 15
                 width: etat.width /3
                 onClicked: {
                     console.log("sauvegarde des données du treck dans LocalFile + changement de pahe > TrekTracker.Etat3");
                     trek2_visibilite = false;
                     trek3_visibilite = true;
+
                 }
             }
         }
