@@ -43,7 +43,7 @@ class TreksDAO {
     }
 
     static delete(id, cb) {
-        db.query('CALL del_trek(?, ?)', [3, id], (err) => { // Modifier 3 par params de session user
+        db.query('DELETE FROM trek WHERE id_trek = ' + id + ';', (err) => {
             cb(err);
         });
     }

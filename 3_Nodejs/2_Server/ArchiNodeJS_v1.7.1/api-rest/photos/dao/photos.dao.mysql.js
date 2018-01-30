@@ -58,7 +58,7 @@ class PhotosDAO {
 
         console.log('script = ' + script);
 
-        db.query(script, [5], (err, rows) => {
+        db.query(script, [6], (err, rows) => {
             rows = rows || [];
             cb(err, rows.map((row) => {
                 console.log('#' + row);
@@ -77,7 +77,7 @@ class PhotosDAO {
         db.query(script, [id], (err, rows) => {
 
             if (rows && rows[0] !== undefined) {
-          
+
                 var currentPhoto = new PhotoModel(rows[0])
 
                 cb(err, currentPhoto);

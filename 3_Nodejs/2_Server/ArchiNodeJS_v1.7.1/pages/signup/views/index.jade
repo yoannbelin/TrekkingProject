@@ -1,0 +1,47 @@
+extends /core/views/layout
+
+block content
+  h2#trek Login
+  title
+  .Bandeau
+    section.section
+      .top-border
+        .row
+        .large-12
+          nav#nav-under
+            div
+              ul.inline-list-custom
+                li
+                  a(href='/users') Profil
+                li
+                  a(href='/photos') Galerie Photos
+                li
+                  a(href='/PoI') Galerie Points d'intêret
+                  .top-border
+          .column
+            .front-frame
+              .front-frame-title Inscrivez-vous
+              .ui.form
+                .field
+                  label Nom
+                  input(id='nom', placeholder='Nom', type='text')
+                .field
+                  label Prenom
+                  input(id='prenom', placeholder='Prenom', type='text')
+                .field
+                  label Pseudo
+                  input(id='pseudo', placeholder='Pseudo', type='text')
+                .field
+                  label E-Mail
+                  input(id='mail', placeholder='email@provider.com', type='text')
+                .field
+                  label Mot de passe
+                  input(id='password', type='password')
+                .field
+                  label Confirmer mot de passe
+                  input(id='passwordConfirmation', type='password')
+                button.ui.button(id="registerBtn" onclick='addUser()') S'inscrire
+                ul.notifications-container
+
+  script(src="/src/ajax.js")
+  script(src="/src/loadUsers.js")

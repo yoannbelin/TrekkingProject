@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h2#trek Login
+  title
+  .Bandeau
+  section.section
+      .top-border
+        .row
+        .large-12
+          nav#nav-under
+            div
+              ul.inline-list-custom
+                li
+                  a(href='/users') Profil
+                li
+                  a(href='/photos') Galerie Photos
+                li
+                  a(href='/PoI') Galerie Points d'intêret
+                  .top-border
+
+          .column
+            .front-frame
+              .front-frame-title Connectez-vous
+              .ui.form
+                .field
+                  label Email
+                  input(name='email', placeholder='email@provider.com', type='text')
+                .field
+                  label Mot de passe
+                  input(name='password', type='password')
+                button.ui.button(id='loginBtn', type='submit') Connexion
+                ul.notifications-container
+
+            .front-frame.alert-register
+              .front-frame-title Inscrivez-vous
+              p Vous n'avez pas encore de compte chez nous ?
+              a(href='/signup')
+                button.ui.button S'inscrire maintenant
