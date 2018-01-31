@@ -3,12 +3,12 @@
 // et les rendre au controller.
 //=========================================================================
 
-let UsersDAO  = require('../dao/users.dao.mysql');
+let UsersDAO = require('../dao/users.dao.mysql');
 let UserDAO = require('./../dao/users.dao.mysql')
 
-class UsersService
-{
+class UsersService {
     static create(user, cb) {
+        console.log('## userservice create()')
         UsersDAO.create(user, cb);
     }
 
@@ -18,18 +18,30 @@ class UsersService
 
     static delete(id, cb) {
         return UsersDAO.delete(id, (err, user) => {
-          cb(err, user);
+            cb(err, user);
         });
     }
 
     static find(id, cb) {
         return UsersDAO.find(id, (err, user) => {
-          cb(err, user);
+            cb(err, user);
         });
     }
-    
+
     static list(cb) {
         return UsersDAO.list(cb);
+    }
+
+    static findById(id, cb) {
+        return UsersDAO.findById(id, cb);
+    }
+
+    static findByEmail(mail, cb) {
+        return UsersDAO.findByEmail(mail, cb);
+    }
+
+    static findByPseudo(username, cb) {
+        return UsersDAO.findByPseudo(username, cb);
     }
 }
 module.exports = UsersService;

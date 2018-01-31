@@ -1,9 +1,9 @@
 var _users = [];
 var selectedUser = null;
 
-//
-// Build table
-//
+/**
+ * Build table
+ */
 function buildTable() {
     var html = "";
     html += "<tr>";
@@ -30,16 +30,16 @@ function buildTable() {
     document.getElementById('idTableau').innerHTML = html;
 };
 
-//
-// Route to show page
-//
+/**
+ * Route to show page
+ */
 function goToShow(i) {
     window.location.href = 'users/' + _users[i].id;
 }
 
-//
-// Select user in table (hightlight the selected line & insert data in controls)
-//
+/**
+ * Select user in table (hightlight the selected line & insert data in controls)
+ */
 function selectUser(index) {
     if (index < _users.length) {
         var elems = document.querySelectorAll("tr");
@@ -61,19 +61,19 @@ function selectUser(index) {
     }
 }
 
-//
-// Load user list
-//
+/**
+ * Load user list
+ */
 function loadUsers() {
-    $http.get('/api-rest/users', function (res) {
+    $http.get('/api-rest/users', function(res) {
         _users = res;
         buildTable();
     }, 'json');
 }
 
-//
-// Add user
-//
+/**
+ * Add user
+ */
 function addUser() {
     var input = {
         'firstname': document.getElementById('prenom').value,
@@ -83,30 +83,32 @@ function addUser() {
         'password': document.getElementById('password').value
     };
 
-    $http.post('/api-rest/users', input, function (res) {
+    $http.post('/api-rest/users', input, function(res) {
         if (res.user.id !== 0) {
             _users.push(res.user);
-            buildTable();
-        }
-        else {
+            // buildTable();
+            console.log(_users.id);
+        } else {
             alert("impossible de créer un utilisateur ")
         }
     }, 'json');
+
+    // window.location.replace('users/' + user.id);
 }
 
-//
-// Delete selected user
-//
+/**
+ * Delete selected user
+ */
 function delUser() {
-    $http.delete('/api-rest/users/' + selectedUser.id, function () {
+    $http.delete('/api-rest/users/' + selectedUser.id, function() {
         _users.splice(_users.indexOf(selectedUser), 1);
         buildTable();
     });
 }
 
-//
-// Update selected user
-//
+/**
+ * Update selected user
+ */
 function updateUser() {
 
     var input = {
@@ -117,25 +119,11 @@ function updateUser() {
         'password': document.getElementById('password').value
     };
 
-    $http.update('/api-rest/users/' + selectedUser.id, input, function (res) {
+    $http.update('/api-rest/users/' + selectedUser.id, input, function(res) {
         _users[_users.indexOf(selectedUser)] = res.user;
         buildTable();
     }, 'json');
+    window.location.replace('/users')
 }
-
-// function buildListofTreck() {
-
-//     var html = ""
-//     html += "<li>"
-//     html += "<div class=\"thumbnail\">"
-//     html += "<div class=\"thumbnail-img\">"
-//     html += "<div class=\"thumbnail-hover\"></div><img src=\"../src/images/beach-2179624_1920.jpg\" alt=\"Project 01\"/>"
-//     html += "</div>"
-//     html += "<div class=\"thumbnail-caption\"><a href=\"Detail.html\" class=\"caption-link\">" + Nom du Trek + "</a></div>"
-//     html += "</div>"
-//     html += "</li>"
-
-// }
-
 
 window.onload = loadUsers()

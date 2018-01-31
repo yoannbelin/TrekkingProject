@@ -82,3 +82,31 @@ module.exports.list = function(req, res) {
         res.json(treks); // cast with toJSON
     });
 }
+
+/**
+ * List Treks for current user
+ */
+module.exports.listCurrentUser = function(req, res) {
+    TreksService.listByUserID(req.session.user.id, (err, treks) => {
+        res.json(treks);
+    });
+}
+
+/**
+ * TrekByID middleware
+ */
+exports.trekByID = function(req, res, next, idTrek) {
+    if (isNaN(idTrek)) {
+        return res.status(400).send({ trek: 'trek is invalid' });
+    }
+
+    TreksService.find(idTrek, (err, trek) => {
+        if (!trek) {
+            return res.status(500).json({ 'errors': [{ msg: 'Failed to load trek ' + idTrek }] });
+        }
+
+        req.trek = trek;
+
+        next();
+    });
+}

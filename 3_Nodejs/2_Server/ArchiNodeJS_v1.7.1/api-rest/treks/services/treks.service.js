@@ -30,5 +30,15 @@ class TreksService {
     static list(cb) {
         return TreksDAO.list(cb);
     }
+
+    static listByUserID(idUser, cb) {
+        return TreksDAO.listByUserID(idUser, (err, treksReturned) => {
+            if (err) {
+                console.error(err);
+            }
+
+            cb(err, treksReturned);
+        });
+    }
 }
 module.exports = TreksService;
