@@ -2,28 +2,43 @@
 #define USER_H
 
 #include <QObject>
+#include "filemanager.h"
 
 class User : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(int idUser READ getIdUser WRITE setIdUser NOTIFY idUserChanged)
     Q_PROPERTY(QString username READ getUsername WRITE setUsername NOTIFY usernameChanged)
     Q_PROPERTY(QString password READ getPassword WRITE setPassword NOTIFY passwordChanged)
     Q_PROPERTY(QString email READ getEmail WRITE setEmail NOTIFY emailChanged)
-    Q_PROPERTY(int idUser READ getIdUser WRITE setIdUser NOTIFY idUserChanged)
 
+    int m_idUser;
     QString m_username;
     QString m_password;
     QString m_email;
-    int m_idUser;
+
+    FileManager m_filemanager;
+    void initUserFile();
 
 public:
     explicit User(QObject *parent = nullptr);
 
-    User( const QString &username, const QString &password,
-          const QString &email, const int &idUser, QObject *parent = nullptr );
+    User( const int &idUser, const QString &username,
+          const QString &password, const QString &email, QObject *parent = nullptr );
 
 
+    void updateUserFile();
+
+
+    ///
+    /// SETTERS AND GETTERS
+    ///
+
+    int getIdUser() const
+    {
+        return m_idUser;
+    }
 
     QString getUsername() const
     {
@@ -40,22 +55,32 @@ public:
         return m_email;
     }
 
-    int getIdUser() const
+    FileManager getFilemanager() const
     {
-        return m_idUser;
+        return m_filemanager;
+    }
+
+    void setFilemanager(const FileManager &filemanager)
+    {
+        m_filemanager = filemanager;
     }
 
 signals:
 
+    void idUserChanged(int idUser);
     void usernameChanged(QString username);
-
     void passwordChanged(QString password);
-
     void emailChanged(QString email);
 
-    void idUserChanged(int idUser);
-
 public slots:
+    void setIdUser(int idUser)
+    {
+        if (m_idUser == idUser)
+            return;
+
+        m_idUser = idUser;
+        emit idUserChanged(m_idUser);
+    }
     void setUsername(QString username)
     {
         if (m_username == username)
@@ -79,14 +104,6 @@ public slots:
 
         m_email = email;
         emit emailChanged(m_email);
-    }
-    void setIdUser(int idUser)
-    {
-        if (m_idUser == idUser)
-            return;
-
-        m_idUser = idUser;
-        emit idUserChanged(m_idUser);
     }
 };
 

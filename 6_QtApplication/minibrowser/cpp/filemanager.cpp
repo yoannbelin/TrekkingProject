@@ -30,26 +30,85 @@ void FileManager::init()
     qDebug() << getBasePath();
 }
 
+QString FileManager::fileUrl()
+{
+    return (getBasePath() + getFiletype() + "_" + getFilename());
+}
+
 bool FileManager::searchFile()
 {
-    QFile storedFile(getBasePath() + getFiletype() + "_" + getFilename());
-    return storedFile.exists();
+//    QFile storedFile(fileUrl());
+//    return storedFile.exists();
+    QStringList data = loadFile();
+    return data.isEmpty();
 }
 
 QStringList FileManager::loadFile()
 {
     QStringList data;
+    //    QString lineOfData;
+    QFile storedFile(fileUrl());
+
+    if (!storedFile.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "cannot open file:" << fileUrl();
+    }
+    else
+    {
+        QTextStream readingStream(&storedFile);
+        readingStream.setCodec("UTF-8");
+        while (!readingStream.atEnd())
+        {
+            data << readingStream.readLine();
+        }
+        storedFile.close();
+    }
     return data;
 }
 
-void FileManager::createFile(const QStringList &data)
+void FileManager::addLine(const QString &dataLine)
 {
+    QFile fileToUpdate (fileUrl());
+    if (!fileToUpdate.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
+        qDebug() << "Ouverture Impossible" << fileUrl() << "n'a pas pu être ouvert";
+    }
 
+    else {
+        QTextStream writeStream( &fileToUpdate );
+        writeStream.setCodec("UTF-8");
+        writeStream << endl << dataLine;
+
+        qDebug() << "Saved Line in :" << fileUrl();
+    }
+}
+
+void FileManager::updateFile(const QStringList &data)
+{
+    QFile fileToUpdate (fileUrl());
+    if (!fileToUpdate.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "Ouverture Impossible" << fileUrl() << "n'a pas pu être ouvert";
+    }
+
+    else {
+        QTextStream writeStream( &fileToUpdate );
+        writeStream.setCodec("UTF-8");
+
+        for (QString dataLine : data)
+        {
+            writeStream << dataLine << endl;
+        }
+
+        qDebug() << "Saved Line in :" << fileUrl();
+    }
 }
 
 void FileManager::deleteFile()
 {
-
+    QFile fileToDelete (fileUrl());
+    if(fileToDelete.remove())
+    {
+        qDebug() << fileUrl() + " was deleted";
+    };
 }
 
 

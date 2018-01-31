@@ -20,6 +20,8 @@ class FileManager : public QObject
     QString m_filetype;
     QString m_basePath;
 
+    QString fileUrl();
+
 public:
     explicit FileManager (QObject *parent = nullptr);
     FileManager (const QString &filetype, const QString &filename, QObject *parent = nullptr);
@@ -27,7 +29,8 @@ public:
     void init();
     bool searchFile();
     QStringList loadFile();
-    void createFile(const QStringList &data);
+    void addLine(const QString &dataLine);
+    void updateFile(const QStringList &data);
     void deleteFile();
 
 
