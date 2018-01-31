@@ -207,7 +207,34 @@ ColumnLayout {
 
     RowLayout {
         spacing: 0
-        Layout.preferredHeight: (1/4)*parent.height
+        Layout.preferredHeight: (1/8)*parent.height
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            //color: "blue"
+
+            MyButton {
+                text : "Deconnexion"
+                height: etat.height / 15
+                width: etat.width /3
+                onClicked: {
+                    console.log("deconnexion");
+                    home2_visibilite = false;
+                    home1_visibilite = true
+                    //effacer le user_localFile
+                }
+            }
+        }
+    }
+
+
+
+    RowLayout {
+        spacing: 0
+        Layout.preferredHeight: (1/8)*parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
 
@@ -223,16 +250,7 @@ ColumnLayout {
                 source: "../../../images/logoAfpa.jpg"
             }
         }
-        MyButton {
-            text : "Return"
-            height: etat.height / 15
-            width: etat.width /3
-            onClicked: {
-                console.log("retour");
-                home2_visibilite = false;
-                home1_visibilite = true
-            }
-        }
+
     } // fin RowLayout
 
 } //fin columnlayout
