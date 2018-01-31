@@ -9,6 +9,26 @@ let UsersAuthService = require('../services/users.auth.service');
 let UsersRegisterService = require('../services/users.register.service');
 let UserModel = require('../models/user.model');
 
+module.exports.auth = function(req, res) {
+    req.checkBody('mail', 'Adresse email invalide').isEmail();
+    req.checkBody('password', 'Mot de passe vide').notEmpty();
+
+    let errorsFields = req.validationErrors();
+
+    if (errorsFields) {
+        return res.status(500).json({ 'errors': errorsFields });
+    }
+
+    UsersAuthService.checkAccount(req.body.mail, req.body.password, (err, user) => {
+        if (err) {
+            res.status(500).json({ 'errors': [{ msg: 'Connection failed !' }] });
+        } else {
+            req.session.user = user; //## Récupération des valeurs de la table "user"
+            res.json({ 'success': [{ msg: 'User connected !' }], 'user': user });
+        }
+    });
+}
+
 /**
  * Create a user
  */

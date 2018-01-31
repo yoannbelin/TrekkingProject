@@ -36,8 +36,12 @@ class UsersService {
         return UsersDAO.findById(id, cb);
     }
 
-    static findByEmail(email, cb) {
-        return UsersDAO.findByEmail(email, cb);
+    static findByEmail(mail, cb) {
+        return UsersDAO.findByEmail(mail, cb);
+    }
+
+    static findByPseudo(username, cb) {
+        return UsersDAO.findByPseudo(username, cb);
     }
 }
 module.exports = UsersService;

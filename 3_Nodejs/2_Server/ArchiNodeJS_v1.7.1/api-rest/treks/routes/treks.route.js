@@ -3,7 +3,7 @@ var router = express.Router();
 var treks = require('../controllers/treks.controller');
 
 router.route('/')
-    .get(treks.list)
+    .get(treks.listCurrentUser)
     .post(treks.create);
 
 router.route('/:idTrek')

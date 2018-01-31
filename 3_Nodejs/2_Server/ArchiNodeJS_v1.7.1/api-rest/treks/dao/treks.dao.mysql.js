@@ -67,6 +67,25 @@ class TreksDAO {
         });
     }
 
+    static listByUserID(idUser, cb) {
+
+        let script = '';
+        script += 'SELECT trek.id_trek, trek.label, trek.length, trek.time, trek.level, trek.pathway, trek.official FROM trek '
+        script += 'WHERE trek.official = 1 '
+        script += 'UNION '
+        script += 'SELECT trek.id_trek, trek.label, trek.length, trek.time, trek.level, trek.pathway, trek.official FROM trek '
+        script += 'JOIN user_do_trek ON trek.id_Trek = user_do_trek.id_Trek '
+        script += 'JOIN user ON user_do_trek.id_User = user.id_User '
+        script += 'WHERE user.id_User = ?;'
+
+        db.query(script, [idUser], (err, rows) => {
+            rows = rows || [];
+            cb(err, rows.map((row) => {
+                return new TrekModel(row)
+            }));
+        });
+    }
+
     static find(id, cb) {
         let script = 'SELECT trek.id_trek AS id_trek, trek.label, trek.length, trek.time, trek.`level`, photo.id_photo, photo.title, photo.url FROM trek '
         script += 'LEFT JOIN photo ON trek.id_trek = photo.id_Trek '

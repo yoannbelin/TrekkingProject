@@ -4,8 +4,8 @@ let UsersService = require('./users.service');
 let passwordHash = require('password-hash');
 
 class UsersAuthService {
-    static checkAccount(email, password, cb) {
-        UsersService.findByEmail(email, (err, user) => {
+    static checkAccount(mail, password, cb) {
+        UsersService.findByEmail(mail, (err, user) => {
             if (user && passwordHash.verify(password, user.password)) {
                 cb(null, user);
             } else {

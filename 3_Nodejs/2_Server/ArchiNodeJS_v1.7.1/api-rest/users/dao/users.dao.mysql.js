@@ -12,9 +12,16 @@ let TrekModel = require('../../treks/models/trek.model');
 class UsersDAO {
 
     static create(user, cb) {
-        db.query('INSERT INTO user SET firstname = ?, lastname = ?, username = ?, password = ?, mail = ?, created_at = ?', [user.firstname, user.lastname, user.username, user.password, user.mail, new Date()], (err, result) => {
+        db.query('INSERT INTO user SET firstname = ?, lastname = ?, username = ?, password = ?, mail = ?, active = ?, created_at = ?', [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date()], (err, result) => {
             console.log('## userDAO create()');
-            UsersDAO.findById(result.insertId, cb);
+
+            if (result) {
+                user.id = result.insertId;
+                console.log('user created : ' + result.insertId);
+            } else {
+                console.log("erreur a l'insertion : " + err);
+            }
+            cb(err, user);
         });
     }
 
@@ -90,7 +97,6 @@ class UsersDAO {
 
                     var trek = new TrekModel(rows[i]);
 
-
                     treks.push(trek);
                     i++;
                 }
@@ -112,8 +118,14 @@ class UsersDAO {
         });
     }
 
-    static findByEmail(email, cb) {
-        db.query('SELECT * FROM user WHERE mail = ? LIMIT 1', [email], (err, rows) => {
+    static findByEmail(mail, cb) {
+        db.query('SELECT * FROM user WHERE mail = ? LIMIT 1', [mail], (err, rows) => {
+            return (rows[0]) ? cb(err, new UserModel(rows[0])) : cb(err, null);
+        });
+    }
+
+    static findByPseudo(username, cb) {
+        db.query('SELECT * FROM user WHERE username = ? LIMIT 1', [username], (err, rows) => {
             return (rows[0]) ? cb(err, new UserModel(rows[0])) : cb(err, null);
         });
     }

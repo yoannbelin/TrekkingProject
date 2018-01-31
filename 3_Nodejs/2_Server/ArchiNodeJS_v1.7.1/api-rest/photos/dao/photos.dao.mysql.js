@@ -67,6 +67,25 @@ class PhotosDAO {
         });
     }
 
+    static listByUserID(idUser, cb) {
+
+        let script = 'SELECT * FROM photo '
+        script += 'JOIN user ON photo.id_user = user.id_user '
+        script += 'JOIN trek ON trek.id_trek = photo.id_trek '
+        script += 'WHERE user.id_user = ? '
+        script += 'ORDER BY photo.date_photo '
+
+        console.log('script = ' + script);
+
+        db.query(script, [idUser], (err, rows) => {
+            rows = rows || [];
+            cb(err, rows.map((row) => {
+                console.log('#' + row);
+                return new PhotoModel(row)
+            }));
+        });
+    }
+
     static find(id, cb) {
 
         console.log(id);
