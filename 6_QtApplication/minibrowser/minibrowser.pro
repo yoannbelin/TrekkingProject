@@ -10,7 +10,7 @@ SOURCES += cpp/main.cpp \
     cpp/trek.cpp \
     cpp/gpspoint.cpp \
     cpp/filemanager.cpp \
-    cpp/sqluser.cpp
+    cpp/user.cpp
 
 RESOURCES += qml.qrc
 
@@ -28,4 +28,4 @@ HEADERS += \
     cpp/trek.h \
     cpp/gpspoint.h \
     cpp/filemanager.h \
-    cpp/sqluser.h
+    cpp/user.h

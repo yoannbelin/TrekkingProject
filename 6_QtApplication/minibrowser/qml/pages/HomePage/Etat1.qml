@@ -41,7 +41,7 @@ ColumnLayout {
 
             InputBox {
                 id : mail
-                placeholderText: "Entrer votre mail"
+                placeholderText: "Entrez votre mail"
             }
         }
     } //fin rowlayout
@@ -59,7 +59,7 @@ ColumnLayout {
 
             InputBox {
                 id : mdp
-                placeholderText: "Entrer votre mot de passe"
+                placeholderText: "Entrez votre mot de passe"
             }
         }
     } //fin rowlayout

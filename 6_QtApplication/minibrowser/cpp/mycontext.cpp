@@ -1,11 +1,16 @@
 #include "mycontext.h"
 #include <QDebug>
 
+
 MyContext::MyContext(QObject *parent) : QObject(parent), m_myContext(nullptr)
 {
     m_myTrek = new Trek;
 
     setErrorMessage("");
+
+    searchUserFile();
+    searchTrekFile();
+    searchPhotoFile();
 }
 
 void MyContext::initMyContext(/*QQmlApplicationEngine &engine,*/ QQmlContext *myContext)
@@ -72,4 +77,24 @@ QString MyContext::truncateUrl(const QString &url)
 {
     QString truncated = url;
     return truncated.remove(0, 8);
+}
+
+
+// File Searching Functions
+
+void MyContext::searchUserFile()
+{
+    // if there is a file, instantiate a user && auto login
+    // else m_user = nulptr && no auto login
+}
+
+void MyContext::searchTrekFile()
+{
+    // if there is a file, load the trek && message (save, delete or continue)
+    // else m_myTrek = nullptr
+}
+
+void MyContext::searchPhotoFile()
+{
+    // what to do here??
 }
