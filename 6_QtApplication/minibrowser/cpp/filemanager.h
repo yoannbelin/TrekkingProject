@@ -11,39 +11,59 @@
 #include <QStandardPaths>
 #include <QObject>
 
+
 class FileManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString pathway READ getPathway WRITE setPathway NOTIFY pathwayChanged)
 
-    QString m_pathway;
-    void setLinesInFile(const QString &ligne);
+    QString m_filename;
+    QString m_filetype;
+    QString m_basePath;
 
 public:
-    explicit FileManager(QObject *parent = nullptr);
+    explicit FileManager (QObject *parent = nullptr);
+    FileManager (const QString &filetype, const QString &filename, QObject *parent = nullptr);
 
     void init();
-    void saveIntoTxtFile(double lat, double lng); //new
+    bool searchFile();
+    QStringList loadFile();
+    void createFile(const QStringList &data);
+    void deleteFile();
 
-    QString getPathway() const
+
+    QString getFilename() const
     {
-        return m_pathway;
+        return m_filename;
+    }
+    void setFilename(const QString &filename)
+    {
+        m_filename = filename;
+    }
+
+    QString getFiletype() const
+    {
+        return m_filetype;
+    }
+    void setFiletype(const QString &filetype)
+    {
+        m_filetype = filetype;
+    }
+
+    QString getBasePath() const
+    {
+        return m_basePath;
+    }
+    void setBasePath(const QString &basePath)
+    {
+        m_basePath = basePath;
     }
 
 signals:
 
-    void pathwayChanged(QString pathway);
 
 public slots:
 
-    void setPathway(QString pathway)
-    {
-        if (m_pathway == pathway)
-            return;
 
-        m_pathway = pathway;
-        emit pathwayChanged(m_pathway);
-    }
 };
 
 #endif // FILEMANAGER_H

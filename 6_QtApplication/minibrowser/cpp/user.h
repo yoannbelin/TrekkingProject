@@ -24,6 +24,7 @@ public:
           const QString &email, const int &idUser, QObject *parent = nullptr );
 
 
+
     QString getUsername() const
     {
         return m_username;

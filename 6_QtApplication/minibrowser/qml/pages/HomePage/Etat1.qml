@@ -11,6 +11,18 @@ import "../../javascript/ButtonControl.js" as MyScript
 ColumnLayout {
     id : etat
 
+    property bool userUsernameCompleted:
+        (userUsername.text != "" && userUsername.text.length > 3)
+    property bool userEmailCompleted :
+    {
+        if(/([a-z A-Z 0-9 _.-]+)([@])([a-z A-Z]+)([.])([a-z])+/.test(userEmail.text))
+        {
+            return true;
+        }
+        else {return false;}
+    }
+
+
     anchors.fill: parent
     anchors.top : header.bottom
     spacing: 0
@@ -40,8 +52,9 @@ ColumnLayout {
             //color: "grey"
 
             InputBox {
-                id : pseudo
+                id : userEmail
                 placeholderText: "Entrez votre adresse email"
+                validator: RegExpValidator{ regExp: /([a-z A-Z 0-9 _.-]+)([@])([a-z A-Z]+)([.])([a-z])+/ }
             }
         }
     } //fin rowlayout
@@ -58,8 +71,8 @@ ColumnLayout {
             //color: "red"
 
             InputBox {
-                id : mdp
-                placeholderText: "Entrez votre mot de passe"
+                id : userUsername
+                placeholderText: "Entrez votre pseudo"
             }
         }
     } //fin rowlayout
@@ -79,8 +92,9 @@ ColumnLayout {
                 text : "Sign In"
                 height: etat.height / 15
                 width: etat.width /3
+                enabled: (userEmailCompleted && userUsernameCompleted)
                 onClicked: {
-                    console.log("check datas and save profil in localFile : " + pseudo.text + " " + mdp.text);
+                    console.log("check datas and save profil in localFile : " + userEmail.text + " " + userUsername.text);
                     home1_visibilite = false;
                     home2_visibilite = true;
                 }
