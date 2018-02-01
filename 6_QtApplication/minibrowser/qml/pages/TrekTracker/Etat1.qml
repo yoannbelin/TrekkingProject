@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.2
 
 import "../../modules"
 import "../../../images"
+import "../../javascript/JSControl.js" as MyScript
 
 ColumnLayout {
     id : etat

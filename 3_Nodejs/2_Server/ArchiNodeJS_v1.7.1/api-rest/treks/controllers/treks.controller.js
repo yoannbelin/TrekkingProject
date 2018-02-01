@@ -15,12 +15,14 @@ module.exports.create = function(req, res) {
     let trekModel = new TrekModel(req.body);
     console.log(trekModel);
 
+    console.log(req.session.user.id);
+
     if (!trekModel.isValid()) {
         console.log("invalid");
         return res.status(500).json({ 'error': 'Failed to create trek, missing fields !' });
     }
 
-    TreksService.create(trekModel, (err, trek) => {
+    TreksService.create(req.session.user.id, trekModel, (err, trek) => {
         if (err) {
             res.status(500).json({ 'error': 'Failed to create trek !' });
         } else {

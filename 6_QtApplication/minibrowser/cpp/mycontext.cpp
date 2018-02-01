@@ -5,6 +5,7 @@
 MyContext::MyContext(QObject *parent) : QObject(parent), m_myContext(nullptr)
 {
     m_myTrek = new Trek;
+    m_user = new User;
 
     setErrorMessage("");
 
@@ -70,6 +71,27 @@ void MyContext::startTrek(const QString &trekName,const double &latitude, const 
     m_myTrek = nullptr;
     setMyTrek(new Trek (trekName, latitude, longitude));
     qDebug() << "New Trek Created";
+}
+
+void MyContext::saveUser(const int &id, const QString &username, const QString &password, const QString &mail)
+{
+    User* currentUser = new User;
+    currentUser->setIdUser(id);
+    currentUser->setUsername(username);
+    currentUser->setPassword(password);
+    currentUser->setEmail(mail);
+
+    setUser(currentUser);
+
+    //qDebug() << getUser()->getIdUser();
+
+    currentUser = nullptr;
+    delete currentUser;
+}
+
+int MyContext::getIdUser()
+{
+    return getUser()->getIdUser();
 }
 
 

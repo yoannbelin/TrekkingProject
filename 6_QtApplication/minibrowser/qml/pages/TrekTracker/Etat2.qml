@@ -24,7 +24,7 @@ ColumnLayout {
             Layout.fillWidth: true
             //color: "red"
 
-            MyList {width : parent.width ;  height : parent.height}
+            MyList {id : list ; width : parent.width ;  height : parent.height}
 
         } //fin rectangle
     }

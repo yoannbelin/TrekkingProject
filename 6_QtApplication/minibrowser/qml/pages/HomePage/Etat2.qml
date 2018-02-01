@@ -28,7 +28,7 @@ ColumnLayout {
 
             Text {
                 id : label
-                text : "Bonjour" + "\n" + "utilisateur"
+                text : "Bonjour" + "\n" + MyContext.user.username
 
                 font.family: "tablet-gothic-condensed"
                 font.pixelSize: Qt.application.font.pixelSize * 4

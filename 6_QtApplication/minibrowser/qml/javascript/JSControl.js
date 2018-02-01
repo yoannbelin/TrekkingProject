@@ -62,3 +62,31 @@ function timeToString(timeInMs){
     return timeInString;
 }
 
+function getTreksJSON(idModel) {
+    var uri = "http://localhost:3000/api-rest/users/3" //+ MyContext.getIdUser();
+
+    var request = new XMLHttpRequest()
+    request.open('GET', uri, true);
+
+    request.onreadystatechange = function() {
+        if (request.readyState === XMLHttpRequest.DONE && request.status == 200) {
+
+            //console.log("response", request.responseText)
+            var result = JSON.parse(request.responseText)
+
+            for (var ligne in result.treks) {
+
+                idModel.append({
+                                      "label": result.treks[ligne].label,
+                                      "length": result.treks[ligne].length,
+                                      "time": result.treks[ligne].time
+                                  })
+            }
+
+        } else {
+            console.log("HTTP:", request.status, request.statusText)
+        }
+    }
+
+    request.send()
+}

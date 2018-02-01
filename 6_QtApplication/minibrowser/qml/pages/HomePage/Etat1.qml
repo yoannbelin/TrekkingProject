@@ -98,6 +98,12 @@ ColumnLayout {
 
                         if (req.readyState === XMLHttpRequest.DONE && req.status == 200) {
                             console.log("#" + req.responseText);
+
+                            var result = JSON.parse(req.responseText);
+                            console.log("++" + JSON.stringify(result.user.id));
+
+                            MyContext.saveUser(JSON.stringify(result.user.id), JSON.stringify(result.user.username), mdp.text, JSON.stringify(result.user.mail))
+
                             home1_visibilite = false;
                             home2_visibilite = true;
 

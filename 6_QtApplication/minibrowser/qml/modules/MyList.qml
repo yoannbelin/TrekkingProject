@@ -1,7 +1,9 @@
 import QtQuick 2.0
+import "../javascript/JSControl.js" as MyScript
 
 Rectangle {
-    id: root
+    property bool active : trekPage.trek2_visibilite
+
 
     ListModel {
         id: treksModel
@@ -55,12 +57,17 @@ Rectangle {
     }
 
 
-    Component.onCompleted: {
+//    Component.onCompleted: {
+//        getTreksJSON()
+//    }
+
+    onActiveChanged : {
+        console.log("ok")
         getTreksJSON()
     }
 
     function getTreksJSON() {
-        var uri = "http://localhost:3000/api-rest/users/3"; //remplacer le /3 par l'id_user sauvé en local
+        var uri = "http://localhost:3000/api-rest/users/" + MyContext.getIdUser();
 
         var request = new XMLHttpRequest()
         request.open('GET', uri, true);

@@ -57,6 +57,9 @@ public:
     Q_INVOKABLE void updateTrek (double const &latitude, double const &longitude);
     Q_INVOKABLE void startTrek (const QString &trekName, const double &latitude, const double &longitude);
 
+    Q_INVOKABLE void saveUser (const int &id, const QString &username, const QString &password, const QString &mail);
+    Q_INVOKABLE int getIdUser ();
+
 
     Trek* getMyTrek() const
     {

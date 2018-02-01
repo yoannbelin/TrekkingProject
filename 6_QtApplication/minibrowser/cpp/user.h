@@ -39,10 +39,6 @@ public:
         return m_email;
     }
 
-    int getIdUser() const
-    {
-        return m_idUser;
-    }
 
 signals:
 
@@ -55,6 +51,13 @@ signals:
     void idUserChanged(int idUser);
 
 public slots:
+
+    int getIdUser() const
+    {
+        return m_idUser;
+    }
+
+
     void setUsername(QString username)
     {
         if (m_username == username)
