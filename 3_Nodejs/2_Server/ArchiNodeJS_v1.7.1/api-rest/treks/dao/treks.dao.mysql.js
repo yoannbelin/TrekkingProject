@@ -11,7 +11,7 @@ let PhotoModel = require('../../photos/models/photo.model');
 
 
 class TreksDAO {
-    static create(trek, cb) {
+    static create(idUser, trek, cb) {
 
         trek.length = trek.length || null;
         trek.level = trek.level || null;
@@ -21,7 +21,7 @@ class TreksDAO {
 
         let script = 'CALL trek_all (?, ?, ?, ?, ?); ';
 
-        db.query(script, [3, trek.label, trek.length, trek.level, JSON.stringify(trek.pathway)], (err, result) => { // id_user à mettre en variables
+        db.query(script, [idUser, trek.label, trek.length, trek.level, JSON.stringify(trek.pathway)], (err, result) => { // id_user à mettre en variables
             trek.id = result.insertId;
             if (result) {
                 console.log('message inséré : !!' + result.insertId);

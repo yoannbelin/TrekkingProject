@@ -80,20 +80,17 @@ function addUser() {
         'lastname': document.getElementById('nom').value,
         'username': document.getElementById('pseudo').value,
         'mail': document.getElementById('mail').value,
-        'password': document.getElementById('password').value
+        'password': document.getElementById('password').value,
+        'passwordConfirmation': document.getElementById('passwordConfirmation').value
     };
 
     $http.post('/api-rest/users', input, function(res) {
         if (res.user.id !== 0) {
             _users.push(res.user);
-            // buildTable();
-            console.log(_users.id);
         } else {
             alert("impossible de créer un utilisateur ")
         }
     }, 'json');
-
-    // window.location.replace('users/' + user.id);
 }
 
 /**

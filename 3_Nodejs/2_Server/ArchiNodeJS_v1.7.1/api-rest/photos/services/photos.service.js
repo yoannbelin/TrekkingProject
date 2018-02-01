@@ -28,7 +28,6 @@ class PhotosService {
     }
 
     static list(cb) {
-        console.log("service called");
         return PhotosDAO.list(cb);
     }
 

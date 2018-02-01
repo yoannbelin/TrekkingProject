@@ -7,8 +7,8 @@ let TreksDAO = require('../dao/treks.dao.mysql');
 let TrekDAO = require('./../dao/treks.dao.mysql') // pour info
 
 class TreksService {
-    static create(trek, cb) {
-        TreksDAO.create(trek, cb);
+    static create(idUser, trek, cb) {
+        TreksDAO.create(idUser, trek, cb);
     }
 
     static update(trek, cb) {

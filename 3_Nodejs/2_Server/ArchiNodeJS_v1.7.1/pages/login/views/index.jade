@@ -1,7 +1,7 @@
-extends layout
+extends /core/views/layout
 
 block content
-  h2#trek Login
+  h2#trek login
   title
   .Bandeau
   section.section
@@ -15,8 +15,6 @@ block content
                   a(href='/users') Profil
                 li
                   a(href='/photos') Galerie Photos
-                li
-                  a(href='/PoI') Galerie Points d'intêret
                   .top-border
 
           .column
@@ -24,13 +22,13 @@ block content
               .front-frame-title Connectez-vous
               .ui.form
                 .field
-                  label Email
+                    label Email
                   input(name='email', placeholder='email@provider.com', type='text')
                 .field
                   label Mot de passe
-                  input(name='password', type='password')
-                button.ui.button(id='loginBtn', type='submit') Connexion
-                ul.notifications-container
+                  input(name='password', placeholder='mot de passe', type='password')
+              button.ui.button(id='loginBtn', type='submit') Connexion
+              ul.notifications-container
 
             .front-frame.alert-register
               .front-frame-title Inscrivez-vous

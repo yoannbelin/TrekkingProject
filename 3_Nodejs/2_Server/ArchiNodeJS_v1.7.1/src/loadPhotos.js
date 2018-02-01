@@ -27,8 +27,7 @@ function goToShow(i) {
  * Load photos list
  */
 function loadPhotos() {
-    $http.get('/api-rest/photos', function (res) {
-        console.log('## fonction load')
+    $http.get('/api-rest/photos', function(res) {
         _photos = res;
         buildTable(_photos);
 
@@ -40,29 +39,11 @@ function loadPhotos() {
 
 }
 
-// /**
-//  * Add Photo
-//  */
-// function addPhoto() {
-//     console.log("trying to add dept")
-//     var input = {
-//         'name': document.getElementById('name').value,
-//         'num': document.getElementById('num').value
-//     };
-
-//     console.log(input);
-
-//     $http.post('/api-rest/photos', input, function (res) {
-//         _photos.push(res.photo);
-//         buildTable();
-//     }, 'json');
-// }
-
 /**
  * Delete selected photo
  */
 function deletePhoto(i) {
-    $http.delete('/api-rest/photos/' + i, function () {});
+    $http.delete('/api-rest/photos/' + i, function() {});
     window.location.href = '/photos';
 }
 
@@ -84,8 +65,7 @@ function saveUpdatePhoto(i) {
         'private': status
     };
 
-    $http.update('/api-rest/photos/' + i, input, function (res) {
-        console.log(input)
+    $http.update('/api-rest/photos/' + i, input, function(res) {
         _photos[i] = res.photo;
     }, 'json');
     window.location.href = i;

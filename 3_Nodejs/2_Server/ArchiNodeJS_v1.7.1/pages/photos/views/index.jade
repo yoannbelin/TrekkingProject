@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  h2#trek galerie photos
   title
     h1 Galerie
     h2 Photos
@@ -18,8 +19,6 @@ block content
                   a(href='/users') Profil
                 li
                   a.current(href='/photos') Galerie Photos
-                li
-                  a(href='/PoI') Galerie Points d'intêret
                   .top-border
         .row
             button#allPhoto(onclick='loadPhotos()') Toutes
@@ -31,9 +30,6 @@ block content
         .block_photos
             #photos
     
-    
-    script.
-        console.log("Aya")  
     script(src="/src/ajax.js")
     script(src="/src/loadPhotos.js")
     
