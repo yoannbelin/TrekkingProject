@@ -49,7 +49,6 @@
         <file>qml/modules/camera/ZoomControl.qml</file>
         <file>images/icon/home.png</file>
         <file>images/icon/pause.png</file>
-        <file>qml/javascript/ButtonControl.js</file>
         <file>qml/pages/PhotoPage/Etat3.qml</file>
         <file>qml/modules/camera/PhotoPreview.qml</file>
     </qresource>

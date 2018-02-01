@@ -8,6 +8,11 @@ import "../../modules"
 
 ColumnLayout {
     id : etat
+
+    property string labelTrek: list.labelTrek
+    property double lengthTrek: list.lengthTrek
+    property var timeTrek : list.timeTrek
+
     anchors.fill: parent
     anchors.top : header.bottom
     spacing: 0
@@ -24,7 +29,7 @@ ColumnLayout {
             Layout.fillWidth: true
             //color: "red"
 
-            MyList {width : parent.width ;  height : parent.height}
+            MyList {id : list ; width : parent.width ;  height : parent.height}
 
         } //fin rectangle
     }
@@ -61,7 +66,7 @@ ColumnLayout {
                 height: etat.height / 15
                 width: etat.width /3
                 onClicked: {
-                    console.log("sauvegarde des données du treck dans LocalFile + changement de pahe > TrekTracker.Etat3");
+                    console.log("sauvegarde des données du treck dans LocalFile");
                     trek2_visibilite = false;
                     trek3_visibilite = true;
 

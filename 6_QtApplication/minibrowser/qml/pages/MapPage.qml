@@ -45,9 +45,6 @@ Page {
             var coord = gpsPosition.position.coordinate;
             if (mapPage.gpsActive && startNewTrek)
             {
-                //                MyContext.startTrek(trekName, 43.48, 3.26);
-                //                MyContext.updateTrek(43.465, 3.25);
-                //                MyContext.updateTrek(43.475, 3.255);
                 MyContext.startTrek(trekName, coord.latitude, coord.longitude);
                 startNewTrek = false;
             }

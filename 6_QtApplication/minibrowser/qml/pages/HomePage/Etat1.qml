@@ -6,8 +6,6 @@ import QtQuick.Controls.Styles 1.2
 import "../../modules"
 import "../../../images"
 
-import "../../javascript/ButtonControl.js" as MyScript
-
 ColumnLayout {
     id : etat
 
@@ -40,8 +38,8 @@ ColumnLayout {
             //color: "grey"
 
             InputBox {
-                id : pseudo
-                placeholderText: "Entrer votre pseudo"
+                id : mail
+                placeholderText: "Entrez votre mail"
             }
         }
     } //fin rowlayout
@@ -59,7 +57,7 @@ ColumnLayout {
 
             InputBox {
                 id : mdp
-                placeholderText: "Entrer votre mot de passe"
+                placeholderText: "Entrez votre mot de passe"
             }
         }
     } //fin rowlayout
@@ -80,9 +78,41 @@ ColumnLayout {
                 height: etat.height / 15
                 width: etat.width /3
                 onClicked: {
-                    console.log("check datas and save profil in localFile : " + pseudo.text + " " + mdp.text);
-                    home1_visibilite = false;
-                    home2_visibilite = true;
+                    console.log("# check datas and save profil in localFile : " + mail.text + " " + mdp.text);
+
+                    var uri = "http://localhost:3000/api-rest/users/auth";
+                    var datas = {
+                        mail : mail.text,
+                        password : mdp.text};
+
+                    console.log(datas)
+
+                    var req = new XMLHttpRequest();
+
+                    req.open("POST", uri, true);
+
+                    req.setRequestHeader('Content-type','application/json; charset=utf-8');
+                    req.onreadystatechange = function() {
+
+                        if (req.readyState === XMLHttpRequest.DONE && req.status == 200) {
+                            console.log("#" + req.responseText);
+
+                            var result = JSON.parse(req.responseText);
+                            console.log("++" + JSON.stringify(result.user.id));
+
+                            MyContext.saveUser(JSON.stringify(result.user.id), JSON.stringify(result.user.username), mdp.text, JSON.stringify(result.user.mail))
+
+                            home1_visibilite = false;
+                            home2_visibilite = true;
+
+                        }
+                        else {
+                            console.log("error: " + req.status);
+                        }
+                    }
+                            req.send(JSON.stringify(datas));
+
+
                 }
             }
         }

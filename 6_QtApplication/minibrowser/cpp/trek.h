@@ -19,7 +19,7 @@ class Trek : public QObject
     Q_PROPERTY(QString level READ getLevel WRITE setLevel NOTIFY levelChanged)
     Q_PROPERTY(bool done READ getDone WRITE setDone NOTIFY doneChanged)
 
-    Q_PROPERTY(QString test READ test WRITE setTest NOTIFY testChanged)
+//    Q_PROPERTY(QString test READ test WRITE setTest NOTIFY testChanged)
 
     QString m_label;
     QString m_length;
@@ -28,9 +28,6 @@ class Trek : public QObject
     QList<QObject*> m_trace;
     QString m_level;
     bool m_done;
-    FileManager m_fileManager;
-
-    QString m_test; // pour test QML
 
 
 public:
@@ -78,11 +75,6 @@ public:
         return m_done;
     }
 
-    QString test() const // pour test QML
-    {
-        return m_test;
-    }
-
 signals:
 
     void labelChanged(QString label);
@@ -93,7 +85,6 @@ signals:
     void levelChanged(QString level);
     void doneChanged(bool done);
 
-    void testChanged(QString test); // pour test QML
 
 public slots:
     void setLabel(QString label)
@@ -152,14 +143,7 @@ public slots:
         m_done = done;
         emit doneChanged(m_done);
     }
-    void setTest(QString test) // pour test QML
-    {
-        if (m_test == test)
-            return;
 
-        m_test = test;
-        emit testChanged(m_test);
-    }
 };
 
 #endif // TREK_H

@@ -9,11 +9,16 @@ import "../../javascript/JSControl.js" as JSC
 
 ColumnLayout {
     id : etat
-    anchors.fill: parent
-    spacing: 0
+
+    //    property string labelTrek: etat2.labelTrek
+    //    property double lengthTrek: etat2.lengthTrek
+    //    property var timeTrek : etat2.timeTrek
 
     property int lapsedTime : 0
     property var timeInString : JSC.timeToString(etat.lapsedTime)
+
+    anchors.fill: parent
+    spacing: 0
 
     onLapsedTimeChanged: {
         if(lapsedTime % 30000 == 0)
@@ -36,7 +41,7 @@ ColumnLayout {
 
             Text {
                 id : label
-                text : "Titre du treck"
+                text : etat2.labelTrek
 
                 font.family: "acumin-pro"
                 font.pixelSize: Qt.application.font.pixelSize * 3
@@ -59,7 +64,7 @@ ColumnLayout {
 
             RowLayout { //rowlayout 2.1
                 id : tps_estime
-                visible: true
+                visible: etat2.lengthTrek === "" ? false : true
 
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
@@ -71,14 +76,14 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        text : "temps estimé : "
+                        text : "temps estimé : " + timeTrek
                     }
                 }
             }
 
             RowLayout { //rowlayout 2.2
                 id : dist_estimee
-                visible: true
+                visible: etat2.lengthTrek === 0 ? false : true
 
                 spacing: 0
                 Layout.preferredHeight: (1/5)*parent.height
@@ -90,7 +95,7 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        text : "distance estimé : "
+                        text : "distance estimé : " + etat2.lengthTrek
                     }
                 }
             }
@@ -187,6 +192,8 @@ ColumnLayout {
                             pause.visible = true ;
                             start.visible = false ;
 
+                            mapPage.trekName = label.text;
+                            mapPage.startNewTrek = true;
                             mapPage.gpsActive = true ;
                             // code start timer
 
@@ -228,6 +235,12 @@ ColumnLayout {
                         onClicked: {
                             trek3_visibilite = false ;
                             trek2_visibilite = true ;
+
+                            labelTrek = "";
+                            lengthTrek = 0;
+                            timeTrek = "";
+
+                            trek1_error = "";
                         }
                     }
 

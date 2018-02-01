@@ -79,7 +79,8 @@ class UserModel {
             password: this.password,
             mail: this.mail,
             active: this.active,
-            created_at: this.created_at
+            created_at: this.created_at,
+            treks : this.treks_
         };
     }
 
