@@ -4,8 +4,8 @@ import "../javascript/JSControl.js" as MyScript
 Rectangle {
     id : myListView
 
-    //    property bool active : trekPage.trek2_visibilite
-    property bool active : trekPage.trek2_loadTrek
+        property bool active : trekPage.trek2_visibilite
+    //property bool active : trekPage.trek2_loadTrek
 
     ListModel {
         id: treksModel
@@ -55,9 +55,12 @@ Rectangle {
         focus: true
         onCurrentItemChanged: {
             console.log(treksModel.get(view.currentIndex).label)
+
             labelTrek = treksModel.get(view.currentIndex).label;
             lengthTrek = treksModel.get(view.currentIndex).length;
             timeTrek = treksModel.get(view.currentIndex).time;
+
+            console.log(labelTrek + " ; " + lengthTrek + " ; " + timeTrek)
         }
 
 
@@ -95,16 +98,9 @@ Rectangle {
                                       })
                 }
 
-                trekPage.trek1_visibilite = false;
-                trekPage.trek2_visibilite = true;
-
 
             } else {
                 console.log("HTTP:", request.status, request.statusText)
-                trek1_error = "erreur de connexion"
-
-                trek1_visibilite = true;
-                trek2_visibilite = false;
             }
         }
 

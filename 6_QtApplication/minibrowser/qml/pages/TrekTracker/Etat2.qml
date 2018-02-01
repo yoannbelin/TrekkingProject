@@ -67,7 +67,6 @@ ColumnLayout {
                 width: etat.width /3
                 onClicked: {
                     console.log("sauvegarde des données du treck dans LocalFile");
-                    console.log(list.lengthTrek)
                     trek2_visibilite = false;
                     trek3_visibilite = true;
 

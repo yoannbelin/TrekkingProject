@@ -76,8 +76,8 @@ ColumnLayout {
                 onClicked: {
                     console.log("changement de page > TrekTracker.etat2");
                     trek2_loadTrek = true;
-//                    trek1_visibilite = false;
-//                    trek2_visibilite = true;
+                    trek1_visibilite = false;
+                    trek2_visibilite = true;
                 }
 
             }
@@ -172,8 +172,12 @@ ColumnLayout {
                             trek1_visibilite = false;
                             trek3_visibilite = true;
 
-                            mapPage.trekName = label.text;
-                            mapPage.startNewTrek = true;
+//                            mapPage.trekName = label.text;
+//                            mapPage.startNewTrek = true;
+
+                            etat2.labelTrek = label.text;
+                            etat2.lengthTrek = 0;
+                            etat2.timeTrek = "";
                         }
                     }
                 }
