@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  h2#trek photo
   title
   .Bandeau
   section
@@ -16,8 +17,6 @@ block content
                   a(href='/users') Profil
                 li
                   a(href='/photos') Galerie Photos
-                li
-                  a(href='/PoI') Galerie Points d'intêret
                   .top-border
   h1 #{photo.title}
     .row
@@ -52,7 +51,7 @@ block content
               .saveupdate
                 button#saveUpdate(onclick='saveUpdatePhoto(#{photo.id})') Sauvegarder modification
               .cancelupdate
-                button#cancel(onclick='cancelupdate(#{photo.id})') annuler modificattion
+                button#cancel(onclick='cancelupdate(#{photo.id})') annuler modification
 
     script(src="/src/ajax.js")
     script(src="/src/loadPhotos.js")

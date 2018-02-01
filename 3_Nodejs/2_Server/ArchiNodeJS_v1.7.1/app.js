@@ -33,14 +33,12 @@ app.use('/assets', express.static('public'));
 
 // api-rest routes
 app.use('/api-rest/users', require('./api-rest/users/routes/users.route'));
-app.use('/api-rest/departments', require('./api-rest/departments/routes/departments.route'));
 app.use('/api-rest/treks', require('./api-rest/treks/routes/treks.route'));
 app.use('/api-rest/photos', require('./api-rest/photos/routes/photos.route'));
 
 // pages routes
 app.use('/', require('./pages/core/routes/index.route'));
 app.use('/users', require('./pages/users/routes/users.route'));
-app.use('/departments', require('./pages/departments/routes/departments.route'));
 app.use('/treks', require('./pages/treks/routes/treks.route'));
 app.use('/photos', require('./pages/photos/routes/photos.route'));
 app.use('/login', require('./pages/login/routes/logins.route'));

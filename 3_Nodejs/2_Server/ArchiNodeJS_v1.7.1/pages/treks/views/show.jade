@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  h2#trek detail trek
   title
   .Bandeau
   section
@@ -16,8 +17,6 @@ block content
                   a(href='/users') Profil
                 li
                   a(href='/photos') Galerie Photos
-                li
-                  a(href='/PoI') Galerie Points d'intêret
                   .top-border
     .row
       .small-12.medium-12.large-12.small-centered.columns
@@ -51,7 +50,7 @@ block content
                   .saveupdate
                     button#saveUpdate(onclick='LoadTreksManager.saveUpdate(#{trek.id})') Sauvegarder modification
                   .cancelupdate
-                    button#cancel(onclick='LoadTreksManager.cancelupdate(#{trek.id})') annuler modificattion
+                    button#cancel(onclick='LoadTreksManager.cancelupdate(#{trek.id})') annuler modification
       .small-12.medium-5.large-5.columns
           .zoom
             .image

@@ -1,5 +1,3 @@
-console.log(2);
-
 var LoadTreksManager = {
 
     selfTreks: undefined,
@@ -45,17 +43,22 @@ var LoadTreksManager = {
         this.hide_btn('.save');
         var html = "";
         html += "<tr>";
-        html += "<td> Nom du trek </td>";
-        html += "<td> Distance du trek </td>";
-        html += "<td> Temps estimés </td>";
-        html += "<td> Niveau de difficulté </td>";
+        html += "<th> Nom du trek </th>";
+        html += "<td>" + selfTreks._treks[i].label + "</td>";
         html += "</tr>";
         html += "<tr>";
-        html += "<td>" + selfTreks._treks[i].label + "</td>";
+        html += "<th> Distance du trek </th>";
         html += "<td>" + selfTreks._treks[i].length + "</td>";
+        html += "</tr>";
+        html += "<tr>";
+        html += "<th> Temps estimés </th>";
         html += "<td>" + selfTreks._treks[i].time + "</td>";
+        html += "</tr>";
+        html += "<tr>";
+        html += "<th> Niveau de difficulté </th>";
         html += "<td>" + selfTreks._treks[i].level + "</td>";
         html += "</tr>";
+
         document.getElementById('idTableau').innerHTML = html;
 
         var datas = JSON.parse(selfTreks._treks[i].pathway)
@@ -71,18 +74,22 @@ var LoadTreksManager = {
 
         var html = "";
         html += "<tr>";
-        html += "<td> Nom du trek </td>";
-        html += "<td> Distance du trek </td>";
-        html += "<td> Temps estimés </td>";
-        html += "<td> Niveau de difficulté </td>";
-        html += "</tr>";
-
-        html += "<tr>";
+        html += "<th> Nom du trek </th>";
         html += "<td>" + '<textarea name="" id="nom"></textarea>' + "</td>";
+        html += "</tr>";
+        html += "<tr>";
+        html += "<th> Distance du trek </th>";
         html += "<td>" + '<textarea name="" id="distance", readonly></textarea>' + "</td>";
+        html += "</tr>";
+        html += "<tr>";
+        html += "<th> Temps estimés </th>";
         html += "<td>" + '<textarea  name="" id="temps"></textarea>' + "</td>";
+        html += "</tr>";
+        html += "<tr>";
+        html += "<th> Niveau de difficulté </th>";
         html += "<td>" + '<textarea  name="" id="difficulte"></textarea>' + "</td>";
         html += "</tr>";
+        html += "<tr>";
 
         document.getElementById('idTableau').innerHTML = html;
 
@@ -131,10 +138,10 @@ var LoadTreksManager = {
             if (res.trek.id !== 0) {
                 selfTreks.push(res.trek);
             }
-            selfTreks.infoTrek(selfTreks._treks.length - 1);
         }, 'json');
         document.getElementById('messageToUser').innerHTML = 'success!';
         selfTreks.loadTreks();
+
     },
 
     /**

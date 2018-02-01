@@ -19,7 +19,6 @@ class UsersRegisterService {
                 newUser.password = passwordHash.generate(newUser.password);
 
                 UsersService.create(newUser, (err, user) => {
-                    console.log('## register service create ()')
                     if (user) {
                         cb(null, user);
                     } else {

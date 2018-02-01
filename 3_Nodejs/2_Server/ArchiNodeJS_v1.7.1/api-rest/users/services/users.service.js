@@ -8,7 +8,6 @@ let UserDAO = require('./../dao/users.dao.mysql')
 
 class UsersService {
     static create(user, cb) {
-        console.log('## userservice create()')
         UsersDAO.create(user, cb);
     }
 
