@@ -79,6 +79,8 @@ void MyContext::startTrek(const QString &trekName,const double &latitude, const 
     m_myTrek = nullptr;
     delete m_myTrek;
     setMyTrek(new Trek (trekName, latitude, longitude));
+
+    qDebug() << " # " << trekName;
     qDebug() << "New Trek Created";
 }
 

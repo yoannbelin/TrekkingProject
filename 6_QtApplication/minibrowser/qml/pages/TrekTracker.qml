@@ -14,6 +14,9 @@ Page {
     property bool trek2_visibilite: false
     property bool trek3_visibilite: false
 
+    property string trek1_error: ""
+    property bool trek2_loadTrek: false
+
     header: Label {
         text: qsTr("Trek Tracker")
         font.pixelSize: Qt.application.font.pixelSize * 2

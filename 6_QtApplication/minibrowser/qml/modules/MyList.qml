@@ -2,8 +2,10 @@ import QtQuick 2.0
 import "../javascript/JSControl.js" as MyScript
 
 Rectangle {
-    property bool active : trekPage.trek2_visibilite
+    id : myListView
 
+        property bool active : trekPage.trek2_visibilite
+    //property bool active : trekPage.trek2_loadTrek
 
     ListModel {
         id: treksModel
@@ -51,19 +53,26 @@ Rectangle {
 
         highlight: Rectangle { color: 'orange' ; radius : 4 }
         focus: true
-        onCurrentItemChanged: console.log(model.get(view.currentIndex).labelTreck)
+        onCurrentItemChanged: {
+            console.log(treksModel.get(view.currentIndex).label)
+
+            labelTrek = treksModel.get(view.currentIndex).label;
+            lengthTrek = treksModel.get(view.currentIndex).length;
+            timeTrek = treksModel.get(view.currentIndex).time;
+
+            console.log(labelTrek + " ; " + lengthTrek + " ; " + timeTrek)
+        }
+
 
         spacing: 4
     }
 
 
-//    Component.onCompleted: {
-//        getTreksJSON()
-//    }
-
     onActiveChanged : {
-        console.log("ok")
-        getTreksJSON()
+        if (active) {
+            console.log("ok")
+            getTreksJSON()
+        }
     }
 
     function getTreksJSON() {
@@ -74,6 +83,8 @@ Rectangle {
 
         request.onreadystatechange = function() {
             if (request.readyState === XMLHttpRequest.DONE && request.status == 200) {
+
+                treksModel.clear();
 
                 //console.log("response", request.responseText)
                 var result = JSON.parse(request.responseText)
@@ -86,6 +97,7 @@ Rectangle {
                                           "time": result.treks[ligne].time
                                       })
                 }
+
 
             } else {
                 console.log("HTTP:", request.status, request.statusText)
