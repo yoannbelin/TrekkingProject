@@ -25,25 +25,6 @@ class UsersDAO {
         });
     }
 
-    // static create(user, cb) {
-
-    //     let script = 'INSERT INTO user (firstname, lastname, username, password, mail, active, created_at ) '
-    //     script += 'SELECT * FROM ( SELECT ?, ?, ?, ?, ?, ?, ?) AS tmp '
-    //     script += 'WHERE NOT EXISTS ( '
-    //     script += 'SELECT * FROM user WHERE username = ?)'
-
-    //     db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date(), user.username], (err, result) => {
-
-    //         if (result) {
-    //             user.id = result.insertId;
-    //             console.log('user created : ' + result.insertId);
-    //         } else {
-    //             console.log("erreur à l insertion : " + err)
-    //         }
-    //         cb(err, user);
-    //     });
-    // }
-
     static update(user, cb) {
 
         let id = user.id;
@@ -78,8 +59,6 @@ class UsersDAO {
     }
 
     static find(id, cb) {
-
-        console.log(id);
 
         let script = 'SELECT * FROM user '
         script += 'JOIN user_do_trek ON user.id_User = user_do_trek.id_User AND user.id_User = ? '

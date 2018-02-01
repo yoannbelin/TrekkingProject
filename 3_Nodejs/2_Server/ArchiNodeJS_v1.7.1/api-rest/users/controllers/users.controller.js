@@ -39,9 +39,8 @@ module.exports.create = function(req, res) {
     req.checkBody('username', 'Pseudo vide').notEmpty();
     req.checkBody('mail', 'Adresse email invalide').isEmail();
     req.checkBody('password', 'Mot de passe vide').notEmpty();
-    req.checkBody('passwordConfirmation', 'Le mot de passe de confirmation doit etre identique au mot de passe')
-        .notEmpty()
-        .matches(req.body.password);
+    req.checkBody('passwordConfirmation', 'Le mot de passe de confirmation doit etre identique au mot de passe').notEmpty().matches(req.body.password);
+    req.checkBody('password', 'Le mot de passe de confirmation doit etre identique au mot de passe').notEmpty().matches(req.body.passwordConfirmation);
 
     let errorsFields = req.validationErrors();
 
@@ -69,25 +68,6 @@ module.exports.create = function(req, res) {
         }
     });
 }
-
-// module.exports.create = function(req, res) {
-
-//     let userModel = new UserModel(req.body);
-//     console.log(userModel);
-
-//     if (!userModel.isValid()) {
-//         console.log("invalid");
-//         return res.status(500).json({ 'error': 'Failed to create user, missing fields !' });
-//     }
-
-//     UsersService.create(userModel, (err, user) => {
-//         if (err) {
-//             res.status(500).json({ 'error': 'Failed to create user !' });
-//         } else {
-//             res.json({ 'success': 'User created !', 'user': user });
-//         }
-//     });
-// }
 
 /**
  * Read a user
