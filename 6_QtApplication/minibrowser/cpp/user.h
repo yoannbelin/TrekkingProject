@@ -2,27 +2,41 @@
 #define USER_H
 
 #include <QObject>
+#include <QStringList>
 
 class User : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(int idUser READ getIdUser WRITE setIdUser NOTIFY idUserChanged)
     Q_PROPERTY(QString username READ getUsername WRITE setUsername NOTIFY usernameChanged)
     Q_PROPERTY(QString password READ getPassword WRITE setPassword NOTIFY passwordChanged)
     Q_PROPERTY(QString email READ getEmail WRITE setEmail NOTIFY emailChanged)
-    Q_PROPERTY(int idUser READ getIdUser WRITE setIdUser NOTIFY idUserChanged)
 
+    int m_idUser;
     QString m_username;
     QString m_password;
     QString m_email;
-    int m_idUser;
 
 public:
     explicit User(QObject *parent = nullptr);
 
-    User( const QString &username, const QString &password,
-          const QString &email, const int &idUser, QObject *parent = nullptr );
+    User(   const int &idUser, const QString &username, const QString &password,
+            const QString &email, QObject *parent = nullptr );
 
+    User(  QStringList &userData, QObject *parent = nullptr );
+
+    QStringList userQSLFormat();
+
+
+    ///
+    /// GETTERS AND SETTERS
+    ///
+
+    int getIdUser() const
+    {
+        return m_idUser;
+    }
 
     QString getUsername() const
     {
@@ -42,20 +56,16 @@ public:
 
 signals:
 
+    void idUserChanged(int idUser);
+
     void usernameChanged(QString username);
 
     void passwordChanged(QString password);
 
     void emailChanged(QString email);
 
-    void idUserChanged(int idUser);
 
 public slots:
-
-    int getIdUser() const
-    {
-        return m_idUser;
-    }
 
 
     void setUsername(QString username)

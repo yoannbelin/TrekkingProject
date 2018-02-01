@@ -224,7 +224,7 @@ ColumnLayout {
                     console.log("deconnexion");
                     home2_visibilite = false;
                     home1_visibilite = true
-                    //effacer le user_localFile
+                    MyContext.deleteUser();
                 }
             }
         }

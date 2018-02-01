@@ -9,8 +9,8 @@ import "HomePage"
 Page {
     id : homePage
 
-    property bool home1_visibilite: true
-    property bool home2_visibilite: false
+    property bool home1_visibilite: (MyContext.user.idUser === 0)
+    property bool home2_visibilite: (MyContext.user.idUser !== 0)
     property bool home3_visibilite: false
 
 

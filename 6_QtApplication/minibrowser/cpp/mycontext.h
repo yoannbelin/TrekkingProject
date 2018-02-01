@@ -23,23 +23,25 @@ class MyContext : public QObject
     Q_PROPERTY(Trek* myTrek READ getMyTrek WRITE setMyTrek NOTIFY myTrekChanged)
     Q_PROPERTY(QList<QObject*> trekList READ getTrekList WRITE setTrekList NOTIFY trekListChanged)
     Q_PROPERTY(User* user READ getUser WRITE setUser NOTIFY userChanged)
+    Q_PROPERTY(FileManager* fileManager READ getFileManager WRITE setFileManager NOTIFY fileManagerChanged)
 
     Q_PROPERTY(QString errorMessage READ errorMessage WRITE setErrorMessage NOTIFY errorMessageChanged)
 
     QQmlContext* m_myContext;
 
-
     /* variables */
+    FileManager* m_fileManager;
     QList<QObject*> m_trekList;
+    User* m_user;
     Trek* m_myTrek;
     QString m_errorMessage;
 
-    User* m_user;
 
     // File Searching Functions
     void searchUserFile();
     void searchTrekFile();
     void searchPhotoFile();
+
 
 public:
 
@@ -58,6 +60,8 @@ public:
     Q_INVOKABLE void startTrek (const QString &trekName, const double &latitude, const double &longitude);
 
     Q_INVOKABLE void saveUser (const int &id, const QString &username, const QString &password, const QString &mail);
+    Q_INVOKABLE void deleteUser ();
+
     Q_INVOKABLE int getIdUser ();
 
 
@@ -82,12 +86,19 @@ public:
         return m_user;
     }
 
+    FileManager* getFileManager() const
+    {
+        return m_fileManager;
+    }
+
 signals:
     void myTrekChanged(Trek* myTrek);
     void errorMessageChanged(QString errorMessage);
     void trekListChanged(QList<QObject*> trekList);
 
     void userChanged(User* user);
+
+    void fileManagerChanged(FileManager* fileManager);
 
 public slots:
 
@@ -124,6 +135,14 @@ public slots:
 
         m_user = user;
         emit userChanged(m_user);
+    }
+    void setFileManager(FileManager* fileManager)
+    {
+        if (m_fileManager == fileManager)
+            return;
+
+        m_fileManager = fileManager;
+        emit fileManagerChanged(m_fileManager);
     }
 };
 

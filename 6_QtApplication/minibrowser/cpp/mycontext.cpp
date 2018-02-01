@@ -4,14 +4,23 @@
 
 MyContext::MyContext(QObject *parent) : QObject(parent), m_myContext(nullptr)
 {
+    m_fileManager = new FileManager;
     m_myTrek = new Trek;
-    m_user = new User;
+
+    if(m_fileManager->fileExists("user", "info"))
+    {
+        QStringList userData = m_fileManager->loadFile("user", "info");
+        m_user = new User(userData);
+    }
+
+    else
+    {
+        m_user = new User;
+    }
 
     setErrorMessage("");
 
-    searchUserFile();
-    searchTrekFile();
-    searchPhotoFile();
+
 }
 
 void MyContext::initMyContext(/*QQmlApplicationEngine &engine,*/ QQmlContext *myContext)
@@ -67,8 +76,8 @@ void MyContext::updateTrek(const double &latitude, const double &longitude)
 
 void MyContext::startTrek(const QString &trekName,const double &latitude, const double &longitude)
 {
-    delete m_myTrek;
     m_myTrek = nullptr;
+    delete m_myTrek;
     setMyTrek(new Trek (trekName, latitude, longitude));
     qDebug() << "New Trek Created";
 }
@@ -85,8 +94,17 @@ void MyContext::saveUser(const int &id, const QString &username, const QString &
 
     //qDebug() << getUser()->getIdUser();
 
+    QStringList userData = getUser()->userQSLFormat();
+    getFileManager()->updateFile("user", "info", userData);
+
+
     currentUser = nullptr;
     delete currentUser;
+}
+
+void MyContext::deleteUser()
+{
+    getFileManager()->deleteFile("user", "info");
 }
 
 int MyContext::getIdUser()
