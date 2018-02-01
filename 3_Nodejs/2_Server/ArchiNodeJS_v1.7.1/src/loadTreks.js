@@ -166,10 +166,12 @@ var LoadTreksManager = {
     /**
      * Delete the trek
      */
-    deleteTrek: function(i) {
-        alert("trek supprimé \nredirection vers page 'Map'");
-        $http.delete('/api-rest/treks/' + i, function() {});
-        window.location.href = '/treks';
+    deleteTrek: function(i, label) {
+        var ok = confirm("Voulez vous vraiment supprimer ce trek");
+        if (ok == true) {
+            $http.delete('/api-rest/treks/' + i, function() {});
+            window.location.href = '/treks';
+        } else {}
     },
 
     /**
@@ -186,8 +188,8 @@ var LoadTreksManager = {
         var input = {
             'label': document.getElementById('label').value,
             'length': document.getElementById('length').value,
-            'time': document.getElementById('time').value,
-            'level': document.getElementById('level').value
+            'time': document.getElementById('time').value || null,
+            'level': document.getElementById('level').value || null
         };
 
         $http.update('/api-rest/treks/' + i, input, function(res) {
