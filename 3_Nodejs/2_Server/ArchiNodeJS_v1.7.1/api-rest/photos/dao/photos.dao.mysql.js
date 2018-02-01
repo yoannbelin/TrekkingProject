@@ -28,7 +28,6 @@ class PhotosDAO {
     }
 
     static update(photo, cb) {
-        console.log("!!!" + photo.id);
         console.log("???" + JSON.stringify(photo));
 
         let id = photo.id;
@@ -56,12 +55,25 @@ class PhotosDAO {
         script += 'WHERE user.id_user = ? '
         script += 'ORDER BY photo.date_photo '
 
-        console.log('script = ' + script);
-
-        db.query(script, [5], (err, rows) => {
+        db.query(script, [6], (err, rows) => {
             rows = rows || [];
             cb(err, rows.map((row) => {
-                console.log('#' + row);
+                return new PhotoModel(row)
+            }));
+        });
+    }
+
+    static listByUserID(idUser, cb) {
+
+        let script = 'SELECT * FROM photo '
+        script += 'JOIN user ON photo.id_user = user.id_user '
+        script += 'JOIN trek ON trek.id_trek = photo.id_trek '
+        script += 'WHERE user.id_user = ? '
+        script += 'ORDER BY photo.date_photo '
+
+        db.query(script, [idUser], (err, rows) => {
+            rows = rows || [];
+            cb(err, rows.map((row) => {
                 return new PhotoModel(row)
             }));
         });
@@ -69,15 +81,13 @@ class PhotosDAO {
 
     static find(id, cb) {
 
-        console.log(id);
-
         let script = 'SELECT * FROM photo '
         script += 'WHERE id_photo = ?'
 
         db.query(script, [id], (err, rows) => {
 
             if (rows && rows[0] !== undefined) {
-          
+
                 var currentPhoto = new PhotoModel(rows[0])
 
                 cb(err, currentPhoto);

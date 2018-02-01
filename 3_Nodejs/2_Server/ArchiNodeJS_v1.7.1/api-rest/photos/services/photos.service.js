@@ -28,8 +28,17 @@ class PhotosService {
     }
 
     static list(cb) {
-        console.log("service called");
         return PhotosDAO.list(cb);
+    }
+
+    static listByUserID(idUser, cb) {
+        return PhotosDAO.listByUserID(idUser, (err, photosReturned) => {
+            if (err) {
+                console.error(err);
+            }
+
+            cb(err, photosReturned);
+        });
     }
 }
 module.exports = PhotosService;

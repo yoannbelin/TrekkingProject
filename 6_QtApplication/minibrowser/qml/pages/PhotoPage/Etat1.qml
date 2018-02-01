@@ -50,6 +50,7 @@ ColumnLayout {
         ]
         Camera {
             id: camera
+            captureMode: Camera.CaptureStillImage // added
 
             imageCapture {
                 onImageCaptured: {
@@ -59,6 +60,16 @@ ColumnLayout {
                 }
             }
         }
+// added segment from here =>
+        PhotoPreview {
+            id : photoPreview
+            anchors.fill : parent
+            onClosed: cameraUI.state = "PhotoCapture"
+            visible: cameraUI.state == "PhotoPreview"
+            focus: visible
+        }
+// => til here;
+
         VideoOutput {
             id: viewfinder
             visible: cameraUI.state == "PhotoCapture"

@@ -5,25 +5,21 @@
 // au reste du code de l'application.
 //=========================================================================
 
-let db = require(__base + '/config/db')
+let db = require(__base + 'config/db')
 let UserModel = require('../models/user.model');
 let TrekModel = require('../../treks/models/trek.model');
 
 class UsersDAO {
+
     static create(user, cb) {
-
-        let script = 'INSERT INTO user (firstname, lastname, username, password, mail, active, created_at ) '
-        script += 'SELECT * FROM ( SELECT ?, ?, ?, ?, ?, ?, ?) AS tmp '
-        script += 'WHERE NOT EXISTS ( '
-        script += 'SELECT * FROM user WHERE username = ?)'
-
-        db.query(script, [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date(), user.username], (err, result) => {
+        db.query('INSERT INTO user SET firstname = ?, lastname = ?, username = ?, password = ?, mail = ?, active = ?, created_at = ?', [user.firstname, user.lastname, user.username, user.password, user.mail, 1, new Date()], (err, result) => {
+            console.log('## userDAO create()');
 
             if (result) {
                 user.id = result.insertId;
                 console.log('user created : ' + result.insertId);
             } else {
-                console.log("erreur à l insertion : " + err)
+                console.log("erreur a l'insertion : " + err);
             }
             cb(err, user);
         });
@@ -64,8 +60,6 @@ class UsersDAO {
 
     static find(id, cb) {
 
-        console.log(id);
-
         let script = 'SELECT * FROM user '
         script += 'JOIN user_do_trek ON user.id_User = user_do_trek.id_User AND user.id_User = ? '
         script += 'JOIN trek ON user_do_trek.id_Trek = trek.id_Trek '
@@ -82,7 +76,6 @@ class UsersDAO {
 
                     var trek = new TrekModel(rows[i]);
 
-
                     treks.push(trek);
                     i++;
                 }
@@ -95,6 +88,24 @@ class UsersDAO {
             } else {
                 cb('Aucun user ne correspond à votre requète !')
             }
+        });
+    }
+
+    static findById(id, cb) {
+        db.query('SELECT * FROM user WHERE id_user = ? LIMIT 1', [id], (err, rows) => {
+            return (rows[0]) ? cb(err, new UserModel(rows[0])) : cb(err, null);
+        });
+    }
+
+    static findByEmail(mail, cb) {
+        db.query('SELECT * FROM user WHERE mail = ? LIMIT 1', [mail], (err, rows) => {
+            return (rows[0]) ? cb(err, new UserModel(rows[0])) : cb(err, null);
+        });
+    }
+
+    static findByPseudo(username, cb) {
+        db.query('SELECT * FROM user WHERE username = ? LIMIT 1', [username], (err, rows) => {
+            return (rows[0]) ? cb(err, new UserModel(rows[0])) : cb(err, null);
         });
     }
 }

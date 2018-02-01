@@ -25,7 +25,7 @@ void MyContext::loadMyContext()
     // Send the data to Qml
     if( m_myContext != nullptr )
     {
-        //        m_myContext->setContextProperty("modeleProfiles", QVariant::fromValue( m_listOfElem ));
+        m_myContext->setContextProperty("trekList", QVariant::fromValue( m_trekList ));
     }
     else
     {

@@ -5,11 +5,22 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls.Styles 1.2
 
 import "../../modules"
+import "../../javascript/JSControl.js" as JSC
 
 ColumnLayout {
     id : etat
     anchors.fill: parent
     spacing: 0
+
+    property int lapsedTime : 0
+    property var timeInString : JSC.timeToString(etat.lapsedTime)
+
+    onLapsedTimeChanged: {
+        if(lapsedTime % 30000 == 0)
+        {
+            MyContext.myTrek.setTime(timeInString);
+        }
+    }
 
 
     RowLayout { //rowlayout 1
@@ -98,7 +109,7 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        text : "temps réel : "
+                        text : "temps réel : " + etat.timeInString
                     }
                 }
             }
@@ -173,9 +184,14 @@ ColumnLayout {
                         onClicked: {
                             returnButton.visible = false ;
                             stopButton.visible = true ;
-
                             pause.visible = true ;
                             start.visible = false ;
+
+                            mapPage.gpsActive = true ;
+                            // code start timer
+
+                            trekTimer.start() ;
+
                             console.log("start Treck _ debut de la prise de pts GPS") }
                     }
 
@@ -189,6 +205,10 @@ ColumnLayout {
                         onClicked: {
                             start.visible = true ;
                             pause.visible = false ;
+
+                            mapPage.gpsActive = false ;
+                            trekTimer.stop() ;
+
                             console.log("pause Treck _ arrêt de la prise de pts GPS")}
                     }
                 }
@@ -221,6 +241,12 @@ ColumnLayout {
                         onClicked: {
                             start.visible = false ;
                             pause.visible = false ;
+
+                            // code function to stop timer
+                            trekTimer.stop()
+                            // code function to save Trek Object
+                            MyContext.myTrek.setTime(etat.timeInString)
+
                             console.log("stop Treck _ fin de la prise de pts GPS")}
                     }
                 }
@@ -247,7 +273,13 @@ ColumnLayout {
         } //fin columnlayout
     } //fin rowlayout 3
 
+
+
+    Timer {
+        id: trekTimer
+        interval: 10 ;
+        running: false ;
+        repeat: true ;
+        onTriggered: etat.lapsedTime += 10
+    }
 }
-
-
-

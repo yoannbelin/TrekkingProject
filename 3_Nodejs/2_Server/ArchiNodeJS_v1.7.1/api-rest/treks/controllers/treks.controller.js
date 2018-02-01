@@ -20,7 +20,7 @@ module.exports.create = function(req, res) {
         return res.status(500).json({ 'error': 'Failed to create trek, missing fields !' });
     }
 
-    TreksService.create(trekModel, (err, trek) => {
+    TreksService.create(req.session.user.id, trekModel, (err, trek) => {
         if (err) {
             res.status(500).json({ 'error': 'Failed to create trek !' });
         } else {
@@ -80,5 +80,33 @@ module.exports.delete = function(req, res) {
 module.exports.list = function(req, res) {
     TreksService.list((err, treks) => {
         res.json(treks); // cast with toJSON
+    });
+}
+
+/**
+ * List Treks for current user
+ */
+module.exports.listCurrentUser = function(req, res) {
+    TreksService.listByUserID(req.session.user.id, (err, treks) => {
+        res.json(treks);
+    });
+}
+
+/**
+ * TrekByID middleware
+ */
+exports.trekByID = function(req, res, next, idTrek) {
+    if (isNaN(idTrek)) {
+        return res.status(400).send({ trek: 'trek is invalid' });
+    }
+
+    TreksService.find(idTrek, (err, trek) => {
+        if (!trek) {
+            return res.status(500).json({ 'errors': [{ msg: 'Failed to load trek ' + idTrek }] });
+        }
+
+        req.trek = trek;
+
+        next();
     });
 }

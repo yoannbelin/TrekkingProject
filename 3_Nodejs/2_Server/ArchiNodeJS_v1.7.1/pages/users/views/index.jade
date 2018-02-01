@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  h2#trek profil user
   .Bandeau
   section.small-12.medium-12.large-12.columns
     img(src='src/images/Bandeau.png', style='margin-bottom: 5px')
@@ -15,8 +16,6 @@ block content
                 a.current(href='/users') Profil
               li
                 a(href='/photos') Galerie Photos
-              li
-                a(href='/PoI') Galerie Points d'intêret
 
     #conteneur_profil
       .test
@@ -28,32 +27,23 @@ block content
             div  
               .field
                 label Nom :
-                input#nom(type='text', name='nom')
+                input#nom(type='text', name='nom', value='#{user.lastname}')
 
               .field
                 label Prénom :
-                input#prenom(type='text', name='prenom')
+                input#prenom(type='text', name='prenom', value='#{user.firstname}')
 
               .field
                 label Pseudo :
-                input#pseudo(type='text', name='pseudo')
+                input#pseudo(type='text', name='pseudo', value='#{user.username}')
 
               .field
                 label Mail :
-                input#mail(type='text', name='mail')
+                input#mail(type='text', name='mail', value='#{user.mail}')
 
-              .field
-                label Password :
-                input#password(type='text', name='password')
-
-              button#btnAdd(onclick='addUser()') AJOUTER
               button#btnEdit(onclick='updateUser()') MODIFIER
               button#btnDelete(onclick='delUser()') SUPPRIMER
 
-            
-
-
-        table#idTableau(style='width:100%')
 
   script(src="/src/ajax.js")
   script(src="/src/loadUsers.js")

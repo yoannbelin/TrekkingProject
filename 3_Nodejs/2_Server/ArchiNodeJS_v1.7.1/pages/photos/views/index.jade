@@ -1,37 +1,35 @@
 extends layout
 
 block content
-    div#galerie
-        h1 Galerie
-        h2 Photos
-    section.small-12.medium-12.large-12.columns
-        section.section
-            .top-border
-            .row
-                section.small-12.medium-12.large-12.small-centered.columns
-                nav#nav
-                    div
-                        ul.inline-list-custom
-                            li
-                                a(href='/users') Profil
-                            li
-                                a.current(href='/photos') Galerie Photos
-                            li
-                                a(href='/PoI') Galerie Points d'intêret 
-            .top-border
-            .row
-                button#allPhoto(onclick='loadPhotos()') Toutes
-                button#sortPrivate(onclick='sortPrivate()') Privée
-                button#sortPublic(onclick='sortPublic()') Publique
-                button#sortDateRecent(onclick='sortDateOlder()') date (recent)
-                button#sortDateOlder(onclick='sortDateRecent()') date (ancien)
-                button#sortTrek(onclick='sortTrek()') Treks
+  h2#trek galerie photos
+  title
+    h1 Galerie
+    h2 Photos
+  .Bandeau
+  section
+    img(src='../src/images/Bandeau.png', style='margin-bottom: 5px')
+    section.section
+      .top-border
+        .row
+        .large-12
+          nav#nav-under
+            div
+              ul.inline-list-custom
+                li
+                  a(href='/users') Profil
+                li
+                  a.current(href='/photos') Galerie Photos
+                  .top-border
+        .row
+            button#allPhoto(onclick='loadPhotos()') Toutes
+            button#sortPrivate(onclick='sortPrivate()') Privée
+            button#sortPublic(onclick='sortPublic()') Publique
+            button#sortDateRecent(onclick='sortDateOlder()') date (recent)
+            button#sortDateOlder(onclick='sortDateRecent()') date (ancien)
+            button#sortTrek(onclick='sortTrek()') Treks
         .block_photos
             #photos
     
-    
-    script.
-        console.log("Aya")  
     script(src="/src/ajax.js")
     script(src="/src/loadPhotos.js")
     
