@@ -6,17 +6,12 @@ Trek::Trek(QObject *parent) : QObject(parent)
     m_label = "trek_name";
     m_length = "1";
     m_time = "00:00:00";
-    //    m_path = {};
-    m_path = {new GpsPoint(43.462, 3.2527), new GpsPoint(43.462, 3.2527), new GpsPoint(43.463, 3.2528), new GpsPoint(43.464, 3.2529), new GpsPoint(43.466, 3.2530), new GpsPoint(43.462, 3.2527)};
-    //  m_trace = {};
+    m_path = {};
+    //  m_path = {new GpsPoint(43.462, 3.2527), new GpsPoint(43.462, 3.2527), new GpsPoint(43.463, 3.2528), new GpsPoint(43.464, 3.2529), new GpsPoint(43.466, 3.2530), new GpsPoint(43.462, 3.2527)};
+    m_trace = {};
     m_photos = {};
     m_level = "1";
     m_done = 1;
-
-    //    m_fileManager.init(); // pour test QML
-    //    m_test = m_fileManager.getPathway(); // pour test QML
-
-    //    FileManager m_fileManager;
 }
 
 Trek::Trek(const QString &label,  const double &latitude, const double &longitude, QObject *parent): m_label(label), QObject(parent)
@@ -24,6 +19,7 @@ Trek::Trek(const QString &label,  const double &latitude, const double &longitud
     m_length = "1";
     m_time = "00:00:00";
     m_path = {new GpsPoint( latitude, longitude )};
+    m_trace = {};
     m_photos = {};
     m_level = "1";
     m_done = 1;
