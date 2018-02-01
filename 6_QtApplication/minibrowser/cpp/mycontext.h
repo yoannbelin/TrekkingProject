@@ -27,6 +27,7 @@ class MyContext : public QObject
 
     Q_PROPERTY(QString errorMessage READ errorMessage WRITE setErrorMessage NOTIFY errorMessageChanged)
 
+
     QQmlContext* m_myContext;
 
     /* variables */
@@ -34,6 +35,7 @@ class MyContext : public QObject
     QList<QObject*> m_trekList;
     User* m_user;
     Trek* m_myTrek;
+
     QString m_errorMessage;
 
 
@@ -47,7 +49,7 @@ public:
 
     explicit MyContext(QObject *parent = nullptr);
 
-    void initMyContext(/*QQmlApplicationEngine &engine, */QQmlContext *myContext);
+    void initMyContext(QQmlContext *myContext);
     void loadMyContext();
     void updateMyContext(QString modelName);
 
@@ -59,7 +61,7 @@ public:
     Q_INVOKABLE void updateTrek (double const &latitude, double const &longitude);
     Q_INVOKABLE void startTrek (const QString &trekName, const double &latitude, const double &longitude);
 
-    Q_INVOKABLE void saveUser (const int &id, const QString &username, const QString &password, const QString &mail);
+    Q_INVOKABLE void saveUser (const int &id, QString username, QString password, QString mail);
     Q_INVOKABLE void deleteUser ();
 
     Q_INVOKABLE int getIdUser ();
@@ -92,12 +94,11 @@ public:
     }
 
 signals:
+
     void myTrekChanged(Trek* myTrek);
     void errorMessageChanged(QString errorMessage);
     void trekListChanged(QList<QObject*> trekList);
-
     void userChanged(User* user);
-
     void fileManagerChanged(FileManager* fileManager);
 
 public slots:
@@ -128,6 +129,7 @@ public slots:
         m_trekList = trekList;
         emit trekListChanged(m_trekList);
     }
+
     void setUser(User* user)
     {
         if (m_user == user)
@@ -136,6 +138,7 @@ public slots:
         m_user = user;
         emit userChanged(m_user);
     }
+
     void setFileManager(FileManager* fileManager)
     {
         if (m_fileManager == fileManager)

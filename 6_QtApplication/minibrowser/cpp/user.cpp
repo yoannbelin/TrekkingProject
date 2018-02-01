@@ -24,13 +24,12 @@ User::User( QStringList &userData, QObject *parent): QObject(parent)
 
     for (QString line : userData)
     {
-        userInfoLine += line; // There should only be one line
+        userInfoLine = line; // There should only be one line
     }
 
     userAttributes << userInfoLine.split(";");
-    //    userAttributes = userData.at(0).split(";");
 
-    if (userAttributes.length() > 4)
+    if (userAttributes.length() == 4)
     {
         m_idUser = userAttributes[0].toInt();
         m_username = userAttributes[1];
@@ -43,7 +42,7 @@ QStringList User::userQSLFormat()
 {
     QStringList userData("");
 
-    userData += getIdUser() + ";" +
+    userData += QString::number(getIdUser()) + ";" +
             getUsername() + ";" +
             getPassword() + ";" +
             getEmail();

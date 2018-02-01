@@ -26,12 +26,7 @@ void FileManager::initFolder()
 
 bool FileManager::fileExists( const QString &fileType, const QString &fileName )
 {
-    //    QFile storedFile(fileUrl());
-    //    return storedFile.exists();
-//    QString url = getBasePath() + fileType + "_" + fileName + ".txt";
-//    QFile file(url);
     QStringList data = loadFile(fileType, fileName);
-
     return !data.empty();
 }
 

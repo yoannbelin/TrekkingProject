@@ -14,6 +14,7 @@ Page {
     property bool home3_visibilite: false
 
 
+
     header: Label {
         text: qsTr("Home")
         font.pixelSize: Qt.application.font.pixelSize * 2

@@ -11,6 +11,8 @@ MyContext::MyContext(QObject *parent) : QObject(parent), m_myContext(nullptr)
     {
         QStringList userData = m_fileManager->loadFile("user", "info");
         m_user = new User(userData);
+        qDebug() << "User Constructed from file";
+        qDebug() << m_user->getUsername();
     }
 
     else
@@ -84,13 +86,13 @@ void MyContext::startTrek(const QString &trekName,const double &latitude, const 
     qDebug() << "New Trek Created";
 }
 
-void MyContext::saveUser(const int &id, const QString &username, const QString &password, const QString &mail)
+void MyContext::saveUser(const int &id,  QString username,  QString password,  QString mail)
 {
     User* currentUser = new User;
     currentUser->setIdUser(id);
-    currentUser->setUsername(username);
-    currentUser->setPassword(password);
-    currentUser->setEmail(mail);
+    currentUser->setUsername(username.remove("\""));
+    currentUser->setPassword(password.remove("\""));
+    currentUser->setEmail(mail.remove("\""));
 
     setUser(currentUser);
 

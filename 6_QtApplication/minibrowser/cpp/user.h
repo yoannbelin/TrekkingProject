@@ -2,6 +2,7 @@
 #define USER_H
 
 #include <QObject>
+#include <QDebug>
 #include <QStringList>
 
 class User : public QObject
@@ -23,15 +24,14 @@ public:
 
     User(   const int &idUser, const QString &username, const QString &password,
             const QString &email, QObject *parent = nullptr );
-
     User(  QStringList &userData, QObject *parent = nullptr );
 
     QStringList userQSLFormat();
 
 
-    ///
-    /// GETTERS AND SETTERS
-    ///
+    //////////////////////////
+    /// GETTERS AND SETTERS///
+    //////////////////////////
 
     int getIdUser() const
     {
@@ -67,7 +67,14 @@ signals:
 
 public slots:
 
+    void setIdUser(int idUser)
+    {
+        if (m_idUser == idUser)
+            return;
 
+        m_idUser = idUser;
+        emit idUserChanged(m_idUser);
+    }
     void setUsername(QString username)
     {
         if (m_username == username)
@@ -91,14 +98,6 @@ public slots:
 
         m_email = email;
         emit emailChanged(m_email);
-    }
-    void setIdUser(int idUser)
-    {
-        if (m_idUser == idUser)
-            return;
-
-        m_idUser = idUser;
-        emit idUserChanged(m_idUser);
     }
 };
 
