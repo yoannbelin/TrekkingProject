@@ -75,8 +75,9 @@ ColumnLayout {
                 width: etat.width / 2
                 onClicked: {
                     console.log("changement de page > TrekTracker.etat2");
-                    trek1_visibilite = false;
-                    trek2_visibilite = true;
+                    trek2_loadTrek = true;
+//                    trek1_visibilite = false;
+//                    trek2_visibilite = true;
                 }
 
             }
@@ -105,7 +106,7 @@ ColumnLayout {
 
                 anchors.centerIn : parent
 
-                content : MyContext.errorMessage
+                content : trek1_error
             }
         }
 

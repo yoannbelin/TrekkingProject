@@ -9,11 +9,16 @@ import "../../javascript/JSControl.js" as JSC
 
 ColumnLayout {
     id : etat
-    anchors.fill: parent
-    spacing: 0
+
+    property string labelTrek: etat2.labelTrek
+    property double lengthTrek: etat2.lengthTrek
+    property var timeTrek : etat2.timeTrek
 
     property int lapsedTime : 0
     property var timeInString : JSC.timeToString(etat.lapsedTime)
+
+    anchors.fill: parent
+    spacing: 0
 
     onLapsedTimeChanged: {
         if(lapsedTime % 30000 == 0)
@@ -36,7 +41,7 @@ ColumnLayout {
 
             Text {
                 id : label
-                text : "Titre du treck"
+                text : labelTrek
 
                 font.family: "acumin-pro"
                 font.pixelSize: Qt.application.font.pixelSize * 3
@@ -71,7 +76,7 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        text : "temps estimé : "
+                        text : "temps estimé : " + timeTrek
                     }
                 }
             }
@@ -90,7 +95,7 @@ ColumnLayout {
                     color: "lightGrey"
 
                     TextBox {
-                        text : "distance estimé : "
+                        text : "distance estimé : " + lengthTrek
                     }
                 }
             }
@@ -228,6 +233,10 @@ ColumnLayout {
                         onClicked: {
                             trek3_visibilite = false ;
                             trek2_visibilite = true ;
+
+                            labelTrek = "";
+                            lengthTrek = "";
+                            timeTrek = "";
                         }
                     }
 

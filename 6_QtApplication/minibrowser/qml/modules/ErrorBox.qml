@@ -12,7 +12,7 @@ Rectangle {
 
         color : "red"
         font.family: "acumin-pro"
-        font.pixelSize: Qt.application.font.pixelSize * 1.5
+        font.pixelSize: Qt.application.font.pixelSize * 1.25
         font.bold: true
 
         anchors.centerIn : parent
