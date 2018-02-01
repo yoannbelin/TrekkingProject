@@ -166,10 +166,12 @@ var LoadTreksManager = {
     /**
      * Delete the trek
      */
-    deleteTrek: function(i) {
-        alert("trek supprimé \nredirection vers page 'Map'");
-        $http.delete('/api-rest/treks/' + i, function() {});
-        window.location.href = '/treks';
+    deleteTrek: function(i, label) {
+        var ok = confirm("Voulez vous vraiment supprimer ce trek");
+        if (ok == true) {
+            $http.delete('/api-rest/treks/' + i, function() {});
+            window.location.href = '/treks';
+        } else {}
     },
 
     /**
