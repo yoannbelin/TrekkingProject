@@ -28,8 +28,8 @@ public:
     }
 
     bool userMoved(const GpsPoint &previousGpsPoint);
-    void roundCoordinates();
-    double roundFloat (double &number);
+//    void roundCoordinates();
+//    double roundFloat (double &number);
 
     double getLatitude() const
     {
