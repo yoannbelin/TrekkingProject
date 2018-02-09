@@ -38,7 +38,7 @@ User::User( QStringList &userData, QObject *parent): QObject(parent)
     }
 }
 
-QStringList User::userQSLFormat()
+QStringList User::userSQLFormat()
 {
     QStringList userData("");
 

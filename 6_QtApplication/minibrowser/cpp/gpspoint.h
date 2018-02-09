@@ -14,12 +14,17 @@ class GpsPoint : public QObject
     double m_latitude;
     double m_longitude;
 
+    bool userMoved(const GpsPoint &previousGpsPoint);
+
 public:
+
+    /// BASIC CONSTRUCTORS AND DESTRUCTOR
     explicit GpsPoint(QObject *parent = nullptr);
     GpsPoint (const double &latitude, const double &longtitude, QObject *parent = nullptr);
     GpsPoint (const GpsPoint &aGpsPoint);
-//    ~GpsPoint();
+    //    ~GpsPoint();
 
+    /// OPERATORS
     GpsPoint& operator =(GpsPoint const &a)
     {
         this->setLatitude (a.m_latitude);
@@ -27,9 +32,15 @@ public:
         return *this;
     }
 
-    bool userMoved(const GpsPoint &previousGpsPoint);
-//    void roundCoordinates();
-//    double roundFloat (double &number);
+    /// SAVING AND LOADING METHODS ///
+
+    GpsPoint (QString &gpsData, QObject *parent = nullptr);
+    QString gpsPointSQLFormat();
+
+
+    //////////////////////////
+    /// GETTERS AND SETTERS///
+    //////////////////////////
 
     double getLatitude() const
     {

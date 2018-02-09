@@ -37,6 +37,11 @@ Trek::Trek(const Trek &otherTrek, QObject *parent): QObject(parent)
     m_done = otherTrek.getDone();
 }
 
+Trek::Trek(QStringList &trekData, QObject *parent):QObject(parent)
+{
+
+}
+
 Trek::~Trek()
 {
     while(m_path.length() != 0)
@@ -97,7 +102,7 @@ bool Trek::didUserMove(GpsPoint &newGpsPoint)
 
 void Trek::addPhoto(Photo* myPhoto)
 {
-    QObjectList tmp = getPhotos();
+    QList<QObject*> tmp = getPhotos();
     tmp.push_back(new Photo(myPhoto));
     setPhotos(tmp);
 
@@ -106,4 +111,41 @@ void Trek::addPhoto(Photo* myPhoto)
         qDebug() << " photo";
     else qDebug() << " photos";
     qDebug() << " dans ce trek !";
+}
+
+
+QStringList Trek::pathSQLFormat()
+{
+    QStringList pathData("{\"chemin\":[");
+
+    for(int i(0); i < getPath().length(); i++)
+    {
+        GpsPoint tmp_point (*qobject_cast<GpsPoint*>(m_path[i]));
+        pathData << tmp_point.gpsPointSQLFormat();
+
+        if ( i < getPath().length()-1)
+        {
+            pathData << ",";
+        }
+        else
+        {
+            pathData << "]}";
+        }
+    }
+    return pathData;
+}
+
+QStringList Trek::trekSQLFormat()
+{
+
+    QStringList trekData("");
+
+    trekData += getLabel() + ";" +
+            getLength() + ";" +
+            getTime() + ";" +
+            getLevel() + ";" +
+            "1" + ";" + // 1 to indicate the trek is done. (done == true)
+            pathSQLFormat();
+
+    return trekData;
 }

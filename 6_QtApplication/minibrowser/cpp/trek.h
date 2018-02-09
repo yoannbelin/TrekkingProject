@@ -17,7 +17,7 @@ class Trek : public QObject
     Q_PROPERTY(QString time READ getTime WRITE setTime NOTIFY timeChanged)
     Q_PROPERTY(QList<QObject*> path READ getPath WRITE setPath NOTIFY pathChanged)
     Q_PROPERTY(QList<QObject*> trace READ getTrace WRITE setTrace NOTIFY traceChanged)
-    Q_PROPERTY(QObjectList photos READ getPhotos WRITE setPhotos NOTIFY photosChanged)
+    Q_PROPERTY(QList<QObject*> photos READ getPhotos WRITE setPhotos NOTIFY photosChanged)
     Q_PROPERTY(QString level READ getLevel WRITE setLevel NOTIFY levelChanged)
     Q_PROPERTY(bool done READ getDone WRITE setDone NOTIFY doneChanged)
 
@@ -28,22 +28,36 @@ class Trek : public QObject
     QString m_time;
     QList<QObject*> m_path;
     QList<QObject*> m_trace;
-    QObjectList m_photos;
+    QList<QObject*> m_photos;
     QString m_level;
     bool m_done;
-
 
 
 public:
     explicit Trek(QObject *parent = nullptr);
 
+    /// BASIC CONSTRUCTORS AND DESTRUCTOR
     Trek(const QString &label, const double &latitude, const double &longitude, QObject *parent = 0);
     Trek(const Trek &otherTrek, QObject *parent = 0);
     ~Trek();
 
+    /// OBJECT MODIFIERS
     void addNewGpsPoint (GpsPoint newGpsPoint);
     bool didUserMove (GpsPoint &newGpsPoint);
     void addPhoto(Photo *myPhoto);
+
+    /////////////////////////////////
+    /// SAVING AND LOADING METHODS///
+    /////////////////////////////////
+
+    Trek(QStringList &trekData, QObject *parent = nullptr);
+    QStringList pathSQLFormat();
+    QStringList trekSQLFormat();
+
+
+    //////////////////////////
+    /// GETTERS AND SETTERS///
+    //////////////////////////
 
     QString getLabel() const
     {
@@ -80,7 +94,7 @@ public:
         return m_done;
     }
 
-    QObjectList getPhotos() const
+    QList<QObject*> getPhotos() const
     {
         return m_photos;
     }
@@ -96,7 +110,7 @@ signals:
     void doneChanged(bool done);
 
 
-    void photosChanged(QObjectList photos);
+    void photosChanged(QList<QObject*> photos);
 
 public slots:
     void setLabel(QString label)
@@ -156,7 +170,7 @@ public slots:
         emit doneChanged(m_done);
     }
 
-    void setPhotos(QObjectList photos)
+    void setPhotos(QList<QObject*> photos)
     {
         if (m_photos == photos)
             return;

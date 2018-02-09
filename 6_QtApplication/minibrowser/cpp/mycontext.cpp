@@ -116,7 +116,7 @@ void MyContext::saveUser(const int &id,  QString username,  QString password,  Q
 
     //qDebug() << getUser()->getIdUser();
 
-    QStringList userData = getUser()->userQSLFormat();
+    QStringList userData = getUser()->userSQLFormat();
     getFileManager()->updateFile("user", "info", userData);
 
 
