@@ -16,24 +16,13 @@ GpsPoint::GpsPoint(const GpsPoint &aGpsPoint)
     m_longitude = aGpsPoint.m_longitude;
 }
 
-GpsPoint::GpsPoint(QString &gpsData, QObject *parent)
-{
-    QRegularExpression re("[a-z \":{}]");
-    gpsData.remove(&re);
-
-    QStringList latLng = gpsData.split(",");
-
-    m_latitude = latLng[0].toDouble();
-    m_longitude = latLng[1].toDouble();
-
-}
 
 QString GpsPoint::gpsPointSQLFormat()
 {
     QString gpsData ("");
 
-    gpsData =   "{\"lat\": \"" + getLatitude()
-            +   "\", \"lng\": \"" + getLongitude()
+    gpsData +=   "{\"lat\": \"" + QString::number(getLatitude())
+            +   "\", \"lng\": \"" + QString::number(getLongitude())
             +   "\"}";
 
     return gpsData;
@@ -47,3 +36,20 @@ bool GpsPoint::userMoved(const GpsPoint &previousGpsPoint)
     return rayon > 10e-9;
 }
 
+///////////////////////////////////////
+/// CONSTRUCTOR NOT USED ANYMORE    ///
+/// DUE TO BETTER PARSING           ///
+/// AND CLEANING OF TREK DATA FILE  ///
+/// ///////////////////////////////////
+
+//GpsPoint::GpsPoint(QString &gpsData, QObject *parent): QObject(parent)
+//{
+//    QRegularExpression re("[a-z] \":{}]");
+//    gpsData.remove(re);
+
+//    QStringList latLng = gpsData.split(",");
+
+//    m_latitude = latLng[0].toDouble();
+//    m_longitude = latLng[1].toDouble();
+
+//}

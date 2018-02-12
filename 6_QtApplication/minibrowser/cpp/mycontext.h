@@ -75,6 +75,9 @@ public:
     Q_INVOKABLE void saveUser (const int &id, QString username, QString password, QString mail);
     Q_INVOKABLE void deleteUser ();
 
+    Q_INVOKABLE void saveTrek();
+    Q_INVOKABLE void deleteTrek();
+
     Q_INVOKABLE int getIdUser ();
 
 

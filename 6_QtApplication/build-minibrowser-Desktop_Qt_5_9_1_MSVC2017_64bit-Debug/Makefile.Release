@@ -363,6 +363,8 @@ release\moc_mycontext.cpp: C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstandardpaths.h \
 		..\minibrowser\cpp\trek.h \
 		..\minibrowser\cpp\gpspoint.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
 		..\minibrowser\cpp\photo.h \
 		..\minibrowser\cpp\user.h \
 		..\minibrowser\cpp\utils.h \
@@ -504,16 +506,16 @@ release\moc_trek.cpp: C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstandardpaths.h \
 		..\minibrowser\cpp\gpspoint.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
 		..\minibrowser\cpp\photo.h \
 		..\minibrowser\cpp\trek.h \
 		release\moc_predefs.h \
 		C:\Qt\5.9.1\msvc2017_64\bin\moc.exe
 	C:\Qt\5.9.1\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/5.9.1/msvc2017_64/mkspecs/win32-msvc -IC:/Users/34011-58-11/Antoine_Afpa_QT/9000_and_over/FilRouge/TrekkingProject/6_QtApplication/minibrowser -IC:/Qt/5.9.1/msvc2017_64/include -IC:/Qt/5.9.1/msvc2017_64/include/QtQuick -IC:/Qt/5.9.1/msvc2017_64/include/QtWidgets -IC:/Qt/5.9.1/msvc2017_64/include/QtGui -IC:/Qt/5.9.1/msvc2017_64/include/QtANGLE -IC:/Qt/5.9.1/msvc2017_64/include/QtQml -IC:/Qt/5.9.1/msvc2017_64/include/QtNetwork -IC:/Qt/5.9.1/msvc2017_64/include/QtSql -IC:/Qt/5.9.1/msvc2017_64/include/QtPositioning -IC:/Qt/5.9.1/msvc2017_64/include/QtCore -IC:/Qt/5.9.1/msvc2017_64/include/QtWebView -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\minibrowser\cpp\trek.h -o release\moc_trek.cpp
 
-release\moc_gpspoint.cpp: C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qnamespace.h \
+release\moc_gpspoint.cpp: C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qconfig.h \
@@ -535,43 +537,47 @@ release\moc_gpspoint.cpp: C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qversiontagging.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstring.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qbytearray.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qarraydata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringlist.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qlist.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qalgorithms.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qiterator.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhashfunctions.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qpair.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qbytearraylist.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringlist.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregexp.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringmatcher.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcoreevent.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmetatype.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject_impl.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qtextstream.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject_impl.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qlocale.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvector.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qpoint.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qset.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug \
 		..\minibrowser\cpp\gpspoint.h \
 		release\moc_predefs.h \
 		C:\Qt\5.9.1\msvc2017_64\bin\moc.exe
@@ -771,21 +777,23 @@ release\moc_photo.cpp: C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject_impl.h \
 		..\minibrowser\cpp\gpspoint.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qtextstream.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qiodevice.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qlocale.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvector.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qpoint.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qset.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug \
 		..\minibrowser\cpp\photo.h \
 		release\moc_predefs.h \
 		C:\Qt\5.9.1\msvc2017_64\bin\moc.exe
@@ -943,6 +951,8 @@ release\main.obj: ..\minibrowser\cpp\main.cpp C:\Qt\5.9.1\msvc2017_64\include\Qt
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstandardpaths.h \
 		../minibrowser/cpp/trek.h \
 		../minibrowser/cpp/gpspoint.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
 		../minibrowser/cpp/photo.h \
 		../minibrowser/cpp/user.h \
 		../minibrowser/cpp/utils.h
@@ -1045,6 +1055,8 @@ release\mycontext.obj: ..\minibrowser\cpp\mycontext.cpp ../minibrowser/cpp/mycon
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstandardpaths.h \
 		../minibrowser/cpp/trek.h \
 		../minibrowser/cpp/gpspoint.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
 		../minibrowser/cpp/photo.h \
 		../minibrowser/cpp/user.h \
 		../minibrowser/cpp/utils.h \
@@ -1180,13 +1192,13 @@ release\trek.obj: ..\minibrowser\cpp\trek.cpp ../minibrowser/cpp/trek.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QStandardPaths \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstandardpaths.h \
 		../minibrowser/cpp/gpspoint.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
 		../minibrowser/cpp/photo.h
 
 release\gpspoint.obj: ..\minibrowser\cpp\gpspoint.cpp ../minibrowser/cpp/gpspoint.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qconfig.h \
@@ -1208,43 +1220,47 @@ release\gpspoint.obj: ..\minibrowser\cpp\gpspoint.cpp ../minibrowser/cpp/gpspoin
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qversiontagging.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstring.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qbytearray.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qarraydata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringlist.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qlist.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qalgorithms.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qiterator.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhashfunctions.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qpair.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qbytearraylist.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringlist.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregexp.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qstringmatcher.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcoreevent.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmetatype.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject_impl.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qtextstream.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject_impl.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qlocale.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvector.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qpoint.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qset.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug
 
 release\filemanager.obj: ..\minibrowser\cpp\filemanager.cpp ../minibrowser/cpp/filemanager.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QStringList \
@@ -1435,21 +1451,23 @@ release\photo.obj: ..\minibrowser\cpp\photo.cpp ../minibrowser/cpp/photo.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qobject_impl.h \
 		../minibrowser/cpp/gpspoint.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QRegularExpression \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qdebug.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qtextstream.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qiodevice.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qlocale.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvariant.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qshareddata.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qvector.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qpoint.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qset.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qcontiguouscache.h \
 		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer.h \
-		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\5.9.1\msvc2017_64\include\QtCore\QDebug
 
 release\qrc_qml.obj: release\qrc_qml.cpp 
 

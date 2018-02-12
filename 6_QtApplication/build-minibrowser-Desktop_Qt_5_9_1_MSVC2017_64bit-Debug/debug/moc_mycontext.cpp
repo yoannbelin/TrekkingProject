@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MyContext_t {
-    QByteArrayData data[50];
-    char stringdata0[528];
+    QByteArrayData data[52];
+    char stringdata0[548];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -81,7 +81,9 @@ QT_MOC_LITERAL(45, 484, 8), // "username"
 QT_MOC_LITERAL(46, 493, 8), // "password"
 QT_MOC_LITERAL(47, 502, 4), // "mail"
 QT_MOC_LITERAL(48, 507, 10), // "deleteUser"
-QT_MOC_LITERAL(49, 518, 9) // "getIdUser"
+QT_MOC_LITERAL(49, 518, 8), // "saveTrek"
+QT_MOC_LITERAL(50, 527, 10), // "deleteTrek"
+QT_MOC_LITERAL(51, 538, 9) // "getIdUser"
 
     },
     "MyContext\0myTrekChanged\0\0Trek*\0myTrek\0"
@@ -98,7 +100,7 @@ QT_MOC_LITERAL(49, 518, 9) // "getIdUser"
     "startTrek\0trekName\0saveLastImageTakenUrl\0"
     "path\0photoTaken\0title\0url\0privatePhoto\0"
     "saveUser\0id\0username\0password\0mail\0"
-    "deleteUser\0getIdUser"
+    "deleteUser\0saveTrek\0deleteTrek\0getIdUser"
 };
 #undef QT_MOC_LITERAL
 
@@ -108,42 +110,44 @@ static const uint qt_meta_data_MyContext[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
-       7,  224, // properties
+      26,   14, // methods
+       7,  236, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        7,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  134,    2, 0x06 /* Public */,
-       5,    1,  137,    2, 0x06 /* Public */,
-       7,    1,  140,    2, 0x06 /* Public */,
-      10,    1,  143,    2, 0x06 /* Public */,
-      13,    1,  146,    2, 0x06 /* Public */,
-      16,    1,  149,    2, 0x06 /* Public */,
-      19,    1,  152,    2, 0x06 /* Public */,
+       1,    1,  144,    2, 0x06 /* Public */,
+       5,    1,  147,    2, 0x06 /* Public */,
+       7,    1,  150,    2, 0x06 /* Public */,
+      10,    1,  153,    2, 0x06 /* Public */,
+      13,    1,  156,    2, 0x06 /* Public */,
+      16,    1,  159,    2, 0x06 /* Public */,
+      19,    1,  162,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      21,    1,  155,    2, 0x0a /* Public */,
-      22,    1,  158,    2, 0x0a /* Public */,
-      23,    1,  161,    2, 0x0a /* Public */,
-      24,    1,  164,    2, 0x0a /* Public */,
-      25,    1,  167,    2, 0x0a /* Public */,
-      26,    1,  170,    2, 0x0a /* Public */,
-      27,    1,  173,    2, 0x0a /* Public */,
+      21,    1,  165,    2, 0x0a /* Public */,
+      22,    1,  168,    2, 0x0a /* Public */,
+      23,    1,  171,    2, 0x0a /* Public */,
+      24,    1,  174,    2, 0x0a /* Public */,
+      25,    1,  177,    2, 0x0a /* Public */,
+      26,    1,  180,    2, 0x0a /* Public */,
+      27,    1,  183,    2, 0x0a /* Public */,
 
  // methods: name, argc, parameters, tag, flags
-      28,    3,  176,    2, 0x02 /* Public */,
-      28,    2,  183,    2, 0x22 /* Public | MethodCloned */,
-      28,    1,  188,    2, 0x22 /* Public | MethodCloned */,
-      32,    2,  191,    2, 0x02 /* Public */,
-      35,    3,  196,    2, 0x02 /* Public */,
-      37,    1,  203,    2, 0x02 /* Public */,
-      39,    3,  206,    2, 0x02 /* Public */,
-      43,    4,  213,    2, 0x02 /* Public */,
-      48,    0,  222,    2, 0x02 /* Public */,
-      49,    0,  223,    2, 0x02 /* Public */,
+      28,    3,  186,    2, 0x02 /* Public */,
+      28,    2,  193,    2, 0x22 /* Public | MethodCloned */,
+      28,    1,  198,    2, 0x22 /* Public | MethodCloned */,
+      32,    2,  201,    2, 0x02 /* Public */,
+      35,    3,  206,    2, 0x02 /* Public */,
+      37,    1,  213,    2, 0x02 /* Public */,
+      39,    3,  216,    2, 0x02 /* Public */,
+      43,    4,  223,    2, 0x02 /* Public */,
+      48,    0,  232,    2, 0x02 /* Public */,
+      49,    0,  233,    2, 0x02 /* Public */,
+      50,    0,  234,    2, 0x02 /* Public */,
+      51,    0,  235,    2, 0x02 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -172,6 +176,8 @@ static const uint qt_meta_data_MyContext[] = {
     QMetaType::Void, QMetaType::QString,   38,
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Bool,   40,   41,   42,
     QMetaType::Void, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString,   44,   45,   46,   47,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Int,
 
@@ -225,7 +231,9 @@ void MyContext::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 20: _t->photoTaken((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3]))); break;
         case 21: _t->saveUser((*reinterpret_cast< const int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
         case 22: _t->deleteUser(); break;
-        case 23: { int _r = _t->getIdUser();
+        case 23: _t->saveTrek(); break;
+        case 24: _t->deleteTrek(); break;
+        case 25: { int _r = _t->getIdUser();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -430,13 +438,13 @@ int MyContext::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 26)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 26;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 26)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 26;
     }
 #ifndef QT_NO_PROPERTIES
    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty

@@ -2,7 +2,6 @@
 #define TREK_H
 
 #include <QObject>
-//#include <QString>
 #include <QDebug>
 
 #include "filemanager.h"
@@ -51,7 +50,8 @@ public:
     /////////////////////////////////
 
     Trek(QStringList &trekData, QObject *parent = nullptr);
-    QStringList pathSQLFormat();
+    QList<QObject*> pathOfSavedTrek(QString &pathData);
+    QString pathSQLFormat();
     QStringList trekSQLFormat();
 
 

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Trek_t {
-    QByteArrayData data[28];
-    char stringdata0[255];
+    QByteArrayData data[27];
+    char stringdata0[243];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,25 +50,24 @@ QT_MOC_LITERAL(14, 128, 5), // "level"
 QT_MOC_LITERAL(15, 134, 11), // "doneChanged"
 QT_MOC_LITERAL(16, 146, 4), // "done"
 QT_MOC_LITERAL(17, 151, 13), // "photosChanged"
-QT_MOC_LITERAL(18, 165, 11), // "QObjectList"
-QT_MOC_LITERAL(19, 177, 6), // "photos"
-QT_MOC_LITERAL(20, 184, 8), // "setLabel"
-QT_MOC_LITERAL(21, 193, 9), // "setLength"
-QT_MOC_LITERAL(22, 203, 7), // "setTime"
-QT_MOC_LITERAL(23, 211, 7), // "setPath"
-QT_MOC_LITERAL(24, 219, 8), // "setTrace"
-QT_MOC_LITERAL(25, 228, 8), // "setLevel"
-QT_MOC_LITERAL(26, 237, 7), // "setDone"
-QT_MOC_LITERAL(27, 245, 9) // "setPhotos"
+QT_MOC_LITERAL(18, 165, 6), // "photos"
+QT_MOC_LITERAL(19, 172, 8), // "setLabel"
+QT_MOC_LITERAL(20, 181, 9), // "setLength"
+QT_MOC_LITERAL(21, 191, 7), // "setTime"
+QT_MOC_LITERAL(22, 199, 7), // "setPath"
+QT_MOC_LITERAL(23, 207, 8), // "setTrace"
+QT_MOC_LITERAL(24, 216, 8), // "setLevel"
+QT_MOC_LITERAL(25, 225, 7), // "setDone"
+QT_MOC_LITERAL(26, 233, 9) // "setPhotos"
 
     },
     "Trek\0labelChanged\0\0label\0lengthChanged\0"
     "length\0timeChanged\0time\0pathChanged\0"
     "QList<QObject*>\0path\0traceChanged\0"
     "trace\0levelChanged\0level\0doneChanged\0"
-    "done\0photosChanged\0QObjectList\0photos\0"
-    "setLabel\0setLength\0setTime\0setPath\0"
-    "setTrace\0setLevel\0setDone\0setPhotos"
+    "done\0photosChanged\0photos\0setLabel\0"
+    "setLength\0setTime\0setPath\0setTrace\0"
+    "setLevel\0setDone\0setPhotos"
 };
 #undef QT_MOC_LITERAL
 
@@ -96,14 +95,14 @@ static const uint qt_meta_data_Trek[] = {
       17,    1,  115,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      20,    1,  118,    2, 0x0a /* Public */,
-      21,    1,  121,    2, 0x0a /* Public */,
-      22,    1,  124,    2, 0x0a /* Public */,
-      23,    1,  127,    2, 0x0a /* Public */,
-      24,    1,  130,    2, 0x0a /* Public */,
-      25,    1,  133,    2, 0x0a /* Public */,
-      26,    1,  136,    2, 0x0a /* Public */,
-      27,    1,  139,    2, 0x0a /* Public */,
+      19,    1,  118,    2, 0x0a /* Public */,
+      20,    1,  121,    2, 0x0a /* Public */,
+      21,    1,  124,    2, 0x0a /* Public */,
+      22,    1,  127,    2, 0x0a /* Public */,
+      23,    1,  130,    2, 0x0a /* Public */,
+      24,    1,  133,    2, 0x0a /* Public */,
+      25,    1,  136,    2, 0x0a /* Public */,
+      26,    1,  139,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -113,7 +112,7 @@ static const uint qt_meta_data_Trek[] = {
     QMetaType::Void, 0x80000000 | 9,   12,
     QMetaType::Void, QMetaType::QString,   14,
     QMetaType::Void, QMetaType::Bool,   16,
-    QMetaType::Void, 0x80000000 | 18,   19,
+    QMetaType::Void, 0x80000000 | 9,   18,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -123,7 +122,7 @@ static const uint qt_meta_data_Trek[] = {
     QMetaType::Void, 0x80000000 | 9,   12,
     QMetaType::Void, QMetaType::QString,   14,
     QMetaType::Void, QMetaType::Bool,   16,
-    QMetaType::Void, 0x80000000 | 18,   19,
+    QMetaType::Void, 0x80000000 | 9,   18,
 
  // properties: name, type, flags
        3, QMetaType::QString, 0x00495103,
@@ -131,7 +130,7 @@ static const uint qt_meta_data_Trek[] = {
        7, QMetaType::QString, 0x00495103,
       10, 0x80000000 | 9, 0x0049510b,
       12, 0x80000000 | 9, 0x0049510b,
-      19, 0x80000000 | 18, 0x0049510b,
+      18, 0x80000000 | 9, 0x0049510b,
       14, QMetaType::QString, 0x00495103,
       16, QMetaType::Bool, 0x00495103,
 
@@ -161,7 +160,7 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 4: _t->traceChanged((*reinterpret_cast< QList<QObject*>(*)>(_a[1]))); break;
         case 5: _t->levelChanged((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 6: _t->doneChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 7: _t->photosChanged((*reinterpret_cast< QObjectList(*)>(_a[1]))); break;
+        case 7: _t->photosChanged((*reinterpret_cast< QList<QObject*>(*)>(_a[1]))); break;
         case 8: _t->setLabel((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 9: _t->setLength((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 10: _t->setTime((*reinterpret_cast< QString(*)>(_a[1]))); break;
@@ -169,7 +168,7 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 12: _t->setTrace((*reinterpret_cast< QList<QObject*>(*)>(_a[1]))); break;
         case 13: _t->setLevel((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 14: _t->setDone((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 15: _t->setPhotos((*reinterpret_cast< QObjectList(*)>(_a[1]))); break;
+        case 15: _t->setPhotos((*reinterpret_cast< QList<QObject*>(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -189,6 +188,13 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<QObject*> >(); break;
             }
             break;
+        case 7:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<QObject*> >(); break;
+            }
+            break;
         case 11:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
@@ -197,6 +203,13 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
             }
             break;
         case 12:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<QObject*> >(); break;
+            }
+            break;
+        case 15:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -257,7 +270,7 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
             }
         }
         {
-            typedef void (Trek::*_t)(QObjectList );
+            typedef void (Trek::*_t)(QList<QObject*> );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Trek::photosChanged)) {
                 *result = 7;
                 return;
@@ -266,6 +279,7 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
     } else if (_c == QMetaObject::RegisterPropertyMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 5:
         case 4:
         case 3:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<QObject*> >(); break;
@@ -283,7 +297,7 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 2: *reinterpret_cast< QString*>(_v) = _t->getTime(); break;
         case 3: *reinterpret_cast< QList<QObject*>*>(_v) = _t->getPath(); break;
         case 4: *reinterpret_cast< QList<QObject*>*>(_v) = _t->getTrace(); break;
-        case 5: *reinterpret_cast< QObjectList*>(_v) = _t->getPhotos(); break;
+        case 5: *reinterpret_cast< QList<QObject*>*>(_v) = _t->getPhotos(); break;
         case 6: *reinterpret_cast< QString*>(_v) = _t->getLevel(); break;
         case 7: *reinterpret_cast< bool*>(_v) = _t->getDone(); break;
         default: break;
@@ -298,7 +312,7 @@ void Trek::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 2: _t->setTime(*reinterpret_cast< QString*>(_v)); break;
         case 3: _t->setPath(*reinterpret_cast< QList<QObject*>*>(_v)); break;
         case 4: _t->setTrace(*reinterpret_cast< QList<QObject*>*>(_v)); break;
-        case 5: _t->setPhotos(*reinterpret_cast< QObjectList*>(_v)); break;
+        case 5: _t->setPhotos(*reinterpret_cast< QList<QObject*>*>(_v)); break;
         case 6: _t->setLevel(*reinterpret_cast< QString*>(_v)); break;
         case 7: _t->setDone(*reinterpret_cast< bool*>(_v)); break;
         default: break;
@@ -411,7 +425,7 @@ void Trek::doneChanged(bool _t1)
 }
 
 // SIGNAL 7
-void Trek::photosChanged(QObjectList _t1)
+void Trek::photosChanged(QList<QObject*> _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
