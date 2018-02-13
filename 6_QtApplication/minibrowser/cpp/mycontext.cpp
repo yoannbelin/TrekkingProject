@@ -62,22 +62,6 @@ void MyContext::loadMyContext()
 }
 
 
-void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString parameter2)
-{
-    qDebug() << "Calling SATC: nomAction = " << nomAction << endl;
-
-    if (nomAction == "action1")
-    {
-
-    }
-
-    if (nomAction == "action2")
-    {
-
-    }
-
-}
-
 void MyContext::updateTrek(const double &latitude, const double &longitude)
 {
     m_myTrek->addNewGpsPoint(GpsPoint(latitude, longitude));
@@ -89,11 +73,12 @@ void MyContext::startTrek(const QString &trekName,const double &latitude, const 
 {
     delete m_myTrek;
     m_myTrek = nullptr;
-//    setMyTrek(new Trek (trekName, latitude, longitude));
-    setMyTrek(new Trek());
+    setMyTrek(new Trek (trekName, latitude, longitude));
+//    setMyTrek(new Trek());
 
     qDebug() << " # " << trekName;
     qDebug() << "New Trek Created";
+    setErrorMessage(m_errorMessage + "/nNew Trek created");
 }
 
 void MyContext::saveLastImageTakenUrl(const QString &path)
@@ -142,18 +127,18 @@ void MyContext::deleteUser()
 
 void MyContext::saveTrek()
 {
-    QString trekName = getMyTrek()->getLabel().replace(" ", "_");
+//    QString trekName = getMyTrek()->getLabel().replace(" ", "_");
     QStringList trekData = getMyTrek()->trekSQLFormat();
 
-    m_fileManager->saveFile("trek", /*"detail"*/ trekName , trekData);
-//    m_fileManager->saveFile("trek", "detail", trekData);
+//    m_fileManager->saveFile("trek", trekName , trekData);
+    m_fileManager->saveFile("trek", "detail", trekData);
 }
 
 void MyContext::deleteTrek()
 {
-    QString trekName = getMyTrek()->getLabel().replace(" ", "_");
-    getFileManager()->deleteFile("trek", trekName);
-//    getFileManager()->deleteFile("trek", "detail");
+//    QString trekName = getMyTrek()->getLabel().replace(" ", "_");
+//    getFileManager()->deleteFile("trek", trekName);
+    getFileManager()->deleteFile("trek", "detail");
 
     delete m_myTrek;
     m_myTrek = nullptr;
@@ -162,31 +147,4 @@ void MyContext::deleteTrek()
 int MyContext::getIdUser()
 {
     return getUser()->getIdUser();
-}
-
-
-QString MyContext::truncateUrl(const QString &url)
-{
-    QString truncated = url;
-    return truncated.remove(0, 8);
-}
-
-
-// File Searching Functions
-
-void MyContext::searchUserFile()
-{
-    // if there is a file, instantiate a user && auto login
-    // else m_user = nulptr && no auto login
-}
-
-void MyContext::searchTrekFile()
-{
-    // if there is a file, load the trek && message (save, delete or continue)
-    // else m_myTrek = nullptr
-}
-
-void MyContext::searchPhotoFile()
-{
-    // what to do here??
 }

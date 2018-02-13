@@ -45,14 +45,6 @@ class MyContext : public QObject
     QString m_errorMessage;
 
 
-    // File Searching Functions
-    void searchUserFile();
-    void searchTrekFile();
-    void searchPhotoFile();
-
-
-
-
 public:
 
     explicit MyContext(QObject *parent = nullptr);
@@ -61,10 +53,6 @@ public:
     void loadMyContext();
     void updateMyContext(QString modelName);
 
-
-    QString truncateUrl(const QString &url);
-
-    Q_INVOKABLE void sendActionToCpp (QString nomAction, QString parameter = QString (""), QString parameter2 = QString ("") );
 
     Q_INVOKABLE void updateTrek (double const &latitude, double const &longitude);
     Q_INVOKABLE void startTrek (const QString &trekName, const double &latitude, const double &longitude);

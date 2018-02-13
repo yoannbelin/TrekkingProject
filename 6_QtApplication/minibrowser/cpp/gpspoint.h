@@ -21,7 +21,7 @@ public:
     /// BASIC CONSTRUCTORS AND DESTRUCTOR
     explicit GpsPoint(QObject *parent = nullptr);
     GpsPoint (const double &latitude, const double &longtitude, QObject *parent = nullptr);
-    GpsPoint (const GpsPoint &aGpsPoint);
+    GpsPoint (const GpsPoint &aGpsPoint, QObject *parent = nullptr);
     //    ~GpsPoint();
 
     /// OTHER PUBLIC METHODS

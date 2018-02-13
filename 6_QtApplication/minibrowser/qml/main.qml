@@ -59,5 +59,9 @@ ApplicationWindow {
             id: uploadPage
         }
 
+        MyDebuggingPage{
+            id: debugPage
+        }
+
     }
 }
