@@ -1,31 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "tuto_CRUD",
-  "version": "0.0.1",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "nodemon -e js,jade ./bin/www"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "~1.18.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "^4.16.2",
-    "express-session": "^1.15.6",
-    "jade": "~1.11.0",
-    "jshint": "^2.9.5",
-    "less": "^2.7.3",
-    "lodash": "^4.17.4",
-    "moment": "^2.19.2",
-    "morgan": "~1.9.0",
-    "mysql": "^2.15.0",
-    "nodemon": "^1.12.1",
-    "pm2": "^2.8.0"
-  }
-=======
     "name": "tuto_CRUD",
     "version": "0.0.1",
     "description": "",
@@ -53,5 +26,4 @@
         "password-hash": "^1.2.2",
         "pm2": "^2.8.0"
     }
->>>>>>> 752c03831a4bcab38af3790fb129f58d9df2a9f5
 }

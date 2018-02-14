@@ -1,63 +1,6 @@
 extends layout
 
 block content
-<<<<<<< HEAD
-  head
-      title
-      .Bandeau
-      section.small-12.medium-12.large-12.columns
-        img(src='src/images/Bandeau.png', style='margin-bottom: 5px')
-        section.section
-          .top-border
-            .row
-              .small-12.medium-12.large-12.small-centered.columns
-            nav#nav
-              div
-                ul.inline-list-custom
-                  li
-                    a.current(href='/profil') Profil
-                  li
-                    a(href='/galerie') Galerie Photos
-                  li
-                    a(href='/PoI') Galerie Points d'intêret
-
-        #conteneur_profil
-          .test
-              h3 Profil
-
-              #conteneur_profil
-                div
-                  img.user(src='src/images/user_logo.png', alt='user_logo')
-                div  
-                  .field
-                    label Nom :
-                    input#nom(type='text', name='nom')
-
-                  .field
-                    label Prénom :
-                    input#prenom(type='text', name='prenom')
-
-                  .field
-                    label Pseudo :
-                    input#pseudo(type='text', name='pseudo')
-
-                  .field
-                    label Mail :
-                    input#mail(type='text', name='mail')
-
-                  .field
-                    label Password :
-                    input#password(type='text', name='password')
-
-                  button#btnAdd(onclick='addUser()') AJOUTER
-                  button#btnEdit(onclick='updateUser()') MODIFIER
-                  button#btnDelete(onclick='delUser()') SUPPRIMER
-
-                
-
-  
-            table#idTableau(style='width:100%')
-=======
   h2#trek profil user
   .Bandeau
   section.small-12.medium-12.large-12.columns
@@ -101,7 +44,6 @@ block content
               button#btnEdit(onclick='updateUser()') MODIFIER
               button#btnDelete(onclick='delUser()') SUPPRIMER
 
->>>>>>> 752c03831a4bcab38af3790fb129f58d9df2a9f5
 
       .row
         .small-12.medium-12.large-12.columns
