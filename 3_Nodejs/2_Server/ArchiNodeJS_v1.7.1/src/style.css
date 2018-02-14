@@ -1,7 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,300,700,800);
 
 /* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,300,700,800); */
-
+#galerie{
+    padding-top: 3em;
+}
 
 /*==================================================================================================
 Header
@@ -73,6 +75,11 @@ User_profil
     margin-top: auto;
     margin-left: 120px;
     /* background: yellow; */
+}
+
+.trek_datas {
+    margin-top: auto;
+    margin-left: 120px;
 }
 
 .field {
@@ -187,6 +194,10 @@ table {
     visibility: hidden;
 }
 
+.detail a {
+    color: white;
+}
+
 .newtrek {
     margin: auto;
     display: flex;
@@ -206,6 +217,39 @@ table {
     display: flex;
     flex-direction: row;
     visibility: hidden;
+    visibility: hidden;
+}
+
+.update {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.delete {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.saveupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.cancelupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.Bandeau {
+    position: fixed;
 }
 
 .lined-list:nth-child(1) {
@@ -304,7 +348,7 @@ Spacing Adjustments
 
 #trek {
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 
@@ -944,7 +988,7 @@ article .caption,
     float: left;
     margin-left: 0;
     margin-right: 1.5em;
-    vertical-align: top !important;
+    /* vertical-align: top !important; */
 }
 
 
@@ -1231,6 +1275,7 @@ body {
 /* line 325, ../bower_components/foundation/scss/foundation/components/_global.scss */
 
 body {
+    height: 100%;
     background: #fbfdfe;
     color: #333d41;
     padding: 0;
@@ -1419,7 +1464,7 @@ select {
 /* line 35, ../bower_components/foundation/scss/foundation/components/_block-grid.scss */
 
 [class*="block-grid-"]>li {
-    display: inline;
+    display: block;
     height: auto;
     float: left;
     padding: 0 1.5em 3em;
@@ -3003,7 +3048,6 @@ label.error {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
-    max-width: 70.5625rem;
     *zoom: 1;
 }
 
@@ -5703,7 +5747,7 @@ meta.foundation-mq-topbar {
 /* line 298, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 
 .top-bar-section ul li>a.button:hover {
-    background: #1d2224;
+    background: #1d241e;
 }
 
 

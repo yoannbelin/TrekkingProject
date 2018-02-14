@@ -1,0 +1,50 @@
+@media (min-width: 1025px) {
+
+header{
+    position: absolute;
+}
+
+body{
+    position: relative;
+}
+
+#button{
+    float: right;
+}
+
+.update{
+    visibility: visible;
+}
+
+.delete:hover{
+    background-color: red;
+}
+
+.pic{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.block_photos{
+    /* background-color: brown; */
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+/* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+	padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+	top: 0;
+	bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+	padding: 0;
+}
+
+
+}

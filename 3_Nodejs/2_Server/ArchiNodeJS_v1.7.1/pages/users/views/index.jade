@@ -1,6 +1,7 @@
-extends /core/views/layout
+extends layout
 
 block content
+<<<<<<< HEAD
   head
       title
       .Bandeau
@@ -56,6 +57,51 @@ block content
 
   
             table#idTableau(style='width:100%')
+=======
+  h2#trek profil user
+  .Bandeau
+  section.small-12.medium-12.large-12.columns
+    img(src='src/images/Bandeau.png', style='margin-bottom: 5px')
+    section.section
+      .top-border
+      .row
+        .small-12.medium-12.large-12.small-centered.columns
+        nav#nav
+          div
+            ul.inline-list-custom
+              li
+                a.current(href='/users') Profil
+              li
+                a(href='/photos') Galerie Photos
+
+    #conteneur_profil
+      .test
+          h3 Profil
+
+          #conteneur_profil
+            div
+              img.user(src='src/images/user_logo.png', alt='user_logo')
+            div  
+              .field
+                label Nom :
+                input#nom(type='text', name='nom', value='#{user.lastname}')
+
+              .field
+                label Prénom :
+                input#prenom(type='text', name='prenom', value='#{user.firstname}')
+
+              .field
+                label Pseudo :
+                input#pseudo(type='text', name='pseudo', value='#{user.username}')
+
+              .field
+                label Mail :
+                input#mail(type='text', name='mail', value='#{user.mail}')
+
+              button#btnEdit(onclick='updateUser()') MODIFIER
+              button#btnDelete(onclick='delUser()') SUPPRIMER
+
+>>>>>>> 752c03831a4bcab38af3790fb129f58d9df2a9f5
 
       .row
         .small-12.medium-12.large-12.columns

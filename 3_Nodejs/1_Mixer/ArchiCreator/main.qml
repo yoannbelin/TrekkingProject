@@ -117,7 +117,7 @@ Window {
                     placeholderText: "originalString"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    validator:  RegExpValidator{ regExp: /^[a-z][a-zA-Z0-9_]+/ }
+//                    validator:  RegExpValidator{ regExp: /^[a-z][a-zA-Z0-9_-]+/ }
                 }
 
                 Text{
@@ -134,7 +134,7 @@ Window {
                     placeholderText: "replacementString"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    validator:  RegExpValidator{ regExp: /^[a-z][a-zA-Z0-9_]+/ }
+//                    validator:  RegExpValidator{ regExp: /^[a-z][a-zA-Z0-9_-]+/ }
                 }
             }
 

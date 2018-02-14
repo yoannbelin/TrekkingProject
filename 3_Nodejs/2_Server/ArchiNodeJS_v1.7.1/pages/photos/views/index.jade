@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h2#trek galerie photos
+  title
+    h1 Galerie
+    h2 Photos
+  .Bandeau
+  section
+    img(src='../src/images/Bandeau.png', style='margin-bottom: 5px')
+    section.section
+      .top-border
+        .row
+        .large-12
+          nav#nav-under
+            div
+              ul.inline-list-custom
+                li
+                  a(href='/users') Profil
+                li
+                  a.current(href='/photos') Galerie Photos
+                  .top-border
+        .row
+            button#allPhoto(onclick='loadPhotos()') Toutes
+            button#sortPrivate(onclick='sortPrivate()') Privée
+            button#sortPublic(onclick='sortPublic()') Publique
+            button#sortDateRecent(onclick='sortDateOlder()') date (recent)
+            button#sortDateOlder(onclick='sortDateRecent()') date (ancien)
+            button#sortTrek(onclick='sortTrek()') Treks
+        .block_photos
+            #photos
+    
+    script(src="/src/ajax.js")
+    script(src="/src/loadPhotos.js")
+    
+    script(src='/src/jquery.min.js')
+    script(src='/src/foundation.min.js')
+    script(src='/src/hawthorne.js')
+
