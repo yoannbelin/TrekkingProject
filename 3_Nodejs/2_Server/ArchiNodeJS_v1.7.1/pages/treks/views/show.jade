@@ -1,7 +1,103 @@
-extends /core/views/layout
+extends layout
 
 block content
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  h2#trek detail trek
+>>>>>>> master
+=======
+  h2#trek detail trek
+>>>>>>> master
+  title
+  .Bandeau
+  section
+    img(src='../src/images/Bandeau.png', style='margin-bottom: 5px')
+    section.section
+      .top-border
+        .row
+        .large-12
+          nav#nav-under
+            div
+              ul.inline-list-custom
+                li
+                  a(href='/users') Profil
+                li
+                  a(href='/photos') Galerie Photos
+<<<<<<< HEAD
+<<<<<<< HEAD
+                li
+                  a(href='/PoI') Galerie Points d'intêret
+=======
+>>>>>>> master
+=======
+>>>>>>> master
+                  .top-border
+    .row
+      .small-12.medium-12.large-12.small-centered.columns
+        header
+          h1 Infos Trek
+      .small-12.medium-12.large-12.small-centered.columns
+    .row
+      .small-12.medium-7.large-7.columns
+        h2 #{trek.label}
+          #container_details
+            .trek_datas
+              .field
+                p#nom Nom du trek : #{trek.label}
+                  #labelDiv
+                    input#label(type='text', value=trek.label)
+                p Distance du trek : #{trek.length}
+                  #lengthDiv
+                    input#length(type='text', value=trek.length)
+                p Temps estimés du trek : #{trek.time}
+                  #timeDiv
+                    input#time(type='text', value=trek.time)
+                p Niveau de difficulté du trek : #{trek.level}
+                  #difficulteDiv
+                    input#level(type='text', value=trek.level)
+            .row
+              #buttons
+                .update  
+                    button#updateTrek(onclick='LoadTreksManager.updateTrek(#{trek.id})') Modifier Trek
+                  .delete
+                    button#deletTrek(onclick='LoadTreksManager.deleteTrek(#{trek.id})') Supprimer Trek               
+                  .saveupdate
+                    button#saveUpdate(onclick='LoadTreksManager.saveUpdate(#{trek.id})') Sauvegarder modification
+                  .cancelupdate
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    button#cancel(onclick='LoadTreksManager.cancelupdate(#{trek.id})') annuler modificattion
+=======
+                    button#cancel(onclick='LoadTreksManager.cancelupdate(#{trek.id})') annuler modification
+>>>>>>> master
+=======
+                    button#cancel(onclick='LoadTreksManager.cancelupdate(#{trek.id})') annuler modification
+>>>>>>> master
+      .small-12.medium-5.large-5.columns
+          .zoom
+            .image
+              p
+                img(src='../../../src/images/about-photo.png')
+      .small-12.medium-12.large-12.columns
+      .small-12.medium-12.large-12.columns
+          .row
+            .small-12.medium-12.large-12.columns
+              ul.small-block-grid-1.medium-block-grid-3.large-block-grid-3.inline-list-custom
+                - for photo in trek.photos
+                  li
+                    .thumbnail
+                      .thumbnail-img
+                        .thumbnail-hover
+                        img(src='#{photo.url}' , alt='Photo du trek')
+                        .thumbnail-caption
+                          a.caption-link(href='../photos/' + photo.id) #{photo.title} 
+    .row
+        p.back-to-top-holder
+          a.back-to-top
+            a(href='#')
+              i.fa.fa-chevron-circle-up.fa-3x
 
 
-  h3 laissé #{trek.create_at}, par #{trek.author.firstname} :
-  p #{trek.content}
+  script(src="/src/ajax.js")
+  script(src="/src/loadTreks.js")

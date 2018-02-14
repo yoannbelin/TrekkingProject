@@ -2,18 +2,20 @@ doctype html
 html
   head
     title= title
+    meta(name='viewport', content='width=device-width')
     link(rel='stylesheet', href='/src/style.css')
     link(rel='stylesheet', href='/src/layout.css')
-    //- link(rel='stylesheet', href='/src/CSS/users/user_web.css')
+    link(rel='stylesheet', href='/src/CSS/home/web/home_web.css', type='text/css')
+    link(rel='stylesheet', href='/src/CSS/home/mobile/home_mobile.css', type='text/css')
     link(rel='stylesheet', href='/src/font-awesome-4.7.0/css/font-awesome.min.css')
-
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
   body
-   
-    include /core/views/header
+    
+    include header
     
     block content
 
       
 
 
-    include /core/views/footer
+    include footer

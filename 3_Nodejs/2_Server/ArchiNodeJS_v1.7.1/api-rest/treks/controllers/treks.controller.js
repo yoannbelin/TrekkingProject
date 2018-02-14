@@ -15,12 +15,14 @@ module.exports.create = function(req, res) {
     let trekModel = new TrekModel(req.body);
     console.log(trekModel);
 
+    console.log(req.session.user.id);
+
     if (!trekModel.isValid()) {
         console.log("invalid");
         return res.status(500).json({ 'error': 'Failed to create trek, missing fields !' });
     }
 
-    TreksService.create(trekModel, (err, trek) => {
+    TreksService.create(req.session.user.id, trekModel, (err, trek) => {
         if (err) {
             res.status(500).json({ 'error': 'Failed to create trek !' });
         } else {
@@ -44,11 +46,11 @@ module.exports.read = function(req, res) {
 module.exports.update = function(req, res) {
     let trekModel = new TrekModel(req.body);
     console.log(trekModel);
-    
+
     if (!trekModel.isValid()) {
         return res.status(500).json({ 'error': 'Failed to update trek, missing fields !' });
     }
-
+    console.log("Trek Updated");
     trekModel.id = req.params.idTrek;
 
     TreksService.update(trekModel, (err, trek) => {
@@ -70,6 +72,7 @@ module.exports.delete = function(req, res) {
         } else {
             res.json({ 'success': 'Trek deleted !', 'trek': trek });
         }
+        console.log("Trek Deleted");
     });
 }
 
@@ -79,5 +82,33 @@ module.exports.delete = function(req, res) {
 module.exports.list = function(req, res) {
     TreksService.list((err, treks) => {
         res.json(treks); // cast with toJSON
+    });
+}
+
+/**
+ * List Treks for current user
+ */
+module.exports.listCurrentUser = function(req, res) {
+    TreksService.listByUserID(req.session.user.id, (err, treks) => {
+        res.json(treks);
+    });
+}
+
+/**
+ * TrekByID middleware
+ */
+exports.trekByID = function(req, res, next, idTrek) {
+    if (isNaN(idTrek)) {
+        return res.status(400).send({ trek: 'trek is invalid' });
+    }
+
+    TreksService.find(idTrek, (err, trek) => {
+        if (!trek) {
+            return res.status(500).json({ 'errors': [{ msg: 'Failed to load trek ' + idTrek }] });
+        }
+
+        req.trek = trek;
+
+        next();
     });
 }

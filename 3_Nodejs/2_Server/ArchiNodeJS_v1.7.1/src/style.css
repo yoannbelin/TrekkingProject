@@ -1,7 +1,23 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,300,700,800);
 
 /* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,300,700,800); */
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+#galerie {
+    padding-top: 3em;
+}
+
+=======
+#galerie{
+    padding-top: 3em;
+}
+>>>>>>> master
+=======
+#galerie{
+    padding-top: 3em;
+}
+>>>>>>> master
 
 /*==================================================================================================
 Header
@@ -75,6 +91,11 @@ User_profil
     /* background: yellow; */
 }
 
+.trek_datas {
+    margin-top: auto;
+    margin-left: 120px;
+}
+
 .field {
     font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-size: 1.5rem;
@@ -135,26 +156,23 @@ Page Treck
 }
 
 .block1_infos:nth-child(1) {
-    flex: 2;
+    flex: 1;
 }
 
 .block2_maps:nth-child(2) {
     flex: 3;
-    width: auto;
+    /* width: auto; */
     max-height: 600px;
 }
 
 .block3_buttons:nth-child(3) {
     flex: 1;
+    width: auto;
 }
 
 .block1_infos {
-    /* margin: auto; */
     float: left;
     text-align: center;
-    /* border-width: 2px;
-    border-style: ridge;
-    border-color: black; */
 }
 
 .block2_maps {
@@ -163,47 +181,134 @@ Page Treck
 
 .block3_buttons {
     float: right;
-}
-
-td {
-    border: 1px solid black;
+    text-align: center;
 }
 
 table {
     margin: auto;
 }
 
+td,
+tr {
+    border-collapse: 1px solid black;
+    border: 1px solid black;
+}
+
+th {
+    width: 5em;
+    line-height: normal;
+    border-collapse: 1px solid black;
+    border: 1px solid black;
+}
+
 #buttons {
-    display: flex;
-    flex-direction: row;
+    margin: auto;
 }
 
 .detail {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
     visibility: hidden;
+    /* background: red; */
+}
+
+.detail a {
+    color: white;
 }
 
 .newtrek {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
     visibility: hidden;
+    /* background: green; */
 }
 
 .save {
-    margin: auto;
-    display: flex;
-    flex-direction: row;
     visibility: hidden;
 }
 
 .reset {
+    visibility: hidden;
+}
+
+select {
+    margin: auto;
+}
+
+#idCombo {
+    margin: auto;
+}
+
+.update {
     margin: auto;
     display: flex;
     flex-direction: row;
     visibility: hidden;
+}
+
+<<<<<<< HEAD
+.delete {
+=======
+.detail a {
+    color: white;
+}
+
+.newtrek {
+>>>>>>> master
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.saveupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.cancelupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+    visibility: hidden;
+}
+
+.update {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.delete {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.saveupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+.cancelupdate {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+<<<<<<< HEAD
+}
+
+.Bandeau {
+    position: fixed;
+=======
+>>>>>>> master
+}
+
+.Bandeau {
+    position: fixed;
 }
 
 .lined-list:nth-child(1) {
@@ -302,7 +407,7 @@ Spacing Adjustments
 
 #trek {
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 
@@ -942,7 +1047,7 @@ article .caption,
     float: left;
     margin-left: 0;
     margin-right: 1.5em;
-    vertical-align: top !important;
+    /* vertical-align: top !important; */
 }
 
 
@@ -1229,6 +1334,7 @@ body {
 /* line 325, ../bower_components/foundation/scss/foundation/components/_global.scss */
 
 body {
+    height: 100%;
     background: #fbfdfe;
     color: #333d41;
     padding: 0;
@@ -1417,7 +1523,7 @@ select {
 /* line 35, ../bower_components/foundation/scss/foundation/components/_block-grid.scss */
 
 [class*="block-grid-"]>li {
-    display: inline;
+    display: block;
     height: auto;
     float: left;
     padding: 0 1.5em 3em;
@@ -2368,52 +2474,6 @@ button[disabled].alert:focus,
     }
 }
 
-
-/* line 45, ../bower_components/foundation/scss/foundation/components/_flex-video.scss */
-
-.flex-video {
-    position: relative;
-    padding-top: 1.5625rem;
-    padding-bottom: 67.5%;
-    height: 0;
-    margin-bottom: 1rem;
-    overflow: hidden;
-}
-
-
-/* line 28, ../bower_components/foundation/scss/foundation/components/_flex-video.scss */
-
-.flex-video.widescreen {
-    padding-bottom: 57.25%;
-}
-
-
-/* line 29, ../bower_components/foundation/scss/foundation/components/_flex-video.scss */
-
-.flex-video.vimeo {
-    padding-top: 0;
-}
-
-
-/* line 34, ../bower_components/foundation/scss/foundation/components/_flex-video.scss */
-
-.flex-video iframe,
-.flex-video object,
-.flex-video embed,
-.flex-video video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-
-/* Standard Forms */
-
-
-/* line 300, ../bower_components/foundation/scss/foundation/components/_forms.scss */
-
 form {
     margin: 0 0 1rem;
 }
@@ -3047,7 +3107,6 @@ label.error {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
-    max-width: 70.5625rem;
     *zoom: 1;
 }
 
@@ -5747,7 +5806,7 @@ meta.foundation-mq-topbar {
 /* line 298, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
 
 .top-bar-section ul li>a.button:hover {
-    background: #1d2224;
+    background: #1d241e;
 }
 
 

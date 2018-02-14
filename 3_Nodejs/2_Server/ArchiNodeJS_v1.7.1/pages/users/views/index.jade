@@ -1,6 +1,12 @@
-extends /core/views/layout
+extends layout
 
 block content
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  h2#trek profil user
+>>>>>>> master
+=======
   head
       title
       .Bandeau
@@ -8,8 +14,8 @@ block content
         img(src='src/images/Bandeau.png', style='margin-bottom: 5px')
         section.section
           .top-border
-          .row
-            .small-12.medium-12.large-12.small-centered.columns
+            .row
+              .small-12.medium-12.large-12.small-centered.columns
             nav#nav
               div
                 ul.inline-list-custom
@@ -56,6 +62,98 @@ block content
 
   
             table#idTableau(style='width:100%')
+=======
+  h2#trek profil user
+>>>>>>> master
+  .Bandeau
+  section.small-12.medium-12.large-12.columns
+    img(src='src/images/Bandeau.png', style='margin-bottom: 5px')
+    section.section
+      .top-border
+      .row
+        .small-12.medium-12.large-12.small-centered.columns
+        nav#nav
+          div
+            ul.inline-list-custom
+              li
+                a.current(href='/users') Profil
+              li
+                a(href='/photos') Galerie Photos
+<<<<<<< HEAD
+<<<<<<< HEAD
+              li
+                a(href='/PoI') Galerie Points d'intêret
+=======
+>>>>>>> master
+=======
+>>>>>>> master
+
+    #conteneur_profil
+      .test
+          h3 Profil
+
+          #conteneur_profil
+            div
+              img.user(src='src/images/user_logo.png', alt='user_logo')
+            div  
+              .field
+                label Nom :
+<<<<<<< HEAD
+<<<<<<< HEAD
+                input#nom(type='text', name='nom')
+=======
+                input#nom(type='text', name='nom', value='#{user.lastname}')
+>>>>>>> master
+
+              .field
+                label Prénom :
+                input#prenom(type='text', name='prenom', value='#{user.firstname}')
+
+              .field
+                label Pseudo :
+                input#pseudo(type='text', name='pseudo', value='#{user.username}')
+
+              .field
+                label Mail :
+                input#mail(type='text', name='mail', value='#{user.mail}')
+
+              button#btnEdit(onclick='updateUser()') MODIFIER
+              button#btnDelete(onclick='delUser()') SUPPRIMER
+
+<<<<<<< HEAD
+            
+
+
+        table#idTableau(style='width:100%')
+=======
+                input#nom(type='text', name='nom', value='#{user.lastname}')
+
+              .field
+                label Prénom :
+                input#prenom(type='text', name='prenom', value='#{user.firstname}')
+
+              .field
+                label Pseudo :
+                input#pseudo(type='text', name='pseudo', value='#{user.username}')
+
+              .field
+                label Mail :
+                input#mail(type='text', name='mail', value='#{user.mail}')
+
+              button#btnEdit(onclick='updateUser()') MODIFIER
+              button#btnDelete(onclick='delUser()') SUPPRIMER
+
+>>>>>>> master
+=======
+>>>>>>> 752c03831a4bcab38af3790fb129f58d9df2a9f5
+>>>>>>> master
+
+      .row
+        .small-12.medium-12.large-12.columns
+          p.back-to-top-holder
+            a.back-to-top
+              a(href='#')
+                i.fa.fa-chevron-circle-up.fa-3x
 
   script(src="/src/ajax.js")
   script(src="/src/loadUsers.js")
